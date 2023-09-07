@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>计算机网络实验2 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="实验：网络仿真软件使用及网络分析 1. 基本信息   姓名 学号 班级 本次是否有抄袭 所选协议    余永海 202121331117 计算2114 否 DHCP   2. 使用Cisco Packet Tracer遇到的问题及解决方法 两个终端设备无法发送报文，原因在于他们之间没有建立联系，连上线就行了  3. Wireshark抓取报文（1）如何抓取到你所选择的协议报文 DHCP协议用于动态">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络实验2">
+<meta property="og:url" content="http://example.com/2023/05/12/%E5%AE%9E%E9%AA%8C2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="实验：网络仿真软件使用及网络分析 1. 基本信息   姓名 学号 班级 本次是否有抄袭 所选协议    余永海 202121331117 计算2114 否 DHCP   2. 使用Cisco Packet Tracer遇到的问题及解决方法 两个终端设备无法发送报文，原因在于他们之间没有建立联系，连上线就行了  3. Wireshark抓取报文（1）如何抓取到你所选择的协议报文 DHCP协议用于动态">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/image-20230510135111198.png">
+<meta property="og:image" content="http://example.com/img/image-20230511105630132.png">
+<meta property="og:image" content="http://example.com/img/image-20230422001933477.png">
+<meta property="og:image" content="http://example.com/img/image-20230422002223191.png">
+<meta property="og:image" content="http://example.com/img/image-20230422002316324.png">
+<meta property="og:image" content="http://example.com/img/image-20230422002357409.png">
+<meta property="article:published_time" content="2023-05-12T13:00:00.000Z">
+<meta property="article:modified_time" content="2023-09-07T03:25:34.967Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/image-20230510135111198.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-实验2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/05/12/%E5%AE%9E%E9%AA%8C2/" class="article-date">
+  <time class="dt-published" datetime="2023-05-12T13:00:00.000Z" itemprop="datePublished">2023-05-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      计算机网络实验2
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>实验：网络仿真软件使用及网络分析</p>
+<h1 id="1-基本信息"><a href="#1-基本信息" class="headerlink" title="1. 基本信息"></a>1. 基本信息</h1><table>
+<thead>
+<tr>
+<th align="center">姓名</th>
+<th align="center">学号</th>
+<th align="center">班级</th>
+<th align="center">本次是否有抄袭</th>
+<th align="center">所选协议</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">余永海</td>
+<td align="center">202121331117</td>
+<td align="center">计算2114</td>
+<td align="center">否</td>
+<td align="center">DHCP</td>
+</tr>
+</tbody></table>
+<h1 id="2-使用Cisco-Packet-Tracer遇到的问题及解决方法"><a href="#2-使用Cisco-Packet-Tracer遇到的问题及解决方法" class="headerlink" title="2. 使用Cisco Packet Tracer遇到的问题及解决方法"></a>2. 使用Cisco Packet Tracer遇到的问题及解决方法</h1><ol>
+<li>两个终端设备无法发送报文，原因在于他们之间没有建立联系，连上线就行了</li>
+</ol>
+<h1 id="3-Wireshark抓取报文"><a href="#3-Wireshark抓取报文" class="headerlink" title="3. Wireshark抓取报文"></a>3. Wireshark抓取报文</h1><p><strong>（1）如何抓取到你所选择的协议报文</strong></p>
+<p>DHCP协议用于动态管理和获取ip地址等上网信息配置，所以我们可以在电脑开机时抓取报文或者重启以太网适配器或者在cmd终端输入相关的命令来达到同样的效果</p>
+<p><strong>（2）Wireshark出来很多报文，你是如何过滤出与你所选协议相关的报文</strong></p>
+<p>要从Wireshark中过滤出DHCP报文，可以使用过滤器“bootp”，因为DHCP是基于BOOTP开发的。具体的过滤器表达式为“bootp.option.dhcp &#x3D;&#x3D; 1”或者’bootp’也行。在捕获数据包时，输入该过滤器表达式后，Wireshark就会仅显示DHCP请求和响应报文。</p>
+<h1 id="4-协议时序图"><a href="#4-协议时序图" class="headerlink" title="4. 协议时序图"></a>4. 协议时序图</h1><p>Wireshark捕获到的报文如下图：</p>
+<p><img src="/img/image-20230510135111198.png" alt="image-20230510135111198"></p>
+<p>协议工作原理的时序图：</p>
+<p><img src="/img/image-20230511105630132.png" alt="image-20230511105630132"></p>
+<h1 id="5-分析协议工作原理"><a href="#5-分析协议工作原理" class="headerlink" title="5. 分析协议工作原理"></a>5. 分析协议工作原理</h1><p>DHCP协议自动分配IP的报文主要有四种：</p>
+<ol>
+<li><p>DHCP Discover：由客户端发出，用来发现DHCP服务器。</p>
+</li>
+<li><p>DHCP Offer：由DHCP服务器发出，告诉客户端，我可以提供IP地址。</p>
+</li>
+<li><p>DHCP Request：由客户端发出，告诉对应的DHCP服务器，我需要IP地址。</p>
+</li>
+<li><p>DHCP ACK：由DHCP服务器发出，提供客户端响应的IP地址。</p>
+</li>
+</ol>
+<h2 id="5-1-DHCP-Discover"><a href="#5-1-DHCP-Discover" class="headerlink" title="5.1.DHCP  Discover:"></a>5.1.DHCP  Discover:</h2><p>Discover报文:</p>
+<p><img src="/img/image-20230422001933477.png" alt="image-20230422001933477"></p>
+<p>dhcp discover是新设备需要上网时发送的报文，dhcp是处于应用层,所以dhcp discover 实际上是应用层报文。 发送dhcp discover报文的目的是寻找本地的dhcp服务器。</p>
+<p>从图中可以看出dhcp在传输层使用的是udp协议，而源端口即客户端端口使用的是68端口，目的端口即服务器端口是使用的是67端口. </p>
+<p>网络层里，由于设备刚开始还无法上网,没有IP地址，这里用0.0.0.0表示，而由于也不知道dhcp服务器的ip地址，所以要进行广播，目的ip地址为255.255.255.255，表示在本地进行广播用于发现dhcp服务器.</p>
+<p>接下来的数据链路层最重要的是mac地址，源mac地址就是本机mac地址，目的mac地址由于不知道dhcp服务器，所以和网络层类似填写的是mac广播地址.</p>
+<p>我们还可以看出应用层报文还有 transaction ID，事务ID，这个 ID 值是由客户端提供的随机数。如果有其他设备也在进行 DHCP 交互， 有这个事务ID 就能更好判断是属于这个设备的请求了。另外，因为 DHCP 是基于 boot protocol 发展出来的，因此在报文里会看到 bootp 或者 boot 这样的字样。这里 bootp flags 设置为 Unicus 的意思是服务器可以单播发送给设备，也就是不用广播进行发送。</p>
+<p>从图中的option选项中还有一点值得注意，这里的requested ip address是172.21.7.116,这是我们这台设备上次使用的ip地址，即dhcp discover可能会请求上次使用的ip地址。</p>
+<p>DHCB discover 这一步完成以后，如果此时网络中有 DHCP 服务器存在，就会进行处理，也就是进行 DHCP offer 这一步。</p>
+<h2 id="5-2-DHCP-offer"><a href="#5-2-DHCP-offer" class="headerlink" title="5.2.DHCP offer:"></a>5.2.DHCP offer:</h2><p>Offer报文:</p>
+<p><img src="/img/image-20230422002223191.png" alt="image-20230422002223191"></p>
+<p> 从图中可以看出，DHCP服务器 会提供上网所需的配置信息,也就是 ip 地址（127.21.7.116）、子网掩码（255.255.0.0）。除此之外在这一步还有ip 地址的租期，当租用过了某段时间就会过期，所以在到期前需要进行续租，还会提供续租的时间。</p>
+<p>在传输层里依旧使用 UDP 协议，只是源端口和目标端口号反了过来，因为这次是服务端发送给客户端。  </p>
+<p>网络层里，dhcp服务器的源ip为172.21.0.1，而目的ip是172.21.7.116为分配的ip地址,这两个我们也可以从数据包里的your ip address和dhcp server identifiter可以看到，还有其他的一些信息，如子网掩码:255.255.0.0</p>
+<p>数据链路层里，源 Mac 地址就是dhcp服务器的mac地址，而目标 Mac 地址就是我们设备的。</p>
+<h2 id="5-3-DHCP-Request"><a href="#5-3-DHCP-Request" class="headerlink" title="5.3.DHCP Request:"></a>5.3.DHCP Request:</h2><p>Request报文:</p>
+<p><img src="/img/image-20230422002316324.png" alt="image-20230422002316324"></p>
+<p>当我们的设备接收到dhcp服务器的offer报文时，可能不止一个，如果网络里有多个dhcp服务器，则接收第一个offer报文提供的ip地址，并再次以广播的形式正式请求之前的ip,也告知其它dhcp服务器选择了哪一个dhcp服务器提供的ip地址，从图也可以看出，网络层源ip和目的ip和dhcp discover报文一样，传输层和数据链路层也同样.</p>
+<h2 id="5-4-DHCP-ACK"><a href="#5-4-DHCP-ACK" class="headerlink" title="5.4.DHCP ACK:"></a>5.4.DHCP ACK:</h2><p>ACK报文:</p>
+<p><img src="/img/image-20230422002357409.png" alt="image-20230422002357409"></p>
+<p>在收到dhcp request报文时，服务器向客户端发送DHCP ACK报文,确认客户端可以使用请求的IP地址。从图中也可以看到</p>
+<p>源MAC地址:58 69 6c 5e 0c 2c(服务端Mac地址)</p>
+<p>目的MAC地址:80 fa 5b 9e b4 2d (客户端MAC)</p>
+<p>交易ID:0x2858eb(与Request、Offer报文中的ID对应)</p>
+<p>其他配置与Offer报文中的相同。至此,DHCP分配IP地址流程完成。客户端可以使用该IP地址并更新其配置开始上网了。</p>
+<p>以上就是一个完整的DHCP IP地址分配过程的报文交互和分析。客户端通过Discover寻找服务器,选择一个Offer后,通过Request请求IP,最后服务器ACK确认分配,完成整个DHCP流程。</p>
+<h1 id="6-遇到的问题及解决方法"><a href="#6-遇到的问题及解决方法" class="headerlink" title="6. 遇到的问题及解决方法"></a>6. 遇到的问题及解决方法</h1><ol>
+<li>没有问题</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/05/12/%E5%AE%9E%E9%AA%8C2/" data-id="clm8lg2bc000d445bh3mm4zq0" data-title="计算机网络实验2" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/08/29/%E6%B5%8B%E8%AF%95%E6%96%B0%E4%B8%BB%E9%A2%98/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          测试新主题
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/04/22/%E5%85%B3%E4%BA%8E%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98hdu1028/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">关于动态规划完全背包问题hdu1028</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BUG/" rel="tag">BUG</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RPC/" rel="tag">RPC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%9C%E4%B8%9A/" rel="tag">作业</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag">数据结构与算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/BUG/" style="font-size: 10px;">BUG</a> <a href="/tags/RPC/" style="font-size: 10px;">RPC</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/%E4%BD%9C%E4%B8%9A/" style="font-size: 10px;">作业</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a> <a href="/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10px;">问题</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/09/07/hexo%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87%E8%AE%B0%E5%BD%95/">hexo无法显示图片记录</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/07/%E5%B7%A5%E7%A8%8B%E6%A6%82%E8%AE%BA%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BD%9C%E4%B8%9A/">工程概论第一次作业</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/06/test-post/">test_post</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/02/RPC%E5%8D%8F%E8%AE%AE%E4%B8%8EHTTP%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%8C%BA%E5%88%AB%E5%8F%8A%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/">RPC协议与HTTP协议的区别及应用场景</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/30/%E9%82%AA%E9%97%A8%E4%BA%8B%E8%BF%B9/">TYPERO邪门的BUG</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
