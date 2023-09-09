@@ -515,9 +515,9 @@
 <p><strong>（2）Wireshark出来很多报文，你是如何过滤出与你所选协议相关的报文</strong></p>
 <p>要从Wireshark中过滤出DHCP报文，可以使用过滤器“bootp”，因为DHCP是基于BOOTP开发的。具体的过滤器表达式为“bootp.option.dhcp &#x3D;&#x3D; 1”或者’bootp’也行。在捕获数据包时，输入该过滤器表达式后，Wireshark就会仅显示DHCP请求和响应报文。</p>
 <h1 id="4-协议时序图"><a href="#4-协议时序图" class="headerlink" title="4. 协议时序图"></a>4. 协议时序图</h1><p>Wireshark捕获到的报文如下图：</p>
-<p><img src="/img/image-20230510135111198.png" alt="image-20230510135111198"></p>
+<p><img src="/blog/img/image-20230510135111198.png" alt="image-20230510135111198"></p>
 <p>协议工作原理的时序图：</p>
-<p><img src="/img/image-20230511105630132.png" alt="image-20230511105630132"></p>
+<p><img src="/blog/img/image-20230511105630132.png" alt="image-20230511105630132"></p>
 <h1 id="5-分析协议工作原理"><a href="#5-分析协议工作原理" class="headerlink" title="5. 分析协议工作原理"></a>5. 分析协议工作原理</h1><p>DHCP协议自动分配IP的报文主要有四种：</p>
 <ol>
 <li><p>DHCP Discover：由客户端发出，用来发现DHCP服务器。</p>
@@ -530,7 +530,7 @@
 </li>
 </ol>
 <h2 id="5-1-DHCP-Discover"><a href="#5-1-DHCP-Discover" class="headerlink" title="5.1.DHCP  Discover:"></a>5.1.DHCP  Discover:</h2><p>Discover报文:</p>
-<p><img src="/img/image-20230422001933477.png" alt="image-20230422001933477"></p>
+<p><img src="/blog/img/image-20230422001933477.png" alt="image-20230422001933477"></p>
 <p>dhcp discover是新设备需要上网时发送的报文，dhcp是处于应用层,所以dhcp discover 实际上是应用层报文。 发送dhcp discover报文的目的是寻找本地的dhcp服务器。</p>
 <p>从图中可以看出dhcp在传输层使用的是udp协议，而源端口即客户端端口使用的是68端口，目的端口即服务器端口是使用的是67端口. </p>
 <p>网络层里，由于设备刚开始还无法上网,没有IP地址，这里用0.0.0.0表示，而由于也不知道dhcp服务器的ip地址，所以要进行广播，目的ip地址为255.255.255.255，表示在本地进行广播用于发现dhcp服务器.</p>
@@ -539,16 +539,16 @@
 <p>从图中的option选项中还有一点值得注意，这里的requested ip address是172.21.7.116,这是我们这台设备上次使用的ip地址，即dhcp discover可能会请求上次使用的ip地址。</p>
 <p>DHCB discover 这一步完成以后，如果此时网络中有 DHCP 服务器存在，就会进行处理，也就是进行 DHCP offer 这一步。</p>
 <h2 id="5-2-DHCP-offer"><a href="#5-2-DHCP-offer" class="headerlink" title="5.2.DHCP offer:"></a>5.2.DHCP offer:</h2><p>Offer报文:</p>
-<p><img src="/img/image-20230422002223191.png" alt="image-20230422002223191"></p>
+<p><img src="/blog/img/image-20230422002223191.png" alt="image-20230422002223191"></p>
 <p> 从图中可以看出，DHCP服务器 会提供上网所需的配置信息,也就是 ip 地址（127.21.7.116）、子网掩码（255.255.0.0）。除此之外在这一步还有ip 地址的租期，当租用过了某段时间就会过期，所以在到期前需要进行续租，还会提供续租的时间。</p>
 <p>在传输层里依旧使用 UDP 协议，只是源端口和目标端口号反了过来，因为这次是服务端发送给客户端。  </p>
 <p>网络层里，dhcp服务器的源ip为172.21.0.1，而目的ip是172.21.7.116为分配的ip地址,这两个我们也可以从数据包里的your ip address和dhcp server identifiter可以看到，还有其他的一些信息，如子网掩码:255.255.0.0</p>
 <p>数据链路层里，源 Mac 地址就是dhcp服务器的mac地址，而目标 Mac 地址就是我们设备的。</p>
 <h2 id="5-3-DHCP-Request"><a href="#5-3-DHCP-Request" class="headerlink" title="5.3.DHCP Request:"></a>5.3.DHCP Request:</h2><p>Request报文:</p>
-<p><img src="/img/image-20230422002316324.png" alt="image-20230422002316324"></p>
+<p><img src="/blog/img/image-20230422002316324.png" alt="image-20230422002316324"></p>
 <p>当我们的设备接收到dhcp服务器的offer报文时，可能不止一个，如果网络里有多个dhcp服务器，则接收第一个offer报文提供的ip地址，并再次以广播的形式正式请求之前的ip,也告知其它dhcp服务器选择了哪一个dhcp服务器提供的ip地址，从图也可以看出，网络层源ip和目的ip和dhcp discover报文一样，传输层和数据链路层也同样.</p>
 <h2 id="5-4-DHCP-ACK"><a href="#5-4-DHCP-ACK" class="headerlink" title="5.4.DHCP ACK:"></a>5.4.DHCP ACK:</h2><p>ACK报文:</p>
-<p><img src="/img/image-20230422002357409.png" alt="image-20230422002357409"></p>
+<p><img src="/blog/img/image-20230422002357409.png" alt="image-20230422002357409"></p>
 <p>在收到dhcp request报文时，服务器向客户端发送DHCP ACK报文,确认客户端可以使用请求的IP地址。从图中也可以看到</p>
 <p>源MAC地址:58 69 6c 5e 0c 2c(服务端Mac地址)</p>
 <p>目的MAC地址:80 fa 5b 9e b4 2d (客户端MAC)</p>
