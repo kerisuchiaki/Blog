@@ -4,25 +4,20 @@
   <meta charset="utf-8">
   
   
-  <title>hexo无法显示图片记录 | hatena</title>
+  <title>jvm学习笔记-常量池 | hatena</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="关于hexo无法显示图片的问题根据网上的教程，下载插件和修改配置文_config.yaml使生成与新文章同名的文件夹存放一些资源，但是两个方法都没有完全成功解决，最终的结果就是只能显示在与_posts同级的文件夹img下的图片，并且只能是&#x2F;img&#x2F;图片名字 的路径才能在网站上显示，不仅如此图片格式还必须是PNG格式  2023-9-7更新 生成与新文章同名的文件夹存放一些资源，">
+  <meta name="description" content="引入思考下面的代码 123456789101112131415161718192021222324package com.yuyonghai;public class Demo_2 &amp;#123;    public static void main(String[] args) &amp;#123;        String s&#x3D;new String(&quot;a&quot;)+new String(">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo无法显示图片记录">
-<meta property="og:url" content="https://gitee.com/lanceluot/blog.git/2023/09/07/hexo%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:title" content="jvm学习笔记-常量池">
+<meta property="og:url" content="https://gitee.com/lanceluot/blog.git/2023/10/01/jvm%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%B8%B8%E9%87%8F%E6%B1%A0/index.html">
 <meta property="og:site_name" content="hatena">
-<meta property="og:description" content="关于hexo无法显示图片的问题根据网上的教程，下载插件和修改配置文_config.yaml使生成与新文章同名的文件夹存放一些资源，但是两个方法都没有完全成功解决，最终的结果就是只能显示在与_posts同级的文件夹img下的图片，并且只能是&#x2F;img&#x2F;图片名字 的路径才能在网站上显示，不仅如此图片格式还必须是PNG格式  2023-9-7更新 生成与新文章同名的文件夹存放一些资源，">
+<meta property="og:description" content="引入思考下面的代码 123456789101112131415161718192021222324package com.yuyonghai;public class Demo_2 &amp;#123;    public static void main(String[] args) &amp;#123;        String s&#x3D;new String(&quot;a&quot;)+new String(">
 <meta property="og:locale" content="zn_CN">
-<meta property="og:image" content="https://gitee.com/blog/img/image-20230907164438145.png">
-<meta property="og:image" content="https://gitee.com/blog/img/2d912049dfebca6078242df51d72bb4488eabae1.jpg@1256w_952h_!web-article-pic.webp">
-<meta property="og:image" content="https://gitee.com/lanceluot/blog.git/2023/09/07/hexo%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87%E8%AE%B0%E5%BD%95/img/future.webp">
-<meta property="og:image" content="https://gitee.com/blog/img/future.webp">
-<meta property="article:published_time" content="2023-09-07T14:29:00.000Z">
-<meta property="article:modified_time" content="2023-09-07T12:49:49.461Z">
+<meta property="article:published_time" content="2023-10-01T07:29:25.000Z">
+<meta property="article:modified_time" content="2023-10-01T07:36:09.129Z">
 <meta property="article:author" content="myself">
-<meta property="article:tag" content="问题">
+<meta property="article:tag" content="jvm">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/blog/img/image-20230907164438145.png">
   
     <link rel="alternate" href="/blog/atom.xml" title="hatena" type="application/atom+xml">
   
@@ -81,10 +76,10 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-hexo无法显示图片记录" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-jvm学习笔记-常量池" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/blog/2023/09/07/hexo%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87%E8%AE%B0%E5%BD%95/" class="article-date">
-  <time class="dt-published" datetime="2023-09-07T14:29:00.000Z" itemprop="datePublished">2023-09-07</time>
+    <a href="/blog/2023/10/01/jvm%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%B8%B8%E9%87%8F%E6%B1%A0/" class="article-date">
+  <time class="dt-published" datetime="2023-10-01T07:29:25.000Z" itemprop="datePublished">2023-10-01</time>
 </a>
     
   </div>
@@ -95,7 +90,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      hexo无法显示图片记录
+      jvm学习笔记-常量池
     </h1>
   
 
@@ -103,41 +98,26 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="关于hexo无法显示图片的问题"><a href="#关于hexo无法显示图片的问题" class="headerlink" title="关于hexo无法显示图片的问题"></a>关于hexo无法显示图片的问题</h1><p>根据网上的教程，下载插件和修改配置文_config.yaml使生成与新文章同名的文件夹存放一些资源，但是两个方法都没有完全成功解决，最终的结果就是只能显示在与_posts同级的文件夹img下的图片，并且只能是&#x2F;img&#x2F;图片名字 的路径才能在网站上显示，不仅如此图片格式还必须是PNG格式</p>
-<hr>
-<p>2023-9-7更新</p>
-<p>生成与新文章同名的文件夹存放一些资源，这个好像是typora的自动复制图片到同名文件夹的功能，图片好像也不知是只显示png图片格式</p>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><span id="more"></span>
+        <h1 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h1><p>思考下面的代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.yuyonghai;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo_2</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        String s=<span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;a&quot;</span>)+<span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;b&quot;</span>);</span><br><span class="line">        System.out.println(System.identityHashCode(s));</span><br><span class="line"></span><br><span class="line">        String str=s;</span><br><span class="line">        System.out.println(System.identityHashCode(str));</span><br><span class="line"></span><br><span class="line">        System.out.println(s==str);</span><br><span class="line">                 str=s.intern();</span><br><span class="line">        System.out.println(<span class="string">&quot;-----------&quot;</span>);</span><br><span class="line">        System.out.println(System.identityHashCode(<span class="string">&quot;ab&quot;</span>));</span><br><span class="line"></span><br><span class="line">        System.out.println(System.identityHashCode(s));</span><br><span class="line">        System.out.println(System.identityHashCode(str));<span class="comment">//为什么str的内存地址没改变</span></span><br><span class="line"></span><br><span class="line">        System.out.println(s==<span class="string">&quot;ab&quot;</span>);</span><br><span class="line">        System.out.println(s==str);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>hexo的博客的结构好像是，会将public下的内容当作整个博客的根目录，所以图片显示正确，只要将要显示的图片放这个public的目录下的img文件夹，这个img文件夹是要我们创建的，并且编辑的文章所在的目录也要有一个img文件夹，这样就做到了，在typero下编写文章时插入图片我们可以看到，同时部署博客时也可以显示出来，不过编辑时插入图片时还要复制到public下的img下才行，并且图片的路径语法只能是当前文章的img下</p>
-<p><img src="/blog/img/image-20230907164438145.png" alt="image-20230907164438145"></p>
-<p><img src="/blog/img/2d912049dfebca6078242df51d72bb4488eabae1.jpg@1256w_952h_!web-article-pic.webp"></p>
-<h2 id="部署到码云出现无样式"><a href="#部署到码云出现无样式" class="headerlink" title="部署到码云出现无样式"></a>部署到码云出现无样式</h2><p>服了，码云上的根目录和这个hexo的根目录不一样，所以还要修改这个hexo的config.yml文件,添加并修改原来的内容为</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">url: https://gitee.com/lanceluot/blog.git</span><br><span class="line">root: /blog</span><br></pre></td></tr></table></figure>
+<p>结果为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">460141958</span><br><span class="line">460141958</span><br><span class="line">true</span><br><span class="line">-----------</span><br><span class="line">460141958</span><br><span class="line">460141958</span><br><span class="line">460141958</span><br><span class="line">true</span><br><span class="line">true</span><br></pre></td></tr></table></figure>
 
-<h2 id="还有一个问题"><a href="#还有一个问题" class="headerlink" title="还有一个问题"></a>还有一个问题</h2><p>越测试，遇到的坑越多</p>
-<p>图片好像不能写成html标签的</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&#x27;img/a.jpg&#x27;&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-<img src="img/future.webp" alt="future" style="zoom:80%;" />
-
-<p>只能写成markdown语法</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![标题](链接)</span><br></pre></td></tr></table></figure>
-
-<p><img src="/blog/img/future.webp" alt="future"></p>
-<hr>
-<h2 id="又又又出问题了"><a href="#又又又出问题了" class="headerlink" title="又又又出问题了"></a>又又又出问题了</h2><p>部署到码云上，总是和本地部署的不一样，不知道为什么码云上的总是hello world为第一篇文章，我猜是布局样式的什么在使用hexo d命令时没更新，好在我修改首页标题和一些描述的信息，重新部署就好了，延迟太久啦，部署后还要等两三分钟刷新才出来，还以为又出现什么问题了</p>
+<p>为什么调用intern（）后str的内存地址没有指向常量池的”ab”实例？</p>
+<h1 id="常量池"><a href="#常量池" class="headerlink" title="常量池"></a>常量池</h1><p>常量池是字节码文件中的一个重要部分，存储了各种常量的信息，例如字符串、类引用、方法引用等</p>
+<h1 id="intern-函数"><a href="#intern-函数" class="headerlink" title="intern()函数"></a>intern()函数</h1><ul>
+<li>intern方法：native 方法，调用此方法时，如果池中已经包含等于此对象值的字符串，就返回池中的字符串；否则，将返回的引用指向当前的字符串；1.6版本需要将当前对象复制一份到池中，1.7后如果字符串常量池中没有的话，也不会在字符串常量池中创建新的示例而是直接指向堆中的实例，即常量池中的为类引用</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2023/09/07/hexo%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87%E8%AE%B0%E5%BD%95/" data-id="clm8yka590001bk5b2uvj51ob" data-title="hexo无法显示图片记录" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="https://gitee.com/lanceluot/blog.git/2023/10/01/jvm%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%B8%B8%E9%87%8F%E6%B1%A0/" data-id="cln75ely40001cs5b30gv30yl" data-title="jvm学习笔记-常量池" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/jvm/" rel="tag">jvm</a></li></ul>
 
     </footer>
   </div>
@@ -145,19 +125,10 @@
     
 <nav id="article-nav">
   
-    <a href="/blog/2023/09/09/%E6%B8%85%E6%99%B0%E5%BA%A6%E6%84%9F%E6%83%B3/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Neuer</strong>
-      <div class="article-nav-title">
-        
-          清晰度感想
-        
-      </div>
-    </a>
   
-  
-    <a href="/blog/2023/09/07/%E5%B7%A5%E7%A8%8B%E6%A6%82%E8%AE%BA%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BD%9C%E4%B8%9A/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/blog/2023/09/22/%E5%BB%BA%E6%A8%A1/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Älter</strong>
-      <div class="article-nav-title">工程概论第一次作业</div>
+      <div class="article-nav-title"></div>
     </a>
   
 </nav>
