@@ -97,44 +97,12 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="Git学习笔记"><a href="#Git学习笔记" class="headerlink" title="Git学习笔记"></a>Git学习笔记</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这篇文章纯属最基本的<code>git</code>命令操作，由于现目前很多的同事都是使用小乌龟git或者github桌面工具或者是其他的，发现好多同事都还不会<code>git</code>命令，甚至还不会初始化项目，这篇文章用于记录如何从本地初始化项目同步到<code>origin</code>。<br>其实很多都是直接使用IDE自带的git工具或者三方工具，内部都离不开<code>git</code>命令。</p>
-<h2 id="一、本地初始化"><a href="#一、本地初始化" class="headerlink" title="一、本地初始化"></a>一、本地初始化</h2><blockquote>
-<p>cd到对应的项目路径下，打开bash。增对这里有很多很多的操作，例如cmd,ps,cmder,bash等等</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
-
-<p>这时候就会出现一个隐藏的 .git文件夹。<br><img src="https://img-blog.csdnimg.cn/20200301192753335.png" alt="在这里插入图片描述"></p>
-<h2 id="二、-查看本地文件状态"><a href="#二、-查看本地文件状态" class="headerlink" title="二、 查看本地文件状态"></a>二、 查看本地文件状态</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
-
-<p>这时就会看到有一个新建的test.txt文件，bash中已经提示了将文件add到暂存区。<br><img src="https://img-blog.csdnimg.cn/2020030119301745.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hobF9qYW1lcw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="三、提交文件"><a href="#三、提交文件" class="headerlink" title="三、提交文件"></a>三、提交文件</h2><ul>
-<li>将文件添加到暂存区</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>这里的 . 表示所有文件，也可以添加单独的文件，不清楚的可以输入git add –help查看</p>
-</blockquote>
-<ul>
-<li>提交暂存区的文件</li>
-</ul>
-<p>提交前查看状态是怎样的，再次输入git status查看，一般都要随时看一下文件状态是怎样的。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git commit -m <span class="string">&#x27;提交test文件&#x27;</span></span><br><span class="line">1</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>这时只是将文件提交到了本地仓库，并没有同步到远端。</p>
-</blockquote>
-<h2 id="四、-添加远端仓库"><a href="#四、-添加远端仓库" class="headerlink" title="四、 添加远端仓库"></a>四、 添加远端仓库</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin 你的远端厂库地址</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/20200301193932484.png" alt="在这里插入图片描述"></p>
-<h2 id="五、同步"><a href="#五、同步" class="headerlink" title="五、同步"></a>五、同步</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git push</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
-
-<p>由于是第一次提交到远端，本地并还没有master分支，这时候直接使用–set-upstream进行同步。</p>
-<p><img src="https://img-blog.csdnimg.cn/20200301194040537.png" alt="在这里插入图片描述"></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git push --set-upstream origin master</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
-
-<p>到这里整个初始化项目就与远端同步了，在实际开发中仅仅这点git知识是完全不够的，但是这也是常用的，<br>有需要后期可以分享其他知识，例如分支、标签、Flow、回滚等等</p>
-
+        <h1 id="Git学习笔记"><a href="#Git学习笔记" class="headerlink" title="Git学习笔记"></a>Git学习笔记</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>记录常用的操作，免得还要上网搜</p>
+        
+          <p class="article-more-link">
+            <a href="/blog/2023/10/27/git%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
