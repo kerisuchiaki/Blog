@@ -97,7 +97,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="java中的SPI机制"><a href="#java中的SPI机制" class="headerlink" title="java中的SPI机制"></a>java中的SPI机制</h1><p>Java SPI机制是一种服务发现机制，其全称为Service Provider Interface。它允许为特定服务提供多个实现，然后通过配置文件等方式，在运行时自动探测和加载这些实现。SPI机制的好处在于，它可以使服务接口和实现类解耦，从而方便地扩展和替换服务的实现。</p>
+        <h2 id="java中的SPI机制"><a href="#java中的SPI机制" class="headerlink" title="java中的SPI机制"></a>java中的SPI机制</h2><p>Java SPI机制是一种服务发现机制，其全称为Service Provider Interface。它允许为特定服务提供多个实现，然后通过配置文件等方式，在运行时自动探测和加载这些实现。SPI机制的好处在于，它可以使服务接口和实现类解耦，从而方便地扩展和替换服务的实现。</p>
 <p>下面我们以JDBC（Java Database Connectivity）为例，来介绍如何使用Java SPI机制。JDBC是Java中用于连接和操作数据库的标准接口，不同的数据库厂商提供了各自的JDBC驱动实现。在SPI机制下，JDBC规范定义了一组接口，而具体的数据库驱动实现则由各个数据库厂商提供。</p>
 <p>首先，我们需要定义一个服务接口，例如<code>HelloService</code>：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">HelloService</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">sayHello</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -147,7 +147,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="Java中的对象类型：DAO、PO、POJO、VO和DTO的区别与应用"><a href="#Java中的对象类型：DAO、PO、POJO、VO和DTO的区别与应用" class="headerlink" title="Java中的对象类型：DAO、PO、POJO、VO和DTO的区别与应用"></a>Java中的对象类型：DAO、PO、POJO、VO和DTO的区别与应用</h1><p>导语： 在Java开发中，我们经常会遇到不同类型的对象，如DAO、PO、POJO、VO和DTO。虽然它们有时候看起来相似，但实际上它们代表了不同的概念和用途。本文将详细介绍这些对象类型的区别，并探讨它们在实际开发中的应用场景。</p>
+        <h2 id="Java中的对象类型：DAO、PO、POJO、VO和DTO的区别与应用"><a href="#Java中的对象类型：DAO、PO、POJO、VO和DTO的区别与应用" class="headerlink" title="Java中的对象类型：DAO、PO、POJO、VO和DTO的区别与应用"></a>Java中的对象类型：DAO、PO、POJO、VO和DTO的区别与应用</h2><p>导语： 在Java开发中，我们经常会遇到不同类型的对象，如DAO、PO、POJO、VO和DTO。虽然它们有时候看起来相似，但实际上它们代表了不同的概念和用途。本文将详细介绍这些对象类型的区别，并探讨它们在实际开发中的应用场景。</p>
         
           <p class="article-more-link">
             <a href="/blog/2024/01/07/Java%E4%B8%AD%E7%9A%84%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B/#more">Read More</a>
