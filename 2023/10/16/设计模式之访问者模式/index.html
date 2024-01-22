@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>设计模式之访问者模式 | hatena</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="访问者模式访问者模式是一种行为型设计模式，它允许你在不修改对象结构的情况下定义新操作。该模式中有两个主要参与者：访问者和元素。元素表示对象结构中的一个特定元素，而访问者则定义了在这些元素上执行的新操作。 在访问者模式中，元素对象通常会提供一个 accept() 方法，该方法接受访问者对象作为参数。访问者对象则会包含一系列的 visit() 方法，每个方法对应一个元素对象，并在其上执行特定的操作。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设计模式之访问者模式">
+<meta property="og:url" content="https://gitee.com/lanceluot/blog.git/2023/10/16/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F/index.html">
+<meta property="og:site_name" content="hatena">
+<meta property="og:description" content="访问者模式访问者模式是一种行为型设计模式，它允许你在不修改对象结构的情况下定义新操作。该模式中有两个主要参与者：访问者和元素。元素表示对象结构中的一个特定元素，而访问者则定义了在这些元素上执行的新操作。 在访问者模式中，元素对象通常会提供一个 accept() 方法，该方法接受访问者对象作为参数。访问者对象则会包含一系列的 visit() 方法，每个方法对应一个元素对象，并在其上执行特定的操作。">
+<meta property="og:locale" content="zn_CN">
+<meta property="article:published_time" content="2023-10-16T14:42:32.000Z">
+<meta property="article:modified_time" content="2024-01-22T06:47:42.201Z">
+<meta property="article:author" content="myself">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/blog/atom.xml" title="hatena" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/blog/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/blog/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">hatena</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/blog/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://gitee.com/lanceluot/blog.git"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-设计模式之访问者模式" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2023/10/16/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F/" class="article-date">
+  <time class="dt-published" datetime="2023-10-16T14:42:32.000Z" itemprop="datePublished">2023-10-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      设计模式之访问者模式
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="访问者模式"><a href="#访问者模式" class="headerlink" title="访问者模式"></a>访问者模式</h2><p>访问者模式是一种行为型设计模式，它允许你在不修改对象结构的情况下定义新操作。该模式中有两个主要参与者：访问者和元素。元素表示对象结构中的一个特定元素，而访问者则定义了在这些元素上执行的新操作。</p>
+<p>在访问者模式中，元素对象通常会提供一个 accept() 方法，该方法接受访问者对象作为参数。访问者对象则会包含一系列的 visit() 方法，每个方法对应一个元素对象，并在其上执行特定的操作。</p>
+<p>通过使用访问者模式，我们可以将新功能添加到现有的对象结构中，而无需修改它们的类。这使得代码更加灵活和可扩展，并且符合“开闭原则”。同时，访问者模式还可以帮助我们将相关操作逻辑集中在一起，提高代码的可维护性和可读性。</p>
+<span id="more"></span>
+
+
+
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><ol>
+<li>定义元素接口（Element）：这是表示对象结构中元素的接口，其中包含一个 accept() 方法，用于接受访问者对象。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Element</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">accept</span><span class="params">(Visitor visitor)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>实现具体元素类（ConcreteElement）：这些类是实现元素接口的具体类，每个类都需要实现 accept() 方法并在其中调用访问者对象的 visit() 方法。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteElementA</span> <span class="keyword">implements</span> <span class="title class_">Element</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">accept</span><span class="params">(Visitor visitor)</span> &#123;</span><br><span class="line">        visitor.visitConcreteElementA(<span class="built_in">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteElementB</span> <span class="keyword">implements</span> <span class="title class_">Element</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">accept</span><span class="params">(Visitor visitor)</span> &#123;</span><br><span class="line">        visitor.visitConcreteElementB(<span class="built_in">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>定义访问者接口（Visitor）：这是表示访问者的接口，其中包含一系列的 visit() 方法，每个方法对应一个具体元素类。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Visitor</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">visitConcreteElementA</span><span class="params">(ConcreteElementA elementA)</span>;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">visitConcreteElementB</span><span class="params">(ConcreteElementB elementB)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>实现具体访问者类（ConcreteVisitor）：这些类是实现访问者接口的具体类，每个类都需要实现 visit() 方法，并在其中执行特定的操作。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteVisitor</span> <span class="keyword">implements</span> <span class="title class_">Visitor</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">visitConcreteElementA</span><span class="params">(ConcreteElementA elementA)</span> &#123;</span><br><span class="line">        <span class="comment">// 执行针对 ConcreteElementA 的操作</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">visitConcreteElementB</span><span class="params">(ConcreteElementB elementB)</span> &#123;</span><br><span class="line">        <span class="comment">// 执行针对 ConcreteElementB 的操作</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>创建对象结构并调用访问者：在客户端代码中，创建具体元素对象并将它们添加到对象结构中。然后，创建访问者对象并在对象结构上调用 accept() 方法。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Client</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Element</span> <span class="variable">elementA</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ConcreteElementA</span>();</span><br><span class="line">        <span class="type">Element</span> <span class="variable">elementB</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ConcreteElementB</span>();</span><br><span class="line"></span><br><span class="line">        <span class="type">Visitor</span> <span class="variable">visitor</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ConcreteVisitor</span>();</span><br><span class="line"></span><br><span class="line">        elementA.accept(visitor);</span><br><span class="line">        elementB.accept(visitor);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样，当访问者对象在对象结构上执行操作时，会根据实际元素的类型来调用相应的 visit() 方法，并执行特定的操作。通过这种方式，访问者模式可以实现在不修改元素类的情况下，为对象结构添加新的操作。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://gitee.com/lanceluot/blog.git/2023/10/16/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F/" data-id="clrokl3gp0001xo5b6rlhaz7u" data-title="设计模式之访问者模式" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java/" rel="tag">java</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/blog/2023/10/16/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          设计模式之单例模式
+        
+      </div>
+    </a>
+  
+  
+    <a href="/blog/2023/10/04/jvm%E5%AD%97%E8%8A%82%E7%A0%81%E6%8C%87%E4%BB%A4/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">jvm字节码指令</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/BUG/" rel="tag">BUG</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/RPC/" rel="tag">RPC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" rel="tag">java后端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/jvm/" rel="tag">jvm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/shell/" rel="tag">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/spring/" rel="tag">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/springboot/" rel="tag">springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E4%BD%9C%E4%B8%9A/" rel="tag">作业</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%84%9F%E6%83%B3/" rel="tag">感想</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag">数据结构与算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E7%96%91%E9%97%AE/" rel="tag">疑问</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/BUG/" style="font-size: 10px;">BUG</a> <a href="/blog/tags/RPC/" style="font-size: 10px;">RPC</a> <a href="/blog/tags/git/" style="font-size: 10px;">git</a> <a href="/blog/tags/java/" style="font-size: 20px;">java</a> <a href="/blog/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 10px;">java后端开发</a> <a href="/blog/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/blog/tags/shell/" style="font-size: 10px;">shell</a> <a href="/blog/tags/spring/" style="font-size: 10px;">spring</a> <a href="/blog/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/blog/tags/test/" style="font-size: 10px;">test</a> <a href="/blog/tags/%E4%BD%9C%E4%B8%9A/" style="font-size: 10px;">作业</a> <a href="/blog/tags/%E6%84%9F%E6%83%B3/" style="font-size: 10px;">感想</a> <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 10px;">数据结构与算法</a> <a href="/blog/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a> <a href="/blog/tags/%E7%96%91%E9%97%AE/" style="font-size: 10px;">疑问</a> <a href="/blog/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">笔记</a> <a href="/blog/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10px;">问题</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2022/12/">December 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2024/01/14/%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E5%86%8D%E5%89%96%E6%9E%90/">外卖项目再剖析</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/01/13/java%E4%B8%AD%E7%9A%84spi%E6%9C%BA%E5%88%B6/">java中的spi机制</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/01/07/Java%E4%B8%AD%E7%9A%84%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B/">Java中的对象类型</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2023/10/27/git%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE/">git初始化一个项目</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2023/10/26/spring%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8B%A6%E6%88%AA%E5%99%A8%E4%B8%8E%E8%BF%87%E6%BB%A4%E5%99%A8%E7%9A%84%E5%8C%BA%E5%88%AB/">spring学习笔记-拦截器与过滤器的区别</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 myself<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/blog/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/blog/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/blog/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

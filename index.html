@@ -75,6 +75,58 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-外卖项目再剖析" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/01/14/%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E5%86%8D%E5%89%96%E6%9E%90/" class="article-date">
+  <time class="dt-published" datetime="2024-01-14T14:00:24.000Z" itemprop="datePublished">2024-01-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/blog/2024/01/14/%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E5%86%8D%E5%89%96%E6%9E%90/">外卖项目再剖析</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>对于之前只是跟着敲着的外卖项目，以为很简单，什么都做完了，结果最近重新运行很多功能都没完成，还是有很多不懂的地方，我果然还是太菜了，现在尝试增加和优化功能</p>
+<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><p>想着修改前端，美化一下，毕竟只有一个手机号短信验证登录，太简单了，网上找了一个前端登录注册页面，但是拿来用时，老是遇到很多问题</p>
+<h3 id="前端接受的响应问题"><a href="#前端接受的响应问题" class="headerlink" title="前端接受的响应问题"></a>前端接受的响应问题</h3><p>F12查看返回结果，是没问题的，但是前端的代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">loginBtnEl.addEventListener(&#x27;click&#x27;, function () &#123;</span><br><span class="line">        axios.post(&#x27;/user/login&#x27;, &#123; username: usernameInput.value, password: passwordInput.value &#125;)</span><br><span class="line">            .then(function (response) &#123;</span><br><span class="line">                if(response.code)&#123;</span><br><span class="line">                    alert(&quot;success&quot;);</span><br><span class="line">                    alert(response.code);</span><br><span class="line">                &#125;</span><br><span class="line">                if (response.data) &#123;</span><br><span class="line">                    // 验证成功，跳转到其他页面</span><br><span class="line">                    // window.location.href = &#x27;/front/index.html&#x27;;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    // 验证失败，提示用户</span><br><span class="line">                    alert(&quot;debug&quot;);</span><br><span class="line">                    alert(response);</span><br><span class="line">                &#125;</span><br><span class="line">                alert(response)</span><br><span class="line">            &#125;)</span><br><span class="line">            .catch(function (error) &#123;</span><br><span class="line">                alert(&quot;qqqq&quot;)</span><br><span class="line"></span><br><span class="line">                console.log(error);</span><br><span class="line">                console.log(&quot;error&quot;);</span><br><span class="line">            &#125;);</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>中response.code老是找不到，既没能跳转到写的if(response.code&#x3D;&#x3D;&#x3D;1);但是response.data却可以，后来在控制台打印才知道，后端返回的数据都是response的data,毕竟response还有statue(200,404等）,headers等，靠，花了我好久的时间</p>
+<h3 id="前端代码没反应"><a href="#前端代码没反应" class="headerlink" title="前端代码没反应"></a>前端代码没反应</h3><p>对于js这种解释执行的语言，一旦前面的代码出了问题，后面就不会执行，导致我debug老是没反应，知道这一点也是从浏览器的报错信息知道的，靠</p>
+<h3 id="redis缓存问题"><a href="#redis缓存问题" class="headerlink" title="redis缓存问题"></a>redis缓存问题</h3><p>服了啊，为了探究threadlocal是不是线程独立的，打了个端点研究</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">@GetMapping(&quot;/list&quot;)</span><br><span class="line">@Cacheable(value = &quot;dishCache&quot;,key = &quot;#dish.categoryId+&#x27;_&#x27;+#dish.status&quot;)//我是笨蛋，这里的键怎么能是dish.id当然是categoryid啦</span><br><span class="line">public Result&lt;List&lt;DishDto&gt;&gt; list(DishDto dish)&#123;</span><br><span class="line"></span><br><span class="line">    Long threadLocal = BaseContext.getThreadLocal();</span><br><span class="line">    System.out.println(&quot;当前用户id为------------------------&gt;&quot;+threadLocal);//断点处</span><br><span class="line"></span><br><span class="line">    if(threadLocal != null)&#123;</span><br><span class="line">        System.out.println(&quot;当前用户id为&quot;+threadLocal);</span><br><span class="line">    &#125;</span><br><span class="line">    threadLocal = BaseContext.getThreadLocal();</span><br><span class="line"></span><br><span class="line">    System.out.println(&quot;当前用户id为0-0-----------------------&gt;&quot;+threadLocal);//断点处</span><br><span class="line">    int i=10000;</span><br><span class="line">    while (i!=0)&#123;</span><br><span class="line">        i=i-1;</span><br><span class="line">        System.out.println(&quot;debug................&quot;);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果这个断点有时候能捕捉到，有时候捕捉不到，原因竟然是开启了缓存，即@Cacheable这个注解导致有缓存时就会运行到断点处的代码段，没有缓存时就能运行到断点处，弄得我懵了好久，差不多花了一个40分钟找这个BUG</p>
+<h2 id="优化的地方"><a href="#优化的地方" class="headerlink" title="优化的地方"></a>优化的地方</h2><p>保存每一个会话的threadlocal对于单体应用或单台服务器还可以，但是如果是多台服务器的话，就会存在一个问题，<br>使用Session存储用户信息就会出现问题，因为用户的请求可能会被分配到不同的服务器上，<br>导致Session信息无法共享。这时候，就需要使用外部缓存（例如Redis）来共享用户信息，<br>以便用户在多个服务器之间进行无缝切换。<br>所以可以考虑使用redis优化</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://gitee.com/lanceluot/blog.git/2024/01/14/%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E5%86%8D%E5%89%96%E6%9E%90/" data-id="clrokl3gl0000xo5bgl7m4mfb" data-title="外卖项目再剖析" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/springboot/" rel="tag">springboot</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-java中的spi机制" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/blog/2024/01/13/java%E4%B8%AD%E7%9A%84spi%E6%9C%BA%E5%88%B6/" class="article-date">
@@ -332,6 +384,53 @@
 
 
   
+    <article id="post-设计模式之访问者模式" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2023/10/16/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F/" class="article-date">
+  <time class="dt-published" datetime="2023-10-16T14:42:32.000Z" itemprop="datePublished">2023-10-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/blog/2023/10/16/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F/">设计模式之访问者模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="访问者模式"><a href="#访问者模式" class="headerlink" title="访问者模式"></a>访问者模式</h2><p>访问者模式是一种行为型设计模式，它允许你在不修改对象结构的情况下定义新操作。该模式中有两个主要参与者：访问者和元素。元素表示对象结构中的一个特定元素，而访问者则定义了在这些元素上执行的新操作。</p>
+<p>在访问者模式中，元素对象通常会提供一个 accept() 方法，该方法接受访问者对象作为参数。访问者对象则会包含一系列的 visit() 方法，每个方法对应一个元素对象，并在其上执行特定的操作。</p>
+<p>通过使用访问者模式，我们可以将新功能添加到现有的对象结构中，而无需修改它们的类。这使得代码更加灵活和可扩展，并且符合“开闭原则”。同时，访问者模式还可以帮助我们将相关操作逻辑集中在一起，提高代码的可维护性和可读性。</p>
+        
+          <p class="article-more-link">
+            <a href="/blog/2023/10/16/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://gitee.com/lanceluot/blog.git/2023/10/16/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F/" data-id="clrokl3gp0001xo5b6rlhaz7u" data-title="设计模式之访问者模式" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java/" rel="tag">java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-jvm字节码指令" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/blog/2023/10/04/jvm%E5%AD%97%E8%8A%82%E7%A0%81%E6%8C%87%E4%BB%A4/" class="article-date">
@@ -472,81 +571,6 @@
 
 
   
-    <article id="post-建模" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/blog/2023/09/22/%E5%BB%BA%E6%A8%A1/" class="article-date">
-  <time class="dt-published" datetime="2023-09-22T13:55:22.563Z" itemprop="datePublished">2023-09-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2023/09/22/%E5%BB%BA%E6%A8%A1/" data-id="cln75ely90004cs5bdn08hfe1" data-title="" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-javaIO流" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/blog/2023/09/22/javaIO%E6%B5%81/" class="article-date">
-  <time class="dt-published" datetime="2023-09-22T11:43:20.000Z" itemprop="datePublished">2023-09-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2023/09/22/javaIO%E6%B5%81/">JavaIO流</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="Java-I-O"><a href="#Java-I-O" class="headerlink" title="Java I&#x2F;O"></a>Java I&#x2F;O</h1><p><strong>注意：**这块会涉及到**操作系统**和</strong>计算机组成原理**相关内容。</p>
-<p>I&#x2F;O简而言之，就是输入输出，那么为什么会有I&#x2F;O呢？其实I&#x2F;O无时无刻都在我们的身边，比如读取硬盘上的文件，网络文件传输，鼠标键盘输入，也可以是接受单片机发回的数据，而能够支持这些操作的设备就是I&#x2F;O设备。</p>
-<p>我们可以大致看一下整个计算机的总线结构：</p>
-<p><img src="https://image.itbaima.net/markdown/2023/08/14/VHOBIXvulUsMYRT.jpg" alt="img"></p>
-<p>常见的I&#x2F;O设备一般是鼠标、键盘这类通过USB进行传输的外设或者是通过Sata接口或是M.2连接的硬盘。一般情况下，这些设备是由CPU发出指令通过南桥芯片间接进行控制，而不是由CPU直接操作。</p>
-        
-          <p class="article-more-link">
-            <a href="/blog/2023/09/22/javaIO%E6%B5%81/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2023/09/22/javaIO%E6%B5%81/" data-id="cln75ely00000cs5b26zq8kgv" data-title="JavaIO流" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -572,7 +596,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/BUG/" rel="tag">BUG</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/RPC/" rel="tag">RPC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" rel="tag">java后端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/jvm/" rel="tag">jvm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/shell/" rel="tag">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/spring/" rel="tag">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E4%BD%9C%E4%B8%9A/" rel="tag">作业</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%84%9F%E6%83%B3/" rel="tag">感想</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag">数据结构与算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E7%96%91%E9%97%AE/" rel="tag">疑问</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/BUG/" rel="tag">BUG</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/RPC/" rel="tag">RPC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" rel="tag">java后端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/jvm/" rel="tag">jvm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/shell/" rel="tag">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/spring/" rel="tag">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/springboot/" rel="tag">springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E4%BD%9C%E4%B8%9A/" rel="tag">作业</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%84%9F%E6%83%B3/" rel="tag">感想</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag">数据结构与算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E7%96%91%E9%97%AE/" rel="tag">疑问</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a></li></ul>
     </div>
   </div>
 
@@ -582,7 +606,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/blog/tags/BUG/" style="font-size: 10px;">BUG</a> <a href="/blog/tags/RPC/" style="font-size: 10px;">RPC</a> <a href="/blog/tags/git/" style="font-size: 10px;">git</a> <a href="/blog/tags/java/" style="font-size: 20px;">java</a> <a href="/blog/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 10px;">java后端开发</a> <a href="/blog/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/blog/tags/shell/" style="font-size: 10px;">shell</a> <a href="/blog/tags/spring/" style="font-size: 10px;">spring</a> <a href="/blog/tags/test/" style="font-size: 10px;">test</a> <a href="/blog/tags/%E4%BD%9C%E4%B8%9A/" style="font-size: 10px;">作业</a> <a href="/blog/tags/%E6%84%9F%E6%83%B3/" style="font-size: 10px;">感想</a> <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 10px;">数据结构与算法</a> <a href="/blog/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a> <a href="/blog/tags/%E7%96%91%E9%97%AE/" style="font-size: 10px;">疑问</a> <a href="/blog/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">笔记</a> <a href="/blog/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10px;">问题</a>
+      <a href="/blog/tags/BUG/" style="font-size: 10px;">BUG</a> <a href="/blog/tags/RPC/" style="font-size: 10px;">RPC</a> <a href="/blog/tags/git/" style="font-size: 10px;">git</a> <a href="/blog/tags/java/" style="font-size: 20px;">java</a> <a href="/blog/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 10px;">java后端开发</a> <a href="/blog/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/blog/tags/shell/" style="font-size: 10px;">shell</a> <a href="/blog/tags/spring/" style="font-size: 10px;">spring</a> <a href="/blog/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/blog/tags/test/" style="font-size: 10px;">test</a> <a href="/blog/tags/%E4%BD%9C%E4%B8%9A/" style="font-size: 10px;">作业</a> <a href="/blog/tags/%E6%84%9F%E6%83%B3/" style="font-size: 10px;">感想</a> <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 10px;">数据结构与算法</a> <a href="/blog/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a> <a href="/blog/tags/%E7%96%91%E9%97%AE/" style="font-size: 10px;">疑问</a> <a href="/blog/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">笔记</a> <a href="/blog/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10px;">问题</a>
     </div>
   </div>
 
@@ -604,6 +628,10 @@
       <ul>
         
           <li>
+            <a href="/blog/2024/01/14/%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E5%86%8D%E5%89%96%E6%9E%90/">外卖项目再剖析</a>
+          </li>
+        
+          <li>
             <a href="/blog/2024/01/13/java%E4%B8%AD%E7%9A%84spi%E6%9C%BA%E5%88%B6/">java中的spi机制</a>
           </li>
         
@@ -617,10 +645,6 @@
         
           <li>
             <a href="/blog/2023/10/26/spring%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8B%A6%E6%88%AA%E5%99%A8%E4%B8%8E%E8%BF%87%E6%BB%A4%E5%99%A8%E7%9A%84%E5%8C%BA%E5%88%AB/">spring学习笔记-拦截器与过滤器的区别</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2023/10/16/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">设计模式之单例模式</a>
           </li>
         
       </ul>
