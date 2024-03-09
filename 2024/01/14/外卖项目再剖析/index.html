@@ -6,15 +6,15 @@
   
   <title>外卖项目再剖析 | hatena</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="前言对于之前只是跟着敲着的外卖项目，以为很简单，什么都做完了，结果最近重新运行很多功能都没完成，还是有很多不懂的地方，我果然还是太菜了，现在尝试增加和优化功能 遇到的问题想着修改前端，美化一下，毕竟只有一个手机号短信验证登录，太简单了，网上找了一个前端登录注册页面，但是拿来用时，老是遇到很多问题 前端接受的响应问题F12查看返回结果，是没问题的，但是前端的代码： 12345678910111213">
+  <meta name="description" content="前言对于之前只是跟着敲着的外卖项目，以为很简单，什么都做完了，结果最近重新运行很多功能都没完成，还是有很多不懂的地方，我果然还是太菜了，现在尝试增加和优化功能 遇到的问题想着修改前端，美化一下，毕竟只有一个手机号短信验证登录，太简单了，网上找了一个前端登录注册页面，但是拿来用时，老是遇到很多问题 前端接受的响应问题F12查看返回结果，是没问题的，但是前端的代码：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="外卖项目再剖析">
 <meta property="og:url" content="https://gitee.com/lanceluot/blog.git/2024/01/14/%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E5%86%8D%E5%89%96%E6%9E%90/index.html">
 <meta property="og:site_name" content="hatena">
-<meta property="og:description" content="前言对于之前只是跟着敲着的外卖项目，以为很简单，什么都做完了，结果最近重新运行很多功能都没完成，还是有很多不懂的地方，我果然还是太菜了，现在尝试增加和优化功能 遇到的问题想着修改前端，美化一下，毕竟只有一个手机号短信验证登录，太简单了，网上找了一个前端登录注册页面，但是拿来用时，老是遇到很多问题 前端接受的响应问题F12查看返回结果，是没问题的，但是前端的代码： 12345678910111213">
+<meta property="og:description" content="前言对于之前只是跟着敲着的外卖项目，以为很简单，什么都做完了，结果最近重新运行很多功能都没完成，还是有很多不懂的地方，我果然还是太菜了，现在尝试增加和优化功能 遇到的问题想着修改前端，美化一下，毕竟只有一个手机号短信验证登录，太简单了，网上找了一个前端登录注册页面，但是拿来用时，老是遇到很多问题 前端接受的响应问题F12查看返回结果，是没问题的，但是前端的代码：">
 <meta property="og:locale" content="zn_CN">
 <meta property="article:published_time" content="2024-01-14T14:00:24.000Z">
-<meta property="article:modified_time" content="2024-01-15T18:18:58.493Z">
+<meta property="article:modified_time" content="2024-03-09T07:39:28.687Z">
 <meta property="article:author" content="myself">
 <meta property="article:tag" content="springboot">
 <meta name="twitter:card" content="summary">
@@ -64,12 +64,12 @@
       <nav id="sub-nav">
         
         
-          <a class="nav-icon" href="/blog/atom.xml" title="RSS"><span class="fa fa-rss"></span></a>
+          <a class="nav-icon" href="/blog/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
         
-        <a class="nav-icon nav-search-btn" title="Buscar"><span class="fa fa-search"></span></a>
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Buscar"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://gitee.com/lanceluot/blog.git"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://gitee.com/lanceluot/blog.git"></form>
       </div>
     </div>
   </div>
@@ -101,6 +101,8 @@
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>对于之前只是跟着敲着的外卖项目，以为很简单，什么都做完了，结果最近重新运行很多功能都没完成，还是有很多不懂的地方，我果然还是太菜了，现在尝试增加和优化功能</p>
 <h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><p>想着修改前端，美化一下，毕竟只有一个手机号短信验证登录，太简单了，网上找了一个前端登录注册页面，但是拿来用时，老是遇到很多问题</p>
 <h3 id="前端接受的响应问题"><a href="#前端接受的响应问题" class="headerlink" title="前端接受的响应问题"></a>前端接受的响应问题</h3><p>F12查看返回结果，是没问题的，但是前端的代码：</p>
+<span id="more"></span>
+
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">loginBtnEl.addEventListener(&#x27;click&#x27;, function () &#123;</span><br><span class="line">        axios.post(&#x27;/user/login&#x27;, &#123; username: usernameInput.value, password: passwordInput.value &#125;)</span><br><span class="line">            .then(function (response) &#123;</span><br><span class="line">                if(response.code)&#123;</span><br><span class="line">                    alert(&quot;success&quot;);</span><br><span class="line">                    alert(response.code);</span><br><span class="line">                &#125;</span><br><span class="line">                if (response.data) &#123;</span><br><span class="line">                    // 验证成功，跳转到其他页面</span><br><span class="line">                    // window.location.href = &#x27;/front/index.html&#x27;;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    // 验证失败，提示用户</span><br><span class="line">                    alert(&quot;debug&quot;);</span><br><span class="line">                    alert(response);</span><br><span class="line">                &#125;</span><br><span class="line">                alert(response)</span><br><span class="line">            &#125;)</span><br><span class="line">            .catch(function (error) &#123;</span><br><span class="line">                alert(&quot;qqqq&quot;)</span><br><span class="line"></span><br><span class="line">                console.log(error);</span><br><span class="line">                console.log(&quot;error&quot;);</span><br><span class="line">            &#125;);</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
 
 <p>中response.code老是找不到，既没能跳转到写的if(response.code&#x3D;&#x3D;&#x3D;1);但是response.data却可以，后来在控制台打印才知道，后端返回的数据都是response的data,毕竟response还有statue(200,404等）,headers等，靠，花了我好久的时间</p>
@@ -114,7 +116,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2024/01/14/%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E5%86%8D%E5%89%96%E6%9E%90/" data-id="clrokl3gl0000xo5bgl7m4mfb" data-title="外卖项目再剖析" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
+      <a data-url="https://gitee.com/lanceluot/blog.git/2024/01/14/%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E5%86%8D%E5%89%96%E6%9E%90/" data-id="clrokl3gl0000xo5bgl7m4mfb" data-title="外卖项目再剖析" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -127,7 +129,7 @@
 <nav id="article-nav">
   
     <a href="/blog/2024/02/23/Untitled/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Nuevo</strong>
+      <strong class="article-nav-caption">Neuer</strong>
       <div class="article-nav-title">
         
           (no title)
@@ -137,7 +139,7 @@
   
   
     <a href="/blog/2024/01/13/java%E4%B8%AD%E7%9A%84spi%E6%9C%BA%E5%88%B6/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Viejo</strong>
+      <strong class="article-nav-caption">Älter</strong>
       <div class="article-nav-title">java中的spi机制</div>
     </a>
   
@@ -153,7 +155,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categorías</h3>
+    <h3 class="widget-title">Kategorien</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a></li></ul>
     </div>
@@ -173,7 +175,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Nube de Tags</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
       <a href="/blog/tags/BUG/" style="font-size: 10px;">BUG</a> <a href="/blog/tags/RPC/" style="font-size: 10px;">RPC</a> <a href="/blog/tags/git/" style="font-size: 10px;">git</a> <a href="/blog/tags/java/" style="font-size: 20px;">java</a> <a href="/blog/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 10px;">java后端开发</a> <a href="/blog/tags/java%E6%BA%90%E7%A0%81/" style="font-size: 10px;">java源码</a> <a href="/blog/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/blog/tags/rabbitmq/" style="font-size: 10px;">rabbitmq</a> <a href="/blog/tags/redis/" style="font-size: 10px;">redis</a> <a href="/blog/tags/shell/" style="font-size: 10px;">shell</a> <a href="/blog/tags/spring/" style="font-size: 10px;">spring</a> <a href="/blog/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/blog/tags/test/" style="font-size: 10px;">test</a> <a href="/blog/tags/%E4%BD%9C%E4%B8%9A/" style="font-size: 10px;">作业</a> <a href="/blog/tags/%E6%84%9F%E6%83%B3/" style="font-size: 10px;">感想</a> <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 10px;">数据结构与算法</a> <a href="/blog/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a> <a href="/blog/tags/%E7%96%91%E9%97%AE/" style="font-size: 10px;">疑问</a> <a href="/blog/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">笔记</a> <a href="/blog/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10px;">问题</a>
     </div>
@@ -182,7 +184,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archivos</h3>
+    <h3 class="widget-title">Archiv</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2022/12/">December 2022</a></li></ul>
     </div>
@@ -192,7 +194,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Posts recientes</h3>
+    <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
         
@@ -230,7 +232,7 @@
     <div id="footer-info" class="inner">
       
       &copy; 2024 myself<br>
-      Construido por <a href="https://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
