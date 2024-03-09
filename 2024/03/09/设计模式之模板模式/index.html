@@ -6,15 +6,15 @@
   
   <title>设计模式之模板模式 | hatena</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="当涉及到设计模式时，模板模式是一个非常有用且常见的模式。下面是一个关于设计模式中的模板模式的博客主题示例：  设计模式之模板模式在软件开发中，模板模式是一种行为型设计模式，它定义了一个算法的骨架，并允许子类为一个或多个步骤提供实现。这种模式使得子类可以重新定义算法的某些步骤，而不改变算法的结构。 实现模板模式以下是一个简单的示例，演示了如何使用模板模式来准备食物的过程： 1234567891011">
+  <meta name="description" content="当涉及到设计模式时，模板模式是一个非常有用且常见的模式。下面是一个关于设计模式中的模板模式的博客主题示例：  设计模式之模板模式在软件开发中，模板模式是一种行为型设计模式，它定义了一个算法的骨架，并允许子类为一个或多个步骤提供实现。这种模式使得子类可以重新定义算法的某些步骤，而不改变算法的结构。 实现模板模式以下是一个简单的示例，演示了如何使用模板模式来准备食物的过程：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="设计模式之模板模式">
 <meta property="og:url" content="https://gitee.com/lanceluot/blog.git/2024/03/09/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E6%A8%A1%E6%9D%BF%E6%A8%A1%E5%BC%8F/index.html">
 <meta property="og:site_name" content="hatena">
-<meta property="og:description" content="当涉及到设计模式时，模板模式是一个非常有用且常见的模式。下面是一个关于设计模式中的模板模式的博客主题示例：  设计模式之模板模式在软件开发中，模板模式是一种行为型设计模式，它定义了一个算法的骨架，并允许子类为一个或多个步骤提供实现。这种模式使得子类可以重新定义算法的某些步骤，而不改变算法的结构。 实现模板模式以下是一个简单的示例，演示了如何使用模板模式来准备食物的过程： 1234567891011">
+<meta property="og:description" content="当涉及到设计模式时，模板模式是一个非常有用且常见的模式。下面是一个关于设计模式中的模板模式的博客主题示例：  设计模式之模板模式在软件开发中，模板模式是一种行为型设计模式，它定义了一个算法的骨架，并允许子类为一个或多个步骤提供实现。这种模式使得子类可以重新定义算法的某些步骤，而不改变算法的结构。 实现模板模式以下是一个简单的示例，演示了如何使用模板模式来准备食物的过程：">
 <meta property="og:locale" content="zn_CN">
 <meta property="article:published_time" content="2024-03-09T15:41:30.000Z">
-<meta property="article:modified_time" content="2024-03-09T15:46:34.172Z">
+<meta property="article:modified_time" content="2024-03-09T15:57:29.917Z">
 <meta property="article:author" content="myself">
 <meta property="article:tag" content="设计模式">
 <meta name="twitter:card" content="summary">
@@ -102,6 +102,8 @@
 <hr>
 <h2 id="设计模式之模板模式"><a href="#设计模式之模板模式" class="headerlink" title="设计模式之模板模式"></a>设计模式之模板模式</h2><p>在软件开发中，模板模式是一种行为型设计模式，它定义了一个算法的骨架，并允许子类为一个或多个步骤提供实现。这种模式使得子类可以重新定义算法的某些步骤，而不改变算法的结构。</p>
 <h2 id="实现模板模式"><a href="#实现模板模式" class="headerlink" title="实现模板模式"></a>实现模板模式</h2><p>以下是一个简单的示例，演示了如何使用模板模式来准备食物的过程：</p>
+<span id="more"></span>
+
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">javaCopy Codepublic class TemplateMethodPattern &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Cooking cooking = new CookingFood();</span><br><span class="line">        cooking.cook();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">abstract class Cooking &#123;</span><br><span class="line">    protected abstract void step1();</span><br><span class="line">    protected abstract void step2();</span><br><span class="line"></span><br><span class="line">    public void cook() &#123;</span><br><span class="line">        System.out.println(&quot;做饭开始&quot;);</span><br><span class="line">        step1();</span><br><span class="line">        step2();</span><br><span class="line">        System.out.println(&quot;做饭结束&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class CookingFood extends Cooking &#123;</span><br><span class="line">    @Override</span><br><span class="line">    protected void step1() &#123;</span><br><span class="line">        System.out.println(&quot;放鸡蛋和西红柿&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void step2() &#123;</span><br><span class="line">        System.out.println(&quot;少放盐多放味精&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>在上面的示例中，<code>Cooking</code> 类是模板类，定义了一个模板方法 <code>cook()</code> 以及两个抽象方法 <code>step1()</code> 和 <code>step2()</code>。<code>CookingFood</code> 类继承自 <code>Cooking</code>，并实现了具体的步骤 <code>step1()</code> 和 <code>step2()</code>。</p>
@@ -110,7 +112,16 @@
 <li><strong>易于扩展</strong>：子类可以按需重写父类的方法，从而扩展或修改算法的特定步骤。</li>
 <li><strong>符合开闭原则</strong>：模板模式使得新增子类不会影响现有算法的结构，符合开闭原则。</li>
 </ul>
-<p>通过模板模式，我们可以更好地组织和管理代码，提高代码的可维护性和可读性。</p>
+<h2 id="模板模式的应用"><a href="#模板模式的应用" class="headerlink" title="模板模式的应用"></a>模板模式的应用</h2><p>模板模式在 Java 中有很多经典的应用，其中之一就是在 AbstractQueuedSynchronizer (AQS) 源码中的 <code>tryAcquire0</code> 方法。下面我将对该方法进行详细介绍。</p>
+<h3 id="AQS-简介"><a href="#AQS-简介" class="headerlink" title="AQS 简介"></a>AQS 简介</h3><p>AbstractQueuedSynchronizer (AQS) 是一个在 Java 并发编程中非常重要的基础类，它提供了一种实现锁和同步器的框架。AQS 内部使用了模板模式来定义了一组操作，子类可以通过继承 AQS 并实现这些操作来创建自定义的同步器。</p>
+<h3 id="tryAcquire0-方法"><a href="#tryAcquire0-方法" class="headerlink" title="tryAcquire0 方法"></a>tryAcquire0 方法</h3><p>在 AQS 类中，<code>tryAcquire0</code> 是一个关键的、被子类实现的方法。它用于尝试获取独占资源，并返回一个表示是否成功获取资源的布尔值。以下是 <code>tryAcquire0</code> 的简化版本：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">javaCopy Codeprotected boolean tryAcquire0(int arg) &#123;</span><br><span class="line">    // 尝试获取资源的具体实现逻辑</span><br><span class="line">    // 返回 true 表示获取成功，返回 false 表示获取失败</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在默认情况下，<code>tryAcquire0</code> 方法不执行任何操作，而是由子类根据其需求来实现具体的逻辑。子类可以重写 <code>tryAcquire0</code> 方法，并根据自己的需要来定制获取资源的行为。</p>
+<p>在 AQS 中，<code>tryAcquire0</code> 方法是模板模式在实践中的一个很好的例子。AQS 定义了一组操作（模板方法），其中 <code>tryAcquire0</code> 是其中之一。子类（如 <code>ReentrantLock</code>、<code>Semaphore</code> 等）可以根据自己的具体需求来重写 <code>tryAcquire0</code> 方法，以实现自定义的获取资源逻辑。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过模板模式，我们可以更好地组织和管理代码，提高代码的可维护性和可读性。</p>
+<p>模板模式是 AQS 源码中的一种经典应用。在 AQS 中，<code>tryAcquire0</code> 方法通过定义一个算法的骨架，并允许子类提供实现，使得不同的同步器可以根据自己的需求来定制获取资源的行为。</p>
+<p>通过模板模式，AQS 提供了一个强大且灵活的框架，使得 Java 并发编程更加简单和可扩展。</p>
 <p>希望本文对你理解和应用模板模式有所帮助！</p>
 
       

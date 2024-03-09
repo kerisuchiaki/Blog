@@ -101,17 +101,11 @@
 <hr>
 <h2 id="设计模式之模板模式"><a href="#设计模式之模板模式" class="headerlink" title="设计模式之模板模式"></a>设计模式之模板模式</h2><p>在软件开发中，模板模式是一种行为型设计模式，它定义了一个算法的骨架，并允许子类为一个或多个步骤提供实现。这种模式使得子类可以重新定义算法的某些步骤，而不改变算法的结构。</p>
 <h2 id="实现模板模式"><a href="#实现模板模式" class="headerlink" title="实现模板模式"></a>实现模板模式</h2><p>以下是一个简单的示例，演示了如何使用模板模式来准备食物的过程：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">javaCopy Codepublic class TemplateMethodPattern &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Cooking cooking = new CookingFood();</span><br><span class="line">        cooking.cook();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">abstract class Cooking &#123;</span><br><span class="line">    protected abstract void step1();</span><br><span class="line">    protected abstract void step2();</span><br><span class="line"></span><br><span class="line">    public void cook() &#123;</span><br><span class="line">        System.out.println(&quot;做饭开始&quot;);</span><br><span class="line">        step1();</span><br><span class="line">        step2();</span><br><span class="line">        System.out.println(&quot;做饭结束&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class CookingFood extends Cooking &#123;</span><br><span class="line">    @Override</span><br><span class="line">    protected void step1() &#123;</span><br><span class="line">        System.out.println(&quot;放鸡蛋和西红柿&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void step2() &#123;</span><br><span class="line">        System.out.println(&quot;少放盐多放味精&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在上面的示例中，<code>Cooking</code> 类是模板类，定义了一个模板方法 <code>cook()</code> 以及两个抽象方法 <code>step1()</code> 和 <code>step2()</code>。<code>CookingFood</code> 类继承自 <code>Cooking</code>，并实现了具体的步骤 <code>step1()</code> 和 <code>step2()</code>。</p>
-<h2 id="模板模式的优势"><a href="#模板模式的优势" class="headerlink" title="模板模式的优势"></a>模板模式的优势</h2><ul>
-<li><strong>代码复用</strong>：模板模式通过将共同的部分抽取到父类中，避免了重复的代码。</li>
-<li><strong>易于扩展</strong>：子类可以按需重写父类的方法，从而扩展或修改算法的特定步骤。</li>
-<li><strong>符合开闭原则</strong>：模板模式使得新增子类不会影响现有算法的结构，符合开闭原则。</li>
-</ul>
-<p>通过模板模式，我们可以更好地组织和管理代码，提高代码的可维护性和可读性。</p>
-<p>希望本文对你理解和应用模板模式有所帮助！</p>
-
+        
+          <p class="article-more-link">
+            <a href="/blog/2024/03/09/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E6%A8%A1%E6%9D%BF%E6%A8%A1%E5%BC%8F/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
