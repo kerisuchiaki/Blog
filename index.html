@@ -61,12 +61,12 @@
       <nav id="sub-nav">
         
         
-          <a class="nav-icon" href="/blog/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+          <a class="nav-icon" href="/blog/atom.xml" title="RSS"><span class="fa fa-rss"></span></a>
         
-        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+        <a class="nav-icon nav-search-btn" title="Buscar"><span class="fa fa-search"></span></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://gitee.com/lanceluot/blog.git"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Buscar"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://gitee.com/lanceluot/blog.git"></form>
       </div>
     </div>
   </div>
@@ -99,19 +99,15 @@
       
         <h2 id="两种代理方式"><a href="#两种代理方式" class="headerlink" title="两种代理方式"></a>两种代理方式</h2><p>Java 中的代理方式分为静态代理和动态代理，它们各有特点和适用场景。</p>
 <h3 id="静态代理"><a href="#静态代理" class="headerlink" title="静态代理"></a>静态代理</h3><p>静态代理是在编译时就确定代理对象的方式，需要为每一个被代理类编写对应的代理类。以下是静态代理的代码示例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">java复制代码package org.example.jdk;</span><br><span class="line"></span><br><span class="line">class Star&#123;</span><br><span class="line">    String name;</span><br><span class="line">    int age;</span><br><span class="line">    public String sing()&#123;</span><br><span class="line">        System.out.println(&quot;sing........&quot;);</span><br><span class="line">        return &quot;sing..&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    public void dance()&#123;</span><br><span class="line">        System.out.println(&quot;dance.........&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public class StaticProxyDemo &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Star star = new Star();</span><br><span class="line">        StarProxy starProxy = new StarProxy(star);</span><br><span class="line">        starProxy.sing();</span><br><span class="line">        starProxy.dance();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class StarProxy&#123;</span><br><span class="line">    StarProxy(Star star)&#123;</span><br><span class="line">        this.star=star;</span><br><span class="line">    &#125;</span><br><span class="line">    Star star;</span><br><span class="line">    public String sing()&#123;</span><br><span class="line">        System.out.println(&quot;Enhancement before singing&quot;);</span><br><span class="line">        String res=star.sing();</span><br><span class="line">        System.out.println(&quot;Enhancement after singing&quot;);</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">    public void dance()&#123;</span><br><span class="line">        System.out.println(&quot;Enhancement before dancing&quot;);</span><br><span class="line">        star.dance();</span><br><span class="line">        System.out.println(&quot;Enhancement after dancing&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h3><p>动态代理可以在运行时动态生成代理对象，主要有 JDK 动态代理和 CGLIB 代理两种方式。</p>
-<h4 id="JDK-动态代理"><a href="#JDK-动态代理" class="headerlink" title="JDK 动态代理"></a>JDK 动态代理</h4><p>JDK 动态代理是基于接口的代理方式，被代理对象必须实现接口。它的原理是通过反射机制在运行时动态生成代理类。在 JDK 动态代理中，核心接口是 InvocationHandler，用于处理代理实例并返回结果。以下是 JDK 动态代理的简单示例代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">java复制代码import java.lang.reflect.InvocationHandler;</span><br><span class="line">import java.lang.reflect.Method;</span><br><span class="line">import java.lang.reflect.Proxy;</span><br><span class="line"></span><br><span class="line">interface Star &#123;</span><br><span class="line">    String sing();</span><br><span class="line">    void dance();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class RealStar implements Star &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public String sing() &#123;</span><br><span class="line">        System.out.println(&quot;Real star is singing...&quot;);</span><br><span class="line">        return &quot;sing..&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void dance() &#123;</span><br><span class="line">        System.out.println(&quot;Real star is dancing...&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class StarHandler implements InvocationHandler &#123;</span><br><span class="line">    private Star realStar;</span><br><span class="line"></span><br><span class="line">    public StarHandler(Star realStar) &#123;</span><br><span class="line">        this.realStar = realStar;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable &#123;</span><br><span class="line">        System.out.println(&quot;Enhancement before method execution&quot;);</span><br><span class="line">        Object result = method.invoke(realStar, args);</span><br><span class="line">        System.out.println(&quot;Enhancement after method execution&quot;);</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class DynamicProxyDemo &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Star realStar = new RealStar();</span><br><span class="line">        StarHandler handler = new StarHandler(realStar);</span><br><span class="line"></span><br><span class="line">        Star proxy = (Star) Proxy.newProxyInstance(</span><br><span class="line">                realStar.getClass().getClassLoader(),</span><br><span class="line">                realStar.getClass().getInterfaces(),</span><br><span class="line">                handler</span><br><span class="line">        );</span><br><span class="line"></span><br><span class="line">        proxy.sing();</span><br><span class="line">        proxy.dance();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="CGLIB-代理"><a href="#CGLIB-代理" class="headerlink" title="CGLIB 代理"></a>CGLIB 代理</h4><p>CGLIB 代理是基于继承的代理方式，不要求被代理对象实现接口，能够代理类而非接口。它的原理是通过字节码增强技术动态生成子类来实现代理。使用 CGLIB 代理时，被代理类无需实现接口。你可以参考以下示例了解 CGLIB 代理的基本用法。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">java复制代码import net.sf.cglib.proxy.Enhancer;</span><br><span class="line">import net.sf.cglib.proxy.MethodInterceptor;</span><br><span class="line">import net.sf.cglib.proxy.MethodProxy;</span><br><span class="line"></span><br><span class="line">class RealStar &#123;</span><br><span class="line">    public void sing() &#123;</span><br><span class="line">        System.out.println(&quot;Real star is singing...&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void dance() &#123;</span><br><span class="line">        System.out.println(&quot;Real star is dancing...&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class StarInterceptor implements MethodInterceptor &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public Object intercept(Object obj, Method method, Object[] args, MethodProxy proxy) throws Throwable &#123;</span><br><span class="line">        System.out.println(&quot;Enhancement before method execution&quot;);</span><br><span class="line">        Object result = proxy.invokeSuper(obj, args);</span><br><span class="line">        System.out.println(&quot;Enhancement after method execution&quot;);</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class CglibProxyDemo &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Enhancer enhancer = new Enhancer();</span><br><span class="line">        enhancer.setSuperclass(RealStar.class);</span><br><span class="line">        enhancer.setCallback(new StarInterceptor());</span><br><span class="line"></span><br><span class="line">        RealStar proxy = (RealStar) enhancer.create();</span><br><span class="line">        proxy.sing();</span><br><span class="line">        proxy.dance();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+        
+          <p class="article-more-link">
+            <a href="/blog/2024/02/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2024/02/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/" data-id="clt7ffd5j0003mo5b1clqah4e" data-title="java动态代理" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="https://gitee.com/lanceluot/blog.git/2024/02/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/" data-id="clt7ffd5j0003mo5b1clqah4e" data-title="java动态代理" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
       
       
       
@@ -156,7 +152,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2024/02/28/rabbitmq%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clt7ffd570000mo5bcveu8r0v" data-title="rabbitmq学习笔记" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="https://gitee.com/lanceluot/blog.git/2024/02/28/rabbitmq%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clt7ffd570000mo5bcveu8r0v" data-title="rabbitmq学习笔记" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
       
       
       
@@ -200,199 +196,15 @@
 </li>
 </ul>
 <p>其中<strong>键值型</strong>，是指Redis中存储的数据都是以key、value对的形式存储，而value的形式多种多样，可以是字符串、数值、甚至json,而NoSql则是相对于传统关系型数据库而言，有很大差异的一种数据库。</p>
-<h2 id="1-1-认识NoSQL"><a href="#1-1-认识NoSQL" class="headerlink" title="1.1.认识NoSQL"></a>1.1.认识NoSQL</h2><p><strong>NoSql</strong>可以翻译做Not Only Sql（不仅仅是SQL），或者是No Sql（非Sql的）数据库。是相对于传统关系型数据库而言，有很大差异的一种特殊的数据库，因此也称之为<strong>非关系型数据库</strong>。</p>
-<h3 id="1-1-1-结构化与非结构化"><a href="#1-1-1-结构化与非结构化" class="headerlink" title="1.1.1.结构化与非结构化"></a>1.1.1.结构化与非结构化</h3><p>传统关系型数据库是结构化数据，每一张表都有严格的约束信息：字段名、字段数据类型、字段约束等等信息，插入的数据必须遵守这些约束,</p>
-<p>而NoSql则对数据库格式没有严格约束，往往形式松散，自由。</p>
-<p>可以是键值型也可以是文档型,</p>
-<p>甚至可以是图格式</p>
-<h3 id="1-1-2-关联和非关联"><a href="#1-1-2-关联和非关联" class="headerlink" title="1.1.2.关联和非关联"></a>1.1.2.关联和非关联</h3><p>传统数据库的表与表之间往往存在关联，例如外键,而非关系型数据库不存在关联关系，要维护关系要么靠代码中的业务逻辑，要么靠数据之间的耦合.</p>
-<h3 id="1-1-3-查询方式"><a href="#1-1-3-查询方式" class="headerlink" title="1.1.3.查询方式"></a>1.1.3.查询方式</h3><p>传统关系型数据库会基于Sql语句做查询，语法有统一标准；</p>
-<p>而不同的非关系数据库查询语法差异极大，五花八门各种各样。</p>
-<h3 id="1-1-4-事务"><a href="#1-1-4-事务" class="headerlink" title="1.1.4.事务"></a>1.1.4.事务</h3><p>传统关系型数据库能满足事务ACID的原则。</p>
-<p>而非关系型数据库往往不支持事务，或者不能严格保证ACID的特性，只能实现基本的一致性。</p>
-<h1 id="2-Redis常见命令"><a href="#2-Redis常见命令" class="headerlink" title="2.Redis常见命令"></a>2.Redis常见命令</h1><p>Redis是典型的key-value数据库，key一般是字符串，而value包含很多不同的数据类型：</p>
-<p><img src="/blog/img/8tli2o9-17087015014836.png"></p>
-<h2 id="2-1-Redis通用命令"><a href="#2-1-Redis通用命令" class="headerlink" title="2.1.Redis通用命令"></a>2.1.Redis通用命令</h2><p>通用指令是部分数据类型的，都可以使用的指令，常见的有：</p>
-<ul>
-<li>KEYS：查看符合模板的所有key</li>
-<li>DEL：删除一个指定的key</li>
-<li>EXISTS：判断key是否存在</li>
-<li>EXPIRE：给一个key设置有效期，有效期到期时该key会被自动删除</li>
-<li>TTL：查看一个KEY的剩余有效期</li>
-</ul>
-<p>通过help [command] 可以查看一个命令的具体用法，例如：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看keys命令的帮助信息：</span></span><br><span class="line">127.0.0.1:6379&gt; <span class="built_in">help</span> keys</span><br><span class="line"></span><br><span class="line">KEYS pattern</span><br><span class="line">summary: Find all keys matching the given pattern</span><br><span class="line">since: 1.0.0</span><br><span class="line">group: generic</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-2-String类型"><a href="#2-2-String类型" class="headerlink" title="2.2.String类型"></a>2.2.String类型</h2><p>String类型，也就是字符串类型，是Redis中最简单的存储类型。</p>
-<p>其value是字符串，不过根据字符串的格式不同，又可以分为3类：</p>
-<ul>
-<li>string：普通字符串</li>
-<li>int：整数类型，可以做自增、自减操作</li>
-<li>float：浮点类型，可以做自增、自减操作</li>
-</ul>
-<p>不管是哪种格式，底层都是字节数组形式存储，只不过是编码方式不同。字符串类型的最大空间不能超过512m.</p>
-<h3 id="2-2-2-Key结构"><a href="#2-2-2-Key结构" class="headerlink" title="2.2.2.Key结构"></a>2.2.2.Key结构</h3><p>Redis没有类似MySQL中的Table的概念，我们该如何区分不同类型的key呢？</p>
-<p>例如，需要存储用户、商品信息到redis，有一个用户id是1，有一个商品id恰好也是1，此时如果使用id作为key，那就会冲突了，该怎么办？</p>
-<p>我们可以通过给key添加前缀加以区分，不过这个前缀不是随便加的，有一定的规范：</p>
-<p>Redis的key允许有多个单词形成层级结构，多个单词之间用’:’隔开，格式如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">项目名:业务名:类型:id</span><br></pre></td></tr></table></figure>
-
-<p>这个格式并非固定，也可以根据自己的需求来删除或添加词条。这样以来，我们就可以把不同类型的数据区分开了。从而避免了key的冲突问题。</p>
-<p>例如我们的项目名称叫 heima，有user和product两种不同类型的数据，我们可以这样定义key：</p>
-<ul>
-<li><p>user相关的key：<strong>heima:user:1</strong></p>
-</li>
-<li><p>product相关的key：<strong>heima:product:1</strong></p>
-</li>
-</ul>
-<p>如果Value是一个Java对象，例如一个User对象，则可以将对象序列化为JSON字符串后存储：</p>
-<table>
-<thead>
-<tr>
-<th><strong>KEY</strong></th>
-<th><strong>VALUE</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>heima:user:1</td>
-<td>{“id”:1,  “name”: “Jack”, “age”: 21}</td>
-</tr>
-<tr>
-<td>heima:product:1</td>
-<td>{“id”:1,  “name”: “小米11”, “price”: 4999}</td>
-</tr>
-</tbody></table>
-<p>并且，在Redis的桌面客户端中，还会以相同前缀作为层级结构，让数据看起来层次分明，关系清晰：</p>
-<p><img src="/blog/img/InWMfeD.png"></p>
-<h2 id="2-3-Hash类型"><a href="#2-3-Hash类型" class="headerlink" title="2.3.Hash类型"></a>2.3.Hash类型</h2><p>Hash类型，也叫散列，其value是一个无序字典，类似于Java中的HashMap结构。</p>
-<p>String结构是将对象序列化为JSON字符串后存储，当需要修改对象某个字段时很不方便：</p>
-<p><img src="/blog/img/x2zDBjf.png"></p>
-<p>Hash结构可以将对象中的每个字段独立存储，可以针对单个字段做CRUD：</p>
-<p><img src="/blog/img/VF2EPt0.png"></p>
-<h2 id="2-4-List类型"><a href="#2-4-List类型" class="headerlink" title="2.4.List类型"></a>2.4.List类型</h2><p>Redis中的List类型与Java中的LinkedList类似，可以看做是一个双向链表结构。既可以支持正向检索和也可以支持反向检索。</p>
-<p>特征也与LinkedList类似：</p>
-<ul>
-<li>有序</li>
-<li>元素可以重复</li>
-<li>插入和删除快</li>
-<li>查询速度一般</li>
-</ul>
-<p>常用来存储一个有序数据，例如：朋友圈点赞列表，评论列表等。</p>
-<h2 id="2-5-Set类型"><a href="#2-5-Set类型" class="headerlink" title="2.5.Set类型"></a>2.5.Set类型</h2><p>Redis的Set结构与Java中的HashSet类似，可以看做是一个value为null的HashMap。因为也是一个hash表，因此具备与HashSet类似的特征：</p>
-<ul>
-<li><p>无序</p>
-</li>
-<li><p>元素不可重复</p>
-</li>
-<li><p>查找快</p>
-</li>
-<li><p>支持交集、并集、差集等功能</p>
-</li>
-</ul>
-<h1 id="3-Redis常见业务场景"><a href="#3-Redis常见业务场景" class="headerlink" title="3.Redis常见业务场景"></a>3.Redis常见业务场景</h1><h2 id="3-1缓存"><a href="#3-1缓存" class="headerlink" title="3.1缓存"></a>3.1缓存</h2><p>将需要大量重复访问的数据提前写入redis中，那么就可以降低访问数据库的次数，提升系统性能</p>
-<h2 id="3-2会话管理"><a href="#3-2会话管理" class="headerlink" title="3.2会话管理"></a>3.2会话管理</h2><p>redis可以用户记录用户登录状态，当后端校验用户名和密码正确后，生成一个token或登录凭证存入redis中，以后每次访问都先去redis中查找，这种用来取代session的做法有几个好处，1减少服务器的存储压力，2更容易的对服务器做水平扩展</p>
-<h2 id="3-3生成全局id"><a href="#3-3生成全局id" class="headerlink" title="3.3生成全局id"></a>3.3生成全局id</h2><p>id要求为递增的时候，对于数据库表的自动增加生成id回受到数据库的单表大小容量限制，并且还要求id的增长规律不能太明显，为了增加ID的安全性，我们可以不直接使用Redis自增的数值，而是拼接一些其它信息：</p>
-<p><img src="/blog/img/1653363172079.png" alt="1653363172079"></p>
-<p>ID的组成部分：符号位：1bit，永远为0</p>
-<p>时间戳：31bit，以秒为单位，可以使用69年</p>
-<p>序列号：32bit，秒内的计数器，支持每秒产生2^32个不同ID</p>
-<h3 id="3-3-1Redis实现全局唯一Id"><a href="#3-3-1Redis实现全局唯一Id" class="headerlink" title="3.3.1Redis实现全局唯一Id"></a>3.3.1Redis实现全局唯一Id</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RedisIdWorker</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 开始时间戳</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">long</span> <span class="variable">BEGIN_TIMESTAMP</span> <span class="operator">=</span> <span class="number">1640995200L</span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 序列号的位数</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">COUNT_BITS</span> <span class="operator">=</span> <span class="number">32</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> StringRedisTemplate stringRedisTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">RedisIdWorker</span><span class="params">(StringRedisTemplate stringRedisTemplate)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.stringRedisTemplate = stringRedisTemplate;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">long</span> <span class="title function_">nextId</span><span class="params">(String keyPrefix)</span> &#123;</span><br><span class="line">        <span class="comment">// 1.生成时间戳</span></span><br><span class="line">        <span class="type">LocalDateTime</span> <span class="variable">now</span> <span class="operator">=</span> LocalDateTime.now();</span><br><span class="line">        <span class="type">long</span> <span class="variable">nowSecond</span> <span class="operator">=</span> now.toEpochSecond(ZoneOffset.UTC);</span><br><span class="line">        <span class="type">long</span> <span class="variable">timestamp</span> <span class="operator">=</span> nowSecond - BEGIN_TIMESTAMP;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2.生成序列号</span></span><br><span class="line">        <span class="comment">// 2.1.获取当前日期，精确到天</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">date</span> <span class="operator">=</span> now.format(DateTimeFormatter.ofPattern(<span class="string">&quot;yyyy:MM:dd&quot;</span>));</span><br><span class="line">        <span class="comment">// 2.2.自增长</span></span><br><span class="line">        <span class="type">long</span> <span class="variable">count</span> <span class="operator">=</span> stringRedisTemplate.opsForValue().increment(<span class="string">&quot;icr:&quot;</span> + keyPrefix + <span class="string">&quot;:&quot;</span> + date);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3.拼接并返回</span></span><br><span class="line">        <span class="keyword">return</span> timestamp &lt;&lt; COUNT_BITS | count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-4分布式锁"><a href="#3-4分布式锁" class="headerlink" title="3.4分布式锁"></a>3.4分布式锁</h2><p>乐观锁,这里有个疑问，都已经使用乐观锁判断是否有资格购买了，为什么创建订单还要加锁,即这句话   “查询数据库，都不存在订单，所以我们还是需要加锁，但是乐观锁比较适合更新数据，而现在是插入数据，所以我们需要使用悲观锁操作”</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> Result <span class="title function_">seckillVoucher</span><span class="params">(Long voucherId)</span> &#123;</span><br><span class="line">    <span class="comment">// 1.查询优惠券</span></span><br><span class="line">    <span class="type">SeckillVoucher</span> <span class="variable">voucher</span> <span class="operator">=</span> seckillVoucherService.getById(voucherId);</span><br><span class="line">    <span class="comment">// 2.判断秒杀是否开始</span></span><br><span class="line">    <span class="keyword">if</span> (voucher.getBeginTime().isAfter(LocalDateTime.now())) &#123;</span><br><span class="line">        <span class="comment">// 尚未开始</span></span><br><span class="line">        <span class="keyword">return</span> Result.fail(<span class="string">&quot;秒杀尚未开始！&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 3.判断秒杀是否已经结束</span></span><br><span class="line">    <span class="keyword">if</span> (voucher.getEndTime().isBefore(LocalDateTime.now())) &#123;</span><br><span class="line">        <span class="comment">// 尚未开始</span></span><br><span class="line">        <span class="keyword">return</span> Result.fail(<span class="string">&quot;秒杀已经结束！&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 4.判断库存是否充足</span></span><br><span class="line">    <span class="keyword">if</span> (voucher.getStock() &lt; <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="comment">// 库存不足</span></span><br><span class="line">        <span class="keyword">return</span> Result.fail(<span class="string">&quot;库存不足！&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 5.一人一单逻辑</span></span><br><span class="line">    <span class="comment">// 5.1.用户id</span></span><br><span class="line"> <span class="type">boolean</span> <span class="variable">success</span> <span class="operator">=</span> seckillVoucherService.update()</span><br><span class="line">            .setSql(<span class="string">&quot;stock= stock -1&quot;</span>)</span><br><span class="line">            .eq(<span class="string">&quot;voucher_id&quot;</span>, voucherId).gt(<span class="string">&quot;stock&quot;</span>,<span class="number">0</span>); <span class="comment">//where id = ? and stock &gt; 0</span></span><br><span class="line">    		.update()</span><br><span class="line">    <span class="comment">// 5.2.判断是否存在</span></span><br><span class="line">    <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> query().eq(<span class="string">&quot;user_id&quot;</span>, userId).eq(<span class="string">&quot;voucher_id&quot;</span>, voucherId).count();</span><br><span class="line">    <span class="keyword">if</span> (count &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">// 用户已经购买过了</span></span><br><span class="line">        <span class="keyword">return</span> Result.fail(<span class="string">&quot;用户已经购买过一次！&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//6，扣减库存</span></span><br><span class="line">    <span class="type">boolean</span> <span class="variable">success</span> <span class="operator">=</span> seckillVoucherService.update()</span><br><span class="line">            .setSql(<span class="string">&quot;stock= stock -1&quot;</span>)</span><br><span class="line">            .eq(<span class="string">&quot;voucher_id&quot;</span>, voucherId).update();</span><br><span class="line">    <span class="keyword">if</span> (!success) &#123;</span><br><span class="line">        <span class="comment">//扣减库存</span></span><br><span class="line">        <span class="keyword">return</span> Result.fail(<span class="string">&quot;库存不足！&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//7.创建订单</span></span><br><span class="line">    <span class="comment">//为什么下面这个方法还要加锁</span></span><br><span class="line">    <span class="type">VoucherOrder</span> <span class="variable">voucherOrder</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">VoucherOrder</span>();</span><br><span class="line">    <span class="comment">// 7.1.订单id</span></span><br><span class="line">    <span class="type">long</span> <span class="variable">orderId</span> <span class="operator">=</span> redisIdWorker.nextId(<span class="string">&quot;order&quot;</span>);</span><br><span class="line">    voucherOrder.setId(orderId);</span><br><span class="line"></span><br><span class="line">    voucherOrder.setUserId(userId);</span><br><span class="line">    <span class="comment">// 7.3.代金券id</span></span><br><span class="line">    voucherOrder.setVoucherId(voucherId);</span><br><span class="line">    save(voucherOrder);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> Result.ok(orderId);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>悲观锁</p>
-<p>注入syac,lock等</p>
-<h3 id="3-2-、Redis分布式锁的实现核心思路"><a href="#3-2-、Redis分布式锁的实现核心思路" class="headerlink" title="3.2 、Redis分布式锁的实现核心思路"></a>3.2 、Redis分布式锁的实现核心思路</h3><p>实现分布式锁时需要实现的两个基本方法：</p>
-<ul>
-<li><p>获取锁：</p>
-<ul>
-<li>互斥：确保只能有一个线程获取锁</li>
-<li>非阻塞：尝试一次，成功返回true，失败返回false</li>
-</ul>
-</li>
-<li><p>释放锁：</p>
-<ul>
-<li>手动释放</li>
-<li>超时释放：获取锁时添加一个超时时间</li>
-</ul>
-<p>  <img src="/blog/img/1653382669900.png" alt="1653382669900"></p>
-</li>
-</ul>
-<p>核心思路：</p>
-<p>我们利用redis 的setNx 方法，当有多个线程进入时，我们就利用该方法，第一个线程进入时，redis 中就有这个key 了，返回了1，如果结果是1，则表示他抢到了锁，那么他去执行业务，然后再删除锁，退出锁逻辑，没有抢到锁的哥们，等待一定时间后重试即可</p>
-<h2 id="3-4-统计访问次数"><a href="#3-4-统计访问次数" class="headerlink" title="3.4 统计访问次数"></a>3.4 统计访问次数</h2><h3 id="UV统计-HyperLogLog"><a href="#UV统计-HyperLogLog" class="headerlink" title="UV统计-HyperLogLog"></a>UV统计-HyperLogLog</h3><p>首先我们搞懂两个概念：</p>
-<ul>
-<li>UV：全称Unique Visitor，也叫独立访客量，是指通过互联网访问、浏览这个网页的自然人。1天内同一个用户多次访问该网站，只记录1次。</li>
-<li>PV：全称Page View，也叫页面访问量或点击量，用户每访问网站的一个页面，记录1次PV，用户多次打开页面，则记录多次PV。往往用来衡量网站的流量。</li>
-</ul>
-<p>通常来说UV会比PV大很多，所以衡量同一个网站的访问量，我们需要综合考虑很多因素，所以我们只是单纯的把这两个值作为一个参考值</p>
-<p>UV统计在服务端做会比较麻烦，因为要判断该用户是否已经统计过了，需要将统计过的用户信息保存。但是如果每个访问的用户都保存到Redis中，数据量会非常恐怖，那怎么处理呢？</p>
-<p>Hyperloglog(HLL)是从Loglog算法派生的概率算法，用于确定非常大的集合的基数，而不需要存储其所有值。相关算法原理大家可以参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903785744056333#heading-0">https://juejin.cn/post/6844903785744056333#heading-0</a><br>Redis中的HLL是基于string结构实现的，单个HLL的内存<strong>永远小于16kb</strong>，<strong>内存占用低</strong>的令人发指！作为代价，其测量结果是概率性的，<strong>有小于0.81％的误差</strong>。不过对于UV统计来说，这完全可以忽略。</p>
-<h2 id="3-5消息队列"><a href="#3-5消息队列" class="headerlink" title="3.5消息队列"></a>3.5消息队列</h2><h3 id="3-5-1-Redis消息队列-基于Stream的消息队列-消费者组"><a href="#3-5-1-Redis消息队列-基于Stream的消息队列-消费者组" class="headerlink" title="3.5.1 Redis消息队列-基于Stream的消息队列-消费者组"></a>3.5.1 Redis消息队列-基于Stream的消息队列-消费者组</h3><p>消费者组（Consumer Group）：将多个消费者划分到一个组中，监听同一个队列。具备下列特点：</p>
-<p><img src="/blog/img/1653577801668.png" alt="1653577801668"></p>
-<p>创建消费者组：<br><img src="/blog/img/1653577984924.png" alt="1653577984924"><br>key：队列名称<br>groupName：消费者组名称<br>ID：起始ID标示，$代表队列中最后一个消息，0则代表队列中第一个消息<br>MKSTREAM：队列不存在时自动创建队列<br>其它常见命令：</p>
-<p> <strong>删除指定的消费者组</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">XGROUP DESTORY key groupName</span><br></pre></td></tr></table></figure>
-
-<p> <strong>给指定的消费者组添加消费者</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">XGROUP CREATECONSUMER key groupname consumername</span><br></pre></td></tr></table></figure>
-
-<p> <strong>删除消费者组中的指定消费者</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">XGROUP DELCONSUMER key groupname consumername</span><br></pre></td></tr></table></figure>
-
-<p>从消费者组读取消息：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">XREADGROUP GROUP group consumer [COUNT count] [BLOCK milliseconds] [NOACK] STREAMS key [key ...] ID [ID ...]</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>group：消费组名称</li>
-<li>consumer：消费者名称，如果消费者不存在，会自动创建一个消费者</li>
-<li>count：本次查询的最大数量</li>
-<li>BLOCK milliseconds：当没有消息时最长等待时间</li>
-<li>NOACK：无需手动ACK，获取到消息后自动确认</li>
-<li>STREAMS key：指定队列名称</li>
-<li>ID：获取消息的起始ID：</li>
-</ul>
-<p>“&gt;”：从下一个未消费的消息开始<br>其它：根据指定id从pending-list中获取已消费但未确认的消息，例如0，是从pending-list中的第一个消息开始</p>
-<p>消费者监听消息的基本思路：</p>
-<p><img src="/blog/img/1653578211854.png" alt="1653578211854">STREAM类型消息队列的XREADGROUP命令特点：</p>
-<ul>
-<li>消息可回溯</li>
-<li>可以多消费者争抢消息，加快消费速度</li>
-<li>可以阻塞读取</li>
-<li>没有消息漏读的风险</li>
-<li>有消息确认机制，保证消息至少被消费一次</li>
-</ul>
-<p>排行榜</p>
-<p>限流</p>
-<h2 id="3-7位统计"><a href="#3-7位统计" class="headerlink" title="3.7位统计"></a>3.7位统计</h2><h4 id="11-1、用户签到-BitMap功能演示"><a href="#11-1、用户签到-BitMap功能演示" class="headerlink" title="11.1、用户签到-BitMap功能演示"></a>11.1、用户签到-BitMap功能演示</h4><p>我们针对签到功能完全可以通过mysql来完成，比如说以下这张表</p>
-<p><img src="/blog/img/1653823145495.png" alt="1653823145495"></p>
-<p>用户一次签到，就是一条记录，假如有1000万用户，平均每人每年签到次数为10次，则这张表一年的数据量为 1亿条</p>
-<p>每签到一次需要使用（8 + 8 + 1 + 1 + 3 + 1）共22 字节的内存，一个月则最多需要600多字节</p>
-<p>我们如何能够简化一点呢？其实可以考虑小时候一个挺常见的方案，就是小时候，咱们准备一张小小的卡片，你只要签到就打上一个勾，我最后判断你是否签到，其实只需要到小卡片上看一看就知道了</p>
-<p>我们可以采用类似这样的方案来实现我们的签到需求。</p>
-<p>我们按月来统计用户签到信息，签到记录为1，未签到则记录为0.</p>
-<p>把每一个bit位对应当月的每一天，形成了映射关系。用0和1标示业务状态，这种思路就称为位图（BitMap）。这样我们就用极小的空间，来实现了大量数据的表示</p>
-<p>Redis中是利用string类型数据结构实现BitMap，因此最大上限是512M，转换为bit则是 2^32个bit位。</p>
-<p><img src="/blog/img/1653824498278.png" alt="1653824498278"></p>
-<p>BitMap的操作命令有：</p>
-<ul>
-<li>SETBIT：向指定位置（offset）存入一个0或1</li>
-<li>GETBIT ：获取指定位置（offset）的bit值</li>
-<li>BITCOUNT ：统计BitMap中值为1的bit位的数量</li>
-<li>BITFIELD ：操作（查询、修改、自增）BitMap中bit数组中的指定位置（offset）的值</li>
-<li>BITFIELD_RO ：获取BitMap中bit数组，并以十进制形式返回</li>
-<li>BITOP ：将多个BitMap的结果做位运算（与 、或、异或）</li>
-<li>BITPOS ：查找bit数组中指定范围内第一个0或1出现的位置</li>
-</ul>
-<h4 id="11-2-、用户签到-实现签到功能"><a href="#11-2-、用户签到-实现签到功能" class="headerlink" title="11.2 、用户签到-实现签到功能"></a>11.2 、用户签到-实现签到功能</h4><p>需求：实现签到接口，将当前用户当天签到信息保存到Redis中</p>
-<p>思路：我们可以把年和月作为bitMap的key，然后保存到一个bitMap中，每次签到就到对应的位上把数字从0变成1，只要对应是1，就表明说明这一天已经签到了，反之则没有签到。</p>
-<p>我们通过接口文档发现，此接口并没有传递任何的参数，没有参数怎么确实是哪一天签到呢？这个很容易，可以通过后台代码直接获取即可，然后到对应的地址上去修改bitMap。</p>
-
+        
+          <p class="article-more-link">
+            <a href="/blog/2024/02/23/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2024/02/23/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clt2n4ru90000ac5bcd3vdct0" data-title="redis学习笔记" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="https://gitee.com/lanceluot/blog.git/2024/02/23/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clt2n4ru90000ac5bcd3vdct0" data-title="redis学习笔记" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
       
       
       
@@ -452,7 +264,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2024/02/23/ThreadLocal%E8%A7%A3%E8%AF%BB/" data-id="clsxjlpso0000i45bhz3gd9z0" data-title="ThreadLocal解读" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="https://gitee.com/lanceluot/blog.git/2024/02/23/ThreadLocal%E8%A7%A3%E8%AF%BB/" data-id="clsxjlpso0000i45bhz3gd9z0" data-title="ThreadLocal解读" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
       
       
       
@@ -482,7 +294,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2024/02/23/Untitled/" data-id="clsxjlpsv0003i45bf3r54w3z" data-title="" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="https://gitee.com/lanceluot/blog.git/2024/02/23/Untitled/" data-id="clsxjlpsv0003i45bf3r54w3z" data-title="" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
       
       
       
@@ -532,7 +344,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2024/01/14/%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E5%86%8D%E5%89%96%E6%9E%90/" data-id="clrokl3gl0000xo5bgl7m4mfb" data-title="外卖项目再剖析" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="https://gitee.com/lanceluot/blog.git/2024/01/14/%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E5%86%8D%E5%89%96%E6%9E%90/" data-id="clrokl3gl0000xo5bgl7m4mfb" data-title="外卖项目再剖析" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
       
       
       
@@ -582,7 +394,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2024/01/13/java%E4%B8%AD%E7%9A%84spi%E6%9C%BA%E5%88%B6/" data-id="clraxfrvp00007k5b8l5k8n99" data-title="java中的spi机制" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="https://gitee.com/lanceluot/blog.git/2024/01/13/java%E4%B8%AD%E7%9A%84spi%E6%9C%BA%E5%88%B6/" data-id="clraxfrvp00007k5b8l5k8n99" data-title="java中的spi机制" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
       
       
       
@@ -627,7 +439,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2024/01/07/Java%E4%B8%AD%E7%9A%84%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B/" data-id="clr3kgio10000pk5b9xcc50mh" data-title="Java中的对象类型" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="https://gitee.com/lanceluot/blog.git/2024/01/07/Java%E4%B8%AD%E7%9A%84%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B/" data-id="clr3kgio10000pk5b9xcc50mh" data-title="Java中的对象类型" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
       
       
       
@@ -672,7 +484,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2023/10/27/git%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE/" data-id="clo8qwtzp0000mw5bfodu3v5r" data-title="git初始化一个项目" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="https://gitee.com/lanceluot/blog.git/2023/10/27/git%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE/" data-id="clo8qwtzp0000mw5bfodu3v5r" data-title="git初始化一个项目" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
       
       
       
@@ -743,7 +555,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2023/10/26/spring%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8B%A6%E6%88%AA%E5%99%A8%E4%B8%8E%E8%BF%87%E6%BB%A4%E5%99%A8%E7%9A%84%E5%8C%BA%E5%88%AB/" data-id="clo761j4f0000w85bhk35bjb7" data-title="spring学习笔记-拦截器与过滤器的区别" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="https://gitee.com/lanceluot/blog.git/2023/10/26/spring%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8B%A6%E6%88%AA%E5%99%A8%E4%B8%8E%E8%BF%87%E6%BB%A4%E5%99%A8%E7%9A%84%E5%8C%BA%E5%88%AB/" data-id="clo761j4f0000w85bhk35bjb7" data-title="spring学习笔记-拦截器与过滤器的区别" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
       
       
       
@@ -761,7 +573,7 @@
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><a class="page-number" href="/blog/page/3/">3</a><a class="extend next" rel="next" href="/blog/page/2/">weiter &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><a class="page-number" href="/blog/page/3/">3</a><a class="extend next" rel="next" href="/blog/page/2/">Siguiente &raquo;</a>
   </nav>
 
 </section>
@@ -770,7 +582,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Kategorien</h3>
+    <h3 class="widget-title">Categorías</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a></li></ul>
     </div>
@@ -790,7 +602,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
+    <h3 class="widget-title">Nube de Tags</h3>
     <div class="widget tagcloud">
       <a href="/blog/tags/BUG/" style="font-size: 10px;">BUG</a> <a href="/blog/tags/RPC/" style="font-size: 10px;">RPC</a> <a href="/blog/tags/git/" style="font-size: 10px;">git</a> <a href="/blog/tags/java/" style="font-size: 20px;">java</a> <a href="/blog/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 10px;">java后端开发</a> <a href="/blog/tags/java%E6%BA%90%E7%A0%81/" style="font-size: 10px;">java源码</a> <a href="/blog/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/blog/tags/rabbitmq/" style="font-size: 10px;">rabbitmq</a> <a href="/blog/tags/redis/" style="font-size: 10px;">redis</a> <a href="/blog/tags/shell/" style="font-size: 10px;">shell</a> <a href="/blog/tags/spring/" style="font-size: 10px;">spring</a> <a href="/blog/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/blog/tags/test/" style="font-size: 10px;">test</a> <a href="/blog/tags/%E4%BD%9C%E4%B8%9A/" style="font-size: 10px;">作业</a> <a href="/blog/tags/%E6%84%9F%E6%83%B3/" style="font-size: 10px;">感想</a> <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 10px;">数据结构与算法</a> <a href="/blog/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a> <a href="/blog/tags/%E7%96%91%E9%97%AE/" style="font-size: 10px;">疑问</a> <a href="/blog/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">笔记</a> <a href="/blog/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10px;">问题</a>
     </div>
@@ -799,7 +611,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Archivos</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2022/12/">December 2022</a></li></ul>
     </div>
@@ -809,7 +621,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">Posts recientes</h3>
     <div class="widget">
       <ul>
         
@@ -847,7 +659,7 @@
     <div id="footer-info" class="inner">
       
       &copy; 2024 myself<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+      Construido por <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
