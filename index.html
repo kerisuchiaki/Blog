@@ -106,11 +106,11 @@
 
 <p><strong>示例 2：</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [1,2,1,3,5,6,4]</span><br><span class="line">输出：1 或 5 </span><br><span class="line">解释：你的函数可以返回索引 1，其峰值元素为 2；</span><br><span class="line">     或者返回索引 5， 其峰值元素为 6。</span><br></pre></td></tr></table></figure>
-
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>这题由于题目有说数组两端是无穷小，也就是说，峰值一定存在，并且返回任意一个峰值都可以，所以我们不妨把数组当作是完全单调递增或完全单调递减的，或者单调递增之后单调递减，只要求出这个数组的最大值即可，对于单调递增之后递减的，我们使用二分判断中间值是上升阶段还是下降阶段并缩小范围，知道区间缩小到只有一个数即是我们的极值</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">findPeakElement</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> l=<span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> r=nums.<span class="built_in">size</span>()<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span>(l&lt;r)&#123;<span class="comment">//区间等于1的情况，没必要求极值且循环中得到使得区间等于1也说明求出极值了</span></span><br><span class="line">            <span class="type">int</span> m=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(nums[m]&gt;nums[m+<span class="number">1</span>])</span><br><span class="line">                <span class="comment">//上升阶段</span></span><br><span class="line">            r=m;</span><br><span class="line">            <span class="comment">//下降阶段</span></span><br><span class="line">            <span class="keyword">else</span> l=m+<span class="number">1</span>;</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">return</span> l;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
+        
+          <p class="article-more-link">
+            <a href="/blog/2024/03/09/lc162%E5%AF%BB%E6%89%BE%E5%B1%B1%E5%B3%B0/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
