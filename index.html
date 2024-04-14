@@ -61,12 +61,12 @@
       <nav id="sub-nav">
         
         
-          <a class="nav-icon" href="/blog/atom.xml" title="RSS"><span class="fa fa-rss"></span></a>
+          <a class="nav-icon" href="/blog/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
         
-        <a class="nav-icon nav-search-btn" title="Buscar"><span class="fa fa-search"></span></a>
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Buscar"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://gitee.com/lanceluot/blog.git"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://gitee.com/lanceluot/blog.git"></form>
       </div>
     </div>
   </div>
@@ -74,6 +74,226 @@
 
       <div class="outer">
         <section id="main">
+  
+    <article id="post-leetcode530" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/04/14/leetcode530/" class="article-date">
+  <time class="dt-published" datetime="2024-04-14T12:08:19.000Z" itemprop="datePublished">2024-04-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/blog/2024/04/14/leetcode530/">leetcode530二叉搜索树的最小绝对值</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个二叉搜索树的根节点 <code>root</code> ，返回 <strong>树中任意两不同节点值之间的最小差值</strong> 。</p>
+<p>差值是一个正数，其数值等于两值之差的绝对值。</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>做这种题，我们需要知道二叉搜索树的一个特性，即中序遍历的结果是有序升序的数组，那么求书中最小的两个节点的差值最小显然是中序遍历的数组的相邻的两个元素，毕竟在树中就是一个节点的左子树最右边和右子树最左边是和节点差值最小的，而中序遍历的特点就是先处理左子树，再梳理节点，最后在处理右子树，当处理完左子树时，除了最左边元素没有上一个元素，其它元素都有，用一个变量pre记录处理左子树后上一个处理元素，即可计算上一个元素与当前节点的差值，每次计算完差值就更新pre，重复上述步骤即可</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() : val(0), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">int</span> pre=<span class="number">-1</span>,minx=<span class="number">10000000</span>;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getMinimumDifference</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">       <span class="built_in">dfs</span>(root);</span><br><span class="line">       <span class="keyword">return</span> minx;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(TreeNode* root)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="literal">nullptr</span>)<span class="keyword">return</span> ;</span><br><span class="line">        <span class="built_in">dfs</span>(root-&gt;left);</span><br><span class="line">        <span class="keyword">if</span>(pre!=<span class="number">-1</span>)&#123;</span><br><span class="line">            <span class="type">int</span> dis=root-&gt;val-pre;</span><br><span class="line">            minx=minx&lt;dis?minx:dis;</span><br><span class="line">        &#125;;</span><br><span class="line">        pre=root-&gt;val;</span><br><span class="line">        <span class="built_in">dfs</span>(root-&gt;right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://gitee.com/lanceluot/blog.git/2024/04/14/leetcode530/" data-id="cluzhunsy0001ko5b3kgz0v5r" data-title="leetcode530二叉搜索树的最小绝对值" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/leetcode/" rel="tag">leetcode</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-算法设计与分析实验2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/04/14/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E5%AE%9E%E9%AA%8C2/" class="article-date">
+  <time class="dt-published" datetime="2024-04-14T11:48:53.000Z" itemprop="datePublished">2024-04-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/blog/2024/04/14/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E5%AE%9E%E9%AA%8C2/">算法设计与分析实验2</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <table>
+<thead>
+<tr>
+<th><em><strong>*实验项目*</strong></em></th>
+<th>分治法的应用</th>
+<th><em><strong>*指导老师*</strong></em></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><em><strong>*实验目的*</strong></em></td>
+<td>学习分治法的思想和应用</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="一、实验内容"><a href="#一、实验内容" class="headerlink" title="一、实验内容"></a>一、实验内容</h2><p>1.某石油公司有n口油井，为方便输送石油，计划修建输油管道。根据设计要求，水平方向有一条主管道，每口油井修一条垂直方向的支线管道通向主管道。请设计一种算法确定主管道的位置，使得所有油井到主管道之间的支线管道长度的总和最小</p>
+<p>2.Karatsuba乘法用于实现两个大整数相乘。所谓大整数相乘是指整数比较大，相乘的结果超出了基本数据类型的表示范围，所以不能直接做乘法运算。算法的基本原理是将大整数拆分成两段后变成较小的整数，请设计分治算法说明Karatsuba乘法的原理，并实现该算法。</p>
+<h2 id="二、问题分析"><a href="#二、问题分析" class="headerlink" title="二、问题分析"></a>二、问题分析</h2><h3 id="1-铺设油井管道"><a href="#1-铺设油井管道" class="headerlink" title="1.铺设油井管道"></a>1.铺设油井管道</h3><p>这个显然是将管道铺在中间最合适，因为极端情况管道在最上方和最下方都会使得距离很大，那么管道的位置也显然之能是所有油井的中间位置，那么问题就转换为求所有的油井的中位数了，我们可以先进行排序然后在取中间值，但是由于排序算法的时间复杂度最快也是O(ologn)，这不满足题目要求，要使用O(n)的算法，我们可以使用分治策略求解，具体就是快速选择算法，它可以让我们在O(n）的时间内选出第k大的数。</p>
+<h3 id="2-Karatsuba乘法"><a href="#2-Karatsuba乘法" class="headerlink" title="2.Karatsuba乘法"></a>2.Karatsuba乘法</h3><p>由karartsuba算法的原理我们知道，对于竖式乘法，如果把数分成两部分分别相乘，那么会进行4次乘法，三次加法，而使用Karatsuba算法,可以减少一次乘法，7次加法，这使得大数乘法的时间可以得到优化，我们可以使用分治法来实现这个算法，即进行两个大数的乘法，可以转换为三次小的乘法和一些加法来完成，然后递归进行即可</p>
+<h2 id="三、数据结构定义"><a href="#三、数据结构定义" class="headerlink" title="三、数据结构定义"></a>三、数据结构定义</h2><h3 id="1-铺设油井管道-1"><a href="#1-铺设油井管道-1" class="headerlink" title="1.铺设油井管道"></a>1.铺设油井管道</h3><p>Int arr[n];&#x2F;&#x2F;所有油井的距离<br>Int median;&#x2F;&#x2F;油井距离的中位数<br>Int minx;&#x2F;&#x2F;距离总和最小值<br>int quickSelect（int a[],int left,int right)&#x2F;&#x2F;寻找数组 arr 中第 k 小的元素</p>
+<h3 id="3-karatsuba算法"><a href="#3-karatsuba算法" class="headerlink" title="3.karatsuba算法"></a>3.karatsuba算法</h3><p>string  karatsuba(string a,string b)&#x2F;&#x2F;karatsuba算法，计算两个大数的乘积以字符串保存结果<br>string operator+(const string&amp; num1, const string&amp; num2)；&#x2F;&#x2F;重载运算符进行大数加法<br>string operator-(const string&amp; num1, const string&amp; num2)；&#x2F;&#x2F;重载运算符进行两个大数的减法</p>
+<h2 id="四、算法伪代码描述"><a href="#四、算法伪代码描述" class="headerlink" title="四、算法伪代码描述"></a>四、算法伪代码描述</h2><h3 id="1-铺设油井管道-2"><a href="#1-铺设油井管道-2" class="headerlink" title="1.铺设油井管道"></a>1.铺设油井管道</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">函数 quickSelect(arr, left, right, k):</span><br><span class="line">    如果 left 等于 right，则返回 arr[left]</span><br><span class="line">// 分治法的思想：将数组分成两部分，对其中一部分进行处理</span><br><span class="line">// 选取中枢元素</span><br><span class="line">pivotIndex = left + (right - left) / <span class="number">2</span></span><br><span class="line">pivot = arr[pivotIndex]</span><br><span class="line"></span><br><span class="line">// 将中枢元素移动到数组末尾</span><br><span class="line">交换 arr[pivotIndex] 和 arr[right]</span><br><span class="line"></span><br><span class="line">// 分区过程</span><br><span class="line">i = left</span><br><span class="line">对于 j 从 left 到 right - <span class="number">1</span>：</span><br><span class="line">    如果 arr[j] &lt; pivot：</span><br><span class="line">        交换 arr[i] 和 arr[j]</span><br><span class="line">        i++</span><br><span class="line"></span><br><span class="line">交换 arr[i] 和 arr[right]</span><br><span class="line"></span><br><span class="line">// 判断中枢元素的位置与 k 的大小关系</span><br><span class="line">如果 i 等于 k，则返回 arr[i]</span><br><span class="line">否则如果 i 小于 k，则递归调用 quickSelect(arr, i + <span class="number">1</span>, right, k)</span><br><span class="line">否则递归调用 quickSelect(arr, left, i - <span class="number">1</span>, k)</span><br><span class="line">函数 findMedian(arr, n):</span><br><span class="line">    返回 quickSelect(arr, <span class="number">0</span>, n - <span class="number">1</span>, n / <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">主函数：</span><br><span class="line">    输入 n</span><br><span class="line">    分配数组 arr 大小为 n</span><br><span class="line">    对于 i 从 <span class="number">0</span> 到 n - <span class="number">1</span>：</span><br><span class="line">        输入 a 和 b</span><br><span class="line">        将 b 放入 arr[i]</span><br><span class="line">        median = findMedian(arr, n)</span><br><span class="line">	minx = <span class="number">0</span></span><br><span class="line">	对于 i 从 <span class="number">0</span> 到 n - <span class="number">1</span>：</span><br><span class="line">    minx += <span class="built_in">abs</span>(median - arr[i])</span><br><span class="line"></span><br><span class="line">    输出 minx</span><br><span class="line">    释放数组 arr</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="2-karatsuba算法"><a href="#2-karatsuba算法" class="headerlink" title="2.karatsuba算法"></a>2.karatsuba算法</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line">// 定义大数加法</span><br><span class="line">string operator+(const string&amp; num1, const string&amp; num2) &#123;</span><br><span class="line">    string result; // 存储结果</span><br><span class="line">    <span class="built_in">int</span> carry = <span class="number">0</span>; // 进位</span><br><span class="line"></span><br><span class="line">    // 从低位到高位逐位相加</span><br><span class="line">    <span class="built_in">int</span> i = num1.size() - <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">int</span> j = num2.size() - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &gt;= <span class="number">0</span> || j &gt;= <span class="number">0</span> || carry &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">int</span> <span class="built_in">sum</span> = carry; // 当前位的和等于进位</span><br><span class="line">        <span class="keyword">if</span> (i &gt;= <span class="number">0</span>) &#123;</span><br><span class="line"></span><br><span class="line">// 将字符转换为数字并加到当前位的和中</span><br><span class="line">            <span class="built_in">sum</span> += num1[i] - <span class="string">&#x27;0&#x27;</span>;i--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (j &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">// 将字符转换为数字并加到当前位的和中</span><br><span class="line">            <span class="built_in">sum</span> += num2[j] - <span class="string">&#x27;0&#x27;</span>;j--;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">        // 更新进位和当前位的值</span><br><span class="line">        carry = <span class="built_in">sum</span> / <span class="number">10</span>; // 计算进位</span><br><span class="line">        <span class="built_in">sum</span> %= <span class="number">10</span>; // 更新当前位的值</span><br><span class="line"></span><br><span class="line">// 将当前位的值转换为字符并添加到结果中</span><br><span class="line">        result += to_string(<span class="built_in">sum</span>);     &#125;</span><br><span class="line"></span><br><span class="line">    // 反转结果字符串，得到正确的加法结果</span><br><span class="line">    reverse(result.begin(), result.end());</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 定义大数减法</span><br><span class="line">string operator-(const string&amp; num1, const string&amp; num2) &#123;</span><br><span class="line">    // 实现减法逻辑</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 定义 Karatsuba 算法</span><br><span class="line">string karatsuba(string a, string b) &#123;</span><br><span class="line">    // 获取输入字符串的长度</span><br><span class="line">    <span class="built_in">int</span> n = a.size();</span><br><span class="line">    <span class="built_in">int</span> m = b.size();</span><br><span class="line">    string ans = <span class="string">&quot;0&quot;</span>;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    // 如果输入的字符串长度为 <span class="number">1</span>，则直接相乘</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>) &#123;</span><br><span class="line">        // 实现直接相乘逻辑</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (m == <span class="number">1</span>) &#123;</span><br><span class="line">        // 实现直接相乘逻辑</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 对输入字符串进行补零，使得两个字符串长度相等</span><br><span class="line">    <span class="keyword">if</span> (n &gt; m) &#123;</span><br><span class="line">        // 实现补零逻辑</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (n &lt; m) &#123;</span><br><span class="line">        // 实现补零逻辑</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 分割输入字符串为两部分</span><br><span class="line">    string a1 = a.substr(<span class="number">0</span>, n / <span class="number">2</span>);</span><br><span class="line">    string a2 = a.substr(n / <span class="number">2</span>, n - n / <span class="number">2</span>);</span><br><span class="line">    string b1 = b.substr(<span class="number">0</span>, m / <span class="number">2</span>);</span><br><span class="line">    string b2 = b.substr(m / <span class="number">2</span>, m - m / <span class="number">2</span>);</span><br><span class="line">    </span><br><span class="line">    // 递归调用 Karatsuba 算法</span><br><span class="line">    string a1b1 = karatsuba(a1, b1);</span><br><span class="line">    string a2b2 = karatsuba(a2, b2);</span><br><span class="line">    string a1a2 = a1 + a2;</span><br><span class="line">    string b1b2 = b1 + b2;</span><br><span class="line">    string a1a2b1b2 = karatsuba(a1a2, b1b2);</span><br><span class="line">    </span><br><span class="line">    // 使用分治法思想计算乘积</span><br><span class="line">    a1a2b1b2 = a1a2b1b2 - a1b1 - a2b2;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span> * (n - n / <span class="number">2</span>); i++) &#123;</span><br><span class="line">        a1b1 += <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; (n - n / <span class="number">2</span>); i++) &#123;</span><br><span class="line">        a1a2b1b2 += <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    ans = a1b1 + a1a2b1b2;</span><br><span class="line">    ans = ans + a2b2;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 主函数</span><br><span class="line"><span class="built_in">int</span> main() &#123;</span><br><span class="line">    // 输入两个大数</span><br><span class="line">    string a, b;</span><br><span class="line">    cin &gt;&gt; a;</span><br><span class="line">    cin &gt;&gt; b;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    // 调用 Karatsuba 算法计算乘积</span><br><span class="line">    string ans = karatsuba(a, b);</span><br><span class="line">    </span><br><span class="line">    // 去除结果前面的多余零，并输出结果</span><br><span class="line">    <span class="keyword">while</span> (ans[<span class="number">0</span>] == <span class="string">&#x27;0&#x27;</span>) ans.erase(<span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="五、算法时间和空间复杂度分析（要求写出详细过程）"><a href="#五、算法时间和空间复杂度分析（要求写出详细过程）" class="headerlink" title="五、算法时间和空间复杂度分析（要求写出详细过程）"></a>五、算法时间和空间复杂度分析（要求写出详细过程）</h2><h3 id="1-铺设油井管道-3"><a href="#1-铺设油井管道-3" class="headerlink" title="1.铺设油井管道"></a>1.铺设油井管道</h3><p>由于我们采用的快速选择算法来进行分治处理，时间复杂度也就是快速选择算法的时间复杂度，快速选择算法，每次选择一个基元遍历整个数组分区后就可以判断，如果结果不是基元则递归判断比基元小的数据部分或则比基元数据大的部分，则可以得到递推式T(n)&#x3D;T(n&#x2F;2)+n，递推下去则得到<br>T(n)&#x3D;T(n&#x2F;2)+n&#x3D;T(n&#x2F;4)+n&#x2F;2+n&#x3D;T(1)+….+n&#x2F;2+n&#x3D;1+2+…n&#x2F;2+n&#x3D;1(1-2^t)&#x2F;(1-2),其中t&#x3D;log2n(2为底),最后得到T(n)&#x3D;2n-1,即时间复杂度为O(n)&#x3D;n;</p>
+<h3 id="2-karatsuba算法-1"><a href="#2-karatsuba算法-1" class="headerlink" title="2.karatsuba算法"></a>2.karatsuba算法</h3><p>karatsuba算法将两个数的乘法变成3个数的乘法和7次加法，显然递推式为T(n)&#x3D;3T(n&#x2F;2)+7&#x3D;3^t+7t其中t&#x3D;log2n(2为底),则T(n)&#x3D;n^log23+7log23,即时间复杂度为O(n^log23)。</p>
+<h2 id="六、错误记录和解决"><a href="#六、错误记录和解决" class="headerlink" title="六、错误记录和解决"></a>六、错误记录和解决</h2><p>1.对于油井管道铺设问题，一开始使用c++的cin处理输入，但是总是超时，后来改成c语言时间就变短了<br>2.karatsuba算法，一开始想的是直接按照整数乘法使用数据范围更大的long long来模拟karatsuba算法，对于不是特别大的数字还能正确显示结果，后来我发现题目的输入数据远远超过long long的范围，并且这种做法不具有通用性，最后还是采用字符串保存结果</p>
+<h2 id="七、心得体会"><a href="#七、心得体会" class="headerlink" title="七、心得体会"></a>七、心得体会</h2><p>分治算法是基础算法，它可以帮助我们有效分析问题，并分治处理，使得我们不用关心所有细节，这一点和递归很相似，尽管分治法很多时候都是用递归实现。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://gitee.com/lanceluot/blog.git/2024/04/14/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E5%AE%9E%E9%AA%8C2/" data-id="cluzhunt50005ko5bg3165qcn" data-title="算法设计与分析实验2" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E5%AE%9E%E9%AA%8C/" rel="tag">实验</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-竞赛之取整函数" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/03/18/%E7%AB%9E%E8%B5%9B%E4%B9%8B%E5%8F%96%E6%95%B4%E5%87%BD%E6%95%B0/" class="article-date">
+  <time class="dt-published" datetime="2024-03-18T12:40:24.000Z" itemprop="datePublished">2024-03-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/blog/2024/03/18/%E7%AB%9E%E8%B5%9B%E4%B9%8B%E5%8F%96%E6%95%B4%E5%87%BD%E6%95%B0/">竞赛之取整函数</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="取整函数"><a href="#取整函数" class="headerlink" title="取整函数"></a>取整函数</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>noip p1515</p>
+<p>关于整数y&#x2F;x向上取整为什么是（y+x-1)&#x2F;x?这歌问题曾一度让我百思不得其解，现在我终于知道了，若y能被x整除，则x-1小于x等价于y多出来但又不够除x的部分使得结果还是y&#x2F;x，但是若y不能x整除，即y除了被x整除的部分肯定还多出来不到x的部分再加一个x-1那就能凑够被x整出了，前提是x&gt;&#x3D;1,即x-1不能小于0，即小数相除向上取整就可能是负的进而失效</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://gitee.com/lanceluot/blog.git/2024/03/18/%E7%AB%9E%E8%B5%9B%E4%B9%8B%E5%8F%96%E6%95%B4%E5%87%BD%E6%95%B0/" data-id="cluzhunt40004ko5b4radcmz3" data-title="竞赛之取整函数" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-leetcode73矩阵置零" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/03/15/leetcode73%E7%9F%A9%E9%98%B5%E7%BD%AE%E9%9B%B6/" class="article-date">
+  <time class="dt-published" datetime="2024-03-15T14:51:47.000Z" itemprop="datePublished">2024-03-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/blog/2024/03/15/leetcode73%E7%9F%A9%E9%98%B5%E7%BD%AE%E9%9B%B6/">leetcode73矩阵置零</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="73-矩阵置零"><a href="#73-矩阵置零" class="headerlink" title="73. 矩阵置零"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/set-matrix-zeroes/">73. 矩阵置零</a></h2><p>给定一个矩阵，若其中一个元素为零，则将其余行和列的元素都置为零</p>
+<p><strong>示例 1：</strong></p>
+<p><img src="https://assets.leetcode.com/uploads/2020/08/17/mat1.jpg" alt="img"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：matrix = [[1,1,1],[1,0,1],[1,1,1]]</span><br><span class="line">输出：[[1,0,1],[0,0,0],[1,0,1]]</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<p><img src="https://assets.leetcode.com/uploads/2020/08/17/mat2.jpg" alt="img"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：matrix = [[0,1,2,0],[3,4,5,2],[1,3,1,5]]</span><br><span class="line">输出：[[0,0,0,0],[0,4,5,0],[0,3,1,0]]</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>m == matrix.length</code></li>
+<li><code>n == matrix[0].length</code></li>
+<li><code>1 &lt;= m, n &lt;= 200</code></li>
+<li><code>-231 &lt;= matrix[i][j] &lt;= 231 - 1</code></li>
+</ul>
+<h2 id="题解代码"><a href="#题解代码" class="headerlink" title="题解代码"></a>题解代码</h2><p>时间复杂度，显然必须要遍历每一个元素，那么复杂度就是O(m*n)了；</p>
+<p>空间复杂度一定是矩阵的大小了,可以优化的也就只有额外的空间，显然的思路就是使用一个标记矩阵记录，可以复制原先矩阵元素的大小，显示遍历一次当我们的举证元素为零时，记为零，但我们第二次遍历时，直接和这个标记矩阵做对比，或者做异或运算就可以将原先举证置为零，空间是就是两倍的矩阵大小</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setZeroes</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; matrix)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> m=matrix.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> n=matrix[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">a</span><span class="params">(m)</span>,<span class="title">b</span><span class="params">(n)</span></span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;m;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;n;j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(matrix[i][j]==<span class="number">0</span>)&#123;</span><br><span class="line">                    a[i]=<span class="number">1</span>;b[j]=<span class="number">1</span>;                    </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;m;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;n;j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(a[i]!=<span class="number">0</span>||b[j]!=<span class="number">0</span>)matrix[i][j]=<span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://gitee.com/lanceluot/blog.git/2024/03/15/leetcode73%E7%9F%A9%E9%98%B5%E7%BD%AE%E9%9B%B6/" data-id="cluzhunsw0000ko5b6pxx1cmv" data-title="leetcode73矩阵置零" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/leetcode%E9%A2%98%E8%A7%A3/" rel="tag">leetcode题解</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
   
     <article id="post-设计模式之适配器模式" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
@@ -97,14 +317,25 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        
+        <h2 id="什么是适配器模式"><a href="#什么是适配器模式" class="headerlink" title="什么是适配器模式"></a>什么是适配器模式</h2><p>适配器模式的核心思想是将一个类的接口转换成客户希朼的另外一个接口，使得原本由于接口不兼容而不能一起工作的那些类可以一起工作</p>
+<h2 id="适配器模式在Bean销毁中的应用"><a href="#适配器模式在Bean销毁中的应用" class="headerlink" title="适配器模式在Bean销毁中的应用"></a>适配器模式在Bean销毁中的应用</h2><p>在软件开发中，经常会遇到不同接口之间的兼容性问题。适配器模式就是为了解决这类问题而诞生的，它可以将一个类的接口转换成客户希望的另外一个接口，使得原本由于接口不兼容而不能一起工作的那些类可以一起工作。今天我们来看一下适配器模式在Bean销毁中的应用。</p>
+<p>在Spring框架中，Bean的销毁是一个重要的环节，通常需要执行一些特定的操作，比如释放资源、关闭连接等。但是不同的Bean可能有不同的销毁方法，有些是通过实现特定的接口，有些是通过在配置文件中指定销毁方法。为了统一处理这些不同的销毁方式，可以使用适配器模式来简化操作。</p>
+<p>我们先来看一下DisposableBeanAdapter类的代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">javaCopy Code// DisposableBeanAdapter.java</span><br><span class="line"></span><br><span class="line">public class DisposableBeanAdapter implements DisposableBean &#123;</span><br><span class="line"></span><br><span class="line">    private final Object bean;</span><br><span class="line">    private final String beanName;</span><br><span class="line">    private String destroyMethodName;</span><br><span class="line"></span><br><span class="line">    public DisposableBeanAdapter(Object bean, String beanName, BeanDefinition beanDefinition) &#123;</span><br><span class="line">        this.bean = bean;</span><br><span class="line">        this.beanName = beanName;</span><br><span class="line">        this.destroyMethodName = beanDefinition.getDestroyMethodName();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void destroy() throws Exception &#123;</span><br><span class="line">        // 1. 实现接口 DisposableBean</span><br><span class="line">        if (bean instanceof DisposableBean) &#123;</span><br><span class="line">            ((DisposableBean) bean).destroy();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 2. 注解配置 destroy-method &#123;判断是为了避免二次执行销毁&#125;</span><br><span class="line">        if (StrUtil.isNotEmpty(destroyMethodName) &amp;&amp; !(bean instanceof DisposableBean &amp;&amp; &quot;destroy&quot;.equals(this.destroyMethodName))) &#123;</span><br><span class="line">            Method destroyMethod = bean.getClass().getMethod(destroyMethodName);</span><br><span class="line">            if (null == destroyMethod) &#123;</span><br><span class="line">                throw new BeansException(&quot;Couldn&#x27;t find a destroy method named &#x27;&quot; + destroyMethodName + &quot;&#x27; on bean with name &#x27;&quot; + beanName + &quot;&#x27;&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            destroyMethod.invoke(bean);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>DisposableBeanAdapter类实现了DisposableBean接口，同时根据Bean定义信息获取销毁方法的名称，并统一调用销毁方法。这样，无论Bean是通过实现接口还是配置文件中指定销毁方法，都可以通过DisposableBeanAdapter来进行统一的销毁处理。</p>
+<p>适配器模式的优势在于可以灵活处理不同接口的兼容性问题，使得系统更易于扩展和维护。在Bean销毁的场景下，采用适配器模式可以有效地降低代码的耦合度，同时也让销毁逻辑更加清晰和统一。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>总结一下，适配器模式在Bean销毁中的应用，使得不同的销毁方式可以统一处理，提高了系统的灵活性和可维护性，是一种非常有价值的设计模式。希望通过这篇博客的介绍，能够对适配器模式的应用有更深入的理解，也能在实际项目中更好地运用适配器模式来解决类似的接口兼容性问题。</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2024/03/14/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/" data-id="cltq0i2g70000y45b6j0z66q6" data-title="设计模式之适配器模式" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
+      <a data-url="https://gitee.com/lanceluot/blog.git/2024/03/14/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/" data-id="cltq0i2g70000y45b6j0z66q6" data-title="设计模式之适配器模式" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+
     </footer>
   </div>
   
@@ -147,7 +378,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2024/03/09/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E6%A8%A1%E6%9D%BF%E6%A8%A1%E5%BC%8F/" data-id="cltk9dfng0000do5b2s9wewvj" data-title="设计模式之模板模式" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
+      <a data-url="https://gitee.com/lanceluot/blog.git/2024/03/09/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E6%A8%A1%E6%9D%BF%E6%A8%A1%E5%BC%8F/" data-id="cltk9dfng0000do5b2s9wewvj" data-title="设计模式之模板模式" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -200,40 +431,12 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2024/03/09/lc162%E5%AF%BB%E6%89%BE%E5%B1%B1%E5%B3%B0/" data-id="cltjyrp7h0001pw5b0qnyd3lb" data-title="lc162寻找山峰" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
+      <a data-url="https://gitee.com/lanceluot/blog.git/2024/03/09/lc162%E5%AF%BB%E6%89%BE%E5%B1%B1%E5%B3%B0/" data-id="cltjyrp7h0001pw5b0qnyd3lb" data-title="lc162寻找山峰" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/leetcode%E9%A2%98%E8%A7%A3/" rel="tag">leetcode题解</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Untitled 1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/blog/2024/03/09/Untitled%201/" class="article-date">
-  <time class="dt-published" datetime="2024-03-09T10:37:47.011Z" itemprop="datePublished">2024-03-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2024/03/09/Untitled%201/" data-id="cltjyrp760000pw5b3d7m3ihr" data-title="" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
-      
-      
-      
     </footer>
   </div>
   
@@ -274,7 +477,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2024/02/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/" data-id="clt7ffd5j0003mo5b1clqah4e" data-title="java动态代理" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
+      <a data-url="https://gitee.com/lanceluot/blog.git/2024/02/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/" data-id="clt7ffd5j0003mo5b1clqah4e" data-title="java动态代理" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -319,7 +522,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2024/02/28/rabbitmq%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clt7ffd570000mo5bcveu8r0v" data-title="rabbitmq学习笔记" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
+      <a data-url="https://gitee.com/lanceluot/blog.git/2024/02/28/rabbitmq%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clt7ffd570000mo5bcveu8r0v" data-title="rabbitmq学习笔记" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -371,7 +574,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2024/02/23/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clt2n4ru90000ac5bcd3vdct0" data-title="redis学习笔记" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
+      <a data-url="https://gitee.com/lanceluot/blog.git/2024/02/23/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clt2n4ru90000ac5bcd3vdct0" data-title="redis学习笔记" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -385,146 +588,11 @@
 
 
   
-    <article id="post-ThreadLocal解读" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/blog/2024/02/23/ThreadLocal%E8%A7%A3%E8%AF%BB/" class="article-date">
-  <time class="dt-published" datetime="2024-02-22T18:12:00.000Z" itemprop="datePublished">2024-02-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2024/02/23/ThreadLocal%E8%A7%A3%E8%AF%BB/">ThreadLocal解读</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="ThreadLocal全面解析"><a href="#ThreadLocal全面解析" class="headerlink" title="ThreadLocal全面解析"></a>ThreadLocal全面解析</h1><p><strong>前置知识</strong></p>
-<ul>
-<li>具有一定的javase和javaweb基础</li>
-<li>熟悉synchronized关键字</li>
-<li>熟悉HashMap</li>
-<li>熟悉 JDBC技术</li>
-</ul>
-<p><strong>学习目标</strong></p>
-<ul>
-<li><strong>了解ThreadLocal的介绍</strong> </li>
-<li><strong>掌握ThreadLocal的运用场景</strong></li>
-<li><strong>了解ThreadLocal的内部结构</strong></li>
-<li><strong>了解ThreadLocal的核心方法源码</strong></li>
-<li><strong>了解ThreadLocalMap的源码</strong></li>
-</ul>
-<h2 id="1-ThreadLocal介绍"><a href="#1-ThreadLocal介绍" class="headerlink" title="1. ThreadLocal介绍"></a>1. ThreadLocal介绍</h2>
-        
-          <p class="article-more-link">
-            <a href="/blog/2024/02/23/ThreadLocal%E8%A7%A3%E8%AF%BB/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2024/02/23/ThreadLocal%E8%A7%A3%E8%AF%BB/" data-id="clsxjlpso0000i45bhz3gd9z0" data-title="ThreadLocal解读" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java/" rel="tag">java</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Untitled" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/blog/2024/02/23/Untitled/" class="article-date">
-  <time class="dt-published" datetime="2024-02-22T18:10:45.292Z" itemprop="datePublished">2024-02-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2024/02/23/Untitled/" data-id="clsxjlpsv0003i45bf3r54w3z" data-title="" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-外卖项目再剖析" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/blog/2024/01/14/%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E5%86%8D%E5%89%96%E6%9E%90/" class="article-date">
-  <time class="dt-published" datetime="2024-01-14T14:00:24.000Z" itemprop="datePublished">2024-01-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2024/01/14/%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E5%86%8D%E5%89%96%E6%9E%90/">外卖项目再剖析</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>对于之前只是跟着敲着的外卖项目，以为很简单，什么都做完了，结果最近重新运行很多功能都没完成，还是有很多不懂的地方，我果然还是太菜了，现在尝试增加和优化功能</p>
-<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><p>想着修改前端，美化一下，毕竟只有一个手机号短信验证登录，太简单了，网上找了一个前端登录注册页面，但是拿来用时，老是遇到很多问题</p>
-<h3 id="前端接受的响应问题"><a href="#前端接受的响应问题" class="headerlink" title="前端接受的响应问题"></a>前端接受的响应问题</h3><p>F12查看返回结果，是没问题的，但是前端的代码：</p>
-        
-          <p class="article-more-link">
-            <a href="/blog/2024/01/14/%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E5%86%8D%E5%89%96%E6%9E%90/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2024/01/14/%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E5%86%8D%E5%89%96%E6%9E%90/" data-id="clrokl3gl0000xo5bgl7m4mfb" data-title="外卖项目再剖析" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/springboot/" rel="tag">springboot</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><a class="page-number" href="/blog/page/3/">3</a><a class="page-number" href="/blog/page/4/">4</a><a class="extend next" rel="next" href="/blog/page/2/">Siguiente &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><a class="page-number" href="/blog/page/3/">3</a><a class="page-number" href="/blog/page/4/">4</a><a class="extend next" rel="next" href="/blog/page/2/">weiter &raquo;</a>
   </nav>
 
 </section>
@@ -533,7 +601,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categorías</h3>
+    <h3 class="widget-title">Kategorien</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a></li></ul>
     </div>
@@ -545,7 +613,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/BUG/" rel="tag">BUG</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/RPC/" rel="tag">RPC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" rel="tag">java后端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java%E6%BA%90%E7%A0%81/" rel="tag">java源码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/jvm/" rel="tag">jvm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/leetcode%E9%A2%98%E8%A7%A3/" rel="tag">leetcode题解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/rabbitmq/" rel="tag">rabbitmq</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/redis/" rel="tag">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/shell/" rel="tag">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/spring/" rel="tag">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/springboot/" rel="tag">springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E4%BD%9C%E4%B8%9A/" rel="tag">作业</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%84%9F%E6%83%B3/" rel="tag">感想</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag">数据结构与算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E7%96%91%E9%97%AE/" rel="tag">疑问</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/BUG/" rel="tag">BUG</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/RPC/" rel="tag">RPC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" rel="tag">java后端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java%E6%BA%90%E7%A0%81/" rel="tag">java源码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/jvm/" rel="tag">jvm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/leetcode/" rel="tag">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/leetcode%E9%A2%98%E8%A7%A3/" rel="tag">leetcode题解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/rabbitmq/" rel="tag">rabbitmq</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/redis/" rel="tag">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/shell/" rel="tag">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/spring/" rel="tag">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/springboot/" rel="tag">springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E4%BD%9C%E4%B8%9A/" rel="tag">作业</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%AE%9E%E9%AA%8C/" rel="tag">实验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%84%9F%E6%83%B3/" rel="tag">感想</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag">数据结构与算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E7%96%91%E9%97%AE/" rel="tag">疑问</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a></li></ul>
     </div>
   </div>
 
@@ -553,18 +621,18 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Nube de Tags</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/blog/tags/BUG/" style="font-size: 10px;">BUG</a> <a href="/blog/tags/RPC/" style="font-size: 10px;">RPC</a> <a href="/blog/tags/git/" style="font-size: 10px;">git</a> <a href="/blog/tags/java/" style="font-size: 20px;">java</a> <a href="/blog/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 10px;">java后端开发</a> <a href="/blog/tags/java%E6%BA%90%E7%A0%81/" style="font-size: 10px;">java源码</a> <a href="/blog/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/blog/tags/leetcode%E9%A2%98%E8%A7%A3/" style="font-size: 10px;">leetcode题解</a> <a href="/blog/tags/rabbitmq/" style="font-size: 10px;">rabbitmq</a> <a href="/blog/tags/redis/" style="font-size: 10px;">redis</a> <a href="/blog/tags/shell/" style="font-size: 10px;">shell</a> <a href="/blog/tags/spring/" style="font-size: 10px;">spring</a> <a href="/blog/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/blog/tags/test/" style="font-size: 10px;">test</a> <a href="/blog/tags/%E4%BD%9C%E4%B8%9A/" style="font-size: 10px;">作业</a> <a href="/blog/tags/%E6%84%9F%E6%83%B3/" style="font-size: 10px;">感想</a> <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 10px;">数据结构与算法</a> <a href="/blog/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a> <a href="/blog/tags/%E7%96%91%E9%97%AE/" style="font-size: 10px;">疑问</a> <a href="/blog/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">笔记</a> <a href="/blog/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a> <a href="/blog/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10px;">问题</a>
+      <a href="/blog/tags/BUG/" style="font-size: 10px;">BUG</a> <a href="/blog/tags/RPC/" style="font-size: 10px;">RPC</a> <a href="/blog/tags/git/" style="font-size: 10px;">git</a> <a href="/blog/tags/java/" style="font-size: 20px;">java</a> <a href="/blog/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 10px;">java后端开发</a> <a href="/blog/tags/java%E6%BA%90%E7%A0%81/" style="font-size: 10px;">java源码</a> <a href="/blog/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/blog/tags/leetcode/" style="font-size: 10px;">leetcode</a> <a href="/blog/tags/leetcode%E9%A2%98%E8%A7%A3/" style="font-size: 15px;">leetcode题解</a> <a href="/blog/tags/rabbitmq/" style="font-size: 10px;">rabbitmq</a> <a href="/blog/tags/redis/" style="font-size: 10px;">redis</a> <a href="/blog/tags/shell/" style="font-size: 10px;">shell</a> <a href="/blog/tags/spring/" style="font-size: 10px;">spring</a> <a href="/blog/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/blog/tags/test/" style="font-size: 10px;">test</a> <a href="/blog/tags/%E4%BD%9C%E4%B8%9A/" style="font-size: 10px;">作业</a> <a href="/blog/tags/%E5%AE%9E%E9%AA%8C/" style="font-size: 10px;">实验</a> <a href="/blog/tags/%E6%84%9F%E6%83%B3/" style="font-size: 10px;">感想</a> <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 10px;">数据结构与算法</a> <a href="/blog/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a> <a href="/blog/tags/%E7%96%91%E9%97%AE/" style="font-size: 10px;">疑问</a> <a href="/blog/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">笔记</a> <a href="/blog/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/blog/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 15px;">设计模式</a> <a href="/blog/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10px;">问题</a>
     </div>
   </div>
 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archivos</h3>
+    <h3 class="widget-title">Archiv</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2022/12/">December 2022</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2022/12/">December 2022</a></li></ul>
     </div>
   </div>
 
@@ -572,28 +640,28 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Posts recientes</h3>
+    <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
         
           <li>
+            <a href="/blog/2024/04/14/leetcode530/">leetcode530二叉搜索树的最小绝对值</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/04/14/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E5%AE%9E%E9%AA%8C2/">算法设计与分析实验2</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/03/18/%E7%AB%9E%E8%B5%9B%E4%B9%8B%E5%8F%96%E6%95%B4%E5%87%BD%E6%95%B0/">竞赛之取整函数</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/03/15/leetcode73%E7%9F%A9%E9%98%B5%E7%BD%AE%E9%9B%B6/">leetcode73矩阵置零</a>
+          </li>
+        
+          <li>
             <a href="/blog/2024/03/14/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/">设计模式之适配器模式</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2024/03/09/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E6%A8%A1%E6%9D%BF%E6%A8%A1%E5%BC%8F/">设计模式之模板模式</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2024/03/09/lc162%E5%AF%BB%E6%89%BE%E5%B1%B1%E5%B3%B0/">lc162寻找山峰</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2024/03/09/Untitled%201/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2024/02/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/">java动态代理</a>
           </li>
         
       </ul>
@@ -610,7 +678,7 @@
     <div id="footer-info" class="inner">
       
       &copy; 2024 myself<br>
-      Construido por <a href="https://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>

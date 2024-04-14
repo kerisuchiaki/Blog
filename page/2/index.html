@@ -61,12 +61,12 @@
       <nav id="sub-nav">
         
         
-          <a class="nav-icon" href="/blog/atom.xml" title="RSS"><span class="fa fa-rss"></span></a>
+          <a class="nav-icon" href="/blog/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
         
-        <a class="nav-icon nav-search-btn" title="Buscar"><span class="fa fa-search"></span></a>
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Buscar"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://gitee.com/lanceluot/blog.git"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://gitee.com/lanceluot/blog.git"></form>
       </div>
     </div>
   </div>
@@ -74,6 +74,141 @@
 
       <div class="outer">
         <section id="main">
+  
+    <article id="post-ThreadLocal解读" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/02/23/ThreadLocal%E8%A7%A3%E8%AF%BB/" class="article-date">
+  <time class="dt-published" datetime="2024-02-22T18:12:00.000Z" itemprop="datePublished">2024-02-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/blog/2024/02/23/ThreadLocal%E8%A7%A3%E8%AF%BB/">ThreadLocal解读</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="ThreadLocal全面解析"><a href="#ThreadLocal全面解析" class="headerlink" title="ThreadLocal全面解析"></a>ThreadLocal全面解析</h1><p><strong>前置知识</strong></p>
+<ul>
+<li>具有一定的javase和javaweb基础</li>
+<li>熟悉synchronized关键字</li>
+<li>熟悉HashMap</li>
+<li>熟悉 JDBC技术</li>
+</ul>
+<p><strong>学习目标</strong></p>
+<ul>
+<li><strong>了解ThreadLocal的介绍</strong> </li>
+<li><strong>掌握ThreadLocal的运用场景</strong></li>
+<li><strong>了解ThreadLocal的内部结构</strong></li>
+<li><strong>了解ThreadLocal的核心方法源码</strong></li>
+<li><strong>了解ThreadLocalMap的源码</strong></li>
+</ul>
+<h2 id="1-ThreadLocal介绍"><a href="#1-ThreadLocal介绍" class="headerlink" title="1. ThreadLocal介绍"></a>1. ThreadLocal介绍</h2>
+        
+          <p class="article-more-link">
+            <a href="/blog/2024/02/23/ThreadLocal%E8%A7%A3%E8%AF%BB/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://gitee.com/lanceluot/blog.git/2024/02/23/ThreadLocal%E8%A7%A3%E8%AF%BB/" data-id="clsxjlpso0000i45bhz3gd9z0" data-title="ThreadLocal解读" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java/" rel="tag">java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Untitled" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/02/23/Untitled/" class="article-date">
+  <time class="dt-published" datetime="2024-02-22T18:10:45.292Z" itemprop="datePublished">2024-02-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://gitee.com/lanceluot/blog.git/2024/02/23/Untitled/" data-id="clsxjlpsv0003i45bf3r54w3z" data-title="" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-外卖项目再剖析" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/01/14/%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E5%86%8D%E5%89%96%E6%9E%90/" class="article-date">
+  <time class="dt-published" datetime="2024-01-14T14:00:24.000Z" itemprop="datePublished">2024-01-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/blog/2024/01/14/%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E5%86%8D%E5%89%96%E6%9E%90/">外卖项目再剖析</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>对于之前只是跟着敲着的外卖项目，以为很简单，什么都做完了，结果最近重新运行很多功能都没完成，还是有很多不懂的地方，我果然还是太菜了，现在尝试增加和优化功能</p>
+<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><p>想着修改前端，美化一下，毕竟只有一个手机号短信验证登录，太简单了，网上找了一个前端登录注册页面，但是拿来用时，老是遇到很多问题</p>
+<h3 id="前端接受的响应问题"><a href="#前端接受的响应问题" class="headerlink" title="前端接受的响应问题"></a>前端接受的响应问题</h3><p>F12查看返回结果，是没问题的，但是前端的代码：</p>
+        
+          <p class="article-more-link">
+            <a href="/blog/2024/01/14/%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E5%86%8D%E5%89%96%E6%9E%90/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://gitee.com/lanceluot/blog.git/2024/01/14/%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E5%86%8D%E5%89%96%E6%9E%90/" data-id="clrokl3gl0000xo5bgl7m4mfb" data-title="外卖项目再剖析" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/springboot/" rel="tag">springboot</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
   
     <article id="post-java中的spi机制" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
@@ -111,7 +246,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2024/01/13/java%E4%B8%AD%E7%9A%84spi%E6%9C%BA%E5%88%B6/" data-id="clraxfrvp00007k5b8l5k8n99" data-title="java中的spi机制" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
+      <a data-url="https://gitee.com/lanceluot/blog.git/2024/01/13/java%E4%B8%AD%E7%9A%84spi%E6%9C%BA%E5%88%B6/" data-id="clraxfrvp00007k5b8l5k8n99" data-title="java中的spi机制" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -156,7 +291,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2024/01/07/Java%E4%B8%AD%E7%9A%84%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B/" data-id="clr3kgio10000pk5b9xcc50mh" data-title="Java中的对象类型" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
+      <a data-url="https://gitee.com/lanceluot/blog.git/2024/01/07/Java%E4%B8%AD%E7%9A%84%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B/" data-id="clr3kgio10000pk5b9xcc50mh" data-title="Java中的对象类型" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -201,7 +336,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2023/10/27/git%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE/" data-id="clo8qwtzp0000mw5bfodu3v5r" data-title="git初始化一个项目" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
+      <a data-url="https://gitee.com/lanceluot/blog.git/2023/10/27/git%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE/" data-id="clo8qwtzp0000mw5bfodu3v5r" data-title="git初始化一个项目" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -255,7 +390,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2023/10/26/spring%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8B%A6%E6%88%AA%E5%99%A8%E4%B8%8E%E8%BF%87%E6%BB%A4%E5%99%A8%E7%9A%84%E5%8C%BA%E5%88%AB/" data-id="clo761j4f0000w85bhk35bjb7" data-title="spring学习笔记-拦截器与过滤器的区别" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
+      <a data-url="https://gitee.com/lanceluot/blog.git/2023/10/26/spring%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E6%8B%A6%E6%88%AA%E5%99%A8%E4%B8%8E%E8%BF%87%E6%BB%A4%E5%99%A8%E7%9A%84%E5%8C%BA%E5%88%AB/" data-id="clo761j4f0000w85bhk35bjb7" data-title="spring学习笔记-拦截器与过滤器的区别" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -301,7 +436,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2023/10/16/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" data-id="clnt0cabr00003s5bbcfef0lm" data-title="设计模式之单例模式" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
+      <a data-url="https://gitee.com/lanceluot/blog.git/2023/10/16/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" data-id="clnt0cabr00003s5bbcfef0lm" data-title="设计模式之单例模式" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -348,7 +483,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2023/10/16/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F/" data-id="clrokl3gp0001xo5b6rlhaz7u" data-title="设计模式之访问者模式" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
+      <a data-url="https://gitee.com/lanceluot/blog.git/2023/10/16/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F/" data-id="clrokl3gp0001xo5b6rlhaz7u" data-title="设计模式之访问者模式" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -390,7 +525,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2023/10/04/jvm%E5%AD%97%E8%8A%82%E7%A0%81%E6%8C%87%E4%BB%A4/" data-id="clnao7riy0000yg5bbwdo7cfw" data-title="jvm字节码指令" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
+      <a data-url="https://gitee.com/lanceluot/blog.git/2023/10/04/jvm%E5%AD%97%E8%8A%82%E7%A0%81%E6%8C%87%E4%BB%A4/" data-id="clnao7riy0000yg5bbwdo7cfw" data-title="jvm字节码指令" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -404,137 +539,11 @@
 
 
   
-    <article id="post-关于字符串常量池的疑问" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/blog/2023/10/02/%E5%85%B3%E4%BA%8E%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E9%87%8F%E6%B1%A0%E7%9A%84%E7%96%91%E9%97%AE/" class="article-date">
-  <time class="dt-published" datetime="2023-10-02T10:19:00.000Z" itemprop="datePublished">2023-10-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2023/10/02/%E5%85%B3%E4%BA%8E%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E9%87%8F%E6%B1%A0%E7%9A%84%E7%96%91%E9%97%AE/">关于字符串常量池的疑问</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="String-intern-的疑问"><a href="#String-intern-的疑问" class="headerlink" title="String.intern()的疑问"></a>String.intern()的疑问</h1><p>先看代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.yuyonghai;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo_8</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        Scanner in=<span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> in.nextLine();</span><br><span class="line">        String s1=s.intern();</span><br><span class="line">        System.out.println(s==s1);</span><br><span class="line">        String str=<span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;a&quot;</span>)+<span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;b&quot;</span>);</span><br><span class="line">        String s2=str.intern();</span><br><span class="line">        System.out.println(str == s2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>为什么这段代码在读入一个字符串后会输出</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span></span><br><span class="line"><span class="literal">false</span></span><br><span class="line"><span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<p>第一个false意味调用false会调用intern没命中后在字符串常量池中创建了一个对象并且返回了这个对象，但是第二个true却意味着没命中但是在常量池中引用堆中的原始对象，非常奇怪，两次调用的intern不一样</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2023/10/02/%E5%85%B3%E4%BA%8E%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E9%87%8F%E6%B1%A0%E7%9A%84%E7%96%91%E9%97%AE/" data-id="cln8r6yyg0000po5bbfmj6usk" data-title="关于字符串常量池的疑问" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E7%96%91%E9%97%AE/" rel="tag">疑问</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-jvm学习笔记-常量池" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/blog/2023/10/01/jvm%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%B8%B8%E9%87%8F%E6%B1%A0/" class="article-date">
-  <time class="dt-published" datetime="2023-10-01T07:29:25.000Z" itemprop="datePublished">2023-10-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2023/10/01/jvm%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%B8%B8%E9%87%8F%E6%B1%A0/">jvm学习笔记-常量池</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h1><p>思考下面的代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.yuyonghai;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo_2</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        String s=<span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;a&quot;</span>)+<span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;b&quot;</span>);</span><br><span class="line">        System.out.println(System.identityHashCode(s));</span><br><span class="line"></span><br><span class="line">        String str=s;</span><br><span class="line">        System.out.println(System.identityHashCode(str));</span><br><span class="line"></span><br><span class="line">        System.out.println(s==str);</span><br><span class="line">                 str=s.intern();</span><br><span class="line">        System.out.println(<span class="string">&quot;-----------&quot;</span>);</span><br><span class="line">        System.out.println(System.identityHashCode(<span class="string">&quot;ab&quot;</span>));</span><br><span class="line"></span><br><span class="line">        System.out.println(System.identityHashCode(s));</span><br><span class="line">        System.out.println(System.identityHashCode(str));<span class="comment">//为什么str的内存地址没改变</span></span><br><span class="line"></span><br><span class="line">        System.out.println(s==<span class="string">&quot;ab&quot;</span>);</span><br><span class="line">        System.out.println(s==str);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>结果为：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">460141958</span><br><span class="line">460141958</span><br><span class="line">true</span><br><span class="line">-----------</span><br><span class="line">460141958</span><br><span class="line">460141958</span><br><span class="line">460141958</span><br><span class="line">true</span><br><span class="line">true</span><br></pre></td></tr></table></figure>
-
-<p>为什么调用intern（）后str的内存地址没有指向常量池的”ab”实例？</p>
-<h1 id="常量池"><a href="#常量池" class="headerlink" title="常量池"></a>常量池</h1><p>常量池是字节码文件中的一个重要部分，存储了各种常量的信息，例如字符串、类引用、方法引用等</p>
-<h1 id="intern-函数"><a href="#intern-函数" class="headerlink" title="intern()函数"></a>intern()函数</h1><ul>
-<li>intern方法：native 方法，调用此方法时，如果池中已经包含等于此对象值的字符串，就返回池中的字符串；否则，将返回的引用指向当前的字符串；1.6版本需要将当前对象复制一份到池中，1.7后如果字符串常量池中没有的话，也不会在字符串常量池中创建新的示例而是直接指向堆中的实例，即常量池中的为类引用</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2023/10/01/jvm%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%B8%B8%E9%87%8F%E6%B1%A0/" data-id="cln75ely40001cs5b30gv30yl" data-title="jvm学习笔记-常量池" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/jvm/" rel="tag">jvm</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-建模" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/blog/2023/09/22/%E5%BB%BA%E6%A8%A1/" class="article-date">
-  <time class="dt-published" datetime="2023-09-22T13:55:22.563Z" itemprop="datePublished">2023-09-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2023/09/22/%E5%BB%BA%E6%A8%A1/" data-id="cln75ely90004cs5bdn08hfe1" data-title="" class="article-share-link"><span class="fa fa-share">Compartir</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/blog/">&laquo; Previo</a><a class="page-number" href="/blog/">1</a><span class="page-number current">2</span><a class="page-number" href="/blog/page/3/">3</a><a class="page-number" href="/blog/page/4/">4</a><a class="extend next" rel="next" href="/blog/page/3/">Siguiente &raquo;</a>
+    <a class="extend prev" rel="prev" href="/blog/">&laquo; zurück</a><a class="page-number" href="/blog/">1</a><span class="page-number current">2</span><a class="page-number" href="/blog/page/3/">3</a><a class="page-number" href="/blog/page/4/">4</a><a class="extend next" rel="next" href="/blog/page/3/">weiter &raquo;</a>
   </nav>
 
 </section>
@@ -543,7 +552,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categorías</h3>
+    <h3 class="widget-title">Kategorien</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a></li></ul>
     </div>
@@ -555,7 +564,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/BUG/" rel="tag">BUG</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/RPC/" rel="tag">RPC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" rel="tag">java后端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java%E6%BA%90%E7%A0%81/" rel="tag">java源码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/jvm/" rel="tag">jvm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/leetcode%E9%A2%98%E8%A7%A3/" rel="tag">leetcode题解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/rabbitmq/" rel="tag">rabbitmq</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/redis/" rel="tag">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/shell/" rel="tag">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/spring/" rel="tag">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/springboot/" rel="tag">springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E4%BD%9C%E4%B8%9A/" rel="tag">作业</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%84%9F%E6%83%B3/" rel="tag">感想</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag">数据结构与算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E7%96%91%E9%97%AE/" rel="tag">疑问</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/BUG/" rel="tag">BUG</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/RPC/" rel="tag">RPC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" rel="tag">java后端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java%E6%BA%90%E7%A0%81/" rel="tag">java源码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/jvm/" rel="tag">jvm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/leetcode/" rel="tag">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/leetcode%E9%A2%98%E8%A7%A3/" rel="tag">leetcode题解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/rabbitmq/" rel="tag">rabbitmq</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/redis/" rel="tag">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/shell/" rel="tag">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/spring/" rel="tag">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/springboot/" rel="tag">springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E4%BD%9C%E4%B8%9A/" rel="tag">作业</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%AE%9E%E9%AA%8C/" rel="tag">实验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%84%9F%E6%83%B3/" rel="tag">感想</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag">数据结构与算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E7%96%91%E9%97%AE/" rel="tag">疑问</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a></li></ul>
     </div>
   </div>
 
@@ -563,18 +572,18 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Nube de Tags</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/blog/tags/BUG/" style="font-size: 10px;">BUG</a> <a href="/blog/tags/RPC/" style="font-size: 10px;">RPC</a> <a href="/blog/tags/git/" style="font-size: 10px;">git</a> <a href="/blog/tags/java/" style="font-size: 20px;">java</a> <a href="/blog/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 10px;">java后端开发</a> <a href="/blog/tags/java%E6%BA%90%E7%A0%81/" style="font-size: 10px;">java源码</a> <a href="/blog/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/blog/tags/leetcode%E9%A2%98%E8%A7%A3/" style="font-size: 10px;">leetcode题解</a> <a href="/blog/tags/rabbitmq/" style="font-size: 10px;">rabbitmq</a> <a href="/blog/tags/redis/" style="font-size: 10px;">redis</a> <a href="/blog/tags/shell/" style="font-size: 10px;">shell</a> <a href="/blog/tags/spring/" style="font-size: 10px;">spring</a> <a href="/blog/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/blog/tags/test/" style="font-size: 10px;">test</a> <a href="/blog/tags/%E4%BD%9C%E4%B8%9A/" style="font-size: 10px;">作业</a> <a href="/blog/tags/%E6%84%9F%E6%83%B3/" style="font-size: 10px;">感想</a> <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 10px;">数据结构与算法</a> <a href="/blog/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a> <a href="/blog/tags/%E7%96%91%E9%97%AE/" style="font-size: 10px;">疑问</a> <a href="/blog/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">笔记</a> <a href="/blog/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a> <a href="/blog/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10px;">问题</a>
+      <a href="/blog/tags/BUG/" style="font-size: 10px;">BUG</a> <a href="/blog/tags/RPC/" style="font-size: 10px;">RPC</a> <a href="/blog/tags/git/" style="font-size: 10px;">git</a> <a href="/blog/tags/java/" style="font-size: 20px;">java</a> <a href="/blog/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 10px;">java后端开发</a> <a href="/blog/tags/java%E6%BA%90%E7%A0%81/" style="font-size: 10px;">java源码</a> <a href="/blog/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/blog/tags/leetcode/" style="font-size: 10px;">leetcode</a> <a href="/blog/tags/leetcode%E9%A2%98%E8%A7%A3/" style="font-size: 15px;">leetcode题解</a> <a href="/blog/tags/rabbitmq/" style="font-size: 10px;">rabbitmq</a> <a href="/blog/tags/redis/" style="font-size: 10px;">redis</a> <a href="/blog/tags/shell/" style="font-size: 10px;">shell</a> <a href="/blog/tags/spring/" style="font-size: 10px;">spring</a> <a href="/blog/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/blog/tags/test/" style="font-size: 10px;">test</a> <a href="/blog/tags/%E4%BD%9C%E4%B8%9A/" style="font-size: 10px;">作业</a> <a href="/blog/tags/%E5%AE%9E%E9%AA%8C/" style="font-size: 10px;">实验</a> <a href="/blog/tags/%E6%84%9F%E6%83%B3/" style="font-size: 10px;">感想</a> <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 10px;">数据结构与算法</a> <a href="/blog/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a> <a href="/blog/tags/%E7%96%91%E9%97%AE/" style="font-size: 10px;">疑问</a> <a href="/blog/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">笔记</a> <a href="/blog/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/blog/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 15px;">设计模式</a> <a href="/blog/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10px;">问题</a>
     </div>
   </div>
 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archivos</h3>
+    <h3 class="widget-title">Archiv</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2022/12/">December 2022</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2022/12/">December 2022</a></li></ul>
     </div>
   </div>
 
@@ -582,28 +591,28 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Posts recientes</h3>
+    <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
         
           <li>
+            <a href="/blog/2024/04/14/leetcode530/">leetcode530二叉搜索树的最小绝对值</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/04/14/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E5%AE%9E%E9%AA%8C2/">算法设计与分析实验2</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/03/18/%E7%AB%9E%E8%B5%9B%E4%B9%8B%E5%8F%96%E6%95%B4%E5%87%BD%E6%95%B0/">竞赛之取整函数</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/03/15/leetcode73%E7%9F%A9%E9%98%B5%E7%BD%AE%E9%9B%B6/">leetcode73矩阵置零</a>
+          </li>
+        
+          <li>
             <a href="/blog/2024/03/14/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/">设计模式之适配器模式</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2024/03/09/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E6%A8%A1%E6%9D%BF%E6%A8%A1%E5%BC%8F/">设计模式之模板模式</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2024/03/09/lc162%E5%AF%BB%E6%89%BE%E5%B1%B1%E5%B3%B0/">lc162寻找山峰</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2024/03/09/Untitled%201/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2024/02/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/">java动态代理</a>
           </li>
         
       </ul>
@@ -620,7 +629,7 @@
     <div id="footer-info" class="inner">
       
       &copy; 2024 myself<br>
-      Construido por <a href="https://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
