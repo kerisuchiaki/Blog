@@ -4,17 +4,35 @@
   <meta charset="utf-8">
   
   
-  <title>hatena</title>
+  <title>操作系统实践-实现一个fat12文件系统 | hatena</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="hatena&#39;s blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="hatena">
-<meta property="og:url" content="https://gitee.com/lanceluot/blog.git/index.html">
+  <meta name="description" content="1. 基本信息   姓名 学号 班级 是否抄袭 是否分组    yyh 2021****117 计算2114 否 否   实现了哪些功能（已实现，并且测试正确的打勾）   打印当前目录下所有文件和目录名，类似于ls简易版  打印文件&#x2F;目录的文件控制块  打印整个文件分配表  切换目录，类似于cd功能  创建文件、删除文件  创建目录、删除文件  cat命令查看文件(额外实现)  2. 功">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统实践-实现一个fat12文件系统">
+<meta property="og:url" content="https://gitee.com/lanceluot/blog.git/2024/04/30/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E8%B7%B5-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAfat12%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/index.html">
 <meta property="og:site_name" content="hatena">
-<meta property="og:description" content="hatena&#39;s blog">
+<meta property="og:description" content="1. 基本信息   姓名 学号 班级 是否抄袭 是否分组    yyh 2021****117 计算2114 否 否   实现了哪些功能（已实现，并且测试正确的打勾）   打印当前目录下所有文件和目录名，类似于ls简易版  打印文件&#x2F;目录的文件控制块  打印整个文件分配表  切换目录，类似于cd功能  创建文件、删除文件  创建目录、删除文件  cat命令查看文件(额外实现)  2. 功">
 <meta property="og:locale" content="zn_CN">
+<meta property="og:image" content="https://gitee.com/blog/img/image-20230623225929061.png">
+<meta property="og:image" content="https://gitee.com/blog/img/image-20230623230722029.png">
+<meta property="og:image" content="https://gitee.com/blog/img/image-20230623222255133.png">
+<meta property="og:image" content="https://gitee.com/blog/img/image-20230623222559771.png">
+<meta property="og:image" content="https://gitee.com/blog/img/image-20230623223601753.png">
+<meta property="og:image" content="https://gitee.com/blog/img/image-20230623223639776.png">
+<meta property="og:image" content="https://gitee.com/blog/img/image-20230623214228340.png">
+<meta property="og:image" content="https://gitee.com/blog/img/image-20230623214429206.png">
+<meta property="og:image" content="https://gitee.com/blog/img/image-20230623214937354.png">
+<meta property="og:image" content="https://gitee.com/blog/img/image-20230623215111176.png">
+<meta property="og:image" content="https://gitee.com/blog/img/image-20230623215053138.png">
+<meta property="og:image" content="https://gitee.com/blog/img/image-20230623214750670.png">
+<meta property="og:image" content="https://gitee.com/blog/img/image-20230623214725323.png">
+<meta property="og:image" content="https://gitee.com/blog/img/image-20230623225853302.png">
+<meta property="article:published_time" content="2024-04-30T15:57:51.000Z">
+<meta property="article:modified_time" content="2024-04-30T16:24:49.457Z">
 <meta property="article:author" content="myself">
+<meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/blog/img/image-20230623225929061.png">
   
     <link rel="alternate" href="/blog/atom.xml" title="hatena" type="application/atom+xml">
   
@@ -73,9 +91,7 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-操作系统实践-实现一个fat12文件系统" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-操作系统实践-实现一个fat12文件系统" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/blog/2024/04/30/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E8%B7%B5-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAfat12%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="article-date">
   <time class="dt-published" datetime="2024-04-30T15:57:51.000Z" itemprop="datePublished">2024-04-30</time>
@@ -88,8 +104,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2024/04/30/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E8%B7%B5-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAfat12%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">操作系统实践-实现一个fat12文件系统</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      操作系统实践-实现一个fat12文件系统
     </h1>
   
 
@@ -213,477 +229,20 @@
     </footer>
   </div>
   
-</article>
-
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-LambdaQuery-和-Query的区别" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/blog/2024/04/25/LambdaQuery-%E5%92%8C-Query%E7%9A%84%E5%8C%BA%E5%88%AB/" class="article-date">
-  <time class="dt-published" datetime="2024-04-25T08:02:44.000Z" itemprop="datePublished">2024-04-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2024/04/25/LambdaQuery-%E5%92%8C-Query%E7%9A%84%E5%8C%BA%E5%88%AB/">LambdaQuery 和 Query的区别</a>
-    </h1>
+    <a href="/blog/2024/04/25/LambdaQuery-%E5%92%8C-Query%E7%9A%84%E5%8C%BA%E5%88%AB/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">LambdaQuery 和 Query的区别</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>在 MyBatis-Plus 中，<code>LambdaQuery</code> 和 <code>Query</code> 是两种不同的查询包装器，它们提供了不同的查询构建方式：</p>
-<ol>
-<li><strong>QueryWrapper</strong>：<ul>
-<li><code>QueryWrapper</code> 是 MyBatis-Plus 提供的一个通用查询包装器，它允许您以链式调用的方式构建复杂的查询条件。</li>
-<li>它不依赖于实体类的字段，而是使用字符串来指定字段名，这使得它在某些情况下更加灵活，但也增加了字段名拼写错误的风险。</li>
-</ul>
-</li>
-<li><strong>LambdaQueryWrapper</strong>：<ul>
-<li><code>LambdaQueryWrapper</code> 是 <code>QueryWrapper</code> 的一个特殊版本，它使用 Java 8 的 Lambda 表达式来引用实体类的字段。</li>
-<li>通过 Lambda 表达式，您可以安全地引用实体类中的字段，而不必担心字段名拼写错误，因为编译器会在编译时检查字段名。</li>
-<li><code>LambdaQueryWrapper</code> 提供了类型安全的查询构建方式，通常被认为是更现代和更安全的选择。</li>
-</ul>
-</li>
-</ol>
-<p>以下是两种查询包装器的使用示例：</p>
-        
-          <p class="article-more-link">
-            <a href="/blog/2024/04/25/LambdaQuery-%E5%92%8C-Query%E7%9A%84%E5%8C%BA%E5%88%AB/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2024/04/25/LambdaQuery-%E5%92%8C-Query%E7%9A%84%E5%8C%BA%E5%88%AB/" data-id="clvmln0090000kk5bbpbm79l9" data-title="LambdaQuery 和 Query的区别" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java/" rel="tag">java</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
 
-
-
-  
-    <article id="post-LambdaQuery和Query的区别" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/blog/2024/04/25/LambdaQuery%E5%92%8CQuery%E7%9A%84%E5%8C%BA%E5%88%AB/" class="article-date">
-  <time class="dt-published" datetime="2024-04-25T08:00:08.000Z" itemprop="datePublished">2024-04-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2024/04/25/LambdaQuery%E5%92%8CQuery%E7%9A%84%E5%8C%BA%E5%88%AB/">LambdaQuery和Query的区别</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2024/04/25/LambdaQuery%E5%92%8CQuery%E7%9A%84%E5%8C%BA%E5%88%AB/" data-id="clvmln00e0001kk5beb0z6h8x" data-title="LambdaQuery和Query的区别" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-leetcode530" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/blog/2024/04/14/leetcode530/" class="article-date">
-  <time class="dt-published" datetime="2024-04-14T12:08:19.000Z" itemprop="datePublished">2024-04-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2024/04/14/leetcode530/">leetcode530二叉搜索树的最小绝对值</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个二叉搜索树的根节点 <code>root</code> ，返回 <strong>树中任意两不同节点值之间的最小差值</strong> 。</p>
-<p>差值是一个正数，其数值等于两值之差的绝对值。</p>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>做这种题，我们需要知道二叉搜索树的一个特性，即中序遍历的结果是有序升序的数组，那么求书中最小的两个节点的差值最小显然是中序遍历的数组的相邻的两个元素，毕竟在树中就是一个节点的左子树最右边和右子树最左边是和节点差值最小的，而中序遍历的特点就是先处理左子树，再梳理节点，最后在处理右子树，当处理完左子树时，除了最左边元素没有上一个元素，其它元素都有，用一个变量pre记录处理左子树后上一个处理元素，即可计算上一个元素与当前节点的差值，每次计算完差值就更新pre，重复上述步骤即可</p>
-        
-          <p class="article-more-link">
-            <a href="/blog/2024/04/14/leetcode530/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2024/04/14/leetcode530/" data-id="cluzhunsy0001ko5b3kgz0v5r" data-title="leetcode530二叉搜索树的最小绝对值" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/leetcode/" rel="tag">leetcode</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-算法设计与分析实验2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/blog/2024/04/14/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E5%AE%9E%E9%AA%8C2/" class="article-date">
-  <time class="dt-published" datetime="2024-04-14T11:48:53.000Z" itemprop="datePublished">2024-04-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2024/04/14/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E5%AE%9E%E9%AA%8C2/">算法设计与分析实验2</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <table>
-<thead>
-<tr>
-<th><em><strong>*实验项目*</strong></em></th>
-<th>分治法的应用</th>
-<th><em><strong>*指导老师*</strong></em></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><em><strong>*实验目的*</strong></em></td>
-<td>学习分治法的思想和应用</td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id="一、实验内容"><a href="#一、实验内容" class="headerlink" title="一、实验内容"></a>一、实验内容</h2><p>1.某石油公司有n口油井，为方便输送石油，计划修建输油管道。根据设计要求，水平方向有一条主管道，每口油井修一条垂直方向的支线管道通向主管道。请设计一种算法确定主管道的位置，使得所有油井到主管道之间的支线管道长度的总和最小</p>
-<p>2.Karatsuba乘法用于实现两个大整数相乘。所谓大整数相乘是指整数比较大，相乘的结果超出了基本数据类型的表示范围，所以不能直接做乘法运算。算法的基本原理是将大整数拆分成两段后变成较小的整数，请设计分治算法说明Karatsuba乘法的原理，并实现该算法。</p>
-<h2 id="二、问题分析"><a href="#二、问题分析" class="headerlink" title="二、问题分析"></a>二、问题分析</h2><h3 id="1-铺设油井管道"><a href="#1-铺设油井管道" class="headerlink" title="1.铺设油井管道"></a>1.铺设油井管道</h3><p>这个显然是将管道铺在中间最合适，因为极端情况管道在最上方和最下方都会使得距离很大，那么管道的位置也显然之能是所有油井的中间位置，那么问题就转换为求所有的油井的中位数了，我们可以先进行排序然后在取中间值，但是由于排序算法的时间复杂度最快也是O(ologn)，这不满足题目要求，要使用O(n)的算法，我们可以使用分治策略求解，具体就是快速选择算法，它可以让我们在O(n）的时间内选出第k大的数。</p>
-<h3 id="2-Karatsuba乘法"><a href="#2-Karatsuba乘法" class="headerlink" title="2.Karatsuba乘法"></a>2.Karatsuba乘法</h3><p>由karartsuba算法的原理我们知道，对于竖式乘法，如果把数分成两部分分别相乘，那么会进行4次乘法，三次加法，而使用Karatsuba算法,可以减少一次乘法，7次加法，这使得大数乘法的时间可以得到优化，我们可以使用分治法来实现这个算法，即进行两个大数的乘法，可以转换为三次小的乘法和一些加法来完成，然后递归进行即可</p>
-        
-          <p class="article-more-link">
-            <a href="/blog/2024/04/14/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E5%AE%9E%E9%AA%8C2/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2024/04/14/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E5%AE%9E%E9%AA%8C2/" data-id="cluzhunt50005ko5bg3165qcn" data-title="算法设计与分析实验2" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E5%AE%9E%E9%AA%8C/" rel="tag">实验</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-竞赛之取整函数" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/blog/2024/03/18/%E7%AB%9E%E8%B5%9B%E4%B9%8B%E5%8F%96%E6%95%B4%E5%87%BD%E6%95%B0/" class="article-date">
-  <time class="dt-published" datetime="2024-03-18T12:40:24.000Z" itemprop="datePublished">2024-03-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2024/03/18/%E7%AB%9E%E8%B5%9B%E4%B9%8B%E5%8F%96%E6%95%B4%E5%87%BD%E6%95%B0/">竞赛之取整函数</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="取整函数"><a href="#取整函数" class="headerlink" title="取整函数"></a>取整函数</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>noip p1515</p>
-<p>关于整数y&#x2F;x向上取整为什么是（y+x-1)&#x2F;x?这歌问题曾一度让我百思不得其解，现在我终于知道了，若y能被x整除，则x-1小于x等价于y多出来但又不够除x的部分使得结果还是y&#x2F;x，但是若y不能x整除，即y除了被x整除的部分肯定还多出来不到x的部分再加一个x-1那就能凑够被x整出了，前提是x&gt;&#x3D;1,即x-1不能小于0，即小数相除向上取整就可能是负的进而失效</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2024/03/18/%E7%AB%9E%E8%B5%9B%E4%B9%8B%E5%8F%96%E6%95%B4%E5%87%BD%E6%95%B0/" data-id="cluzhunt40004ko5b4radcmz3" data-title="竞赛之取整函数" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-leetcode73矩阵置零" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/blog/2024/03/15/leetcode73%E7%9F%A9%E9%98%B5%E7%BD%AE%E9%9B%B6/" class="article-date">
-  <time class="dt-published" datetime="2024-03-15T14:51:47.000Z" itemprop="datePublished">2024-03-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2024/03/15/leetcode73%E7%9F%A9%E9%98%B5%E7%BD%AE%E9%9B%B6/">leetcode73矩阵置零</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="73-矩阵置零"><a href="#73-矩阵置零" class="headerlink" title="73. 矩阵置零"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/set-matrix-zeroes/">73. 矩阵置零</a></h2><p>给定一个矩阵，若其中一个元素为零，则将其余行和列的元素都置为零</p>
-<p><strong>示例 1：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2020/08/17/mat1.jpg" alt="img"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：matrix = [[1,1,1],[1,0,1],[1,1,1]]</span><br><span class="line">输出：[[1,0,1],[0,0,0],[1,0,1]]</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 2：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2020/08/17/mat2.jpg" alt="img"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：matrix = [[0,1,2,0],[3,4,5,2],[1,3,1,5]]</span><br><span class="line">输出：[[0,0,0,0],[0,4,5,0],[0,3,1,0]]</span><br></pre></td></tr></table></figure>
-
-<p><strong>提示：</strong></p>
-<ul>
-<li><code>m == matrix.length</code></li>
-<li><code>n == matrix[0].length</code></li>
-<li><code>1 &lt;= m, n &lt;= 200</code></li>
-<li><code>-231 &lt;= matrix[i][j] &lt;= 231 - 1</code></li>
-</ul>
-<h2 id="题解代码"><a href="#题解代码" class="headerlink" title="题解代码"></a>题解代码</h2><p>时间复杂度，显然必须要遍历每一个元素，那么复杂度就是O(m*n)了；</p>
-<p>空间复杂度一定是矩阵的大小了,可以优化的也就只有额外的空间，显然的思路就是使用一个标记矩阵记录，可以复制原先矩阵元素的大小，显示遍历一次当我们的举证元素为零时，记为零，但我们第二次遍历时，直接和这个标记矩阵做对比，或者做异或运算就可以将原先举证置为零，空间是就是两倍的矩阵大小</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setZeroes</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; matrix)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> m=matrix.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> n=matrix[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">a</span><span class="params">(m)</span>,<span class="title">b</span><span class="params">(n)</span></span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;m;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;n;j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(matrix[i][j]==<span class="number">0</span>)&#123;</span><br><span class="line">                    a[i]=<span class="number">1</span>;b[j]=<span class="number">1</span>;                    </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;m;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;n;j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(a[i]!=<span class="number">0</span>||b[j]!=<span class="number">0</span>)matrix[i][j]=<span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2024/03/15/leetcode73%E7%9F%A9%E9%98%B5%E7%BD%AE%E9%9B%B6/" data-id="cluzhunsw0000ko5b6pxx1cmv" data-title="leetcode73矩阵置零" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/leetcode%E9%A2%98%E8%A7%A3/" rel="tag">leetcode题解</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-设计模式之适配器模式" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/blog/2024/03/14/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/" class="article-date">
-  <time class="dt-published" datetime="2024-03-13T16:22:54.000Z" itemprop="datePublished">2024-03-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2024/03/14/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/">设计模式之适配器模式</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="什么是适配器模式"><a href="#什么是适配器模式" class="headerlink" title="什么是适配器模式"></a>什么是适配器模式</h2><p>适配器模式的核心思想是将一个类的接口转换成客户希朼的另外一个接口，使得原本由于接口不兼容而不能一起工作的那些类可以一起工作</p>
-<h2 id="适配器模式在Bean销毁中的应用"><a href="#适配器模式在Bean销毁中的应用" class="headerlink" title="适配器模式在Bean销毁中的应用"></a>适配器模式在Bean销毁中的应用</h2><p>在软件开发中，经常会遇到不同接口之间的兼容性问题。适配器模式就是为了解决这类问题而诞生的，它可以将一个类的接口转换成客户希望的另外一个接口，使得原本由于接口不兼容而不能一起工作的那些类可以一起工作。今天我们来看一下适配器模式在Bean销毁中的应用。</p>
-<p>在Spring框架中，Bean的销毁是一个重要的环节，通常需要执行一些特定的操作，比如释放资源、关闭连接等。但是不同的Bean可能有不同的销毁方法，有些是通过实现特定的接口，有些是通过在配置文件中指定销毁方法。为了统一处理这些不同的销毁方式，可以使用适配器模式来简化操作。</p>
-<p>我们先来看一下DisposableBeanAdapter类的代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">javaCopy Code// DisposableBeanAdapter.java</span><br><span class="line"></span><br><span class="line">public class DisposableBeanAdapter implements DisposableBean &#123;</span><br><span class="line"></span><br><span class="line">    private final Object bean;</span><br><span class="line">    private final String beanName;</span><br><span class="line">    private String destroyMethodName;</span><br><span class="line"></span><br><span class="line">    public DisposableBeanAdapter(Object bean, String beanName, BeanDefinition beanDefinition) &#123;</span><br><span class="line">        this.bean = bean;</span><br><span class="line">        this.beanName = beanName;</span><br><span class="line">        this.destroyMethodName = beanDefinition.getDestroyMethodName();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void destroy() throws Exception &#123;</span><br><span class="line">        // 1. 实现接口 DisposableBean</span><br><span class="line">        if (bean instanceof DisposableBean) &#123;</span><br><span class="line">            ((DisposableBean) bean).destroy();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 2. 注解配置 destroy-method &#123;判断是为了避免二次执行销毁&#125;</span><br><span class="line">        if (StrUtil.isNotEmpty(destroyMethodName) &amp;&amp; !(bean instanceof DisposableBean &amp;&amp; &quot;destroy&quot;.equals(this.destroyMethodName))) &#123;</span><br><span class="line">            Method destroyMethod = bean.getClass().getMethod(destroyMethodName);</span><br><span class="line">            if (null == destroyMethod) &#123;</span><br><span class="line">                throw new BeansException(&quot;Couldn&#x27;t find a destroy method named &#x27;&quot; + destroyMethodName + &quot;&#x27; on bean with name &#x27;&quot; + beanName + &quot;&#x27;&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            destroyMethod.invoke(bean);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>DisposableBeanAdapter类实现了DisposableBean接口，同时根据Bean定义信息获取销毁方法的名称，并统一调用销毁方法。这样，无论Bean是通过实现接口还是配置文件中指定销毁方法，都可以通过DisposableBeanAdapter来进行统一的销毁处理。</p>
-<p>适配器模式的优势在于可以灵活处理不同接口的兼容性问题，使得系统更易于扩展和维护。在Bean销毁的场景下，采用适配器模式可以有效地降低代码的耦合度，同时也让销毁逻辑更加清晰和统一。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>总结一下，适配器模式在Bean销毁中的应用，使得不同的销毁方式可以统一处理，提高了系统的灵活性和可维护性，是一种非常有价值的设计模式。希望通过这篇博客的介绍，能够对适配器模式的应用有更深入的理解，也能在实际项目中更好地运用适配器模式来解决类似的接口兼容性问题。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2024/03/14/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/" data-id="cltq0i2g70000y45b6j0z66q6" data-title="设计模式之适配器模式" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-设计模式之模板模式" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/blog/2024/03/09/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E6%A8%A1%E6%9D%BF%E6%A8%A1%E5%BC%8F/" class="article-date">
-  <time class="dt-published" datetime="2024-03-09T15:41:30.000Z" itemprop="datePublished">2024-03-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2024/03/09/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E6%A8%A1%E6%9D%BF%E6%A8%A1%E5%BC%8F/">设计模式之模板模式</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>当涉及到设计模式时，模板模式是一个非常有用且常见的模式。下面是一个关于设计模式中的模板模式的博客主题示例：</p>
-<hr>
-<h2 id="设计模式之模板模式"><a href="#设计模式之模板模式" class="headerlink" title="设计模式之模板模式"></a>设计模式之模板模式</h2><p>在软件开发中，模板模式是一种行为型设计模式，它定义了一个算法的骨架，并允许子类为一个或多个步骤提供实现。这种模式使得子类可以重新定义算法的某些步骤，而不改变算法的结构。</p>
-<h2 id="实现模板模式"><a href="#实现模板模式" class="headerlink" title="实现模板模式"></a>实现模板模式</h2><p>以下是一个简单的示例，演示了如何使用模板模式来准备食物的过程：</p>
-        
-          <p class="article-more-link">
-            <a href="/blog/2024/03/09/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E6%A8%A1%E6%9D%BF%E6%A8%A1%E5%BC%8F/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2024/03/09/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E6%A8%A1%E6%9D%BF%E6%A8%A1%E5%BC%8F/" data-id="cltk9dfng0000do5b2s9wewvj" data-title="设计模式之模板模式" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-lc162寻找山峰" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/blog/2024/03/09/lc162%E5%AF%BB%E6%89%BE%E5%B1%B1%E5%B3%B0/" class="article-date">
-  <time class="dt-published" datetime="2024-03-09T10:39:36.000Z" itemprop="datePublished">2024-03-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2024/03/09/lc162%E5%AF%BB%E6%89%BE%E5%B1%B1%E5%B3%B0/">lc162寻找山峰</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>峰值元素是指其值严格大于左右相邻值的元素。</p>
-<p>给你一个整数数组 <code>nums</code>，找到峰值元素并返回其索引。数组可能包含多个峰值，在这种情况下，返回 <strong>任何一个峰值</strong> 所在位置即可。</p>
-<p>你可以假设 <code>nums[-1] = nums[n] = -∞</code> 。</p>
-<p>你必须实现时间复杂度为 <code>O(log n)</code> 的算法来解决此问题。</p>
-<p><strong>示例 1：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [1,2,3,1]</span><br><span class="line">输出：2</span><br><span class="line">解释：3 是峰值元素，你的函数应该返回其索引 2。</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 2：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [1,2,1,3,5,6,4]</span><br><span class="line">输出：1 或 5 </span><br><span class="line">解释：你的函数可以返回索引 1，其峰值元素为 2；</span><br><span class="line">     或者返回索引 5， 其峰值元素为 6。</span><br></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a href="/blog/2024/03/09/lc162%E5%AF%BB%E6%89%BE%E5%B1%B1%E5%B3%B0/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2024/03/09/lc162%E5%AF%BB%E6%89%BE%E5%B1%B1%E5%B3%B0/" data-id="cltjyrp7h0001pw5b0qnyd3lb" data-title="lc162寻找山峰" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/leetcode%E9%A2%98%E8%A7%A3/" rel="tag">leetcode题解</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><a class="page-number" href="/blog/page/3/">3</a><a class="page-number" href="/blog/page/4/">4</a><a class="extend next" rel="next" href="/blog/page/2/">Next &raquo;</a>
-  </nav>
 
 </section>
         
