@@ -6,12 +6,12 @@
   
   <title>操作系统实践-实现一个fat12文件系统 | hatena</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="1. 基本信息   姓名 学号 班级 是否抄袭 是否分组    yyh 2021****117 计算2114 否 否   实现了哪些功能（已实现，并且测试正确的打勾）   打印当前目录下所有文件和目录名，类似于ls简易版  打印文件&#x2F;目录的文件控制块  打印整个文件分配表  切换目录，类似于cd功能  创建文件、删除文件  创建目录、删除文件  cat命令查看文件(额外实现)  2. 功">
+  <meta name="description" content="1. 基本信息   姓名 学号 班级 是否抄袭 是否分组    yyh 2021****117 计算2114 否 否   实现了哪些功能（已实现，并且测试正确的打勾）    打印当前目录下所有文件和目录名，类似于ls简易版    打印文件&#x2F;目录的文件控制块    打印整个文件分配表    切换目录，类似于cd功能    创建文件、删除文件    创建目录、删除文件    cat命令查看文">
 <meta property="og:type" content="article">
 <meta property="og:title" content="操作系统实践-实现一个fat12文件系统">
 <meta property="og:url" content="https://gitee.com/lanceluot/blog.git/2024/04/30/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E8%B7%B5-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAfat12%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/index.html">
 <meta property="og:site_name" content="hatena">
-<meta property="og:description" content="1. 基本信息   姓名 学号 班级 是否抄袭 是否分组    yyh 2021****117 计算2114 否 否   实现了哪些功能（已实现，并且测试正确的打勾）   打印当前目录下所有文件和目录名，类似于ls简易版  打印文件&#x2F;目录的文件控制块  打印整个文件分配表  切换目录，类似于cd功能  创建文件、删除文件  创建目录、删除文件  cat命令查看文件(额外实现)  2. 功">
+<meta property="og:description" content="1. 基本信息   姓名 学号 班级 是否抄袭 是否分组    yyh 2021****117 计算2114 否 否   实现了哪些功能（已实现，并且测试正确的打勾）    打印当前目录下所有文件和目录名，类似于ls简易版    打印文件&#x2F;目录的文件控制块    打印整个文件分配表    切换目录，类似于cd功能    创建文件、删除文件    创建目录、删除文件    cat命令查看文">
 <meta property="og:locale" content="zn_CN">
 <meta property="og:image" content="https://gitee.com/blog/img/image-20230623225929061.png">
 <meta property="og:image" content="https://gitee.com/blog/img/image-20230623230722029.png">
@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://gitee.com/blog/img/image-20230623214725323.png">
 <meta property="og:image" content="https://gitee.com/blog/img/image-20230623225853302.png">
 <meta property="article:published_time" content="2024-04-30T15:57:51.000Z">
-<meta property="article:modified_time" content="2024-04-30T16:24:49.457Z">
+<meta property="article:modified_time" content="2024-05-01T05:42:28.345Z">
 <meta property="article:author" content="myself">
 <meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary">
@@ -81,10 +81,10 @@
         
           <a class="nav-icon" href="/blog/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
         
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://gitee.com/lanceluot/blog.git"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://gitee.com/lanceluot/blog.git"></form>
       </div>
     </div>
   </div>
@@ -133,13 +133,27 @@
 </tbody></table>
 <p><strong>实现了哪些功能（已实现，并且测试正确的打勾）</strong></p>
 <ul>
-<li><input checked="" disabled="" type="checkbox"> 打印当前目录下所有文件和目录名，类似于<code>ls</code>简易版</li>
-<li><input checked="" disabled="" type="checkbox"> 打印文件&#x2F;目录的文件控制块</li>
-<li><input checked="" disabled="" type="checkbox"> 打印整个文件分配表</li>
-<li><input checked="" disabled="" type="checkbox"> 切换目录，类似于<code>cd</code>功能</li>
-<li><input checked="" disabled="" type="checkbox"> 创建文件、删除文件</li>
-<li><input checked="" disabled="" type="checkbox"> 创建目录、删除文件</li>
-<li><input checked="" disabled="" type="checkbox"> cat命令查看文件(额外实现)</li>
+<li><p><input checked="" disabled="" type="checkbox"> 
+打印当前目录下所有文件和目录名，类似于<code>ls</code>简易版</p>
+</li>
+<li><p><input checked="" disabled="" type="checkbox"> 
+打印文件&#x2F;目录的文件控制块</p>
+</li>
+<li><p><input checked="" disabled="" type="checkbox"> 
+打印整个文件分配表</p>
+</li>
+<li><p><input checked="" disabled="" type="checkbox"> 
+切换目录，类似于<code>cd</code>功能</p>
+</li>
+<li><p><input checked="" disabled="" type="checkbox"> 
+创建文件、删除文件</p>
+</li>
+<li><p><input checked="" disabled="" type="checkbox"> 
+创建目录、删除文件</p>
+</li>
+<li><p><input checked="" disabled="" type="checkbox"> 
+cat命令查看文件(额外实现)</p>
+  <span id="more"></span></li>
 </ul>
 <h1 id="2-功能1-ls"><a href="#2-功能1-ls" class="headerlink" title="2. 功能1 (ls)"></a>2. 功能1 (ls)</h1><h2 id="2-1-实现思路及伪代码"><a href="#2-1-实现思路及伪代码" class="headerlink" title="2.1 实现思路及伪代码"></a>2.1 实现思路及伪代码</h2><p>思路：</p>
 <p>打印当前目录下的子文件和文件夹，根据fat12文件系统的特点，我们可以访问FCB表，然后再根据FCB表的蔟号，一边到数据区去访问数据一边去fat表查找下一个蔟号，然后继续访问数据区，如果蔟号不为零，继续读取蔟号和数据区直到蔟号为0xfff或其他已分配标识符</p>
@@ -220,7 +234,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2024/04/30/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E8%B7%B5-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAfat12%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" data-id="clvmln00f0003kk5b4meehyd0" data-title="操作系统实践-实现一个fat12文件系统" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://gitee.com/lanceluot/blog.git/2024/04/30/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E8%B7%B5-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAfat12%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" data-id="clvmln00f0003kk5b4meehyd0" data-title="操作系统实践-实现一个fat12文件系统" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -234,7 +248,7 @@
   
   
     <a href="/blog/2024/04/25/LambdaQuery-%E5%92%8C-Query%E7%9A%84%E5%8C%BA%E5%88%AB/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">Älter</strong>
       <div class="article-nav-title">LambdaQuery 和 Query的区别</div>
     </a>
   
@@ -250,7 +264,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
+    <h3 class="widget-title">Kategorien</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a></li></ul>
     </div>
@@ -279,7 +293,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archiv</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2022/12/">December 2022</a></li></ul>
     </div>
@@ -289,7 +303,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
         
