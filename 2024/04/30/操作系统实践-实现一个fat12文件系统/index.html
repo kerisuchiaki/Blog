@@ -9,30 +9,30 @@
   <meta name="description" content="1. 基本信息   姓名 学号 班级 是否抄袭 是否分组    yyh 2021****117 计算2114 否 否   实现了哪些功能（已实现，并且测试正确的打勾）    打印当前目录下所有文件和目录名，类似于ls简易版    打印文件&#x2F;目录的文件控制块    打印整个文件分配表    切换目录，类似于cd功能    创建文件、删除文件    创建目录、删除文件    cat命令查看文">
 <meta property="og:type" content="article">
 <meta property="og:title" content="操作系统实践-实现一个fat12文件系统">
-<meta property="og:url" content="https://gitee.com/lanceluot/blog.git/2024/04/30/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E8%B7%B5-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAfat12%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:url" content="https://kerisuchiaki.github.io/Blog/2024/04/30/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E8%B7%B5-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAfat12%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/index.html">
 <meta property="og:site_name" content="hatena">
 <meta property="og:description" content="1. 基本信息   姓名 学号 班级 是否抄袭 是否分组    yyh 2021****117 计算2114 否 否   实现了哪些功能（已实现，并且测试正确的打勾）    打印当前目录下所有文件和目录名，类似于ls简易版    打印文件&#x2F;目录的文件控制块    打印整个文件分配表    切换目录，类似于cd功能    创建文件、删除文件    创建目录、删除文件    cat命令查看文">
 <meta property="og:locale" content="zn_CN">
-<meta property="og:image" content="https://gitee.com/img/image-20230623225929061.png">
-<meta property="og:image" content="https://gitee.com/img/image-20230623230722029.png">
-<meta property="og:image" content="https://gitee.com/img/image-20230623222255133.png">
-<meta property="og:image" content="https://gitee.com/img/image-20230623222559771.png">
-<meta property="og:image" content="https://gitee.com/img/image-20230623223601753.png">
-<meta property="og:image" content="https://gitee.com/img/image-20230623223639776.png">
-<meta property="og:image" content="https://gitee.com/img/image-20230623214228340.png">
-<meta property="og:image" content="https://gitee.com/img/image-20230623214429206.png">
-<meta property="og:image" content="https://gitee.com/img/image-20230623214937354.png">
-<meta property="og:image" content="https://gitee.com/img/image-20230623215111176.png">
-<meta property="og:image" content="https://gitee.com/img/image-20230623215053138.png">
-<meta property="og:image" content="https://gitee.com/img/image-20230623214750670.png">
-<meta property="og:image" content="https://gitee.com/img/image-20230623214725323.png">
-<meta property="og:image" content="https://gitee.com/img/image-20230623225853302.png">
+<meta property="og:image" content="https://kerisuchiaki.github.io/img/image-20230623225929061.png">
+<meta property="og:image" content="https://kerisuchiaki.github.io/img/image-20230623230722029.png">
+<meta property="og:image" content="https://kerisuchiaki.github.io/img/image-20230623222255133.png">
+<meta property="og:image" content="https://kerisuchiaki.github.io/img/image-20230623222559771.png">
+<meta property="og:image" content="https://kerisuchiaki.github.io/img/image-20230623223601753.png">
+<meta property="og:image" content="https://kerisuchiaki.github.io/img/image-20230623223639776.png">
+<meta property="og:image" content="https://kerisuchiaki.github.io/img/image-20230623214228340.png">
+<meta property="og:image" content="https://kerisuchiaki.github.io/img/image-20230623214429206.png">
+<meta property="og:image" content="https://kerisuchiaki.github.io/img/image-20230623214937354.png">
+<meta property="og:image" content="https://kerisuchiaki.github.io/img/image-20230623215111176.png">
+<meta property="og:image" content="https://kerisuchiaki.github.io/img/image-20230623215053138.png">
+<meta property="og:image" content="https://kerisuchiaki.github.io/img/image-20230623214750670.png">
+<meta property="og:image" content="https://kerisuchiaki.github.io/img/image-20230623214725323.png">
+<meta property="og:image" content="https://kerisuchiaki.github.io/img/image-20230623225853302.png">
 <meta property="article:published_time" content="2024-04-30T15:57:51.000Z">
 <meta property="article:modified_time" content="2024-05-01T05:42:28.345Z">
 <meta property="article:author" content="myself">
 <meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/img/image-20230623225929061.png">
+<meta name="twitter:image" content="https://kerisuchiaki.github.io/img/image-20230623225929061.png">
   
     <link rel="alternate" href="/atom.xml" title="hatena" type="application/atom+xml">
   
@@ -84,7 +84,7 @@
         <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://gitee.com/lanceluot/blog.git"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://kerisuchiaki.github.io/Blog"></form>
       </div>
     </div>
   </div>
@@ -234,7 +234,7 @@ cat命令查看文件(额外实现)</p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2024/04/30/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E8%B7%B5-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAfat12%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" data-id="clwf92wso001a8d5b0om1em9p" data-title="操作系统实践-实现一个fat12文件系统" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="https://kerisuchiaki.github.io/Blog/2024/04/30/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E8%B7%B5-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAfat12%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" data-id="clwf92wso001a8d5b0om1em9p" data-title="操作系统实践-实现一个fat12文件系统" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
