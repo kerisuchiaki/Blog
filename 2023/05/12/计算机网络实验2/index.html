@@ -9,26 +9,26 @@
   <meta name="description" content="实验：网络仿真软件使用及网络分析 1. 基本信息   姓名 学号 班级 本次是否有抄袭 所选协议    余永海 202121331117 计算2114 否 DHCP   2. 使用Cisco Packet Tracer遇到的问题及解决方法 两个终端设备无法发送报文，原因在于他们之间没有建立联系，连上线就行了  3. Wireshark抓取报文（1）如何抓取到你所选择的协议报文 DHCP协议用于动态">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机网络实验2">
-<meta property="og:url" content="https://kerisuchiaki.github.io/Blog/2023/05/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AE%9E%E9%AA%8C2/index.html">
+<meta property="og:url" content="https://kerisuchiaki.github.io/2023/05/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AE%9E%E9%AA%8C2/index.html">
 <meta property="og:site_name" content="hatena">
 <meta property="og:description" content="实验：网络仿真软件使用及网络分析 1. 基本信息   姓名 学号 班级 本次是否有抄袭 所选协议    余永海 202121331117 计算2114 否 DHCP   2. 使用Cisco Packet Tracer遇到的问题及解决方法 两个终端设备无法发送报文，原因在于他们之间没有建立联系，连上线就行了  3. Wireshark抓取报文（1）如何抓取到你所选择的协议报文 DHCP协议用于动态">
 <meta property="og:locale" content="zn_CN">
-<meta property="og:image" content="https://kerisuchiaki.github.io/img/image-20230510135111198.png">
-<meta property="og:image" content="https://kerisuchiaki.github.io/img/image-20230511105630132.png">
-<meta property="og:image" content="https://kerisuchiaki.github.io/img/image-20230422001933477.png">
-<meta property="og:image" content="https://kerisuchiaki.github.io/img/image-20230422002223191.png">
-<meta property="og:image" content="https://kerisuchiaki.github.io/img/image-20230422002316324.png">
-<meta property="og:image" content="https://kerisuchiaki.github.io/img/image-20230422002357409.png">
+<meta property="og:image" content="https://kerisuchiaki.github.io/Blog/img/image-20230510135111198.png">
+<meta property="og:image" content="https://kerisuchiaki.github.io/Blog/img/image-20230511105630132.png">
+<meta property="og:image" content="https://kerisuchiaki.github.io/Blog/img/image-20230422001933477.png">
+<meta property="og:image" content="https://kerisuchiaki.github.io/Blog/img/image-20230422002223191.png">
+<meta property="og:image" content="https://kerisuchiaki.github.io/Blog/img/image-20230422002316324.png">
+<meta property="og:image" content="https://kerisuchiaki.github.io/Blog/img/image-20230422002357409.png">
 <meta property="article:published_time" content="2023-05-12T13:00:00.000Z">
 <meta property="article:modified_time" content="2023-09-09T14:11:12.332Z">
 <meta property="article:author" content="myself">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://kerisuchiaki.github.io/img/image-20230510135111198.png">
+<meta name="twitter:image" content="https://kerisuchiaki.github.io/Blog/img/image-20230510135111198.png">
   
-    <link rel="alternate" href="/atom.xml" title="hatena" type="application/atom+xml">
+    <link rel="alternate" href="/Blog/atom.xml" title="hatena" type="application/atom+xml">
   
   
-    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="shortcut icon" href="/Blog/favicon.png">
   
   
     
@@ -36,11 +36,11 @@
 
   
   
-<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/Blog/css/style.css">
 
   
     
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+<link rel="stylesheet" href="/Blog/fancybox/jquery.fancybox.min.css">
 
   
   
@@ -54,7 +54,7 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">hatena</a>
+        <a href="/Blog/" id="logo">hatena</a>
       </h1>
       
     </div>
@@ -62,20 +62,20 @@
       <nav id="main-nav">
         <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
         
-          <a class="main-nav-link" href="/">Home</a>
+          <a class="main-nav-link" href="/Blog/">Home</a>
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+          <a class="main-nav-link" href="/Blog/archives">Archives</a>
         
       </nav>
       <nav id="sub-nav">
         
         
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+          <a class="nav-icon" href="/Blog/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
         
         <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://kerisuchiaki.github.io/Blog"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://kerisuchiaki.github.io"></form>
       </div>
     </div>
   </div>
@@ -84,7 +84,7 @@
       <div class="outer">
         <section id="main"><article id="post-计算机网络实验2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2023/05/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AE%9E%E9%AA%8C2/" class="article-date">
+    <a href="/Blog/2023/05/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AE%9E%E9%AA%8C2/" class="article-date">
   <time class="dt-published" datetime="2023-05-12T13:00:00.000Z" itemprop="datePublished">2023-05-12</time>
 </a>
     
@@ -131,9 +131,9 @@
 <p><strong>（2）Wireshark出来很多报文，你是如何过滤出与你所选协议相关的报文</strong></p>
 <p>要从Wireshark中过滤出DHCP报文，可以使用过滤器“bootp”，因为DHCP是基于BOOTP开发的。具体的过滤器表达式为“bootp.option.dhcp &#x3D;&#x3D; 1”或者’bootp’也行。在捕获数据包时，输入该过滤器表达式后，Wireshark就会仅显示DHCP请求和响应报文。</p>
 <h1 id="4-协议时序图"><a href="#4-协议时序图" class="headerlink" title="4. 协议时序图"></a>4. 协议时序图</h1><p>Wireshark捕获到的报文如下图：</p>
-<p><img src="/img/image-20230510135111198.png" alt="image-20230510135111198"></p>
+<p><img src="/Blog/img/image-20230510135111198.png" alt="image-20230510135111198"></p>
 <p>协议工作原理的时序图：</p>
-<p><img src="/img/image-20230511105630132.png" alt="image-20230511105630132"></p>
+<p><img src="/Blog/img/image-20230511105630132.png" alt="image-20230511105630132"></p>
 <h1 id="5-分析协议工作原理"><a href="#5-分析协议工作原理" class="headerlink" title="5. 分析协议工作原理"></a>5. 分析协议工作原理</h1><p>DHCP协议自动分配IP的报文主要有四种：</p>
 <ol>
 <li><p>DHCP Discover：由客户端发出，用来发现DHCP服务器。</p>
@@ -146,7 +146,7 @@
 </li>
 </ol>
 <h2 id="5-1-DHCP-Discover"><a href="#5-1-DHCP-Discover" class="headerlink" title="5.1.DHCP  Discover:"></a>5.1.DHCP  Discover:</h2><p>Discover报文:</p>
-<p><img src="/img/image-20230422001933477.png" alt="image-20230422001933477"></p>
+<p><img src="/Blog/img/image-20230422001933477.png" alt="image-20230422001933477"></p>
 <p>dhcp discover是新设备需要上网时发送的报文，dhcp是处于应用层,所以dhcp discover 实际上是应用层报文。 发送dhcp discover报文的目的是寻找本地的dhcp服务器。</p>
 <p>从图中可以看出dhcp在传输层使用的是udp协议，而源端口即客户端端口使用的是68端口，目的端口即服务器端口是使用的是67端口. </p>
 <p>网络层里，由于设备刚开始还无法上网,没有IP地址，这里用0.0.0.0表示，而由于也不知道dhcp服务器的ip地址，所以要进行广播，目的ip地址为255.255.255.255，表示在本地进行广播用于发现dhcp服务器.</p>
@@ -155,16 +155,16 @@
 <p>从图中的option选项中还有一点值得注意，这里的requested ip address是172.21.7.116,这是我们这台设备上次使用的ip地址，即dhcp discover可能会请求上次使用的ip地址。</p>
 <p>DHCB discover 这一步完成以后，如果此时网络中有 DHCP 服务器存在，就会进行处理，也就是进行 DHCP offer 这一步。</p>
 <h2 id="5-2-DHCP-offer"><a href="#5-2-DHCP-offer" class="headerlink" title="5.2.DHCP offer:"></a>5.2.DHCP offer:</h2><p>Offer报文:</p>
-<p><img src="/img/image-20230422002223191.png" alt="image-20230422002223191"></p>
+<p><img src="/Blog/img/image-20230422002223191.png" alt="image-20230422002223191"></p>
 <p> 从图中可以看出，DHCP服务器 会提供上网所需的配置信息,也就是 ip 地址（127.21.7.116）、子网掩码（255.255.0.0）。除此之外在这一步还有ip 地址的租期，当租用过了某段时间就会过期，所以在到期前需要进行续租，还会提供续租的时间。</p>
 <p>在传输层里依旧使用 UDP 协议，只是源端口和目标端口号反了过来，因为这次是服务端发送给客户端。  </p>
 <p>网络层里，dhcp服务器的源ip为172.21.0.1，而目的ip是172.21.7.116为分配的ip地址,这两个我们也可以从数据包里的your ip address和dhcp server identifiter可以看到，还有其他的一些信息，如子网掩码:255.255.0.0</p>
 <p>数据链路层里，源 Mac 地址就是dhcp服务器的mac地址，而目标 Mac 地址就是我们设备的。</p>
 <h2 id="5-3-DHCP-Request"><a href="#5-3-DHCP-Request" class="headerlink" title="5.3.DHCP Request:"></a>5.3.DHCP Request:</h2><p>Request报文:</p>
-<p><img src="/img/image-20230422002316324.png" alt="image-20230422002316324"></p>
+<p><img src="/Blog/img/image-20230422002316324.png" alt="image-20230422002316324"></p>
 <p>当我们的设备接收到dhcp服务器的offer报文时，可能不止一个，如果网络里有多个dhcp服务器，则接收第一个offer报文提供的ip地址，并再次以广播的形式正式请求之前的ip,也告知其它dhcp服务器选择了哪一个dhcp服务器提供的ip地址，从图也可以看出，网络层源ip和目的ip和dhcp discover报文一样，传输层和数据链路层也同样.</p>
 <h2 id="5-4-DHCP-ACK"><a href="#5-4-DHCP-ACK" class="headerlink" title="5.4.DHCP ACK:"></a>5.4.DHCP ACK:</h2><p>ACK报文:</p>
-<p><img src="/img/image-20230422002357409.png" alt="image-20230422002357409"></p>
+<p><img src="/Blog/img/image-20230422002357409.png" alt="image-20230422002357409"></p>
 <p>在收到dhcp request报文时，服务器向客户端发送DHCP ACK报文,确认客户端可以使用请求的IP地址。从图中也可以看到</p>
 <p>源MAC地址:58 69 6c 5e 0c 2c(服务端Mac地址)</p>
 <p>目的MAC地址:80 fa 5b 9e b4 2d (客户端MAC)</p>
@@ -178,7 +178,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kerisuchiaki.github.io/Blog/2023/05/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AE%9E%E9%AA%8C2/" data-id="clwf92wsr001n8d5bg8a113im" data-title="计算机网络实验2" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="https://kerisuchiaki.github.io/2023/05/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AE%9E%E9%AA%8C2/" data-id="clwf9hhrt001n025b20lf0xmu" data-title="计算机网络实验2" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
@@ -188,7 +188,7 @@
     
 <nav id="article-nav">
   
-    <a href="/2023/08/29/%E6%B5%8B%E8%AF%95%E6%96%B0%E4%B8%BB%E9%A2%98/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/Blog/2023/08/29/%E6%B5%8B%E8%AF%95%E6%96%B0%E4%B8%BB%E9%A2%98/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Neuer</strong>
       <div class="article-nav-title">
         
@@ -198,7 +198,7 @@
     </a>
   
   
-    <a href="/2023/04/22/%E5%85%B3%E4%BA%8E%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98hdu1028/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/Blog/2023/04/22/%E5%85%B3%E4%BA%8E%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98hdu1028/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Älter</strong>
       <div class="article-nav-title">关于动态规划完全背包问题hdu1028</div>
     </a>
@@ -217,7 +217,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Kategorien</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/Blog/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a></li></ul>
     </div>
   </div>
 
@@ -227,7 +227,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BUG/" rel="tag">BUG</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RPC/" rel="tag">RPC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" rel="tag">java后端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E6%BA%90%E7%A0%81/" rel="tag">java源码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jvm/" rel="tag">jvm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode%E9%A2%98%E8%A7%A3/" rel="tag">leetcode题解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rabbitmq/" rel="tag">rabbitmq</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/" rel="tag">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/" rel="tag">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/" rel="tag">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%9C%E4%B8%9A/" rel="tag">作业</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%9E%E9%AA%8C/" rel="tag">实验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%9E%E9%AA%8C3/" rel="tag">实验3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%84%9F%E6%83%B3/" rel="tag">感想</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag">数据结构与算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%96%91%E9%97%AE/" rel="tag">疑问</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/BUG/" rel="tag">BUG</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/RPC/" rel="tag">RPC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" rel="tag">java后端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/java%E6%BA%90%E7%A0%81/" rel="tag">java源码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/jvm/" rel="tag">jvm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/leetcode/" rel="tag">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/leetcode%E9%A2%98%E8%A7%A3/" rel="tag">leetcode题解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/rabbitmq/" rel="tag">rabbitmq</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/redis/" rel="tag">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/shell/" rel="tag">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/spring/" rel="tag">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/springboot/" rel="tag">springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E4%BD%9C%E4%B8%9A/" rel="tag">作业</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E5%AE%9E%E9%AA%8C/" rel="tag">实验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E5%AE%9E%E9%AA%8C3/" rel="tag">实验3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E6%84%9F%E6%83%B3/" rel="tag">感想</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag">数据结构与算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E7%96%91%E9%97%AE/" rel="tag">疑问</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a></li></ul>
     </div>
   </div>
 
@@ -237,7 +237,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/BUG/" style="font-size: 10px;">BUG</a> <a href="/tags/RPC/" style="font-size: 10px;">RPC</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 10px;">java后端开发</a> <a href="/tags/java%E6%BA%90%E7%A0%81/" style="font-size: 10px;">java源码</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/leetcode/" style="font-size: 10px;">leetcode</a> <a href="/tags/leetcode%E9%A2%98%E8%A7%A3/" style="font-size: 15px;">leetcode题解</a> <a href="/tags/rabbitmq/" style="font-size: 10px;">rabbitmq</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/%E4%BD%9C%E4%B8%9A/" style="font-size: 10px;">作业</a> <a href="/tags/%E5%AE%9E%E9%AA%8C/" style="font-size: 15px;">实验</a> <a href="/tags/%E5%AE%9E%E9%AA%8C3/" style="font-size: 10px;">实验3</a> <a href="/tags/%E6%84%9F%E6%83%B3/" style="font-size: 10px;">感想</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a> <a href="/tags/%E7%96%91%E9%97%AE/" style="font-size: 10px;">疑问</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">笔记</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 15px;">设计模式</a> <a href="/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10px;">问题</a>
+      <a href="/Blog/tags/BUG/" style="font-size: 10px;">BUG</a> <a href="/Blog/tags/RPC/" style="font-size: 10px;">RPC</a> <a href="/Blog/tags/git/" style="font-size: 10px;">git</a> <a href="/Blog/tags/java/" style="font-size: 20px;">java</a> <a href="/Blog/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 10px;">java后端开发</a> <a href="/Blog/tags/java%E6%BA%90%E7%A0%81/" style="font-size: 10px;">java源码</a> <a href="/Blog/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/Blog/tags/leetcode/" style="font-size: 10px;">leetcode</a> <a href="/Blog/tags/leetcode%E9%A2%98%E8%A7%A3/" style="font-size: 15px;">leetcode题解</a> <a href="/Blog/tags/rabbitmq/" style="font-size: 10px;">rabbitmq</a> <a href="/Blog/tags/redis/" style="font-size: 10px;">redis</a> <a href="/Blog/tags/shell/" style="font-size: 10px;">shell</a> <a href="/Blog/tags/spring/" style="font-size: 10px;">spring</a> <a href="/Blog/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/Blog/tags/test/" style="font-size: 10px;">test</a> <a href="/Blog/tags/%E4%BD%9C%E4%B8%9A/" style="font-size: 10px;">作业</a> <a href="/Blog/tags/%E5%AE%9E%E9%AA%8C/" style="font-size: 15px;">实验</a> <a href="/Blog/tags/%E5%AE%9E%E9%AA%8C3/" style="font-size: 10px;">实验3</a> <a href="/Blog/tags/%E6%84%9F%E6%83%B3/" style="font-size: 10px;">感想</a> <a href="/Blog/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">操作系统</a> <a href="/Blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 10px;">数据结构与算法</a> <a href="/Blog/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a> <a href="/Blog/tags/%E7%96%91%E9%97%AE/" style="font-size: 10px;">疑问</a> <a href="/Blog/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">笔记</a> <a href="/Blog/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/Blog/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 15px;">设计模式</a> <a href="/Blog/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10px;">问题</a>
     </div>
   </div>
 
@@ -246,7 +246,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archiv</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2022/12/">December 2022</a></li></ul>
     </div>
   </div>
 
@@ -259,23 +259,23 @@
       <ul>
         
           <li>
-            <a href="/2024/05/01/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E5%AE%9E%E9%AA%8C%E4%B8%89-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">算法设计与分析实验三-动态规划</a>
+            <a href="/Blog/2024/05/01/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E5%AE%9E%E9%AA%8C%E4%B8%89-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">算法设计与分析实验三-动态规划</a>
           </li>
         
           <li>
-            <a href="/2024/05/01/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AE%9E%E9%AA%8C3-%E6%96%87%E4%BB%B6io%E7%BC%96%E7%A8%8B/">嵌入式实验3-文件io编程</a>
+            <a href="/Blog/2024/05/01/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AE%9E%E9%AA%8C3-%E6%96%87%E4%BB%B6io%E7%BC%96%E7%A8%8B/">嵌入式实验3-文件io编程</a>
           </li>
         
           <li>
-            <a href="/2024/04/30/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E8%B7%B5-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAfat12%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">操作系统实践-实现一个fat12文件系统</a>
+            <a href="/Blog/2024/04/30/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E8%B7%B5-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAfat12%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">操作系统实践-实现一个fat12文件系统</a>
           </li>
         
           <li>
-            <a href="/2024/04/25/LambdaQuery-%E5%92%8C-Query%E7%9A%84%E5%8C%BA%E5%88%AB/">LambdaQuery 和 Query的区别</a>
+            <a href="/Blog/2024/04/25/LambdaQuery-%E5%92%8C-Query%E7%9A%84%E5%8C%BA%E5%88%AB/">LambdaQuery 和 Query的区别</a>
           </li>
         
           <li>
-            <a href="/2024/04/14/leetcode530/">leetcode530二叉搜索树的最小绝对值</a>
+            <a href="/Blog/2024/04/14/leetcode530/">leetcode530二叉搜索树的最小绝对值</a>
           </li>
         
       </ul>
@@ -300,25 +300,25 @@
     </div>
     <nav id="mobile-nav">
   
-    <a href="/" class="mobile-nav-link">Home</a>
+    <a href="/Blog/" class="mobile-nav-link">Home</a>
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+    <a href="/Blog/archives" class="mobile-nav-link">Archives</a>
   
 </nav>
     
 
 
-<script src="/js/jquery-3.6.4.min.js"></script>
+<script src="/Blog/js/jquery-3.6.4.min.js"></script>
 
 
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
+<script src="/Blog/fancybox/jquery.fancybox.min.js"></script>
 
 
 
 
-<script src="/js/script.js"></script>
+<script src="/Blog/js/script.js"></script>
 
 
 
