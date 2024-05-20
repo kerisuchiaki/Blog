@@ -13,28 +13,28 @@
 <meta property="og:site_name" content="hatena">
 <meta property="og:description" content="1.初识RedisRedis是一种键值型的NoSql数据库，这里有两个关键字：  键值型  NoSql   其中键值型，是指Redis中存储的数据都是以key、value对的形式存储，而value的形式多种多样，可以是字符串、数值、甚至json,而NoSql则是相对于传统关系型数据库而言，有很大差异的一种数据库。">
 <meta property="og:locale" content="zn_CN">
-<meta property="og:image" content="https://gitee.com/blog/img/8tli2o9-17087015014836.png">
-<meta property="og:image" content="https://gitee.com/blog/img/InWMfeD.png">
-<meta property="og:image" content="https://gitee.com/blog/img/x2zDBjf.png">
-<meta property="og:image" content="https://gitee.com/blog/img/VF2EPt0.png">
-<meta property="og:image" content="https://gitee.com/blog/img/1653363172079.png">
-<meta property="og:image" content="https://gitee.com/blog/img/1653382669900.png">
-<meta property="og:image" content="https://gitee.com/blog/img/1653577801668.png">
-<meta property="og:image" content="https://gitee.com/blog/img/1653577984924.png">
-<meta property="og:image" content="https://gitee.com/blog/img/1653578211854.png">
-<meta property="og:image" content="https://gitee.com/blog/img/1653823145495.png">
-<meta property="og:image" content="https://gitee.com/blog/img/1653824498278.png">
+<meta property="og:image" content="https://gitee.com/img/8tli2o9-17087015014836.png">
+<meta property="og:image" content="https://gitee.com/img/InWMfeD.png">
+<meta property="og:image" content="https://gitee.com/img/x2zDBjf.png">
+<meta property="og:image" content="https://gitee.com/img/VF2EPt0.png">
+<meta property="og:image" content="https://gitee.com/img/1653363172079.png">
+<meta property="og:image" content="https://gitee.com/img/1653382669900.png">
+<meta property="og:image" content="https://gitee.com/img/1653577801668.png">
+<meta property="og:image" content="https://gitee.com/img/1653577984924.png">
+<meta property="og:image" content="https://gitee.com/img/1653578211854.png">
+<meta property="og:image" content="https://gitee.com/img/1653823145495.png">
+<meta property="og:image" content="https://gitee.com/img/1653824498278.png">
 <meta property="article:published_time" content="2024-02-23T15:09:15.000Z">
 <meta property="article:modified_time" content="2024-03-27T06:05:41.525Z">
 <meta property="article:author" content="myself">
 <meta property="article:tag" content="redis">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/blog/img/8tli2o9-17087015014836.png">
+<meta name="twitter:image" content="https://gitee.com/img/8tli2o9-17087015014836.png">
   
-    <link rel="alternate" href="/blog/atom.xml" title="hatena" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="hatena" type="application/atom+xml">
   
   
-    <link rel="shortcut icon" href="/blog/favicon.png">
+    <link rel="shortcut icon" href="/favicon.png">
   
   
     
@@ -42,11 +42,11 @@
 
   
   
-<link rel="stylesheet" href="/blog/css/style.css">
+<link rel="stylesheet" href="/css/style.css">
 
   
     
-<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.min.css">
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
 
   
   
@@ -60,7 +60,7 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/blog/" id="logo">hatena</a>
+        <a href="/" id="logo">hatena</a>
       </h1>
       
     </div>
@@ -68,15 +68,15 @@
       <nav id="main-nav">
         <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
         
-          <a class="main-nav-link" href="/blog/">Home</a>
+          <a class="main-nav-link" href="/">Home</a>
         
-          <a class="main-nav-link" href="/blog/archives">Archives</a>
+          <a class="main-nav-link" href="/archives">Archives</a>
         
       </nav>
       <nav id="sub-nav">
         
         
-          <a class="nav-icon" href="/blog/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
         
         <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
       </nav>
@@ -90,7 +90,7 @@
       <div class="outer">
         <section id="main"><article id="post-redis学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/blog/2024/02/23/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
+    <a href="/2024/02/23/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
   <time class="dt-published" datetime="2024-02-23T15:09:15.000Z" itemprop="datePublished">2024-02-23</time>
 </a>
     
@@ -131,7 +131,7 @@
 <h3 id="1-1-4-事务"><a href="#1-1-4-事务" class="headerlink" title="1.1.4.事务"></a>1.1.4.事务</h3><p>传统关系型数据库能满足事务ACID的原则。</p>
 <p>而非关系型数据库往往不支持事务，或者不能严格保证ACID的特性，只能实现基本的一致性。</p>
 <h1 id="2-Redis常见命令"><a href="#2-Redis常见命令" class="headerlink" title="2.Redis常见命令"></a>2.Redis常见命令</h1><p>Redis是典型的key-value数据库，key一般是字符串，而value包含很多不同的数据类型：</p>
-<p><img src="/blog/img/8tli2o9-17087015014836.png"></p>
+<p><img src="/img/8tli2o9-17087015014836.png"></p>
 <h2 id="2-1-Redis通用命令"><a href="#2-1-Redis通用命令" class="headerlink" title="2.1.Redis通用命令"></a>2.1.Redis通用命令</h2><p>通用指令是部分数据类型的，都可以使用的指令，常见的有：</p>
 <ul>
 <li>KEYS：查看符合模板的所有key</li>
@@ -183,12 +183,12 @@
 </tr>
 </tbody></table>
 <p>并且，在Redis的桌面客户端中，还会以相同前缀作为层级结构，让数据看起来层次分明，关系清晰：</p>
-<p><img src="/blog/img/InWMfeD.png"></p>
+<p><img src="/img/InWMfeD.png"></p>
 <h2 id="2-3-Hash类型"><a href="#2-3-Hash类型" class="headerlink" title="2.3.Hash类型"></a>2.3.Hash类型</h2><p>Hash类型，也叫散列，其value是一个无序字典，类似于Java中的HashMap结构。</p>
 <p>String结构是将对象序列化为JSON字符串后存储，当需要修改对象某个字段时很不方便：</p>
-<p><img src="/blog/img/x2zDBjf.png"></p>
+<p><img src="/img/x2zDBjf.png"></p>
 <p>Hash结构可以将对象中的每个字段独立存储，可以针对单个字段做CRUD：</p>
-<p><img src="/blog/img/VF2EPt0.png"></p>
+<p><img src="/img/VF2EPt0.png"></p>
 <h2 id="2-4-List类型"><a href="#2-4-List类型" class="headerlink" title="2.4.List类型"></a>2.4.List类型</h2><p>Redis中的List类型与Java中的LinkedList类似，可以看做是一个双向链表结构。既可以支持正向检索和也可以支持反向检索。</p>
 <p>特征也与LinkedList类似：</p>
 <ul>
@@ -212,7 +212,7 @@
 <h1 id="3-Redis常见业务场景"><a href="#3-Redis常见业务场景" class="headerlink" title="3.Redis常见业务场景"></a>3.Redis常见业务场景</h1><h2 id="3-1缓存"><a href="#3-1缓存" class="headerlink" title="3.1缓存"></a>3.1缓存</h2><p>将需要大量重复访问的数据提前写入redis中，那么就可以降低访问数据库的次数，提升系统性能</p>
 <h2 id="3-2会话管理"><a href="#3-2会话管理" class="headerlink" title="3.2会话管理"></a>3.2会话管理</h2><p>redis可以用户记录用户登录状态，当后端校验用户名和密码正确后，生成一个token或登录凭证存入redis中，以后每次访问都先去redis中查找，这种用来取代session的做法有几个好处，1减少服务器的存储压力，2更容易的对服务器做水平扩展</p>
 <h2 id="3-3生成全局id"><a href="#3-3生成全局id" class="headerlink" title="3.3生成全局id"></a>3.3生成全局id</h2><p>id要求为递增的时候，对于数据库表的自动增加生成id回受到数据库的单表大小容量限制，并且还要求id的增长规律不能太明显，为了增加ID的安全性，我们可以不直接使用Redis自增的数值，而是拼接一些其它信息：</p>
-<p><img src="/blog/img/1653363172079.png" alt="1653363172079"></p>
+<p><img src="/img/1653363172079.png" alt="1653363172079"></p>
 <p>ID的组成部分：符号位：1bit，永远为0</p>
 <p>时间戳：31bit，以秒为单位，可以使用69年</p>
 <p>序列号：32bit，秒内的计数器，支持每秒产生2^32个不同ID</p>
@@ -236,7 +236,7 @@
 <li>手动释放</li>
 <li>超时释放：获取锁时添加一个超时时间</li>
 </ul>
-<p>  <img src="/blog/img/1653382669900.png" alt="1653382669900"></p>
+<p>  <img src="/img/1653382669900.png" alt="1653382669900"></p>
 </li>
 </ul>
 <p>核心思路：</p>
@@ -250,8 +250,8 @@
 <p>UV统计在服务端做会比较麻烦，因为要判断该用户是否已经统计过了，需要将统计过的用户信息保存。但是如果每个访问的用户都保存到Redis中，数据量会非常恐怖，那怎么处理呢？</p>
 <p>Hyperloglog(HLL)是从Loglog算法派生的概率算法，用于确定非常大的集合的基数，而不需要存储其所有值。相关算法原理大家可以参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903785744056333#heading-0">https://juejin.cn/post/6844903785744056333#heading-0</a><br>Redis中的HLL是基于string结构实现的，单个HLL的内存<strong>永远小于16kb</strong>，<strong>内存占用低</strong>的令人发指！作为代价，其测量结果是概率性的，<strong>有小于0.81％的误差</strong>。不过对于UV统计来说，这完全可以忽略。</p>
 <h2 id="3-5消息队列"><a href="#3-5消息队列" class="headerlink" title="3.5消息队列"></a>3.5消息队列</h2><h3 id="3-5-1-Redis消息队列-基于Stream的消息队列-消费者组"><a href="#3-5-1-Redis消息队列-基于Stream的消息队列-消费者组" class="headerlink" title="3.5.1 Redis消息队列-基于Stream的消息队列-消费者组"></a>3.5.1 Redis消息队列-基于Stream的消息队列-消费者组</h3><p>消费者组（Consumer Group）：将多个消费者划分到一个组中，监听同一个队列。具备下列特点：</p>
-<p><img src="/blog/img/1653577801668.png" alt="1653577801668"></p>
-<p>创建消费者组：<br><img src="/blog/img/1653577984924.png" alt="1653577984924"><br>key：队列名称<br>groupName：消费者组名称<br>ID：起始ID标示，$代表队列中最后一个消息，0则代表队列中第一个消息<br>MKSTREAM：队列不存在时自动创建队列<br>其它常见命令：</p>
+<p><img src="/img/1653577801668.png" alt="1653577801668"></p>
+<p>创建消费者组：<br><img src="/img/1653577984924.png" alt="1653577984924"><br>key：队列名称<br>groupName：消费者组名称<br>ID：起始ID标示，$代表队列中最后一个消息，0则代表队列中第一个消息<br>MKSTREAM：队列不存在时自动创建队列<br>其它常见命令：</p>
 <p> <strong>删除指定的消费者组</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">XGROUP DESTORY key groupName</span><br></pre></td></tr></table></figure>
 
@@ -275,7 +275,7 @@
 </ul>
 <p>“&gt;”：从下一个未消费的消息开始<br>其它：根据指定id从pending-list中获取已消费但未确认的消息，例如0，是从pending-list中的第一个消息开始</p>
 <p>消费者监听消息的基本思路：</p>
-<p><img src="/blog/img/1653578211854.png" alt="1653578211854">STREAM类型消息队列的XREADGROUP命令特点：</p>
+<p><img src="/img/1653578211854.png" alt="1653578211854">STREAM类型消息队列的XREADGROUP命令特点：</p>
 <ul>
 <li>消息可回溯</li>
 <li>可以多消费者争抢消息，加快消费速度</li>
@@ -286,7 +286,7 @@
 <p>排行榜</p>
 <p>限流</p>
 <h2 id="3-7位统计"><a href="#3-7位统计" class="headerlink" title="3.7位统计"></a>3.7位统计</h2><h4 id="11-1、用户签到-BitMap功能演示"><a href="#11-1、用户签到-BitMap功能演示" class="headerlink" title="11.1、用户签到-BitMap功能演示"></a>11.1、用户签到-BitMap功能演示</h4><p>我们针对签到功能完全可以通过mysql来完成，比如说以下这张表</p>
-<p><img src="/blog/img/1653823145495.png" alt="1653823145495"></p>
+<p><img src="/img/1653823145495.png" alt="1653823145495"></p>
 <p>用户一次签到，就是一条记录，假如有1000万用户，平均每人每年签到次数为10次，则这张表一年的数据量为 1亿条</p>
 <p>每签到一次需要使用（8 + 8 + 1 + 1 + 3 + 1）共22 字节的内存，一个月则最多需要600多字节</p>
 <p>我们如何能够简化一点呢？其实可以考虑小时候一个挺常见的方案，就是小时候，咱们准备一张小小的卡片，你只要签到就打上一个勾，我最后判断你是否签到，其实只需要到小卡片上看一看就知道了</p>
@@ -294,7 +294,7 @@
 <p>我们按月来统计用户签到信息，签到记录为1，未签到则记录为0.</p>
 <p>把每一个bit位对应当月的每一天，形成了映射关系。用0和1标示业务状态，这种思路就称为位图（BitMap）。这样我们就用极小的空间，来实现了大量数据的表示</p>
 <p>Redis中是利用string类型数据结构实现BitMap，因此最大上限是512M，转换为bit则是 2^32个bit位。</p>
-<p><img src="/blog/img/1653824498278.png" alt="1653824498278"></p>
+<p><img src="/img/1653824498278.png" alt="1653824498278"></p>
 <p>BitMap的操作命令有：</p>
 <ul>
 <li>SETBIT：向指定位置（offset）存入一个0或1</li>
@@ -312,11 +312,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://gitee.com/lanceluot/blog.git/2024/02/23/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clwf8ujxx000t3a5b2cez920t" data-title="redis学习笔记" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      <a data-url="https://gitee.com/lanceluot/blog.git/2024/02/23/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clwf92wsi000t8d5b8nscfeyl" data-title="redis学习笔记" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/redis/" rel="tag">redis</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/" rel="tag">redis</a></li></ul>
 
     </footer>
   </div>
@@ -324,7 +324,7 @@
     
 <nav id="article-nav">
   
-    <a href="/blog/2024/02/28/rabbitmq%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2024/02/28/rabbitmq%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Neuer</strong>
       <div class="article-nav-title">
         
@@ -334,7 +334,7 @@
     </a>
   
   
-    <a href="/blog/2024/02/23/ThreadLocal%E8%A7%A3%E8%AF%BB/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2024/02/23/ThreadLocal%E8%A7%A3%E8%AF%BB/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Älter</strong>
       <div class="article-nav-title">ThreadLocal解读</div>
     </a>
@@ -353,7 +353,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Kategorien</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a></li></ul>
     </div>
   </div>
 
@@ -363,7 +363,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/BUG/" rel="tag">BUG</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/RPC/" rel="tag">RPC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" rel="tag">java后端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/java%E6%BA%90%E7%A0%81/" rel="tag">java源码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/jvm/" rel="tag">jvm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/leetcode/" rel="tag">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/leetcode%E9%A2%98%E8%A7%A3/" rel="tag">leetcode题解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/rabbitmq/" rel="tag">rabbitmq</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/redis/" rel="tag">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/shell/" rel="tag">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/spring/" rel="tag">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/springboot/" rel="tag">springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E4%BD%9C%E4%B8%9A/" rel="tag">作业</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%AE%9E%E9%AA%8C/" rel="tag">实验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%AE%9E%E9%AA%8C3/" rel="tag">实验3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%84%9F%E6%83%B3/" rel="tag">感想</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag">数据结构与算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E7%96%91%E9%97%AE/" rel="tag">疑问</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BUG/" rel="tag">BUG</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RPC/" rel="tag">RPC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" rel="tag">java后端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E6%BA%90%E7%A0%81/" rel="tag">java源码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jvm/" rel="tag">jvm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode%E9%A2%98%E8%A7%A3/" rel="tag">leetcode题解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rabbitmq/" rel="tag">rabbitmq</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/" rel="tag">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/" rel="tag">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/" rel="tag">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%9C%E4%B8%9A/" rel="tag">作业</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%9E%E9%AA%8C/" rel="tag">实验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%9E%E9%AA%8C3/" rel="tag">实验3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%84%9F%E6%83%B3/" rel="tag">感想</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag">数据结构与算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%96%91%E9%97%AE/" rel="tag">疑问</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a></li></ul>
     </div>
   </div>
 
@@ -373,7 +373,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/blog/tags/BUG/" style="font-size: 10px;">BUG</a> <a href="/blog/tags/RPC/" style="font-size: 10px;">RPC</a> <a href="/blog/tags/git/" style="font-size: 10px;">git</a> <a href="/blog/tags/java/" style="font-size: 20px;">java</a> <a href="/blog/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 10px;">java后端开发</a> <a href="/blog/tags/java%E6%BA%90%E7%A0%81/" style="font-size: 10px;">java源码</a> <a href="/blog/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/blog/tags/leetcode/" style="font-size: 10px;">leetcode</a> <a href="/blog/tags/leetcode%E9%A2%98%E8%A7%A3/" style="font-size: 15px;">leetcode题解</a> <a href="/blog/tags/rabbitmq/" style="font-size: 10px;">rabbitmq</a> <a href="/blog/tags/redis/" style="font-size: 10px;">redis</a> <a href="/blog/tags/shell/" style="font-size: 10px;">shell</a> <a href="/blog/tags/spring/" style="font-size: 10px;">spring</a> <a href="/blog/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/blog/tags/test/" style="font-size: 10px;">test</a> <a href="/blog/tags/%E4%BD%9C%E4%B8%9A/" style="font-size: 10px;">作业</a> <a href="/blog/tags/%E5%AE%9E%E9%AA%8C/" style="font-size: 15px;">实验</a> <a href="/blog/tags/%E5%AE%9E%E9%AA%8C3/" style="font-size: 10px;">实验3</a> <a href="/blog/tags/%E6%84%9F%E6%83%B3/" style="font-size: 10px;">感想</a> <a href="/blog/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">操作系统</a> <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 10px;">数据结构与算法</a> <a href="/blog/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a> <a href="/blog/tags/%E7%96%91%E9%97%AE/" style="font-size: 10px;">疑问</a> <a href="/blog/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">笔记</a> <a href="/blog/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/blog/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 15px;">设计模式</a> <a href="/blog/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10px;">问题</a>
+      <a href="/tags/BUG/" style="font-size: 10px;">BUG</a> <a href="/tags/RPC/" style="font-size: 10px;">RPC</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 10px;">java后端开发</a> <a href="/tags/java%E6%BA%90%E7%A0%81/" style="font-size: 10px;">java源码</a> <a href="/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/tags/leetcode/" style="font-size: 10px;">leetcode</a> <a href="/tags/leetcode%E9%A2%98%E8%A7%A3/" style="font-size: 15px;">leetcode题解</a> <a href="/tags/rabbitmq/" style="font-size: 10px;">rabbitmq</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/%E4%BD%9C%E4%B8%9A/" style="font-size: 10px;">作业</a> <a href="/tags/%E5%AE%9E%E9%AA%8C/" style="font-size: 15px;">实验</a> <a href="/tags/%E5%AE%9E%E9%AA%8C3/" style="font-size: 10px;">实验3</a> <a href="/tags/%E6%84%9F%E6%83%B3/" style="font-size: 10px;">感想</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 10px;">数据结构与算法</a> <a href="/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a> <a href="/tags/%E7%96%91%E9%97%AE/" style="font-size: 10px;">疑问</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">笔记</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 15px;">设计模式</a> <a href="/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10px;">问题</a>
     </div>
   </div>
 
@@ -382,7 +382,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archiv</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2022/12/">December 2022</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li></ul>
     </div>
   </div>
 
@@ -395,23 +395,23 @@
       <ul>
         
           <li>
-            <a href="/blog/2024/05/01/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E5%AE%9E%E9%AA%8C%E4%B8%89-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">算法设计与分析实验三-动态规划</a>
+            <a href="/2024/05/01/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E5%AE%9E%E9%AA%8C%E4%B8%89-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">算法设计与分析实验三-动态规划</a>
           </li>
         
           <li>
-            <a href="/blog/2024/05/01/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AE%9E%E9%AA%8C3-%E6%96%87%E4%BB%B6io%E7%BC%96%E7%A8%8B/">嵌入式实验3-文件io编程</a>
+            <a href="/2024/05/01/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AE%9E%E9%AA%8C3-%E6%96%87%E4%BB%B6io%E7%BC%96%E7%A8%8B/">嵌入式实验3-文件io编程</a>
           </li>
         
           <li>
-            <a href="/blog/2024/04/30/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E8%B7%B5-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAfat12%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">操作系统实践-实现一个fat12文件系统</a>
+            <a href="/2024/04/30/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E8%B7%B5-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAfat12%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">操作系统实践-实现一个fat12文件系统</a>
           </li>
         
           <li>
-            <a href="/blog/2024/04/25/LambdaQuery-%E5%92%8C-Query%E7%9A%84%E5%8C%BA%E5%88%AB/">LambdaQuery 和 Query的区别</a>
+            <a href="/2024/04/25/LambdaQuery-%E5%92%8C-Query%E7%9A%84%E5%8C%BA%E5%88%AB/">LambdaQuery 和 Query的区别</a>
           </li>
         
           <li>
-            <a href="/blog/2024/04/14/leetcode530/">leetcode530二叉搜索树的最小绝对值</a>
+            <a href="/2024/04/14/leetcode530/">leetcode530二叉搜索树的最小绝对值</a>
           </li>
         
       </ul>
@@ -436,25 +436,25 @@
     </div>
     <nav id="mobile-nav">
   
-    <a href="/blog/" class="mobile-nav-link">Home</a>
+    <a href="/" class="mobile-nav-link">Home</a>
   
-    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
+    <a href="/archives" class="mobile-nav-link">Archives</a>
   
 </nav>
     
 
 
-<script src="/blog/js/jquery-3.6.4.min.js"></script>
+<script src="/js/jquery-3.6.4.min.js"></script>
 
 
 
   
-<script src="/blog/fancybox/jquery.fancybox.min.js"></script>
+<script src="/fancybox/jquery.fancybox.min.js"></script>
 
 
 
 
-<script src="/blog/js/script.js"></script>
+<script src="/js/script.js"></script>
 
 
 
