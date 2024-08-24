@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>dfs求全排列 | hatena</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="全排列记录一下求全排列的算法，有三种，交换，插空，枚举 第一种 交换">
+<meta property="og:type" content="article">
+<meta property="og:title" content="dfs求全排列">
+<meta property="og:url" content="https://kerisuchiaki.github.io/2024/08/24/dfs%E6%B1%82%E5%85%A8%E6%8E%92%E5%88%97/index.html">
+<meta property="og:site_name" content="hatena">
+<meta property="og:description" content="全排列记录一下求全排列的算法，有三种，交换，插空，枚举 第一种 交换">
+<meta property="og:locale" content="zn_CN">
+<meta property="article:published_time" content="2024-08-24T14:55:05.000Z">
+<meta property="article:modified_time" content="2024-08-24T18:24:04.676Z">
+<meta property="article:author" content="myself">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/Blog/atom.xml" title="hatena" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/Blog/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/Blog/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/Blog/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/Blog/" id="logo">hatena</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/Blog/">Home</a>
+        
+          <a class="main-nav-link" href="/Blog/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/Blog/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://kerisuchiaki.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-dfs求全排列" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/Blog/2024/08/24/dfs%E6%B1%82%E5%85%A8%E6%8E%92%E5%88%97/" class="article-date">
+  <time class="dt-published" datetime="2024-08-24T14:55:05.000Z" itemprop="datePublished">2024-08-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      dfs求全排列
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="全排列"><a href="#全排列" class="headerlink" title="全排列"></a>全排列</h1><p>记录一下求全排列的算法，有三种，交换，插空，枚举</p>
+<h2 id="第一种-交换"><a href="#第一种-交换" class="headerlink" title="第一种 交换"></a>第一种 交换</h2><span id="more"></span>
+
+<p>这是常见的一种求全排列的dfs算法,经常在各种算法书籍上看到，简单的描述下就是假如n个元素的排列就是一种排列方式的话，那么将第一个元素和其它元素交换得到也是新的排列，即只要第一个元素不一样那么剩下的怎么排列都是不一样的，然后递归求剩下的元素的全排列即可</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 代码还挺简洁的</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">permute</span><span class="params">(vector&lt;<span class="type">int</span>&gt; nums,<span class="type">int</span> start,vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; res)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(start==nums.<span class="built_in">end</span>())&#123;</span><br><span class="line">      res.<span class="built_in">push_back</span>(nums);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=start;i&lt;nums.<span class="built_in">size</span>();++)&#123;</span><br><span class="line">        <span class="built_in">swap</span>(nums[i],nums[start]);</span><br><span class="line">        <span class="built_in">permute</span>(nums,start+<span class="number">1</span>,res);</span><br><span class="line">        <span class="built_in">swap</span>(nums[i],nums[start]);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="第二种-高中的插空法"><a href="#第二种-高中的插空法" class="headerlink" title="第二种 高中的插空法"></a>第二种 高中的插空法</h2><p>在高中，我们都学过怎么求全排列，其中一种方法就是插空法，即把一个元素插入到已将排列好的序列的中间，那么每一种插入的位置都会形成一个新的排列，只要求出剩下元素的所有全排列然后再将第一个元素插入得到所有全排列中的位置就行</p>
+<h3 id="思路来源"><a href="#思路来源" class="headerlink" title="思路来源"></a>思路来源</h3><p>这个想法我是怎么得到的呢，我并不是直接从高中数学中得到的，而是用递归的想法想到的，怎么求一个序列的全排列，直接想有点难度，使用分治的思想进行递归，长度为n的序列全排列可以先求出长度为n-1的序列的全排列，即先不考虑第一个元素，把剩下的元素全排列求出来后，再把第一个元素插入到这个n-1个元素形成的全排列的位置中，那么就可以得到长度为n的全排列，很符合递归分治的思想，分而治之，将问题规模逐渐减少到最小的维度，然后只需要具体思考这个最小的问题即可，思维难度小，妙啊，后来想想这不就是高中的插空法嘛</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义permute求nums数组的start到end的元素的全排列并返回</span></span><br><span class="line">vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">permute</span>(vector&lt;<span class="type">int</span>&gt; &amp; nums,<span class="type">int</span> begin,<span class="type">int</span> end)&#123;</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; res,ans;</span><br><span class="line">    <span class="keyword">if</span>(end-begin==<span class="number">1</span>)&#123;</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; tmp;</span><br><span class="line">        tmp.<span class="built_in">push_back</span>(nums[begin]);</span><br><span class="line">        ans.<span class="built_in">push_back</span>(tmp);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    求begin到end的全排列等价于求begin+1到end的全排列然后让索引begin处的元素插入begin+1到end元素之间的位置，</span></span><br><span class="line"><span class="comment">    那么每个这样的排列都是一个新的全排列,</span></span><br><span class="line"><span class="comment">    也就是高中数学求排列的的插空法</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    res=<span class="built_in">permute</span>(nums,begin+<span class="number">1</span>,end);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;res.<span class="built_in">size</span>();i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;=res[i].<span class="built_in">size</span>();j++)&#123;</span><br><span class="line">            vector&lt;<span class="type">int</span>&gt; tmp;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">0</span>;k&lt;res[i].<span class="built_in">size</span>();k++)&#123;</span><br><span class="line">                tmp.<span class="built_in">push_back</span>(res[i][k]);</span><br><span class="line">            &#125;;</span><br><span class="line">            tmp.<span class="built_in">insert</span>(tmp.<span class="built_in">begin</span>()+j,nums[begin]);</span><br><span class="line">            ans.<span class="built_in">push_back</span>(tmp);</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="第三种-普通人能想到的枚举"><a href="#第三种-普通人能想到的枚举" class="headerlink" title="第三种 普通人能想到的枚举"></a>第三种 普通人能想到的枚举</h2><p>为什么这是普通人想到的算法，应为我从之前接触到的求全排列算法中打印它们的全排列序列总是和我想得到不一样，我一直以为交换得到全排列的序列是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1 2 3 4</span><br><span class="line">1 2 4 3</span><br><span class="line">1 3 2 4</span><br><span class="line">1 3 4 2</span><br><span class="line">1 4 2 3</span><br><span class="line">1 4 3 2</span><br><span class="line">2 1 3 4</span><br><span class="line">2 1 4 3</span><br><span class="line">....</span><br></pre></td></tr></table></figure>
+
+<p>然而他的结果是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">1 2 3 4 </span><br><span class="line">1 2 4 3</span><br><span class="line">1 3 2 4</span><br><span class="line">1 3 4 2</span><br><span class="line">1 4 3 2 // 奇怪的地方没按字典序  //原因在于1 2 3 4中 2与4交换 形成 1 4 3 2</span><br><span class="line">1 4 2 3 // 与上逆序</span><br><span class="line">2 1 3 4</span><br><span class="line">2 1 4 3</span><br><span class="line">2 3 1 4</span><br><span class="line">2 3 4 1</span><br><span class="line">2 4 3 1 //</span><br><span class="line">2 4 1 3 //与上逆序            //原因在于2 1 3 4中 1与4交换形成 2 4 3 1</span><br><span class="line">3 2 1 4  //</span><br><span class="line">3 2 4 1 //</span><br><span class="line">3 1 2 4</span><br><span class="line">3 1 4 2// 第二个元素就逆序了			//原因在于 1 2 3 4中 1 3交换使得形成 3 2 1 4</span><br><span class="line">3 4 1 2</span><br><span class="line">3 4 2 1</span><br><span class="line">4 2 3 1 //							//原因在于1 2 3 4 1 和 4交换出现 4 2 3 1</span><br><span class="line">4 2 1 3 //与上逆序					//</span><br><span class="line">4 3 2 1 //</span><br><span class="line">4 3 1 2 //与上逆序</span><br><span class="line">4 1 3 2 //</span><br><span class="line">4 1 2 3 //与上逆序</span><br></pre></td></tr></table></figure>
+
+<p>这个序列不是很符合第一个普通人想的，普通人就是从所有元素中选则来生成序列，比如第一个元素的选择可以有4中。然后第二个元素的选择就只能有剩下的三种，第三个元素就只能有两种选择，最后一个就只能有一种选择了，那么基于这个想法就可以得到新的生成全排列算法而且序列就是符合正常人想的</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这里原始序列也充当可选元素集合</span></span><br><span class="line">vector&lt;vertoc&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">permute</span>(vector&lt;<span class="type">int</span>&gt; nums)&#123;</span><br><span class="line">    <span class="keyword">if</span>(nums.<span class="built_in">size</span>()==<span class="number">0</span>)&#123;</span><br><span class="line">        vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">res</span>(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; res;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;nums.<span class="built_in">size</span>();i++)&#123;</span><br><span class="line">    	<span class="comment">//选择一个元素，减少可选元素集合，然后递归剩下的元素集合</span></span><br><span class="line">        <span class="type">int</span> selectNum=nums[i];</span><br><span class="line">        nums.<span class="built_in">erase</span>(nums.<span class="built_in">begin</span>()+i);</span><br><span class="line">        vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; ans=<span class="built_in">permute</span>(nums);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;ans.<span class="built_in">size</span>();j++)&#123;</span><br><span class="line">            <span class="comment">// 添加回到递归的集合</span></span><br><span class="line">				ans[j].<span class="built_in">insert</span>(ans[j].<span class="built_in">begin</span>(),selectNum);</span><br><span class="line">            res.<span class="built_in">push_back</span>(ans[j]);</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="comment">//回溯</span></span><br><span class="line">        nums.<span class="built_in">insert</span>(nums.<span class="built_in">begin</span>()+i,selecrNum);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>会这么想只要还是傻逼老师出在pta的题目中使用dfs求全排列的题目只有一个测试点并且答案还是只能是使用交换的这种，这使得有多个符合条件的答案只能其中一个序列，那么我是用其它的求全排列的算法得到的排列恰好不是和答案一样的（测试样例通过但是后台不是测试样样例，问老师老师也是直接说这个测试用例就是后台样例，那么为什么直接输出结果相同都错误，我怀疑是老师根本不知道，题目都不知道从哪个学校弄来的），但是题目要求的结果即输出的结果是一样的，然而提交总是不通过，后来研究网上的通过代码才发现这个问题</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kerisuchiaki.github.io/2024/08/24/dfs%E6%B1%82%E5%85%A8%E6%8E%92%E5%88%97/" data-id="cm08gz99a0000ek5b3y7xan0b" data-title="dfs求全排列" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/Blog/2024/07/16/oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">oracle数据库学习笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/Blog/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/BUG/" rel="tag">BUG</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/RPC/" rel="tag">RPC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" rel="tag">java后端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/java%E6%BA%90%E7%A0%81/" rel="tag">java源码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/jvm/" rel="tag">jvm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/leetcode/" rel="tag">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/leetcode%E9%A2%98%E8%A7%A3/" rel="tag">leetcode题解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/oracle/" rel="tag">oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/rabbitmq/" rel="tag">rabbitmq</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/redis/" rel="tag">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/shell/" rel="tag">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/spring/" rel="tag">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/springboot/" rel="tag">springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E4%BD%9C%E4%B8%9A/" rel="tag">作业</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E5%AE%9E%E9%AA%8C/" rel="tag">实验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E5%AE%9E%E9%AA%8C3/" rel="tag">实验3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E6%84%9F%E6%83%B3/" rel="tag">感想</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag">数据结构与算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E7%96%91%E9%97%AE/" rel="tag">疑问</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/Blog/tags/BUG/" style="font-size: 10px;">BUG</a> <a href="/Blog/tags/RPC/" style="font-size: 10px;">RPC</a> <a href="/Blog/tags/git/" style="font-size: 10px;">git</a> <a href="/Blog/tags/java/" style="font-size: 20px;">java</a> <a href="/Blog/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 10px;">java后端开发</a> <a href="/Blog/tags/java%E6%BA%90%E7%A0%81/" style="font-size: 10px;">java源码</a> <a href="/Blog/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/Blog/tags/leetcode/" style="font-size: 10px;">leetcode</a> <a href="/Blog/tags/leetcode%E9%A2%98%E8%A7%A3/" style="font-size: 15px;">leetcode题解</a> <a href="/Blog/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/Blog/tags/rabbitmq/" style="font-size: 10px;">rabbitmq</a> <a href="/Blog/tags/redis/" style="font-size: 10px;">redis</a> <a href="/Blog/tags/shell/" style="font-size: 10px;">shell</a> <a href="/Blog/tags/spring/" style="font-size: 10px;">spring</a> <a href="/Blog/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/Blog/tags/test/" style="font-size: 10px;">test</a> <a href="/Blog/tags/%E4%BD%9C%E4%B8%9A/" style="font-size: 10px;">作业</a> <a href="/Blog/tags/%E5%AE%9E%E9%AA%8C/" style="font-size: 15px;">实验</a> <a href="/Blog/tags/%E5%AE%9E%E9%AA%8C3/" style="font-size: 10px;">实验3</a> <a href="/Blog/tags/%E6%84%9F%E6%83%B3/" style="font-size: 10px;">感想</a> <a href="/Blog/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">操作系统</a> <a href="/Blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 10px;">数据结构与算法</a> <a href="/Blog/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a> <a href="/Blog/tags/%E7%96%91%E9%97%AE/" style="font-size: 10px;">疑问</a> <a href="/Blog/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">笔记</a> <a href="/Blog/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15px;">算法</a> <a href="/Blog/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 15px;">设计模式</a> <a href="/Blog/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10px;">问题</a> <a href="/Blog/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">面试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2022/12/">December 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/Blog/2024/08/24/dfs%E6%B1%82%E5%85%A8%E6%8E%92%E5%88%97/">dfs求全排列</a>
+          </li>
+        
+          <li>
+            <a href="/Blog/2024/07/16/oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">oracle数据库学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/Blog/2024/06/17/%E9%9D%A2%E8%AF%95%E6%99%BA%E5%8A%9B%E9%A2%98-%E5%80%92%E6%B0%B4%E9%97%AE%E9%A2%98%E9%80%9A%E8%A7%A3/">面试智力题-倒水问题通解</a>
+          </li>
+        
+          <li>
+            <a href="/Blog/2024/05/01/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E5%AE%9E%E9%AA%8C%E4%B8%89-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">算法设计与分析实验三-动态规划</a>
+          </li>
+        
+          <li>
+            <a href="/Blog/2024/05/01/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AE%9E%E9%AA%8C3-%E6%96%87%E4%BB%B6io%E7%BC%96%E7%A8%8B/">嵌入式实验3-文件io编程</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 myself<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/Blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/Blog/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/Blog/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/Blog/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/Blog/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
