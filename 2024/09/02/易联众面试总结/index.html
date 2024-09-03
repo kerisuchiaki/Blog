@@ -14,7 +14,7 @@
 <meta property="og:description" content="1.面试问答(未完成)1.1程序是怎么跑起来的当面试官问到“程序是怎么跑起来的”，他们通常想了解你对程序执行过程的基本理解，包括操作系统、编译过程、程序运行时的内存管理等方面。以下是一个结构化的回答：  源代码编写： 首先，开发者使用编程语言（如C、Java、Python等）编写源代码。   编译过程： 源代码需要通过编译器转换成机器语言。编译器会进行词法分析、语法分析、语义分析、优化以及代码生成">
 <meta property="og:locale" content="zn_CN">
 <meta property="article:published_time" content="2024-09-02T08:51:04.000Z">
-<meta property="article:modified_time" content="2024-09-03T16:56:55.300Z">
+<meta property="article:modified_time" content="2024-09-03T17:14:47.652Z">
 <meta property="article:author" content="myself">
 <meta property="article:tag" content="面试">
 <meta name="twitter:card" content="summary">
@@ -268,7 +268,221 @@
     </div>
 </div>
 
-<p>sa</p>
+<div class='fold collapsed'>
+    <div class='fold-title'>
+        再举个例子：
+    </div>
+    <div class='fold-content'>
+        <p><code>spring-boot-starter-jdbc</code> 是一个用于简化数据库操作的Spring Boot Starter。它提供了自动配置和依赖管理，使得开发者能够更容易地使用 JDBC 进行数据库编程。以下是它在Spring Boot应用启动时的一些典型动作：</p>
+<ol>
+<li><p><strong>依赖引入</strong>：</p>
+<ul>
+<li>当你在项目的构建配置文件（如<code>pom.xml</code>）中添加了<code>spring-boot-starter-jdbc</code>依赖，它会自动引入<code>spring-jdbc</code>、数据库连接池（如HikariCP）、JDBC API等必要的依赖库。</li>
+</ul>
+</li>
+<li><p><strong>自动配置</strong>：</p>
+<ul>
+<li>应用启动时，<code>spring-boot-starter-jdbc</code> 会触发相关的自动配置类，如<code>DataSourceAutoConfiguration</code>，它负责配置数据源（DataSource）。</li>
+<li>根据<code>application.properties</code>或<code>application.yml</code>中的配置，自动配置类会创建并配置数据库连接池。</li>
+</ul>
+</li>
+<li><p><strong>默认配置</strong>：</p>
+<ul>
+<li>提供默认的数据库连接配置，如URL、用户名、密码等，这些默认值可以在应用的配置文件中被覆盖。</li>
+</ul>
+</li>
+<li><p><strong>条件注解</strong>：</p>
+<ul>
+<li>使用条件注解（如<code>@ConditionalOnMissingBean</code>）确保只在没有其他自定义数据源配置的情况下才应用默认配置。</li>
+</ul>
+</li>
+<li><p><strong>自定义配置</strong>：</p>
+<ul>
+<li>开发者可以在<code>application.properties</code>或<code>application.yml</code>中定义自己的数据库连接配置，如数据库URL、用户名、密码、连接池大小等。</li>
+</ul>
+</li>
+<li><p><strong>数据源</strong>：</p>
+<ul>
+<li>应用会创建一个数据源 Bean，通常是连接池实现，如HikariCP，用于管理数据库连接。</li>
+</ul>
+</li>
+<li><p><strong>JdbcTemplate</strong>：</p>
+<ul>
+<li>通常会配置一个<code>JdbcTemplate</code> Bean，它是一个简化JDBC操作的工具类，提供了执行SQL语句的便捷方法。</li>
+</ul>
+</li>
+<li><p><strong>启动类</strong>：</p>
+<ul>
+<li>应用的入口通常是一个带有<code>@SpringBootApplication</code>注解的主类，这个注解包含了<code>@EnableAutoConfiguration</code>，允许Spring Boot根据添加的Starter进行自动配置。</li>
+</ul>
+</li>
+<li><p><strong>Spring Boot应用上下文</strong>：</p>
+<ul>
+<li>所有自动配置的Bean，包括数据源和<code>JdbcTemplate</code>，都会被注册到Spring应用上下文中，使得开发者可以像使用其他Spring Bean一样使用它们。</li>
+</ul>
+</li>
+</ol>
+<p>通过<code>spring-boot-starter-jdbc</code>，开发者可以快速设置数据库连接和操作，而不需要手动配置数据源和JDBC模板。这使得数据库编程变得更加简单和高效。</p>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+<h2 id="1-6我看你这个项目上面是有写一个精准营销的抽奖服务平台是吧？那你这边用到redis，然后数据库行锁转为了redis的独占锁。你当时我怎么会去考虑这种方法去解决的？然后当初是遇到什么问题才会采用这种方法去解决？"><a href="#1-6我看你这个项目上面是有写一个精准营销的抽奖服务平台是吧？那你这边用到redis，然后数据库行锁转为了redis的独占锁。你当时我怎么会去考虑这种方法去解决的？然后当初是遇到什么问题才会采用这种方法去解决？" class="headerlink" title="1.6我看你这个项目上面是有写一个精准营销的抽奖服务平台是吧？那你这边用到redis，然后数据库行锁转为了redis的独占锁。你当时我怎么会去考虑这种方法去解决的？然后当初是遇到什么问题才会采用这种方法去解决？"></a>1.6我看你这个项目上面是有写一个精准营销的抽奖服务平台是吧？那你这边用到redis，然后数据库行锁转为了redis的独占锁。你当时我怎么会去考虑这种方法去解决的？然后当初是遇到什么问题才会采用这种方法去解决？</h2><p>待定</p>
+<h2 id="1-7我现在想要自定义一个注解，我希望在他在其中的时候，就帮我做一点事情。有没有注解的这个逻辑，我希望在程序启动的时候，被我注解的方法然后自动运行。那这个方法里面，输出一些日志信息或者都无所谓，但是这个方法一定要被系统被程序给调用到"><a href="#1-7我现在想要自定义一个注解，我希望在他在其中的时候，就帮我做一点事情。有没有注解的这个逻辑，我希望在程序启动的时候，被我注解的方法然后自动运行。那这个方法里面，输出一些日志信息或者都无所谓，但是这个方法一定要被系统被程序给调用到" class="headerlink" title="1.7我现在想要自定义一个注解，我希望在他在其中的时候，就帮我做一点事情。有没有注解的这个逻辑，我希望在程序启动的时候，被我注解的方法然后自动运行。那这个方法里面，输出一些日志信息或者都无所谓，但是这个方法一定要被系统被程序给调用到"></a>1.7我现在想要自定义一个注解，我希望在他在其中的时候，就帮我做一点事情。有没有注解的这个逻辑，我希望在程序启动的时候，被我注解的方法然后自动运行。那这个方法里面，输出一些日志信息或者都无所谓，但是这个方法一定要被系统被程序给调用到</h2><p>1.定义注解</p>
+<p>2.创建配置类</p>
+<p>3.使用注解</p>
+<p>4.启动springboot应用</p>
+<div class='fold collapsed'>
+    <div class='fold-title'>
+        具体一点
+    </div>
+    <div class='fold-content'>
+        <p>在Spring框架中，你可以通过创建自定义注解并结合配置类来实现在程序启动时自动执行特定方法。以下是实现这一功能的基本步骤：</p>
+<h3 id="1-定义自定义注解"><a href="#1-定义自定义注解" class="headerlink" title="1. 定义自定义注解"></a>1. 定义自定义注解</h3><p>首先，你需要定义一个自定义注解，例如<code>@RunAtStartup</code>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target(ElementType.METHOD)</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> RunAtStartup &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里，<code>@Target(ElementType.METHOD)</code> 指定了注解可以用在方法上，<code>@Retention(RetentionPolicy.RUNTIME)</code> 表示注解在运行时可用。</p>
+<h3 id="2-创建配置类"><a href="#2-创建配置类" class="headerlink" title="2. 创建配置类"></a>2. 创建配置类</h3><p>然后，你需要创建一个配置类，使用<code>@ComponentScan</code>来包含你的注解，并使用<code>@EventListener</code>来监听应用启动事件：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ComponentScan</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StartupRunner</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> ApplicationContext applicationContext;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@EventListener(ApplicationReadyEvent.class)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">runStartupMethods</span><span class="params">()</span> &#123;</span><br><span class="line">        Map&lt;String, Object&gt; beans = applicationContext.getBeansWithAnnotation(RunAtStartup.class);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (Object bean : beans.values()) &#123;</span><br><span class="line">            Method[] methods = bean.getClass().getDeclaredMethods();</span><br><span class="line">            <span class="keyword">for</span> (Method method : methods) &#123;</span><br><span class="line">                <span class="keyword">if</span> (method.isAnnotationPresent(RunAtStartup.class)) &#123;</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        method.setAccessible(<span class="literal">true</span>);</span><br><span class="line">                        method.invoke(bean);</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (IllegalAccessException | InvocationTargetException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个配置类中，<code>runStartupMethods</code> 方法会在Spring应用启动并准备好后被调用。它通过<code>ApplicationContext</code>查找所有标记了<code>@RunAtStartup</code>注解的Bean，然后反射调用这些Bean上标记了<code>@RunAtStartup</code>的方法。</p>
+<h3 id="3-使用自定义注解"><a href="#3-使用自定义注解" class="headerlink" title="3. 使用自定义注解"></a>3. 使用自定义注解</h3><p>现在，你可以在任何Spring管理的Bean的方法上使用<code>@RunAtStartup</code>注解，这个方法将在应用启动时被自动调用：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyService</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RunAtStartup</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">myStartupMethod</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;The application is starting up!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-启动应用"><a href="#4-启动应用" class="headerlink" title="4. 启动应用"></a>4. 启动应用</h3><p>当你启动Spring应用时，<code>MyService</code> 中的 <code>myStartupMethod</code> 方法将被自动调用，并输出日志信息。</p>
+<p>这种方法利用了Spring的事件监听机制和反射，使得你可以在程序启动时执行特定的方法。你可以根据需要调整<code>StartupRunner</code>类，以适应更复杂的启动逻辑或执行更多的初始化任务。</p>
+
+    </div>
+</div>
+
+<h2 id="1-8如何封装自定义组件，提供给其他项目使用"><a href="#1-8如何封装自定义组件，提供给其他项目使用" class="headerlink" title="1.8如何封装自定义组件，提供给其他项目使用"></a>1.8如何封装自定义组件，提供给其他项目使用</h2><p>写好代码，经过测试，打好jar包供其他项目引入</p>
+<div class='fold collapsed'>
+    <div class='fold-title'>
+        具体点
+    </div>
+    <div class='fold-content'>
+        No content to show
+    </div>
+</div>
+
+<h2 id="1-9怎么设计一个好的，优秀的系统"><a href="#1-9怎么设计一个好的，优秀的系统" class="headerlink" title="1.9怎么设计一个好的，优秀的系统"></a>1.9怎么设计一个好的，优秀的系统</h2><p>待研究</p>
+<div class='fold collapsed'>
+    <div class='fold-title'>
+        可参考
+    </div>
+    <div class='fold-content'>
+        <p>设计一个优秀系统是一个复杂的过程，涉及到多个方面的考量。以下是一些关键的步骤和原则，可以帮助你设计出高质量的系统：</p>
+<ol>
+<li><p><strong>明确需求</strong>：</p>
+<ul>
+<li>与利益相关者沟通，明确系统的目标、功能需求、性能要求和用户期望。</li>
+</ul>
+</li>
+<li><p><strong>用户中心设计</strong>：</p>
+<ul>
+<li>以用户为中心，设计直观易用的用户界面和体验。</li>
+</ul>
+</li>
+<li><p><strong>模块化</strong>：</p>
+<ul>
+<li>将系统分解为独立的模块，有助于维护和扩展。</li>
+</ul>
+</li>
+<li><p><strong>可扩展性</strong>：</p>
+<ul>
+<li>设计时考虑未来可能的需求变化，确保系统可以容易地添加新功能。</li>
+</ul>
+</li>
+<li><p><strong>可维护性</strong>：</p>
+<ul>
+<li>编写清晰、结构良好的代码，提供充足的文档和注释。</li>
+</ul>
+</li>
+<li><p><strong>性能优化</strong>：</p>
+<ul>
+<li>确保系统在性能上满足要求，包括响应时间、处理能力和资源消耗。</li>
+</ul>
+</li>
+<li><p><strong>安全性</strong>：</p>
+<ul>
+<li>实施安全措施，保护系统免受攻击，并确保数据的安全和隐私。</li>
+</ul>
+</li>
+<li><p><strong>可靠性和容错性</strong>：</p>
+<ul>
+<li>设计系统以处理故障和异常情况，确保系统的稳定性和可靠性。</li>
+</ul>
+</li>
+<li><p><strong>测试</strong>：</p>
+<ul>
+<li>实施全面的测试策略，包括单元测试、集成测试和性能测试。</li>
+</ul>
+</li>
+<li><p><strong>合规性</strong>：</p>
+<ul>
+<li>确保系统遵守相关法律法规和行业标准。</li>
+</ul>
+</li>
+<li><p><strong>技术选型</strong>：</p>
+<ul>
+<li>选择合适的技术和工具，以支持系统的设计和实现。</li>
+</ul>
+</li>
+<li><p><strong>持续集成和持续部署（CI&#x2F;CD）</strong>：</p>
+<ul>
+<li>采用CI&#x2F;CD实践，以自动化的方式频繁地交付和部署代码。</li>
+</ul>
+</li>
+<li><p><strong>监控和日志</strong>：</p>
+<ul>
+<li>实施监控和日志记录，以便跟踪系统状态和及时发现问题。</li>
+</ul>
+</li>
+<li><p><strong>灾难恢复计划</strong>：</p>
+<ul>
+<li>准备灾难恢复计划，以应对系统故障或数据丢失。</li>
+</ul>
+</li>
+<li><p><strong>反馈机制</strong>：</p>
+<ul>
+<li>建立用户反馈机制，持续改进系统。</li>
+</ul>
+</li>
+<li><p><strong>团队协作</strong>：</p>
+<ul>
+<li>促进团队成员之间的有效沟通和协作。</li>
+</ul>
+</li>
+<li><p><strong>持续学习和改进</strong>：</p>
+<ul>
+<li>跟踪最新的技术趋势和最佳实践，不断学习和改进。</li>
+</ul>
+</li>
+</ol>
+<p>设计一个优秀的系统不仅仅是技术问题，还涉及到项目管理、团队合作和用户体验等多个方面。通过遵循上述原则，并持续迭代和改进，你可以设计出满足用户需求、性能优异且易于维护的系统。</p>
+
+    </div>
+</div>
+
+
+
+<h2 id="1-10下面给你一个场景，你作为一个主负责人，你会去怎么设计它？假设我们集团有三千多号人，那我们每个月10号要给每个人发工资。那财务会在每个月9号的时候，把这个工资表报表导入到系统，那你会去怎么设计这套系统？把报表导入到系统对，你要对接银行的接口，给每个人发工资。就说白了就是你现在写个程序给集团的员工发工资，那你为什么设计这个系统给其他员工发工资"><a href="#1-10下面给你一个场景，你作为一个主负责人，你会去怎么设计它？假设我们集团有三千多号人，那我们每个月10号要给每个人发工资。那财务会在每个月9号的时候，把这个工资表报表导入到系统，那你会去怎么设计这套系统？把报表导入到系统对，你要对接银行的接口，给每个人发工资。就说白了就是你现在写个程序给集团的员工发工资，那你为什么设计这个系统给其他员工发工资" class="headerlink" title="1.10下面给你一个场景，你作为一个主负责人，你会去怎么设计它？假设我们集团有三千多号人，那我们每个月10号要给每个人发工资。那财务会在每个月9号的时候，把这个工资表报表导入到系统，那你会去怎么设计这套系统？把报表导入到系统对，你要对接银行的接口，给每个人发工资。就说白了就是你现在写个程序给集团的员工发工资，那你为什么设计这个系统给其他员工发工资"></a>1.10下面给你一个场景，你作为一个主负责人，你会去怎么设计它？假设我们集团有三千多号人，那我们每个月10号要给每个人发工资。那财务会在每个月9号的时候，把这个工资表报表导入到系统，那你会去怎么设计这套系统？把报表导入到系统对，你要对接银行的接口，给每个人发工资。就说白了就是你现在写个程序给集团的员工发工资，那你为什么设计这个系统给其他员工发工资</h2><p>为什么设计这样的系统：设计一套自动化的工资发放系统对于拥有三千多名员工的大型集团来说至关重要。这样的系统不仅可以提高效率、减少人为错误，还可以确保工资按时、准确地发放到每个员工的账户中。也就是为什么设计这个系统？</p>
+<ul>
+<li><strong>提高效率</strong>：自动化处理可以大幅减少手动操作的时间和劳动强度。</li>
+<li><strong>减少错误</strong>：自动化系统可以减少人为错误，提高工资计算和发放的准确性。</li>
+<li><strong>合规性</strong>：确保工资发放符合法律法规要求。</li>
+<li><strong>透明度</strong>：提供清晰的工资发放记录，增加员工对工资发放流程的信任。</li>
+<li><strong>成本效益</strong>：长期来看，自动化系统可以降低运营成本。</li>
+</ul>
+<h2 id="1-11发言人-问：您平时是如何进行学习的"><a href="#1-11发言人-问：您平时是如何进行学习的" class="headerlink" title="1.11发言人 问：您平时是如何进行学习的?"></a>1.11发言人 问：您平时是如何进行学习的?</h2><p>​    发言人答：我通常跟随学校课程学习，并利用课余时间自主探索自己感兴趣的内容，主要通过阅读书籍、观看视频以及查阅网络资料来获取知识。  </p>
+<p>​     </p>
+<p>​      </p>
 <link rel="stylesheet" href="/Blog/css/folder.css" type="text/css"><script src="/Blog/js/folder.js" type="text/javascript" async></script>
       
     </div>
