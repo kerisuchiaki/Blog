@@ -75,6 +75,48 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-竞赛之取整函数" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/Blog/2024/03/18/%E7%AB%9E%E8%B5%9B%E4%B9%8B%E5%8F%96%E6%95%B4%E5%87%BD%E6%95%B0/" class="article-date">
+  <time class="dt-published" datetime="2024-03-18T12:40:24.000Z" itemprop="datePublished">2024-03-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/Blog/2024/03/18/%E7%AB%9E%E8%B5%9B%E4%B9%8B%E5%8F%96%E6%95%B4%E5%87%BD%E6%95%B0/">竞赛之取整函数</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="取整函数"><a href="#取整函数" class="headerlink" title="取整函数"></a>取整函数</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>noip p1515</p>
+<p>关于整数y&#x2F;x向上取整为什么是（y+x-1)&#x2F;x?这歌问题曾一度让我百思不得其解，现在我终于知道了，若y能被x整除，则x-1小于x等价于y多出来但又不够除x的部分使得结果还是y&#x2F;x，但是若y不能x整除，即y除了被x整除的部分肯定还多出来不到x的部分再加一个x-1那就能凑够被x整出了，前提是x&gt;&#x3D;1,即x-1不能小于0，即小数相除向上取整就可能是负的进而失效</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kerisuchiaki.github.io/2024/03/18/%E7%AB%9E%E8%B5%9B%E4%B9%8B%E5%8F%96%E6%95%B4%E5%87%BD%E6%95%B0/" data-id="clwf9hhrr001i025b5smb1g6p" data-title="竞赛之取整函数" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-leetcode73矩阵置零" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/Blog/2024/03/15/leetcode73%E7%9F%A9%E9%98%B5%E7%BD%AE%E9%9B%B6/" class="article-date">
@@ -535,61 +577,11 @@
 
 
   
-    <article id="post-java中的spi机制" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/Blog/2024/01/13/java%E4%B8%AD%E7%9A%84spi%E6%9C%BA%E5%88%B6/" class="article-date">
-  <time class="dt-published" datetime="2024-01-12T16:37:51.000Z" itemprop="datePublished">2024-01-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/Blog/2024/01/13/java%E4%B8%AD%E7%9A%84spi%E6%9C%BA%E5%88%B6/">java中的spi机制</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="java中的SPI机制"><a href="#java中的SPI机制" class="headerlink" title="java中的SPI机制"></a>java中的SPI机制</h2><p>Java SPI机制是一种服务发现机制，其全称为Service Provider Interface。它允许为特定服务提供多个实现，然后通过配置文件等方式，在运行时自动探测和加载这些实现。SPI机制的好处在于，它可以使服务接口和实现类解耦，从而方便地扩展和替换服务的实现。</p>
-<p>下面我们以JDBC（Java Database Connectivity）为例，来介绍如何使用Java SPI机制。JDBC是Java中用于连接和操作数据库的标准接口，不同的数据库厂商提供了各自的JDBC驱动实现。在SPI机制下，JDBC规范定义了一组接口，而具体的数据库驱动实现则由各个数据库厂商提供。</p>
-<p>首先，我们需要定义一个服务接口，例如<code>HelloService</code>：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">HelloService</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">sayHello</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>然后，在不同的jar包中提供该服务的实现，例如在<code>com.example.provider1</code>包中提供实现类<code>HelloServiceProvider1</code>，在<code>com.example.provider2</code>包中提供实现类<code>HelloServiceProvider2</code>。这些实现类都要实现<code>HelloService</code>接口。</p>
-        
-          <p class="article-more-link">
-            <a href="/Blog/2024/01/13/java%E4%B8%AD%E7%9A%84spi%E6%9C%BA%E5%88%B6/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kerisuchiaki.github.io/2024/01/13/java%E4%B8%AD%E7%9A%84spi%E6%9C%BA%E5%88%B6/" data-id="clwf9hhrf000e025b8wzd3f55" data-title="java中的spi机制" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/java/" rel="tag">java</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/Blog/">&laquo; zurück</a><a class="page-number" href="/Blog/">1</a><span class="page-number current">2</span><a class="page-number" href="/Blog/page/3/">3</a><a class="page-number" href="/Blog/page/4/">4</a><a class="extend next" rel="next" href="/Blog/page/3/">weiter &raquo;</a>
+    <a class="extend prev" rel="prev" href="/Blog/">&laquo; zurück</a><a class="page-number" href="/Blog/">1</a><span class="page-number current">2</span><a class="page-number" href="/Blog/page/3/">3</a><a class="page-number" href="/Blog/page/4/">4</a><a class="page-number" href="/Blog/page/5/">5</a><a class="extend next" rel="next" href="/Blog/page/3/">weiter &raquo;</a>
   </nav>
 
 </section>
@@ -620,7 +612,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/Blog/tags/BUG/" style="font-size: 10px;">BUG</a> <a href="/Blog/tags/RPC/" style="font-size: 10px;">RPC</a> <a href="/Blog/tags/git/" style="font-size: 10px;">git</a> <a href="/Blog/tags/java/" style="font-size: 20px;">java</a> <a href="/Blog/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 10px;">java后端开发</a> <a href="/Blog/tags/java%E6%BA%90%E7%A0%81/" style="font-size: 10px;">java源码</a> <a href="/Blog/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/Blog/tags/leetcode/" style="font-size: 10px;">leetcode</a> <a href="/Blog/tags/leetcode%E9%A2%98%E8%A7%A3/" style="font-size: 15px;">leetcode题解</a> <a href="/Blog/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/Blog/tags/rabbitmq/" style="font-size: 10px;">rabbitmq</a> <a href="/Blog/tags/redis/" style="font-size: 10px;">redis</a> <a href="/Blog/tags/shell/" style="font-size: 10px;">shell</a> <a href="/Blog/tags/spring/" style="font-size: 10px;">spring</a> <a href="/Blog/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/Blog/tags/test/" style="font-size: 10px;">test</a> <a href="/Blog/tags/%E4%BD%9C%E4%B8%9A/" style="font-size: 10px;">作业</a> <a href="/Blog/tags/%E5%AE%9E%E9%AA%8C/" style="font-size: 15px;">实验</a> <a href="/Blog/tags/%E5%AE%9E%E9%AA%8C3/" style="font-size: 10px;">实验3</a> <a href="/Blog/tags/%E6%84%9F%E6%83%B3/" style="font-size: 10px;">感想</a> <a href="/Blog/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">操作系统</a> <a href="/Blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 10px;">数据结构与算法</a> <a href="/Blog/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a> <a href="/Blog/tags/%E7%96%91%E9%97%AE/" style="font-size: 10px;">疑问</a> <a href="/Blog/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">笔记</a> <a href="/Blog/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15px;">算法</a> <a href="/Blog/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 15px;">设计模式</a> <a href="/Blog/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10px;">问题</a> <a href="/Blog/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">面试</a>
+      <a href="/Blog/tags/BUG/" style="font-size: 10px;">BUG</a> <a href="/Blog/tags/RPC/" style="font-size: 10px;">RPC</a> <a href="/Blog/tags/git/" style="font-size: 10px;">git</a> <a href="/Blog/tags/java/" style="font-size: 20px;">java</a> <a href="/Blog/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 10px;">java后端开发</a> <a href="/Blog/tags/java%E6%BA%90%E7%A0%81/" style="font-size: 10px;">java源码</a> <a href="/Blog/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/Blog/tags/leetcode/" style="font-size: 10px;">leetcode</a> <a href="/Blog/tags/leetcode%E9%A2%98%E8%A7%A3/" style="font-size: 15px;">leetcode题解</a> <a href="/Blog/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/Blog/tags/rabbitmq/" style="font-size: 10px;">rabbitmq</a> <a href="/Blog/tags/redis/" style="font-size: 10px;">redis</a> <a href="/Blog/tags/shell/" style="font-size: 10px;">shell</a> <a href="/Blog/tags/spring/" style="font-size: 10px;">spring</a> <a href="/Blog/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/Blog/tags/test/" style="font-size: 10px;">test</a> <a href="/Blog/tags/%E4%BD%9C%E4%B8%9A/" style="font-size: 10px;">作业</a> <a href="/Blog/tags/%E5%AE%9E%E9%AA%8C/" style="font-size: 15px;">实验</a> <a href="/Blog/tags/%E5%AE%9E%E9%AA%8C3/" style="font-size: 10px;">实验3</a> <a href="/Blog/tags/%E6%84%9F%E6%83%B3/" style="font-size: 10px;">感想</a> <a href="/Blog/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">操作系统</a> <a href="/Blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 10px;">数据结构与算法</a> <a href="/Blog/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a> <a href="/Blog/tags/%E7%96%91%E9%97%AE/" style="font-size: 10px;">疑问</a> <a href="/Blog/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">笔记</a> <a href="/Blog/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15px;">算法</a> <a href="/Blog/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 15px;">设计模式</a> <a href="/Blog/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10px;">问题</a> <a href="/Blog/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 15px;">面试</a>
     </div>
   </div>
 
@@ -629,7 +621,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archiv</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2022/12/">December 2022</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2022/12/">December 2022</a></li></ul>
     </div>
   </div>
 
@@ -640,6 +632,10 @@
     <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/Blog/2024/09/02/%E6%98%93%E8%81%94%E4%BC%97%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/">易联众面试总结</a>
+          </li>
         
           <li>
             <a href="/Blog/2024/08/24/dfs%E6%B1%82%E5%85%A8%E6%8E%92%E5%88%97/">dfs求全排列</a>
@@ -655,10 +651,6 @@
         
           <li>
             <a href="/Blog/2024/05/01/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E5%AE%9E%E9%AA%8C%E4%B8%89-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">算法设计与分析实验三-动态规划</a>
-          </li>
-        
-          <li>
-            <a href="/Blog/2024/05/01/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AE%9E%E9%AA%8C3-%E6%96%87%E4%BB%B6io%E7%BC%96%E7%A8%8B/">嵌入式实验3-文件io编程</a>
           </li>
         
       </ul>
