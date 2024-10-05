@@ -75,6 +75,53 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-javaIO流" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/Blog/2023/09/22/javaIO%E6%B5%81/" class="article-date">
+  <time class="dt-published" datetime="2023-09-22T11:43:20.000Z" itemprop="datePublished">2023-09-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/Blog/2023/09/22/javaIO%E6%B5%81/">JavaIO流</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Java-I-O"><a href="#Java-I-O" class="headerlink" title="Java I&#x2F;O"></a>Java I&#x2F;O</h1><p><strong>注意：**这块会涉及到**操作系统**和</strong>计算机组成原理**相关内容。</p>
+<p>I&#x2F;O简而言之，就是输入输出，那么为什么会有I&#x2F;O呢？其实I&#x2F;O无时无刻都在我们的身边，比如读取硬盘上的文件，网络文件传输，鼠标键盘输入，也可以是接受单片机发回的数据，而能够支持这些操作的设备就是I&#x2F;O设备。</p>
+<p>我们可以大致看一下整个计算机的总线结构：</p>
+<p><img src="https://image.itbaima.net/markdown/2023/08/14/VHOBIXvulUsMYRT.jpg" alt="img"></p>
+<p>常见的I&#x2F;O设备一般是鼠标、键盘这类通过USB进行传输的外设或者是通过Sata接口或是M.2连接的硬盘。一般情况下，这些设备是由CPU发出指令通过南桥芯片间接进行控制，而不是由CPU直接操作。</p>
+        
+          <p class="article-more-link">
+            <a href="/Blog/2023/09/22/javaIO%E6%B5%81/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kerisuchiaki.github.io/2023/09/22/javaIO%E6%B5%81/" data-id="clwf9hhre000c025b34ho6orb" data-title="JavaIO流" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-shell编程-0" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/Blog/2023/09/10/shell%E7%BC%96%E7%A8%8B-0/" class="article-date">
@@ -620,58 +667,6 @@
 
 
   
-    <article id="post-关于动态规划完全背包问题hdu1028" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/Blog/2023/04/22/%E5%85%B3%E4%BA%8E%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98hdu1028/" class="article-date">
-  <time class="dt-published" datetime="2023-04-22T12:45:25.000Z" itemprop="datePublished">2023-04-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/Blog/2023/04/22/%E5%85%B3%E4%BA%8E%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98hdu1028/">关于动态规划完全背包问题hdu1028</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><p>题目：hdu1028<br>递推与递归做法</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//代码片段</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line">using namespace <span class="built_in">std</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> maxn=<span class="number">1e4</span>;</span><br><span class="line"><span class="type">int</span> dp[maxn][maxn];<span class="comment">//递推表达式dp[n][m]的含义,将n的划分最大数分成不超过m的划分数</span></span><br><span class="line"><span class="comment">/*状态转移方程：</span></span><br><span class="line"><span class="comment">    dp[i][j]=dp[i][j-1]+dp[i-j][j];(i&gt;j)分治思想，将n的划分最大数分成不超过m的划分数有两种情况：</span></span><br><span class="line"><span class="comment">    1，不包含最大数j划分个数为dp[i][j-1],</span></span><br><span class="line"><span class="comment">    2.包含最大数j,划分个数为dp[i-j][j](包含指一定包含，所以i要减去J，转化为求子问题dp[i-j[j])</span></span><br><span class="line"><span class="comment">    dp[i][j]=dp[i][j-1]+1（i==j)是上述情况的特殊情况，此时,dp[i-j][j]为零，则包含最大数j只有一种情况即全部划分为j，且只有一个</span></span><br><span class="line"><span class="comment">    3.dp[i][j]=dp[i][i](i&lt;j),当i&lt;j那么肯定只能划分为dp[i][i]</span></span><br><span class="line"><span class="comment">    4.dp[i][j]=1(i==1||j==1),容易理解，特殊情况</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">part</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;maxn;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;maxn;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i==<span class="number">1</span>||j==<span class="number">1</span>)dp[i][j]=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(i&lt;j)dp[i][j]=dp[i][i];</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(i&gt;j)dp[i][j]=dp[i][j<span class="number">-1</span>]+dp[i-j][j];</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(i==j)dp[i][j]=dp[i][j<span class="number">-1</span>]+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    part();</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;n)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,dp[n][n]);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>还有动态规划：<br>完全背包</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line">using namespace <span class="built_in">std</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> maxn=<span class="number">1e3</span>;</span><br><span class="line"><span class="type">int</span> dp[maxn];<span class="comment">//动态规划完全背包，滚动数组求解</span></span><br><span class="line"><span class="comment">//dp[i]的含义：划分数字i的最多数目</span></span><br><span class="line"><span class="comment">//状态转移方程：dp[i]+=dp[i-j];</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">solve</span><span class="params">()</span>&#123;</span><br><span class="line">    dp[<span class="number">0</span>]=<span class="number">1</span>;<span class="comment">//注意</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;maxn;i++)&#123;<span class="comment">//枚举每种数字</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=i;j&lt;maxn;j++)&#123;<span class="comment">//每种数字的重量与他的价值相等</span></span><br><span class="line">            dp[j]+=dp[j-i];<span class="comment">//由于单位价值都一样，且这题求的是</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    solve();</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;n)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,dp[n]);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<p><img src="/Blog/img/%E5%88%9D%E9%9F%B3.png" alt="一张初音美图"></p>
-<p><img src="/Blog/img/preview_png(12).png" alt="这是另一张美图"></p>
-<p><img src="/Blog/img/8589245933.png" alt="再来一张初音未来"></p>
-<p><img src="/Blog/%E5%85%B3%E4%BA%8E%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98hdu1028/Snipaste_2022-09-02_22-50-40.png"></p>
-<p><img src="/Blog/img/j0vfaiejy4bj0vfaiejy4b.png"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kerisuchiaki.github.io/2023/04/22/%E5%85%B3%E4%BA%8E%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98hdu1028/" data-id="clwf9hhrm0011025b430q8fw9" data-title="关于动态规划完全背包问题hdu1028" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag">数据结构与算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -707,7 +702,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/Blog/tags/BUG/" style="font-size: 10px;">BUG</a> <a href="/Blog/tags/RPC/" style="font-size: 10px;">RPC</a> <a href="/Blog/tags/git/" style="font-size: 10px;">git</a> <a href="/Blog/tags/java/" style="font-size: 20px;">java</a> <a href="/Blog/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 10px;">java后端开发</a> <a href="/Blog/tags/java%E6%BA%90%E7%A0%81/" style="font-size: 10px;">java源码</a> <a href="/Blog/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/Blog/tags/leetcode/" style="font-size: 10px;">leetcode</a> <a href="/Blog/tags/leetcode%E9%A2%98%E8%A7%A3/" style="font-size: 15px;">leetcode题解</a> <a href="/Blog/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/Blog/tags/rabbitmq/" style="font-size: 10px;">rabbitmq</a> <a href="/Blog/tags/redis/" style="font-size: 10px;">redis</a> <a href="/Blog/tags/shell/" style="font-size: 10px;">shell</a> <a href="/Blog/tags/spring/" style="font-size: 10px;">spring</a> <a href="/Blog/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/Blog/tags/test/" style="font-size: 10px;">test</a> <a href="/Blog/tags/%E4%BD%9C%E4%B8%9A/" style="font-size: 10px;">作业</a> <a href="/Blog/tags/%E5%AE%9E%E9%AA%8C/" style="font-size: 15px;">实验</a> <a href="/Blog/tags/%E5%AE%9E%E9%AA%8C3/" style="font-size: 10px;">实验3</a> <a href="/Blog/tags/%E6%84%9F%E6%83%B3/" style="font-size: 10px;">感想</a> <a href="/Blog/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">操作系统</a> <a href="/Blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 10px;">数据结构与算法</a> <a href="/Blog/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a> <a href="/Blog/tags/%E7%96%91%E9%97%AE/" style="font-size: 10px;">疑问</a> <a href="/Blog/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">笔记</a> <a href="/Blog/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15px;">算法</a> <a href="/Blog/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 15px;">设计模式</a> <a href="/Blog/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10px;">问题</a> <a href="/Blog/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 15px;">面试</a>
+      <a href="/Blog/tags/BUG/" style="font-size: 10px;">BUG</a> <a href="/Blog/tags/RPC/" style="font-size: 10px;">RPC</a> <a href="/Blog/tags/git/" style="font-size: 10px;">git</a> <a href="/Blog/tags/java/" style="font-size: 20px;">java</a> <a href="/Blog/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 10px;">java后端开发</a> <a href="/Blog/tags/java%E6%BA%90%E7%A0%81/" style="font-size: 10px;">java源码</a> <a href="/Blog/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/Blog/tags/leetcode/" style="font-size: 10px;">leetcode</a> <a href="/Blog/tags/leetcode%E9%A2%98%E8%A7%A3/" style="font-size: 13.33px;">leetcode题解</a> <a href="/Blog/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/Blog/tags/rabbitmq/" style="font-size: 10px;">rabbitmq</a> <a href="/Blog/tags/redis/" style="font-size: 10px;">redis</a> <a href="/Blog/tags/shell/" style="font-size: 10px;">shell</a> <a href="/Blog/tags/spring/" style="font-size: 10px;">spring</a> <a href="/Blog/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/Blog/tags/test/" style="font-size: 10px;">test</a> <a href="/Blog/tags/%E4%BD%9C%E4%B8%9A/" style="font-size: 10px;">作业</a> <a href="/Blog/tags/%E5%AE%9E%E9%AA%8C/" style="font-size: 13.33px;">实验</a> <a href="/Blog/tags/%E5%AE%9E%E9%AA%8C3/" style="font-size: 10px;">实验3</a> <a href="/Blog/tags/%E6%84%9F%E6%83%B3/" style="font-size: 10px;">感想</a> <a href="/Blog/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">操作系统</a> <a href="/Blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 10px;">数据结构与算法</a> <a href="/Blog/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a> <a href="/Blog/tags/%E7%96%91%E9%97%AE/" style="font-size: 10px;">疑问</a> <a href="/Blog/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">笔记</a> <a href="/Blog/tags/%E7%AE%97%E6%B3%95/" style="font-size: 16.67px;">算法</a> <a href="/Blog/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 13.33px;">设计模式</a> <a href="/Blog/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10px;">问题</a> <a href="/Blog/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 13.33px;">面试</a>
     </div>
   </div>
 
@@ -716,7 +711,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archiv</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2022/12/">December 2022</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2022/12/">December 2022</a></li></ul>
     </div>
   </div>
 
@@ -727,6 +722,10 @@
     <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/Blog/2024/10/05/%E7%AE%97%E6%B3%95%E6%95%B0%E8%AE%BA-%E8%B4%A8%E5%9B%A0%E6%95%B0%E5%88%86%E8%A7%A3/">算法数论-质因数分解</a>
+          </li>
         
           <li>
             <a href="/Blog/2024/09/02/%E6%98%93%E8%81%94%E4%BC%97%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/">易联众面试总结</a>
@@ -742,10 +741,6 @@
         
           <li>
             <a href="/Blog/2024/06/17/%E9%9D%A2%E8%AF%95%E6%99%BA%E5%8A%9B%E9%A2%98-%E5%80%92%E6%B0%B4%E9%97%AE%E9%A2%98%E9%80%9A%E8%A7%A3/">面试智力题-倒水问题通解</a>
-          </li>
-        
-          <li>
-            <a href="/Blog/2024/05/01/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E5%AE%9E%E9%AA%8C%E4%B8%89-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">算法设计与分析实验三-动态规划</a>
           </li>
         
       </ul>

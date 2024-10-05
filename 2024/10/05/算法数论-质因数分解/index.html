@@ -4,16 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>Archiv: 2024 | hatena</title>
+  <title>算法数论-质因数分解 | hatena</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="hatena&#39;s blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="hatena">
-<meta property="og:url" content="https://kerisuchiaki.github.io/archives/2024/page/3/index.html">
+  <meta name="description" content="求质数算法1暴力法直接从2枚举到n，其实可以优化到枚举根号n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法数论-质因数分解">
+<meta property="og:url" content="https://kerisuchiaki.github.io/2024/10/05/%E7%AE%97%E6%B3%95%E6%95%B0%E8%AE%BA-%E8%B4%A8%E5%9B%A0%E6%95%B0%E5%88%86%E8%A7%A3/index.html">
 <meta property="og:site_name" content="hatena">
-<meta property="og:description" content="hatena&#39;s blog">
+<meta property="og:description" content="求质数算法1暴力法直接从2枚举到n，其实可以优化到枚举根号n">
 <meta property="og:locale" content="zn_CN">
+<meta property="article:published_time" content="2024-10-05T09:17:40.000Z">
+<meta property="article:modified_time" content="2024-10-05T10:12:46.201Z">
 <meta property="article:author" content="myself">
+<meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/Blog/atom.xml" title="hatena" type="application/atom+xml">
@@ -73,83 +76,68 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/Blog/archives/2024" class="archive-year">2024</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/Blog/2024/01/14/%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E5%86%8D%E5%89%96%E6%9E%90/" class="archive-article-date">
-  <time class="dt-published" datetime="2024-01-14T14:00:24.000Z" itemprop="datePublished">Jan 14</time>
+        <section id="main"><article id="post-算法数论-质因数分解" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/Blog/2024/10/05/%E7%AE%97%E6%B3%95%E6%95%B0%E8%AE%BA-%E8%B4%A8%E5%9B%A0%E6%95%B0%E5%88%86%E8%A7%A3/" class="article-date">
+  <time class="dt-published" datetime="2024-10-05T09:17:40.000Z" itemprop="datePublished">2024-10-05</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/Blog/2024/01/14/%E5%A4%96%E5%8D%96%E9%A1%B9%E7%9B%AE%E5%86%8D%E5%89%96%E6%9E%90/">外卖项目再剖析</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      算法数论-质因数分解
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/Blog/2024/01/13/java%E4%B8%AD%E7%9A%84spi%E6%9C%BA%E5%88%B6/" class="archive-article-date">
-  <time class="dt-published" datetime="2024-01-12T16:37:51.000Z" itemprop="datePublished">Jan 13</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/Blog/2024/01/13/java%E4%B8%AD%E7%9A%84spi%E6%9C%BA%E5%88%B6/">java中的spi机制</a>
-    </h1>
-  
+        <h1 id="求质数算法"><a href="#求质数算法" class="headerlink" title="求质数算法"></a>求质数算法</h1><h2 id="1暴力法"><a href="#1暴力法" class="headerlink" title="1暴力法"></a>1暴力法</h2><p>直接从2枚举到n，其实可以优化到枚举根号n</p>
+<span id="more"></span>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/Blog/2024/01/07/Java%E4%B8%AD%E7%9A%84%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B/" class="archive-article-date">
-  <time class="dt-published" datetime="2024-01-07T13:53:27.000Z" itemprop="datePublished">Jan 7</time>
-</a>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">isPrime</span><span class="params">(<span class="type">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> t = <span class="built_in">sqrt</span>(i);</span><br><span class="line">    <span class="type">int</span> j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (j = <span class="number">2</span>; j &lt;= t; j++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (i % j == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">if</span> (j == t + <span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>空间复杂度：O(1)</p>
+<p>时间复杂度：O(n^(1&#x2F;2))</p>
+<h2 id="2埃式筛法"><a href="#2埃式筛法" class="headerlink" title="2埃式筛法"></a>2埃式筛法</h2><p>这是一种古老且有效的算法，用于找出一定范围内的所有质数。它的基本思想是：从2开始，逐步标记每个数的倍数，未被标记的数即为质数。</p>
+<p>基本原理：所有的合数都可以被写成几个质数积，</p>
+<p>​    那么初始化时默认将所有的数都认为是质数，有误的是合数被标记为质数，但是由于</p>
+<p>​    所有的合数都可以被写成几个质数积，所有在前面遍历到正真的质数时这个错误会被纠正为合数</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> prime[<span class="number">10000</span>];<span class="comment">//10000以内的所有质合数，为1则是合数，0则是质数</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">(<span class="type">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="comment">//for(i...)prrime[i]=0;</span></span><br><span class="line">    <span class="built_in">memset</span>(prime,<span class="number">0</span>,<span class="built_in">sizeof</span>(prime));</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!prime[i])&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=i+i;j&lt;=n;j+=i)prime[j]=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;      </span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">isPrime</span><span class="params">(<span class="type">int</span> n)</span></span>&#123;</span><br><span class="line">  <span class="keyword">return</span> prime[n];  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3欧拉筛（线性筛）"><a href="#3欧拉筛（线性筛）" class="headerlink" title="3欧拉筛（线性筛）"></a>3欧拉筛（线性筛）</h2><link rel="stylesheet" href="/Blog/css/folder.css" type="text/css"><script src="/Blog/js/folder.js" type="text/javascript" async></script>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/Blog/2024/01/07/Java%E4%B8%AD%E7%9A%84%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B/">Java中的对象类型</a>
-    </h1>
-  
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kerisuchiaki.github.io/2024/10/05/%E7%AE%97%E6%B3%95%E6%95%B0%E8%AE%BA-%E8%B4%A8%E5%9B%A0%E6%95%B0%E5%88%86%E8%A7%A3/" data-id="cm1vzx9y50000g45b4qpi4sdl" data-title="算法数论-质因数分解" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
-    </header>
+    </footer>
   </div>
-</article>
   
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/Blog/archives/2024/page/2/">&laquo; zurück</a><a class="page-number" href="/Blog/archives/2024/">1</a><a class="page-number" href="/Blog/archives/2024/page/2/">2</a><span class="page-number current">3</span>
-  </nav>
+<nav id="article-nav">
+  
+  
+    <a href="/Blog/2024/09/02/%E6%98%93%E8%81%94%E4%BC%97%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">易联众面试总结</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
 
 </section>
         
