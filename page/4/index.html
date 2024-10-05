@@ -75,6 +75,57 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-jvm学习笔记-常量池" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/Blog/2023/10/01/jvm%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%B8%B8%E9%87%8F%E6%B1%A0/" class="article-date">
+  <time class="dt-published" datetime="2023-10-01T07:29:25.000Z" itemprop="datePublished">2023-10-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/Blog/2023/10/01/jvm%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%B8%B8%E9%87%8F%E6%B1%A0/">jvm学习笔记-常量池</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h1><p>思考下面的代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.yuyonghai;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo_2</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        String s=<span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;a&quot;</span>)+<span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;b&quot;</span>);</span><br><span class="line">        System.out.println(System.identityHashCode(s));</span><br><span class="line"></span><br><span class="line">        String str=s;</span><br><span class="line">        System.out.println(System.identityHashCode(str));</span><br><span class="line"></span><br><span class="line">        System.out.println(s==str);</span><br><span class="line">                 str=s.intern();</span><br><span class="line">        System.out.println(<span class="string">&quot;-----------&quot;</span>);</span><br><span class="line">        System.out.println(System.identityHashCode(<span class="string">&quot;ab&quot;</span>));</span><br><span class="line"></span><br><span class="line">        System.out.println(System.identityHashCode(s));</span><br><span class="line">        System.out.println(System.identityHashCode(str));<span class="comment">//为什么str的内存地址没改变</span></span><br><span class="line"></span><br><span class="line">        System.out.println(s==<span class="string">&quot;ab&quot;</span>);</span><br><span class="line">        System.out.println(s==str);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>结果为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">460141958</span><br><span class="line">460141958</span><br><span class="line">true</span><br><span class="line">-----------</span><br><span class="line">460141958</span><br><span class="line">460141958</span><br><span class="line">460141958</span><br><span class="line">true</span><br><span class="line">true</span><br></pre></td></tr></table></figure>
+
+<p>为什么调用intern（）后str的内存地址没有指向常量池的”ab”实例？</p>
+<h1 id="常量池"><a href="#常量池" class="headerlink" title="常量池"></a>常量池</h1><p>常量池是字节码文件中的一个重要部分，存储了各种常量的信息，例如字符串、类引用、方法引用等</p>
+<h1 id="intern-函数"><a href="#intern-函数" class="headerlink" title="intern()函数"></a>intern()函数</h1><ul>
+<li>intern方法：native 方法，调用此方法时，如果池中已经包含等于此对象值的字符串，就返回池中的字符串；否则，将返回的引用指向当前的字符串；1.6版本需要将当前对象复制一份到池中，1.7后如果字符串常量池中没有的话，也不会在字符串常量池中创建新的示例而是直接指向堆中的实例，即常量池中的为类引用</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kerisuchiaki.github.io/2023/10/01/jvm%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%B8%B8%E9%87%8F%E6%B1%A0/" data-id="clwf9hhrh000j025bcweb5wr0" data-title="jvm学习笔记-常量池" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/jvm/" rel="tag">jvm</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-javaIO流" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/Blog/2023/09/22/javaIO%E6%B5%81/" class="article-date">
@@ -559,114 +610,6 @@
 
 
   
-    <article id="post-计算机网络实验2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/Blog/2023/05/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AE%9E%E9%AA%8C2/" class="article-date">
-  <time class="dt-published" datetime="2023-05-12T13:00:00.000Z" itemprop="datePublished">2023-05-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/Blog/2023/05/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AE%9E%E9%AA%8C2/">计算机网络实验2</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>实验：网络仿真软件使用及网络分析</p>
-<h1 id="1-基本信息"><a href="#1-基本信息" class="headerlink" title="1. 基本信息"></a>1. 基本信息</h1><table>
-<thead>
-<tr>
-<th align="center">姓名</th>
-<th align="center">学号</th>
-<th align="center">班级</th>
-<th align="center">本次是否有抄袭</th>
-<th align="center">所选协议</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">余永海</td>
-<td align="center">202121331117</td>
-<td align="center">计算2114</td>
-<td align="center">否</td>
-<td align="center">DHCP</td>
-</tr>
-</tbody></table>
-<h1 id="2-使用Cisco-Packet-Tracer遇到的问题及解决方法"><a href="#2-使用Cisco-Packet-Tracer遇到的问题及解决方法" class="headerlink" title="2. 使用Cisco Packet Tracer遇到的问题及解决方法"></a>2. 使用Cisco Packet Tracer遇到的问题及解决方法</h1><ol>
-<li>两个终端设备无法发送报文，原因在于他们之间没有建立联系，连上线就行了</li>
-</ol>
-<h1 id="3-Wireshark抓取报文"><a href="#3-Wireshark抓取报文" class="headerlink" title="3. Wireshark抓取报文"></a>3. Wireshark抓取报文</h1><p><strong>（1）如何抓取到你所选择的协议报文</strong></p>
-<p>DHCP协议用于动态管理和获取ip地址等上网信息配置，所以我们可以在电脑开机时抓取报文或者重启以太网适配器或者在cmd终端输入相关的命令来达到同样的效果</p>
-<p><strong>（2）Wireshark出来很多报文，你是如何过滤出与你所选协议相关的报文</strong></p>
-<p>要从Wireshark中过滤出DHCP报文，可以使用过滤器“bootp”，因为DHCP是基于BOOTP开发的。具体的过滤器表达式为“bootp.option.dhcp &#x3D;&#x3D; 1”或者’bootp’也行。在捕获数据包时，输入该过滤器表达式后，Wireshark就会仅显示DHCP请求和响应报文。</p>
-<h1 id="4-协议时序图"><a href="#4-协议时序图" class="headerlink" title="4. 协议时序图"></a>4. 协议时序图</h1><p>Wireshark捕获到的报文如下图：</p>
-<p><img src="/Blog/img/image-20230510135111198.png" alt="image-20230510135111198"></p>
-<p>协议工作原理的时序图：</p>
-<p><img src="/Blog/img/image-20230511105630132.png" alt="image-20230511105630132"></p>
-<h1 id="5-分析协议工作原理"><a href="#5-分析协议工作原理" class="headerlink" title="5. 分析协议工作原理"></a>5. 分析协议工作原理</h1><p>DHCP协议自动分配IP的报文主要有四种：</p>
-<ol>
-<li><p>DHCP Discover：由客户端发出，用来发现DHCP服务器。</p>
-</li>
-<li><p>DHCP Offer：由DHCP服务器发出，告诉客户端，我可以提供IP地址。</p>
-</li>
-<li><p>DHCP Request：由客户端发出，告诉对应的DHCP服务器，我需要IP地址。</p>
-</li>
-<li><p>DHCP ACK：由DHCP服务器发出，提供客户端响应的IP地址。</p>
-</li>
-</ol>
-<h2 id="5-1-DHCP-Discover"><a href="#5-1-DHCP-Discover" class="headerlink" title="5.1.DHCP  Discover:"></a>5.1.DHCP  Discover:</h2><p>Discover报文:</p>
-<p><img src="/Blog/img/image-20230422001933477.png" alt="image-20230422001933477"></p>
-<p>dhcp discover是新设备需要上网时发送的报文，dhcp是处于应用层,所以dhcp discover 实际上是应用层报文。 发送dhcp discover报文的目的是寻找本地的dhcp服务器。</p>
-<p>从图中可以看出dhcp在传输层使用的是udp协议，而源端口即客户端端口使用的是68端口，目的端口即服务器端口是使用的是67端口. </p>
-<p>网络层里，由于设备刚开始还无法上网,没有IP地址，这里用0.0.0.0表示，而由于也不知道dhcp服务器的ip地址，所以要进行广播，目的ip地址为255.255.255.255，表示在本地进行广播用于发现dhcp服务器.</p>
-<p>接下来的数据链路层最重要的是mac地址，源mac地址就是本机mac地址，目的mac地址由于不知道dhcp服务器，所以和网络层类似填写的是mac广播地址.</p>
-<p>我们还可以看出应用层报文还有 transaction ID，事务ID，这个 ID 值是由客户端提供的随机数。如果有其他设备也在进行 DHCP 交互， 有这个事务ID 就能更好判断是属于这个设备的请求了。另外，因为 DHCP 是基于 boot protocol 发展出来的，因此在报文里会看到 bootp 或者 boot 这样的字样。这里 bootp flags 设置为 Unicus 的意思是服务器可以单播发送给设备，也就是不用广播进行发送。</p>
-<p>从图中的option选项中还有一点值得注意，这里的requested ip address是172.21.7.116,这是我们这台设备上次使用的ip地址，即dhcp discover可能会请求上次使用的ip地址。</p>
-<p>DHCB discover 这一步完成以后，如果此时网络中有 DHCP 服务器存在，就会进行处理，也就是进行 DHCP offer 这一步。</p>
-<h2 id="5-2-DHCP-offer"><a href="#5-2-DHCP-offer" class="headerlink" title="5.2.DHCP offer:"></a>5.2.DHCP offer:</h2><p>Offer报文:</p>
-<p><img src="/Blog/img/image-20230422002223191.png" alt="image-20230422002223191"></p>
-<p> 从图中可以看出，DHCP服务器 会提供上网所需的配置信息,也就是 ip 地址（127.21.7.116）、子网掩码（255.255.0.0）。除此之外在这一步还有ip 地址的租期，当租用过了某段时间就会过期，所以在到期前需要进行续租，还会提供续租的时间。</p>
-<p>在传输层里依旧使用 UDP 协议，只是源端口和目标端口号反了过来，因为这次是服务端发送给客户端。  </p>
-<p>网络层里，dhcp服务器的源ip为172.21.0.1，而目的ip是172.21.7.116为分配的ip地址,这两个我们也可以从数据包里的your ip address和dhcp server identifiter可以看到，还有其他的一些信息，如子网掩码:255.255.0.0</p>
-<p>数据链路层里，源 Mac 地址就是dhcp服务器的mac地址，而目标 Mac 地址就是我们设备的。</p>
-<h2 id="5-3-DHCP-Request"><a href="#5-3-DHCP-Request" class="headerlink" title="5.3.DHCP Request:"></a>5.3.DHCP Request:</h2><p>Request报文:</p>
-<p><img src="/Blog/img/image-20230422002316324.png" alt="image-20230422002316324"></p>
-<p>当我们的设备接收到dhcp服务器的offer报文时，可能不止一个，如果网络里有多个dhcp服务器，则接收第一个offer报文提供的ip地址，并再次以广播的形式正式请求之前的ip,也告知其它dhcp服务器选择了哪一个dhcp服务器提供的ip地址，从图也可以看出，网络层源ip和目的ip和dhcp discover报文一样，传输层和数据链路层也同样.</p>
-<h2 id="5-4-DHCP-ACK"><a href="#5-4-DHCP-ACK" class="headerlink" title="5.4.DHCP ACK:"></a>5.4.DHCP ACK:</h2><p>ACK报文:</p>
-<p><img src="/Blog/img/image-20230422002357409.png" alt="image-20230422002357409"></p>
-<p>在收到dhcp request报文时，服务器向客户端发送DHCP ACK报文,确认客户端可以使用请求的IP地址。从图中也可以看到</p>
-<p>源MAC地址:58 69 6c 5e 0c 2c(服务端Mac地址)</p>
-<p>目的MAC地址:80 fa 5b 9e b4 2d (客户端MAC)</p>
-<p>交易ID:0x2858eb(与Request、Offer报文中的ID对应)</p>
-<p>其他配置与Offer报文中的相同。至此,DHCP分配IP地址流程完成。客户端可以使用该IP地址并更新其配置开始上网了。</p>
-<p>以上就是一个完整的DHCP IP地址分配过程的报文交互和分析。客户端通过Discover寻找服务器,选择一个Offer后,通过Request请求IP,最后服务器ACK确认分配,完成整个DHCP流程。</p>
-<h1 id="6-遇到的问题及解决方法"><a href="#6-遇到的问题及解决方法" class="headerlink" title="6. 遇到的问题及解决方法"></a>6. 遇到的问题及解决方法</h1><ol>
-<li>没有问题</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kerisuchiaki.github.io/2023/05/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AE%9E%E9%AA%8C2/" data-id="clwf9hhrt001n025b20lf0xmu" data-title="计算机网络实验2" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -702,7 +645,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/Blog/tags/BUG/" style="font-size: 10px;">BUG</a> <a href="/Blog/tags/RPC/" style="font-size: 10px;">RPC</a> <a href="/Blog/tags/git/" style="font-size: 10px;">git</a> <a href="/Blog/tags/java/" style="font-size: 20px;">java</a> <a href="/Blog/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 10px;">java后端开发</a> <a href="/Blog/tags/java%E6%BA%90%E7%A0%81/" style="font-size: 10px;">java源码</a> <a href="/Blog/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/Blog/tags/leetcode/" style="font-size: 10px;">leetcode</a> <a href="/Blog/tags/leetcode%E9%A2%98%E8%A7%A3/" style="font-size: 13.33px;">leetcode题解</a> <a href="/Blog/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/Blog/tags/rabbitmq/" style="font-size: 10px;">rabbitmq</a> <a href="/Blog/tags/redis/" style="font-size: 10px;">redis</a> <a href="/Blog/tags/shell/" style="font-size: 10px;">shell</a> <a href="/Blog/tags/spring/" style="font-size: 10px;">spring</a> <a href="/Blog/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/Blog/tags/test/" style="font-size: 10px;">test</a> <a href="/Blog/tags/%E4%BD%9C%E4%B8%9A/" style="font-size: 10px;">作业</a> <a href="/Blog/tags/%E5%AE%9E%E9%AA%8C/" style="font-size: 13.33px;">实验</a> <a href="/Blog/tags/%E5%AE%9E%E9%AA%8C3/" style="font-size: 10px;">实验3</a> <a href="/Blog/tags/%E6%84%9F%E6%83%B3/" style="font-size: 10px;">感想</a> <a href="/Blog/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">操作系统</a> <a href="/Blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 10px;">数据结构与算法</a> <a href="/Blog/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a> <a href="/Blog/tags/%E7%96%91%E9%97%AE/" style="font-size: 10px;">疑问</a> <a href="/Blog/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">笔记</a> <a href="/Blog/tags/%E7%AE%97%E6%B3%95/" style="font-size: 16.67px;">算法</a> <a href="/Blog/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 13.33px;">设计模式</a> <a href="/Blog/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10px;">问题</a> <a href="/Blog/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 13.33px;">面试</a>
+      <a href="/Blog/tags/BUG/" style="font-size: 10px;">BUG</a> <a href="/Blog/tags/RPC/" style="font-size: 10px;">RPC</a> <a href="/Blog/tags/git/" style="font-size: 10px;">git</a> <a href="/Blog/tags/java/" style="font-size: 20px;">java</a> <a href="/Blog/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 10px;">java后端开发</a> <a href="/Blog/tags/java%E6%BA%90%E7%A0%81/" style="font-size: 10px;">java源码</a> <a href="/Blog/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/Blog/tags/leetcode/" style="font-size: 10px;">leetcode</a> <a href="/Blog/tags/leetcode%E9%A2%98%E8%A7%A3/" style="font-size: 13.33px;">leetcode题解</a> <a href="/Blog/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/Blog/tags/rabbitmq/" style="font-size: 10px;">rabbitmq</a> <a href="/Blog/tags/redis/" style="font-size: 10px;">redis</a> <a href="/Blog/tags/shell/" style="font-size: 10px;">shell</a> <a href="/Blog/tags/spring/" style="font-size: 10px;">spring</a> <a href="/Blog/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/Blog/tags/test/" style="font-size: 10px;">test</a> <a href="/Blog/tags/%E4%BD%9C%E4%B8%9A/" style="font-size: 10px;">作业</a> <a href="/Blog/tags/%E5%AE%9E%E9%AA%8C/" style="font-size: 13.33px;">实验</a> <a href="/Blog/tags/%E5%AE%9E%E9%AA%8C3/" style="font-size: 10px;">实验3</a> <a href="/Blog/tags/%E6%84%9F%E6%83%B3/" style="font-size: 10px;">感想</a> <a href="/Blog/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">操作系统</a> <a href="/Blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 10px;">数据结构与算法</a> <a href="/Blog/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a> <a href="/Blog/tags/%E7%96%91%E9%97%AE/" style="font-size: 10px;">疑问</a> <a href="/Blog/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">笔记</a> <a href="/Blog/tags/%E7%AE%97%E6%B3%95/" style="font-size: 16.67px;">算法</a> <a href="/Blog/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 13.33px;">设计模式</a> <a href="/Blog/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10px;">问题</a> <a href="/Blog/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 16.67px;">面试</a>
     </div>
   </div>
 
@@ -724,6 +667,10 @@
       <ul>
         
           <li>
+            <a href="/Blog/2024/10/06/%E7%9D%BF%E4%BA%91%E8%81%94%E6%B5%8B%E8%AF%95%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95/">睿云联测试开发面试</a>
+          </li>
+        
+          <li>
             <a href="/Blog/2024/10/05/%E7%AE%97%E6%B3%95%E6%95%B0%E8%AE%BA-%E8%B4%A8%E5%9B%A0%E6%95%B0%E5%88%86%E8%A7%A3/">算法数论-质因数分解</a>
           </li>
         
@@ -737,10 +684,6 @@
         
           <li>
             <a href="/Blog/2024/07/16/oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">oracle数据库学习笔记</a>
-          </li>
-        
-          <li>
-            <a href="/Blog/2024/06/17/%E9%9D%A2%E8%AF%95%E6%99%BA%E5%8A%9B%E9%A2%98-%E5%80%92%E6%B0%B4%E9%97%AE%E9%A2%98%E9%80%9A%E8%A7%A3/">面试智力题-倒水问题通解</a>
           </li>
         
       </ul>
