@@ -4,16 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>Archiv: 2022/12 | hatena</title>
+  <title>我的算法小抄 | hatena</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="hatena&#39;s blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="hatena">
-<meta property="og:url" content="https://kerisuchiaki.github.io/archives/2022/12/index.html">
+  <meta name="description" content="输入输出读取一行c: 12char s[200];&#x2F;&#x2F;确保s够大gets(s);  c++: 12string s;getline(cin,s);&#x2F;&#x2F;或cin.getline(s,100);后一个参数是读取大小    tps:有时候记得读入换行 读入字符串转数字123456string s;getline(cin,s);stringstream ss(s)vector&lt;int&gt; num">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我的算法小抄">
+<meta property="og:url" content="https://kerisuchiaki.github.io/2024/10/09/%E6%88%91%E7%9A%84%E7%AE%97%E6%B3%95%E5%B0%8F%E6%8A%84/index.html">
 <meta property="og:site_name" content="hatena">
-<meta property="og:description" content="hatena&#39;s blog">
+<meta property="og:description" content="输入输出读取一行c: 12char s[200];&#x2F;&#x2F;确保s够大gets(s);  c++: 12string s;getline(cin,s);&#x2F;&#x2F;或cin.getline(s,100);后一个参数是读取大小    tps:有时候记得读入换行 读入字符串转数字123456string s;getline(cin,s);stringstream ss(s)vector&lt;int&gt; num">
 <meta property="og:locale" content="zn_CN">
+<meta property="article:published_time" content="2024-10-09T14:37:54.000Z">
+<meta property="article:modified_time" content="2024-11-15T15:45:31.158Z">
 <meta property="article:author" content="myself">
+<meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/Blog/atom.xml" title="hatena" type="application/atom+xml">
@@ -73,39 +76,96 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/Blog/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/Blog/2022/12/07/hello-world/" class="archive-article-date">
-  <time class="dt-published" datetime="2022-12-07T15:54:32.000Z" itemprop="datePublished">Dec 7</time>
+        <section id="main"><article id="post-我的算法小抄" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/Blog/2024/10/09/%E6%88%91%E7%9A%84%E7%AE%97%E6%B3%95%E5%B0%8F%E6%8A%84/" class="article-date">
+  <time class="dt-published" datetime="2024-10-09T14:37:54.000Z" itemprop="datePublished">2024-10-09</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/Blog/2022/12/07/hello-world/">Hello World</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      我的算法小抄
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h1><h2 id="读取一行"><a href="#读取一行" class="headerlink" title="读取一行"></a>读取一行</h2><p>c:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> s[<span class="number">200</span>];<span class="comment">//确保s够大</span></span><br><span class="line">gets(s);</span><br></pre></td></tr></table></figure>
+
+<p>c++:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">string s;</span><br><span class="line"><span class="built_in">getline</span>(cin,s);<span class="comment">//或cin.getline(s,100);后一个参数是读取大小</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>tps:有时候记得读入换行</p>
+<h2 id="读入字符串转数字"><a href="#读入字符串转数字" class="headerlink" title="读入字符串转数字"></a>读入字符串转数字</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">string s;<span class="built_in">getline</span>(cin,s);</span><br><span class="line"><span class="function">stringstream <span class="title">ss</span><span class="params">(s)</span></span></span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; nums</span>;</span><br><span class="line"><span class="keyword">while</span>(ss&gt;&gt;num)&#123;</span><br><span class="line">    nums.<span class="built_in">push_back</span>(num);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h1 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h1><p>以map为例子</p>
+<h2 id="迭代器遍历"><a href="#迭代器遍历" class="headerlink" title="迭代器遍历"></a>迭代器遍历</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">map&lt;<span class="type">int</span>,<span class="type">int</span>&gt;:: iterator it=mp.<span class="built_in">begin</span>();<span class="comment">//迭代器类似指针</span></span><br><span class="line"><span class="keyword">while</span>(it!=mp.<span class="built_in">end</span>())&#123;</span><br><span class="line">    cout&lt;&lt;it-&gt;first&lt;&lt;it-&gt;second;<span class="comment">//cout&lt;&lt;*it;</span></span><br><span class="line">    it++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="for增强遍历"><a href="#for增强遍历" class="headerlink" title="for增强遍历"></a>for增强遍历</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">map&lt;<span class="type">int</span>,<span class="type">int</span>&gt; mp;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> i:mp)&#123;<span class="comment">//i是个结构体，也可以加引用</span></span><br><span class="line"> 	cout&lt;&lt;mp.first&lt;&lt;mp.second;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="map按索引遍历"><a href="#map按索引遍历" class="headerlink" title="map按索引遍历"></a>map按索引遍历</h2><p>1.使用advance();</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">map&lt;<span class="type">int</span>,<span class="type">int</span>&gt; ::iterator it=mp.<span class="built_in">begin</span>();</span><br><span class="line"><span class="built_in">advance</span>(it,idx);<span class="comment">//idx是想要访问的下标</span></span><br><span class="line">cout&lt;&lt;*it;</span><br></pre></td></tr></table></figure>
+
+<p>2.使用next()</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> it=<span class="built_in">next</span>(mp.<span class="built_in">begin</span>(),idx);</span><br><span class="line">cout&lt;&lt;*it;</span><br></pre></td></tr></table></figure>
+
+<p>map,set进行二叉搜索</p>
+<h2 id="set求交并集"><a href="#set求交并集" class="headerlink" title="set求交并集"></a>set求交并集</h2><p>求交并差集：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set_intersection</span>(a.<span class="built_in">begin</span>(),a.<span class="built_in">end</span>(),b.<span class="built_in">begin</span>(),b.<span class="built_in">end</span>(),,<span class="built_in">inserter</span>( C1 , C1.<span class="built_in">begin</span>());</span><br><span class="line"><span class="built_in">set_union</span>(A.<span class="built_in">begin</span>(),A.<span class="built_in">end</span>(),B.<span class="built_in">begin</span>(),B.<span class="built_in">end</span>(),<span class="built_in">inserter</span>( C1 , C1.<span class="built_in">begin</span>() ) );</span><br><span class="line"><span class="built_in">set_difference</span>(A.<span class="built_in">begin</span>(),A.<span class="built_in">end</span>(),B.<span class="built_in">begin</span>(),B.<span class="built_in">end</span>(),<span class="built_in">inserter</span>( C1 , C1.<span class="built_in">begin</span>() ) );</span><br></pre></td></tr></table></figure>
+
+<h1 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h1><h1 id="二分搜索"><a href="#二分搜索" class="headerlink" title="二分搜索"></a>二分搜索</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">map&lt;<span class="type">int</span>,<span class="type">int</span>&gt; mp;</span><br><span class="line">map&lt;<span class="type">int</span>,<span class="type">int</span>&gt; ::iterator it;</span><br><span class="line">it=<span class="built_in">lower_bound</span>(mp.<span class="built_in">begin</span>(),mp.<span class="built_in">end</span>(),val);</span><br><span class="line">it=mp.<span class="built_in">lower_bound</span>(val);</span><br></pre></td></tr></table></figure>
+
+<p>比较cmp</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">cmp</span><span class="params">(node a,node b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a.first==b.first?a.second&lt;b.second:a.first&lt;b.first<span class="comment">//结构体排序</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<link rel="stylesheet" href="/Blog/css/folder.css" type="text/css"><script src="/Blog/js/folder.js" type="text/javascript" async></script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kerisuchiaki.github.io/2024/10/09/%E6%88%91%E7%9A%84%E7%AE%97%E6%B3%95%E5%B0%8F%E6%8A%84/" data-id="cm3iwrvz30000r45b02nr9pig" data-title="我的算法小抄" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/Blog/2024/10/12/%E6%B7%B1%E4%BF%A1%E6%9C%8D%E7%AC%94%E8%AF%95/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          深信服笔试
+        
+      </div>
+    </a>
+  
+  
+    <a href="/Blog/2024/10/06/%E7%9D%BF%E4%BA%91%E8%81%94%E6%B5%8B%E8%AF%95%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">睿云联测试开发面试</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 
 </section>

@@ -75,6 +75,149 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-设计模式之代理模式" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/Blog/2024/02/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/" class="article-date">
+  <time class="dt-published" datetime="2024-02-29T15:19:43.000Z" itemprop="datePublished">2024-02-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/Blog/2024/02/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/">java动态代理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="两种代理方式"><a href="#两种代理方式" class="headerlink" title="两种代理方式"></a>两种代理方式</h2><p>Java 中的代理方式分为静态代理和动态代理，它们各有特点和适用场景。</p>
+<h3 id="静态代理"><a href="#静态代理" class="headerlink" title="静态代理"></a>静态代理</h3><p>静态代理是在编译时就确定代理对象的方式，需要为每一个被代理类编写对应的代理类。以下是静态代理的代码示例：</p>
+        
+          <p class="article-more-link">
+            <a href="/Blog/2024/02/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kerisuchiaki.github.io/2024/02/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/" data-id="clwf9hhrt001p025b4u4o7p8n" data-title="java动态代理" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/java%E6%BA%90%E7%A0%81/" rel="tag">java源码</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-rabbitmq学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/Blog/2024/02/28/rabbitmq%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time class="dt-published" datetime="2024-02-28T03:20:12.000Z" itemprop="datePublished">2024-02-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/Blog/2024/02/28/rabbitmq%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">rabbitmq学习笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="rabbitmq踩坑日记’"><a href="#rabbitmq踩坑日记’" class="headerlink" title="rabbitmq踩坑日记’"></a>rabbitmq踩坑日记’</h2><h3 id="1-使用docker容器连接不上"><a href="#1-使用docker容器连接不上" class="headerlink" title="1.使用docker容器连接不上"></a>1.使用docker容器连接不上</h3><p>为解决</p>
+<h3 id="2-ubuntu服务器安装rabbit-还是连接不上"><a href="#2-ubuntu服务器安装rabbit-还是连接不上" class="headerlink" title="2.ubuntu服务器安装rabbit,还是连接不上"></a>2.ubuntu服务器安装rabbit,还是连接不上</h3><p>主要有三点</p>
+<h4 id="2-1-ip地址访问问题"><a href="#2-1-ip地址访问问题" class="headerlink" title="2.1 ip地址访问问题"></a>2.1 ip地址访问问题</h4><p>这不是主要问题，使用wsl不管是127.0.0.1还是wsl的Ip地址都能访问</p>
+<h4 id="2-2-用户名和主机地址写错"><a href="#2-2-用户名和主机地址写错" class="headerlink" title="2.2 用户名和主机地址写错"></a>2.2 用户名和主机地址写错</h4><p>最无语的，写了一个rabbitmq不存在的用户名，老是对比两个配置文件，都没差别，结果一个能连接上，另一个连接不上，用了文本对才发现，用户名不一样，我的天，眼睛瞎了啊，还有yaml文件的主机名写成了address而不是host,这是idea提示的锅，害我写错</p>
+<h4 id="2-3-逆天idea"><a href="#2-3-逆天idea" class="headerlink" title="2.3 逆天idea"></a>2.3 逆天idea</h4><p>明明啥问题都没有，就是连接不了，使用java代码就可以连接，之后把java代码删掉，恢复为原来的样子，又可以连接了，傻逼idea</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kerisuchiaki.github.io/2024/02/28/rabbitmq%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clwf9hhrk000s025bhym927ku" data-title="rabbitmq学习笔记" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/rabbitmq/" rel="tag">rabbitmq</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-redis学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/Blog/2024/02/23/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time class="dt-published" datetime="2024-02-23T15:09:15.000Z" itemprop="datePublished">2024-02-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/Blog/2024/02/23/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">redis学习笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-初识Redis"><a href="#1-初识Redis" class="headerlink" title="1.初识Redis"></a>1.初识Redis</h1><p>Redis是一种键值型的NoSql数据库，这里有两个关键字：</p>
+<ul>
+<li><p>键值型</p>
+</li>
+<li><p>NoSql</p>
+</li>
+</ul>
+<p>其中<strong>键值型</strong>，是指Redis中存储的数据都是以key、value对的形式存储，而value的形式多种多样，可以是字符串、数值、甚至json,而NoSql则是相对于传统关系型数据库而言，有很大差异的一种数据库。</p>
+        
+          <p class="article-more-link">
+            <a href="/Blog/2024/02/23/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kerisuchiaki.github.io/2024/02/23/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clwf9hhrk000t025b34j765c8" data-title="redis学习笔记" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/redis/" rel="tag">redis</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-ThreadLocal解读" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/Blog/2024/02/23/ThreadLocal%E8%A7%A3%E8%AF%BB/" class="article-date">
@@ -422,142 +565,6 @@
 
 
   
-    <article id="post-设计模式之访问者模式" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/Blog/2023/10/16/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F/" class="article-date">
-  <time class="dt-published" datetime="2023-10-16T14:42:32.000Z" itemprop="datePublished">2023-10-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/Blog/2023/10/16/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F/">设计模式之访问者模式</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="访问者模式"><a href="#访问者模式" class="headerlink" title="访问者模式"></a>访问者模式</h2><p>访问者模式是一种行为型设计模式，它允许你在不修改对象结构的情况下定义新操作。该模式中有两个主要参与者：访问者和元素。元素表示对象结构中的一个特定元素，而访问者则定义了在这些元素上执行的新操作。</p>
-<p>在访问者模式中，元素对象通常会提供一个 accept() 方法，该方法接受访问者对象作为参数。访问者对象则会包含一系列的 visit() 方法，每个方法对应一个元素对象，并在其上执行特定的操作。</p>
-<p>通过使用访问者模式，我们可以将新功能添加到现有的对象结构中，而无需修改它们的类。这使得代码更加灵活和可扩展，并且符合“开闭原则”。同时，访问者模式还可以帮助我们将相关操作逻辑集中在一起，提高代码的可维护性和可读性。</p>
-        
-          <p class="article-more-link">
-            <a href="/Blog/2023/10/16/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kerisuchiaki.github.io/2023/10/16/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F/" data-id="clwf9hhrv001v025b3v98aal7" data-title="设计模式之访问者模式" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/java/" rel="tag">java</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-jvm字节码指令" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/Blog/2023/10/04/jvm%E5%AD%97%E8%8A%82%E7%A0%81%E6%8C%87%E4%BB%A4/" class="article-date">
-  <time class="dt-published" datetime="2023-10-03T18:36:45.000Z" itemprop="datePublished">2023-10-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/Blog/2023/10/04/jvm%E5%AD%97%E8%8A%82%E7%A0%81%E6%8C%87%E4%BB%A4/">jvm字节码指令</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="jvm的字节码指令"><a href="#jvm的字节码指令" class="headerlink" title="jvm的字节码指令"></a>jvm的字节码指令</h1><h2 id="关于try-catch-finaly关键代码块"><a href="#关于try-catch-finaly关键代码块" class="headerlink" title="关于try-catch-finaly关键代码块"></a>关于try-catch-finaly关键代码块</h2><p>当我们用try-catch-finaly关键代码块包裹起来时，生成的class文件里方法的code属性会会多一个ExceptionTable子属性，这个子属性记录发生异常的代码块和要捕捉的异常类和要执行的代码块</p>
-<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>不要在catch-fianly块中写return语句，不然字节码的指令会省略掉athrow命令即不会抛出异常，可能是编译的规则是人如果要执行的语句为return则省略后面的语句，毕竟执行不到，这会使得我们无法察觉到代码中发生的异常，这很危险</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kerisuchiaki.github.io/2023/10/04/jvm%E5%AD%97%E8%8A%82%E7%A0%81%E6%8C%87%E4%BB%A4/" data-id="clwf9hhrg000h025bc0wyczut" data-title="jvm字节码指令" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-关于字符串常量池的疑问" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/Blog/2023/10/02/%E5%85%B3%E4%BA%8E%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E9%87%8F%E6%B1%A0%E7%9A%84%E7%96%91%E9%97%AE/" class="article-date">
-  <time class="dt-published" datetime="2023-10-02T10:19:00.000Z" itemprop="datePublished">2023-10-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/Blog/2023/10/02/%E5%85%B3%E4%BA%8E%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E9%87%8F%E6%B1%A0%E7%9A%84%E7%96%91%E9%97%AE/">关于字符串常量池的疑问</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="String-intern-的疑问"><a href="#String-intern-的疑问" class="headerlink" title="String.intern()的疑问"></a>String.intern()的疑问</h1><p>先看代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.yuyonghai;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo_8</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        Scanner in=<span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> in.nextLine();</span><br><span class="line">        String s1=s.intern();</span><br><span class="line">        System.out.println(s==s1);</span><br><span class="line">        String str=<span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;a&quot;</span>)+<span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;b&quot;</span>);</span><br><span class="line">        String s2=str.intern();</span><br><span class="line">        System.out.println(str == s2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>为什么这段代码在读入一个字符串后会输出</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span></span><br><span class="line"><span class="literal">false</span></span><br><span class="line"><span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<p>第一个false意味调用false会调用intern没命中后在字符串常量池中创建了一个对象并且返回了这个对象，但是第二个true却意味着没命中但是在常量池中引用堆中的原始对象，非常奇怪，两次调用的intern不一样</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kerisuchiaki.github.io/2023/10/02/%E5%85%B3%E4%BA%8E%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E9%87%8F%E6%B1%A0%E7%9A%84%E7%96%91%E9%97%AE/" data-id="clwf9hhrn0013025b20ckg0ce" data-title="关于字符串常量池的疑问" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/%E7%96%91%E9%97%AE/" rel="tag">疑问</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -593,7 +600,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/Blog/tags/BUG/" style="font-size: 10px;">BUG</a> <a href="/Blog/tags/RPC/" style="font-size: 10px;">RPC</a> <a href="/Blog/tags/git/" style="font-size: 10px;">git</a> <a href="/Blog/tags/java/" style="font-size: 20px;">java</a> <a href="/Blog/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 10px;">java后端开发</a> <a href="/Blog/tags/java%E6%BA%90%E7%A0%81/" style="font-size: 10px;">java源码</a> <a href="/Blog/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/Blog/tags/leetcode/" style="font-size: 10px;">leetcode</a> <a href="/Blog/tags/leetcode%E9%A2%98%E8%A7%A3/" style="font-size: 13.33px;">leetcode题解</a> <a href="/Blog/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/Blog/tags/rabbitmq/" style="font-size: 10px;">rabbitmq</a> <a href="/Blog/tags/redis/" style="font-size: 10px;">redis</a> <a href="/Blog/tags/shell/" style="font-size: 10px;">shell</a> <a href="/Blog/tags/spring/" style="font-size: 10px;">spring</a> <a href="/Blog/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/Blog/tags/test/" style="font-size: 10px;">test</a> <a href="/Blog/tags/%E4%BD%9C%E4%B8%9A/" style="font-size: 10px;">作业</a> <a href="/Blog/tags/%E5%AE%9E%E9%AA%8C/" style="font-size: 13.33px;">实验</a> <a href="/Blog/tags/%E5%AE%9E%E9%AA%8C3/" style="font-size: 10px;">实验3</a> <a href="/Blog/tags/%E6%84%9F%E6%83%B3/" style="font-size: 10px;">感想</a> <a href="/Blog/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">操作系统</a> <a href="/Blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 10px;">数据结构与算法</a> <a href="/Blog/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a> <a href="/Blog/tags/%E7%96%91%E9%97%AE/" style="font-size: 10px;">疑问</a> <a href="/Blog/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">笔记</a> <a href="/Blog/tags/%E7%AE%97%E6%B3%95/" style="font-size: 16.67px;">算法</a> <a href="/Blog/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 13.33px;">设计模式</a> <a href="/Blog/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10px;">问题</a> <a href="/Blog/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 16.67px;">面试</a>
+      <a href="/Blog/tags/BUG/" style="font-size: 10px;">BUG</a> <a href="/Blog/tags/RPC/" style="font-size: 10px;">RPC</a> <a href="/Blog/tags/git/" style="font-size: 10px;">git</a> <a href="/Blog/tags/java/" style="font-size: 20px;">java</a> <a href="/Blog/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 10px;">java后端开发</a> <a href="/Blog/tags/java%E6%BA%90%E7%A0%81/" style="font-size: 10px;">java源码</a> <a href="/Blog/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/Blog/tags/leetcode/" style="font-size: 10px;">leetcode</a> <a href="/Blog/tags/leetcode%E9%A2%98%E8%A7%A3/" style="font-size: 12.5px;">leetcode题解</a> <a href="/Blog/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/Blog/tags/rabbitmq/" style="font-size: 10px;">rabbitmq</a> <a href="/Blog/tags/redis/" style="font-size: 10px;">redis</a> <a href="/Blog/tags/shell/" style="font-size: 10px;">shell</a> <a href="/Blog/tags/spring/" style="font-size: 10px;">spring</a> <a href="/Blog/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/Blog/tags/test/" style="font-size: 10px;">test</a> <a href="/Blog/tags/%E4%BD%9C%E4%B8%9A/" style="font-size: 10px;">作业</a> <a href="/Blog/tags/%E5%AE%9E%E9%AA%8C/" style="font-size: 12.5px;">实验</a> <a href="/Blog/tags/%E5%AE%9E%E9%AA%8C3/" style="font-size: 10px;">实验3</a> <a href="/Blog/tags/%E6%84%9F%E6%83%B3/" style="font-size: 10px;">感想</a> <a href="/Blog/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">操作系统</a> <a href="/Blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 10px;">数据结构与算法</a> <a href="/Blog/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a> <a href="/Blog/tags/%E7%96%91%E9%97%AE/" style="font-size: 10px;">疑问</a> <a href="/Blog/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">笔记</a> <a href="/Blog/tags/%E7%AE%97%E6%B3%95/" style="font-size: 17.5px;">算法</a> <a href="/Blog/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 12.5px;">设计模式</a> <a href="/Blog/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10px;">问题</a> <a href="/Blog/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 15px;">面试</a>
     </div>
   </div>
 
@@ -615,23 +622,23 @@
       <ul>
         
           <li>
+            <a href="/Blog/2024/10/18/%E6%96%B0%E6%84%8F%E9%9D%A2%E8%AF%95/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/Blog/2024/10/12/%E6%B7%B1%E4%BF%A1%E6%9C%8D%E7%AC%94%E8%AF%95/">深信服笔试</a>
+          </li>
+        
+          <li>
+            <a href="/Blog/2024/10/09/%E6%88%91%E7%9A%84%E7%AE%97%E6%B3%95%E5%B0%8F%E6%8A%84/">我的算法小抄</a>
+          </li>
+        
+          <li>
             <a href="/Blog/2024/10/06/%E7%9D%BF%E4%BA%91%E8%81%94%E6%B5%8B%E8%AF%95%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95/">睿云联测试开发面试</a>
           </li>
         
           <li>
             <a href="/Blog/2024/10/05/%E7%AE%97%E6%B3%95%E6%95%B0%E8%AE%BA-%E8%B4%A8%E5%9B%A0%E6%95%B0%E5%88%86%E8%A7%A3/">算法数论-质因数分解</a>
-          </li>
-        
-          <li>
-            <a href="/Blog/2024/09/02/%E6%98%93%E8%81%94%E4%BC%97%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/">易联众面试总结</a>
-          </li>
-        
-          <li>
-            <a href="/Blog/2024/08/24/dfs%E6%B1%82%E5%85%A8%E6%8E%92%E5%88%97/">dfs求全排列</a>
-          </li>
-        
-          <li>
-            <a href="/Blog/2024/07/16/oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">oracle数据库学习笔记</a>
           </li>
         
       </ul>

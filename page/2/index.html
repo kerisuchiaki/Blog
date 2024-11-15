@@ -75,6 +75,194 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-嵌入式实验3-文件io编程" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/Blog/2024/05/01/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AE%9E%E9%AA%8C3-%E6%96%87%E4%BB%B6io%E7%BC%96%E7%A8%8B/" class="article-date">
+  <time class="dt-published" datetime="2024-05-01T05:44:36.000Z" itemprop="datePublished">2024-05-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/Blog/2024/05/01/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AE%9E%E9%AA%8C3-%E6%96%87%E4%BB%B6io%E7%BC%96%E7%A8%8B/">嵌入式实验3-文件io编程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="一、实验目的"><a href="#一、实验目的" class="headerlink" title="一、实验目的"></a>一、实验目的</h2><h3 id="1-掌握文件读写及上锁操作"><a href="#1-掌握文件读写及上锁操作" class="headerlink" title="1.掌握文件读写及上锁操作"></a>1.掌握文件读写及上锁操作</h3><h3 id="2-掌握open-、read-、write-、fcntl-等函数的使用"><a href="#2-掌握open-、read-、write-、fcntl-等函数的使用" class="headerlink" title="2.掌握open()、read()、write()、fcntl()等函数的使用"></a>2.掌握open()、read()、write()、fcntl()等函数的使用</h3>
+        
+          <p class="article-more-link">
+            <a href="/Blog/2024/05/01/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AE%9E%E9%AA%8C3-%E6%96%87%E4%BB%B6io%E7%BC%96%E7%A8%8B/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kerisuchiaki.github.io/2024/05/01/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AE%9E%E9%AA%8C3-%E6%96%87%E4%BB%B6io%E7%BC%96%E7%A8%8B/" data-id="clwf9hhro0017025b21wled0q" data-title="嵌入式实验3-文件io编程" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/%E5%AE%9E%E9%AA%8C/" rel="tag">实验</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-操作系统实践-实现一个fat12文件系统" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/Blog/2024/04/30/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E8%B7%B5-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAfat12%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="article-date">
+  <time class="dt-published" datetime="2024-04-30T15:57:51.000Z" itemprop="datePublished">2024-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/Blog/2024/04/30/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E8%B7%B5-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAfat12%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">操作系统实践-实现一个fat12文件系统</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-基本信息"><a href="#1-基本信息" class="headerlink" title="1. 基本信息"></a>1. 基本信息</h1><table>
+<thead>
+<tr>
+<th align="center">姓名</th>
+<th align="center">学号</th>
+<th align="center">班级</th>
+<th align="center">是否抄袭</th>
+<th align="center">是否分组</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">yyh</td>
+<td align="center">2021****117</td>
+<td align="center">计算2114</td>
+<td align="center">否</td>
+<td align="center">否</td>
+</tr>
+</tbody></table>
+<p><strong>实现了哪些功能（已实现，并且测试正确的打勾）</strong></p>
+<ul>
+<li><p><input checked="" disabled="" type="checkbox"> 
+打印当前目录下所有文件和目录名，类似于<code>ls</code>简易版</p>
+</li>
+<li><p><input checked="" disabled="" type="checkbox"> 
+打印文件&#x2F;目录的文件控制块</p>
+</li>
+<li><p><input checked="" disabled="" type="checkbox"> 
+打印整个文件分配表</p>
+</li>
+<li><p><input checked="" disabled="" type="checkbox"> 
+切换目录，类似于<code>cd</code>功能</p>
+</li>
+<li><p><input checked="" disabled="" type="checkbox"> 
+创建文件、删除文件</p>
+</li>
+<li><p><input checked="" disabled="" type="checkbox"> 
+创建目录、删除文件</p>
+</li>
+<li><p><input checked="" disabled="" type="checkbox"> 
+cat命令查看文件(额外实现)</p>
+        
+          <p class="article-more-link">
+            <a href="/Blog/2024/04/30/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E8%B7%B5-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAfat12%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kerisuchiaki.github.io/2024/04/30/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E8%B7%B5-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAfat12%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" data-id="clwf9hhrp001a025beu816glg" data-title="操作系统实践-实现一个fat12文件系统" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-LambdaQuery-和-Query的区别" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/Blog/2024/04/25/LambdaQuery-%E5%92%8C-Query%E7%9A%84%E5%8C%BA%E5%88%AB/" class="article-date">
+  <time class="dt-published" datetime="2024-04-25T08:02:44.000Z" itemprop="datePublished">2024-04-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/Blog/2024/04/25/LambdaQuery-%E5%92%8C-Query%E7%9A%84%E5%8C%BA%E5%88%AB/">LambdaQuery 和 Query的区别</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>在 MyBatis-Plus 中，<code>LambdaQuery</code> 和 <code>Query</code> 是两种不同的查询包装器，它们提供了不同的查询构建方式：</p>
+<ol>
+<li><strong>QueryWrapper</strong>：<ul>
+<li><code>QueryWrapper</code> 是 MyBatis-Plus 提供的一个通用查询包装器，它允许您以链式调用的方式构建复杂的查询条件。</li>
+<li>它不依赖于实体类的字段，而是使用字符串来指定字段名，这使得它在某些情况下更加灵活，但也增加了字段名拼写错误的风险。</li>
+</ul>
+</li>
+<li><strong>LambdaQueryWrapper</strong>：<ul>
+<li><code>LambdaQueryWrapper</code> 是 <code>QueryWrapper</code> 的一个特殊版本，它使用 Java 8 的 Lambda 表达式来引用实体类的字段。</li>
+<li>通过 Lambda 表达式，您可以安全地引用实体类中的字段，而不必担心字段名拼写错误，因为编译器会在编译时检查字段名。</li>
+<li><code>LambdaQueryWrapper</code> 提供了类型安全的查询构建方式，通常被认为是更现代和更安全的选择。</li>
+</ul>
+</li>
+</ol>
+<p>以下是两种查询包装器的使用示例：</p>
+        
+          <p class="article-more-link">
+            <a href="/Blog/2024/04/25/LambdaQuery-%E5%92%8C-Query%E7%9A%84%E5%8C%BA%E5%88%AB/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kerisuchiaki.github.io/2024/04/25/LambdaQuery-%E5%92%8C-Query%E7%9A%84%E5%8C%BA%E5%88%AB/" data-id="clwf9hhr80001025bhjfja5nh" data-title="LambdaQuery 和 Query的区别" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/java/" rel="tag">java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-leetcode530" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/Blog/2024/04/14/leetcode530/" class="article-date">
@@ -438,149 +626,6 @@
 
 
   
-    <article id="post-设计模式之代理模式" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/Blog/2024/02/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/" class="article-date">
-  <time class="dt-published" datetime="2024-02-29T15:19:43.000Z" itemprop="datePublished">2024-02-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/Blog/2024/02/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/">java动态代理</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="两种代理方式"><a href="#两种代理方式" class="headerlink" title="两种代理方式"></a>两种代理方式</h2><p>Java 中的代理方式分为静态代理和动态代理，它们各有特点和适用场景。</p>
-<h3 id="静态代理"><a href="#静态代理" class="headerlink" title="静态代理"></a>静态代理</h3><p>静态代理是在编译时就确定代理对象的方式，需要为每一个被代理类编写对应的代理类。以下是静态代理的代码示例：</p>
-        
-          <p class="article-more-link">
-            <a href="/Blog/2024/02/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kerisuchiaki.github.io/2024/02/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/" data-id="clwf9hhrt001p025b4u4o7p8n" data-title="java动态代理" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/java%E6%BA%90%E7%A0%81/" rel="tag">java源码</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-rabbitmq学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/Blog/2024/02/28/rabbitmq%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time class="dt-published" datetime="2024-02-28T03:20:12.000Z" itemprop="datePublished">2024-02-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/Blog/2024/02/28/rabbitmq%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">rabbitmq学习笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="rabbitmq踩坑日记’"><a href="#rabbitmq踩坑日记’" class="headerlink" title="rabbitmq踩坑日记’"></a>rabbitmq踩坑日记’</h2><h3 id="1-使用docker容器连接不上"><a href="#1-使用docker容器连接不上" class="headerlink" title="1.使用docker容器连接不上"></a>1.使用docker容器连接不上</h3><p>为解决</p>
-<h3 id="2-ubuntu服务器安装rabbit-还是连接不上"><a href="#2-ubuntu服务器安装rabbit-还是连接不上" class="headerlink" title="2.ubuntu服务器安装rabbit,还是连接不上"></a>2.ubuntu服务器安装rabbit,还是连接不上</h3><p>主要有三点</p>
-<h4 id="2-1-ip地址访问问题"><a href="#2-1-ip地址访问问题" class="headerlink" title="2.1 ip地址访问问题"></a>2.1 ip地址访问问题</h4><p>这不是主要问题，使用wsl不管是127.0.0.1还是wsl的Ip地址都能访问</p>
-<h4 id="2-2-用户名和主机地址写错"><a href="#2-2-用户名和主机地址写错" class="headerlink" title="2.2 用户名和主机地址写错"></a>2.2 用户名和主机地址写错</h4><p>最无语的，写了一个rabbitmq不存在的用户名，老是对比两个配置文件，都没差别，结果一个能连接上，另一个连接不上，用了文本对才发现，用户名不一样，我的天，眼睛瞎了啊，还有yaml文件的主机名写成了address而不是host,这是idea提示的锅，害我写错</p>
-<h4 id="2-3-逆天idea"><a href="#2-3-逆天idea" class="headerlink" title="2.3 逆天idea"></a>2.3 逆天idea</h4><p>明明啥问题都没有，就是连接不了，使用java代码就可以连接，之后把java代码删掉，恢复为原来的样子，又可以连接了，傻逼idea</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kerisuchiaki.github.io/2024/02/28/rabbitmq%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clwf9hhrk000s025bhym927ku" data-title="rabbitmq学习笔记" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/rabbitmq/" rel="tag">rabbitmq</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-redis学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/Blog/2024/02/23/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time class="dt-published" datetime="2024-02-23T15:09:15.000Z" itemprop="datePublished">2024-02-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/Blog/2024/02/23/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">redis学习笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="1-初识Redis"><a href="#1-初识Redis" class="headerlink" title="1.初识Redis"></a>1.初识Redis</h1><p>Redis是一种键值型的NoSql数据库，这里有两个关键字：</p>
-<ul>
-<li><p>键值型</p>
-</li>
-<li><p>NoSql</p>
-</li>
-</ul>
-<p>其中<strong>键值型</strong>，是指Redis中存储的数据都是以key、value对的形式存储，而value的形式多种多样，可以是字符串、数值、甚至json,而NoSql则是相对于传统关系型数据库而言，有很大差异的一种数据库。</p>
-        
-          <p class="article-more-link">
-            <a href="/Blog/2024/02/23/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kerisuchiaki.github.io/2024/02/23/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clwf9hhrk000t025b34j765c8" data-title="redis学习笔记" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/redis/" rel="tag">redis</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -616,7 +661,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/Blog/tags/BUG/" style="font-size: 10px;">BUG</a> <a href="/Blog/tags/RPC/" style="font-size: 10px;">RPC</a> <a href="/Blog/tags/git/" style="font-size: 10px;">git</a> <a href="/Blog/tags/java/" style="font-size: 20px;">java</a> <a href="/Blog/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 10px;">java后端开发</a> <a href="/Blog/tags/java%E6%BA%90%E7%A0%81/" style="font-size: 10px;">java源码</a> <a href="/Blog/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/Blog/tags/leetcode/" style="font-size: 10px;">leetcode</a> <a href="/Blog/tags/leetcode%E9%A2%98%E8%A7%A3/" style="font-size: 13.33px;">leetcode题解</a> <a href="/Blog/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/Blog/tags/rabbitmq/" style="font-size: 10px;">rabbitmq</a> <a href="/Blog/tags/redis/" style="font-size: 10px;">redis</a> <a href="/Blog/tags/shell/" style="font-size: 10px;">shell</a> <a href="/Blog/tags/spring/" style="font-size: 10px;">spring</a> <a href="/Blog/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/Blog/tags/test/" style="font-size: 10px;">test</a> <a href="/Blog/tags/%E4%BD%9C%E4%B8%9A/" style="font-size: 10px;">作业</a> <a href="/Blog/tags/%E5%AE%9E%E9%AA%8C/" style="font-size: 13.33px;">实验</a> <a href="/Blog/tags/%E5%AE%9E%E9%AA%8C3/" style="font-size: 10px;">实验3</a> <a href="/Blog/tags/%E6%84%9F%E6%83%B3/" style="font-size: 10px;">感想</a> <a href="/Blog/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">操作系统</a> <a href="/Blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 10px;">数据结构与算法</a> <a href="/Blog/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a> <a href="/Blog/tags/%E7%96%91%E9%97%AE/" style="font-size: 10px;">疑问</a> <a href="/Blog/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">笔记</a> <a href="/Blog/tags/%E7%AE%97%E6%B3%95/" style="font-size: 16.67px;">算法</a> <a href="/Blog/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 13.33px;">设计模式</a> <a href="/Blog/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10px;">问题</a> <a href="/Blog/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 16.67px;">面试</a>
+      <a href="/Blog/tags/BUG/" style="font-size: 10px;">BUG</a> <a href="/Blog/tags/RPC/" style="font-size: 10px;">RPC</a> <a href="/Blog/tags/git/" style="font-size: 10px;">git</a> <a href="/Blog/tags/java/" style="font-size: 20px;">java</a> <a href="/Blog/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 10px;">java后端开发</a> <a href="/Blog/tags/java%E6%BA%90%E7%A0%81/" style="font-size: 10px;">java源码</a> <a href="/Blog/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/Blog/tags/leetcode/" style="font-size: 10px;">leetcode</a> <a href="/Blog/tags/leetcode%E9%A2%98%E8%A7%A3/" style="font-size: 12.5px;">leetcode题解</a> <a href="/Blog/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/Blog/tags/rabbitmq/" style="font-size: 10px;">rabbitmq</a> <a href="/Blog/tags/redis/" style="font-size: 10px;">redis</a> <a href="/Blog/tags/shell/" style="font-size: 10px;">shell</a> <a href="/Blog/tags/spring/" style="font-size: 10px;">spring</a> <a href="/Blog/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/Blog/tags/test/" style="font-size: 10px;">test</a> <a href="/Blog/tags/%E4%BD%9C%E4%B8%9A/" style="font-size: 10px;">作业</a> <a href="/Blog/tags/%E5%AE%9E%E9%AA%8C/" style="font-size: 12.5px;">实验</a> <a href="/Blog/tags/%E5%AE%9E%E9%AA%8C3/" style="font-size: 10px;">实验3</a> <a href="/Blog/tags/%E6%84%9F%E6%83%B3/" style="font-size: 10px;">感想</a> <a href="/Blog/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">操作系统</a> <a href="/Blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 10px;">数据结构与算法</a> <a href="/Blog/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a> <a href="/Blog/tags/%E7%96%91%E9%97%AE/" style="font-size: 10px;">疑问</a> <a href="/Blog/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">笔记</a> <a href="/Blog/tags/%E7%AE%97%E6%B3%95/" style="font-size: 17.5px;">算法</a> <a href="/Blog/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 12.5px;">设计模式</a> <a href="/Blog/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10px;">问题</a> <a href="/Blog/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 15px;">面试</a>
     </div>
   </div>
 
@@ -638,23 +683,23 @@
       <ul>
         
           <li>
+            <a href="/Blog/2024/10/18/%E6%96%B0%E6%84%8F%E9%9D%A2%E8%AF%95/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/Blog/2024/10/12/%E6%B7%B1%E4%BF%A1%E6%9C%8D%E7%AC%94%E8%AF%95/">深信服笔试</a>
+          </li>
+        
+          <li>
+            <a href="/Blog/2024/10/09/%E6%88%91%E7%9A%84%E7%AE%97%E6%B3%95%E5%B0%8F%E6%8A%84/">我的算法小抄</a>
+          </li>
+        
+          <li>
             <a href="/Blog/2024/10/06/%E7%9D%BF%E4%BA%91%E8%81%94%E6%B5%8B%E8%AF%95%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95/">睿云联测试开发面试</a>
           </li>
         
           <li>
             <a href="/Blog/2024/10/05/%E7%AE%97%E6%B3%95%E6%95%B0%E8%AE%BA-%E8%B4%A8%E5%9B%A0%E6%95%B0%E5%88%86%E8%A7%A3/">算法数论-质因数分解</a>
-          </li>
-        
-          <li>
-            <a href="/Blog/2024/09/02/%E6%98%93%E8%81%94%E4%BC%97%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/">易联众面试总结</a>
-          </li>
-        
-          <li>
-            <a href="/Blog/2024/08/24/dfs%E6%B1%82%E5%85%A8%E6%8E%92%E5%88%97/">dfs求全排列</a>
-          </li>
-        
-          <li>
-            <a href="/Blog/2024/07/16/oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">oracle数据库学习笔记</a>
           </li>
         
       </ul>
