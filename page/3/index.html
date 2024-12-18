@@ -75,6 +75,78 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-oracle数据库学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/Blog/2024/07/16/oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time class="dt-published" datetime="2024-07-16T09:02:17.000Z" itemprop="datePublished">2024-07-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/Blog/2024/07/16/oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">oracle数据库学习笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="oracle数据库学习笔记"><a href="#oracle数据库学习笔记" class="headerlink" title="oracle数据库学习笔记"></a>oracle数据库学习笔记</h1><h2 id="相关sql语句"><a href="#相关sql语句" class="headerlink" title="相关sql语句"></a>相关sql语句</h2><ol>
+<li><p><strong>列出所有数据库</strong>: 在Oracle中，通常使用实例来代表一个数据库。要查看连接到的数据库实例的信息，可以使用以下命令：</p>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> INSTANCE_NAME <span class="keyword">FROM</span> V$INSTANCE;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>列出所有表空间</strong>: 表空间是数据库中存储数据的逻辑单元。要列出所有的表空间，可以使用：</p>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> TABLESPACE_NAME <span class="keyword">FROM</span> DBA_TABLESPACES;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>列出特定用户的所有表</strong>: 要列出特定用户（例如用户 <code>ZWXBDN1</code>）的所有表，您可以使用：</p>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> TABLE_NAME <span class="keyword">FROM</span> ALL_TABLES <span class="keyword">WHERE</span> OWNER <span class="operator">=</span> <span class="string">&#x27;ZWXBDN1&#x27;</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>列出所有表的列信息</strong>: 要获取所有表的列信息，可以使用：</p>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> TABLE_NAME, COLUMN_NAME, DATA_TYPE, DATA_LENGTH </span><br><span class="line"><span class="keyword">FROM</span> USER_TAB_COLUMNS;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>查看表的记录</strong>: 要查看某个特定表的记录，您可以使用<code>SELECT *</code>语句，例如：</p>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> ZWXBDN1.your_table_name;</span><br></pre></td></tr></table></figure>
+
+<p> 请将 <code>your_table_name</code> 替换为您想要查看的表名。</p>
+</li>
+<li><p><strong>查看表的前几行记录</strong>: 如果您只想查看表的前几行记录，可以使用<code>ROWNUM</code>限制结果集，例如：</p>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> ZWXBDN1.your_table_name <span class="keyword">WHERE</span> ROWNUM <span class="operator">&lt;=</span> <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>查看数据库的统计信息</strong>: 要查看数据库的统计信息和其他信息，可以使用：</p>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> V$DATABASE;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>查看数据库的版本信息</strong>: 要查看数据库的版本信息，可以使用：</p>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> V$VERSION;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>请注意，您需要具有足够的权限来执行上述查询。如果您没有权限访问<code>DBA_</code>视图，您可能需要使用以您的用户名为前缀的视图，如<code>USER_</code>或<code>ALL_</code>视图。</p>
+        
+          <p class="article-more-link">
+            <a href="/Blog/2024/07/16/oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kerisuchiaki.github.io/2024/07/16/oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clypcuyt10000dc5bc8pg44r7" data-title="oracle数据库学习笔记" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/oracle/" rel="tag">oracle</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-面试智力题-倒水问题通解" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/Blog/2024/06/17/%E9%9D%A2%E8%AF%95%E6%99%BA%E5%8A%9B%E9%A2%98-%E5%80%92%E6%B0%B4%E9%97%AE%E9%A2%98%E9%80%9A%E8%A7%A3/" class="article-date">
@@ -576,55 +648,6 @@ cat命令查看文件(额外实现)</p>
 
 
   
-    <article id="post-设计模式之适配器模式" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/Blog/2024/03/14/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/" class="article-date">
-  <time class="dt-published" datetime="2024-03-13T16:22:54.000Z" itemprop="datePublished">2024-03-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/Blog/2024/03/14/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/">设计模式之适配器模式</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="什么是适配器模式"><a href="#什么是适配器模式" class="headerlink" title="什么是适配器模式"></a>什么是适配器模式</h2><p>适配器模式的核心思想是将一个类的接口转换成客户希朼的另外一个接口，使得原本由于接口不兼容而不能一起工作的那些类可以一起工作</p>
-<h2 id="适配器模式在Bean销毁中的应用"><a href="#适配器模式在Bean销毁中的应用" class="headerlink" title="适配器模式在Bean销毁中的应用"></a>适配器模式在Bean销毁中的应用</h2><p>在软件开发中，经常会遇到不同接口之间的兼容性问题。适配器模式就是为了解决这类问题而诞生的，它可以将一个类的接口转换成客户希望的另外一个接口，使得原本由于接口不兼容而不能一起工作的那些类可以一起工作。今天我们来看一下适配器模式在Bean销毁中的应用。</p>
-<p>在Spring框架中，Bean的销毁是一个重要的环节，通常需要执行一些特定的操作，比如释放资源、关闭连接等。但是不同的Bean可能有不同的销毁方法，有些是通过实现特定的接口，有些是通过在配置文件中指定销毁方法。为了统一处理这些不同的销毁方式，可以使用适配器模式来简化操作。</p>
-<p>我们先来看一下DisposableBeanAdapter类的代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">javaCopy Code// DisposableBeanAdapter.java</span><br><span class="line"></span><br><span class="line">public class DisposableBeanAdapter implements DisposableBean &#123;</span><br><span class="line"></span><br><span class="line">    private final Object bean;</span><br><span class="line">    private final String beanName;</span><br><span class="line">    private String destroyMethodName;</span><br><span class="line"></span><br><span class="line">    public DisposableBeanAdapter(Object bean, String beanName, BeanDefinition beanDefinition) &#123;</span><br><span class="line">        this.bean = bean;</span><br><span class="line">        this.beanName = beanName;</span><br><span class="line">        this.destroyMethodName = beanDefinition.getDestroyMethodName();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void destroy() throws Exception &#123;</span><br><span class="line">        // 1. 实现接口 DisposableBean</span><br><span class="line">        if (bean instanceof DisposableBean) &#123;</span><br><span class="line">            ((DisposableBean) bean).destroy();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 2. 注解配置 destroy-method &#123;判断是为了避免二次执行销毁&#125;</span><br><span class="line">        if (StrUtil.isNotEmpty(destroyMethodName) &amp;&amp; !(bean instanceof DisposableBean &amp;&amp; &quot;destroy&quot;.equals(this.destroyMethodName))) &#123;</span><br><span class="line">            Method destroyMethod = bean.getClass().getMethod(destroyMethodName);</span><br><span class="line">            if (null == destroyMethod) &#123;</span><br><span class="line">                throw new BeansException(&quot;Couldn&#x27;t find a destroy method named &#x27;&quot; + destroyMethodName + &quot;&#x27; on bean with name &#x27;&quot; + beanName + &quot;&#x27;&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            destroyMethod.invoke(bean);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>DisposableBeanAdapter类实现了DisposableBean接口，同时根据Bean定义信息获取销毁方法的名称，并统一调用销毁方法。这样，无论Bean是通过实现接口还是配置文件中指定销毁方法，都可以通过DisposableBeanAdapter来进行统一的销毁处理。</p>
-<p>适配器模式的优势在于可以灵活处理不同接口的兼容性问题，使得系统更易于扩展和维护。在Bean销毁的场景下，采用适配器模式可以有效地降低代码的耦合度，同时也让销毁逻辑更加清晰和统一。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>总结一下，适配器模式在Bean销毁中的应用，使得不同的销毁方式可以统一处理，提高了系统的灵活性和可维护性，是一种非常有价值的设计模式。希望通过这篇博客的介绍，能够对适配器模式的应用有更深入的理解，也能在实际项目中更好地运用适配器模式来解决类似的接口兼容性问题。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kerisuchiaki.github.io/2024/03/14/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/" data-id="clwf9hhrv001x025b535s0uj4" data-title="设计模式之适配器模式" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -682,6 +705,10 @@ cat命令查看文件(额外实现)</p>
       <ul>
         
           <li>
+            <a href="/Blog/2024/12/18/%E6%B5%99%E6%B1%9F%E4%B8%80%E6%9C%A8%E9%9D%A2%E8%AF%95/">浙江一木面试</a>
+          </li>
+        
+          <li>
             <a href="/Blog/2024/12/17/%E5%AE%87%E4%BF%A1%E7%A7%91%E6%8A%80%E4%BA%8C%E9%9D%A2/">宇信科技二面</a>
           </li>
         
@@ -695,10 +722,6 @@ cat命令查看文件(额外实现)</p>
         
           <li>
             <a href="/Blog/2024/12/11/%E9%9D%A2%E8%AF%95-%E8%87%AA%E6%88%91%E4%BB%8B%E7%BB%8D/">面试-自我介绍</a>
-          </li>
-        
-          <li>
-            <a href="/Blog/2024/12/11/%E6%B5%85%E8%B0%88url%E5%8A%AB%E6%8C%81/">浅谈url劫持</a>
           </li>
         
       </ul>
