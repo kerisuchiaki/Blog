@@ -75,6 +75,66 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-leetcode73矩阵置零" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/Blog/2024/03/15/leetcode73%E7%9F%A9%E9%98%B5%E7%BD%AE%E9%9B%B6/" class="article-date">
+  <time class="dt-published" datetime="2024-03-15T14:51:47.000Z" itemprop="datePublished">2024-03-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/Blog/2024/03/15/leetcode73%E7%9F%A9%E9%98%B5%E7%BD%AE%E9%9B%B6/">leetcode73矩阵置零</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="73-矩阵置零"><a href="#73-矩阵置零" class="headerlink" title="73. 矩阵置零"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/set-matrix-zeroes/">73. 矩阵置零</a></h2><p>给定一个矩阵，若其中一个元素为零，则将其余行和列的元素都置为零</p>
+<p><strong>示例 1：</strong></p>
+<p><img src="https://assets.leetcode.com/uploads/2020/08/17/mat1.jpg" alt="img"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：matrix = [[1,1,1],[1,0,1],[1,1,1]]</span><br><span class="line">输出：[[1,0,1],[0,0,0],[1,0,1]]</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<p><img src="https://assets.leetcode.com/uploads/2020/08/17/mat2.jpg" alt="img"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：matrix = [[0,1,2,0],[3,4,5,2],[1,3,1,5]]</span><br><span class="line">输出：[[0,0,0,0],[0,4,5,0],[0,3,1,0]]</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>m == matrix.length</code></li>
+<li><code>n == matrix[0].length</code></li>
+<li><code>1 &lt;= m, n &lt;= 200</code></li>
+<li><code>-231 &lt;= matrix[i][j] &lt;= 231 - 1</code></li>
+</ul>
+<h2 id="题解代码"><a href="#题解代码" class="headerlink" title="题解代码"></a>题解代码</h2><p>时间复杂度，显然必须要遍历每一个元素，那么复杂度就是O(m*n)了；</p>
+<p>空间复杂度一定是矩阵的大小了,可以优化的也就只有额外的空间，显然的思路就是使用一个标记矩阵记录，可以复制原先矩阵元素的大小，显示遍历一次当我们的举证元素为零时，记为零，但我们第二次遍历时，直接和这个标记矩阵做对比，或者做异或运算就可以将原先举证置为零，空间是就是两倍的矩阵大小</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setZeroes</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; matrix)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> m=matrix.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> n=matrix[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">a</span><span class="params">(m)</span>,<span class="title">b</span><span class="params">(n)</span></span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;m;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;n;j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(matrix[i][j]==<span class="number">0</span>)&#123;</span><br><span class="line">                    a[i]=<span class="number">1</span>;b[j]=<span class="number">1</span>;                    </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;m;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;n;j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(a[i]!=<span class="number">0</span>||b[j]!=<span class="number">0</span>)matrix[i][j]=<span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kerisuchiaki.github.io/2024/03/15/leetcode73%E7%9F%A9%E9%98%B5%E7%BD%AE%E9%9B%B6/" data-id="clwf9hhrj000q025berf07bm2" data-title="leetcode73矩阵置零" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/leetcode%E9%A2%98%E8%A7%A3/" rel="tag">leetcode题解</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-设计模式之适配器模式" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/Blog/2024/03/14/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/" class="article-date">
@@ -525,51 +585,6 @@
 
 
   
-    <article id="post-Java中的对象类型" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/Blog/2024/01/07/Java%E4%B8%AD%E7%9A%84%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B/" class="article-date">
-  <time class="dt-published" datetime="2024-01-07T13:53:27.000Z" itemprop="datePublished">2024-01-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/Blog/2024/01/07/Java%E4%B8%AD%E7%9A%84%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B/">Java中的对象类型</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="Java中的对象类型：DAO、PO、POJO、VO和DTO的区别与应用"><a href="#Java中的对象类型：DAO、PO、POJO、VO和DTO的区别与应用" class="headerlink" title="Java中的对象类型：DAO、PO、POJO、VO和DTO的区别与应用"></a>Java中的对象类型：DAO、PO、POJO、VO和DTO的区别与应用</h2><p>导语： 在Java开发中，我们经常会遇到不同类型的对象，如DAO、PO、POJO、VO和DTO。虽然它们有时候看起来相似，但实际上它们代表了不同的概念和用途。本文将详细介绍这些对象类型的区别，并探讨它们在实际开发中的应用场景。</p>
-        
-          <p class="article-more-link">
-            <a href="/Blog/2024/01/07/Java%E4%B8%AD%E7%9A%84%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kerisuchiaki.github.io/2024/01/07/Java%E4%B8%AD%E7%9A%84%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B/" data-id="clwf9hhr40000025b446r4o95" data-title="Java中的对象类型" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" rel="tag">java后端开发</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -627,6 +642,10 @@
       <ul>
         
           <li>
+            <a href="/Blog/2024/12/19/%E5%85%A8%E5%9B%BD%E9%AB%98%E6%A0%A1%E6%8C%91%E6%88%98%E6%9D%AFc-%E6%AF%94%E8%B5%9B%E8%AE%B0%E5%BD%95/">全国高校挑战杯c++比赛记录</a>
+          </li>
+        
+          <li>
             <a href="/Blog/2024/12/18/%E6%B5%99%E6%B1%9F%E4%B8%80%E6%9C%A8%E9%9D%A2%E8%AF%95/">浙江一木面试</a>
           </li>
         
@@ -640,10 +659,6 @@
         
           <li>
             <a href="/Blog/2024/12/12/%E6%B4%9E%E9%9A%90%E7%A7%91%E6%8A%80%E9%9D%A2%E8%AF%95/">洞隐科技面试</a>
-          </li>
-        
-          <li>
-            <a href="/Blog/2024/12/11/%E9%9D%A2%E8%AF%95-%E8%87%AA%E6%88%91%E4%BB%8B%E7%BB%8D/">面试-自我介绍</a>
           </li>
         
       </ul>
