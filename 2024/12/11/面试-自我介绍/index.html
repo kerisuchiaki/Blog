@@ -14,7 +14,7 @@
 <meta property="og:description" content="自我介绍背景集美大学25届毕业生 在校经历课余时间有学习过一些算法，积极参加学校举行的比赛，获得过一些全国性的大赛的奖项 自己也从大二的寒假开始学习企业所需要的一些后端开发所需要的技术栈，spring,springboot,mybatis,redis等 并且也做过几个项目">
 <meta property="og:locale" content="zn_CN">
 <meta property="article:published_time" content="2024-12-11T13:20:59.000Z">
-<meta property="article:modified_time" content="2024-12-25T15:47:00.369Z">
+<meta property="article:modified_time" content="2024-12-26T16:47:03.580Z">
 <meta property="article:author" content="myself">
 <meta property="article:tag" content="面试">
 <meta name="twitter:card" content="summary">
@@ -106,7 +106,13 @@
 
 <h2 id="实习经历"><a href="#实习经历" class="headerlink" title="实习经历"></a>实习经历</h2><p>打卡上班，每周的组会，汇报开发进度，需求分析评审会，分配任务，按照接口文档写接口，每天的日报，每周的周报</p>
 <p>熟悉项目文档，熟悉开发规范和注意事项</p>
-<h2 id="竞赛经历"><a href="#竞赛经历" class="headerlink" title="竞赛经历"></a>竞赛经历</h2><p>这些比赛是什么比赛，</p>
+<h3 id="预算绩效管系统"><a href="#预算绩效管系统" class="headerlink" title="预算绩效管系统"></a>预算绩效管系统</h3><p>负责的功能：</p>
+<p>1.根据选定的父项目生成子项目的标记码，在前端中新增一个项目时，你需要选择一个父项目，新增的项目生成的标记码要和父项目有同样的前缀，而且新的后缀长度必须比父项目之前的后缀长度+1，比如父项目是A01,那么子项目就是A01-B001,以此类推，但是需求中还有一个奇怪的要求就是子项目的后缀长度最多只能为5位长度</p>
+<p>2，完善根据业务流水号批量更改分录表的编码功能，在前端页面中有一个展示项目列表的页面，并且支持修改，有一个需求就是批量改同一个父项目下的子项目的编码，一个一个的修改会比较麻烦，需要的是点击多个项目前的勾选标记点击修改时，能够批量修改</p>
+<p>负责的前端功能有：</p>
+<p>1.双击单个记录时能够选中</p>
+<p>2.修改数据展示页面为滚动条显示而不是分页</p>
+<h3 id="国际旅行卫生保健中心体检管理系统"><a href="#国际旅行卫生保健中心体检管理系统" class="headerlink" title="国际旅行卫生保健中心体检管理系统"></a>国际旅行卫生保健中心体检管理系统</h3><h2 id="竞赛经历"><a href="#竞赛经历" class="headerlink" title="竞赛经历"></a>竞赛经历</h2><p>这些比赛是什么比赛，</p>
 <p>码体杯-百度设立的比赛</p>
 <p>pat-浙江大学</p>
 <p>全国大学生程序设计挑战赛</p>
@@ -146,7 +152,7 @@
 <p>接下来使用jdk自带的命令jstack </p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jstack 进程id| grep 线程id -A 20</span><br></pre></td></tr></table></figure>
 
-<p>显示占用cpu高的线程显示最后20行，就可以查找出到底是哪些一行代码造成的问题</p>
+<p>显示占用cpu高的线程显示最后20行，就可以查找出到底是哪些一行代码造成的问题，</p>
 <h3 id="内存溢出怎么排查"><a href="#内存溢出怎么排查" class="headerlink" title="内存溢出怎么排查"></a>内存溢出怎么排查</h3><p>OOM通常是堆内存溢出造成的，可能是对象不能及时回收，老年代对象又还存活，一般常用的排查工具就是jdk自带的那几个命令</p>
 <p>jps,jstack,jmap,jhat,jstat,这些都是命令行工具，可以是同可视化工具有jconsole,VisualVM</p>
 <p>其中jps用来显示所有的java进程</p>
