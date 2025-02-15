@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>hatena</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="hatena&#39;s blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="hatena">
+<meta property="og:url" content="https://kerisuchiaki.github.io/page/7/index.html">
+<meta property="og:site_name" content="hatena">
+<meta property="og:description" content="hatena&#39;s blog">
+<meta property="og:locale" content="zn_CN">
+<meta property="article:author" content="myself">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/Blog/atom.xml" title="hatena" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/Blog/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/Blog/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/Blog/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/Blog/" id="logo">hatena</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/Blog/">Home</a>
+        
+          <a class="main-nav-link" href="/Blog/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/Blog/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://kerisuchiaki.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-计算机网络实验2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/Blog/2023/05/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AE%9E%E9%AA%8C2/" class="article-date">
+  <time class="dt-published" datetime="2023-05-12T13:00:00.000Z" itemprop="datePublished">2023-05-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/Blog/2023/05/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AE%9E%E9%AA%8C2/">计算机网络实验2</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>实验：网络仿真软件使用及网络分析</p>
+<h1 id="1-基本信息"><a href="#1-基本信息" class="headerlink" title="1. 基本信息"></a>1. 基本信息</h1><table>
+<thead>
+<tr>
+<th align="center">姓名</th>
+<th align="center">学号</th>
+<th align="center">班级</th>
+<th align="center">本次是否有抄袭</th>
+<th align="center">所选协议</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">余永海</td>
+<td align="center">202121331117</td>
+<td align="center">计算2114</td>
+<td align="center">否</td>
+<td align="center">DHCP</td>
+</tr>
+</tbody></table>
+<h1 id="2-使用Cisco-Packet-Tracer遇到的问题及解决方法"><a href="#2-使用Cisco-Packet-Tracer遇到的问题及解决方法" class="headerlink" title="2. 使用Cisco Packet Tracer遇到的问题及解决方法"></a>2. 使用Cisco Packet Tracer遇到的问题及解决方法</h1><ol>
+<li>两个终端设备无法发送报文，原因在于他们之间没有建立联系，连上线就行了</li>
+</ol>
+<h1 id="3-Wireshark抓取报文"><a href="#3-Wireshark抓取报文" class="headerlink" title="3. Wireshark抓取报文"></a>3. Wireshark抓取报文</h1><p><strong>（1）如何抓取到你所选择的协议报文</strong></p>
+<p>DHCP协议用于动态管理和获取ip地址等上网信息配置，所以我们可以在电脑开机时抓取报文或者重启以太网适配器或者在cmd终端输入相关的命令来达到同样的效果</p>
+<p><strong>（2）Wireshark出来很多报文，你是如何过滤出与你所选协议相关的报文</strong></p>
+<p>要从Wireshark中过滤出DHCP报文，可以使用过滤器“bootp”，因为DHCP是基于BOOTP开发的。具体的过滤器表达式为“bootp.option.dhcp &#x3D;&#x3D; 1”或者’bootp’也行。在捕获数据包时，输入该过滤器表达式后，Wireshark就会仅显示DHCP请求和响应报文。</p>
+<h1 id="4-协议时序图"><a href="#4-协议时序图" class="headerlink" title="4. 协议时序图"></a>4. 协议时序图</h1><p>Wireshark捕获到的报文如下图：</p>
+<p><img src="/Blog/img/image-20230510135111198.png" alt="image-20230510135111198"></p>
+<p>协议工作原理的时序图：</p>
+<p><img src="/Blog/img/image-20230511105630132.png" alt="image-20230511105630132"></p>
+<h1 id="5-分析协议工作原理"><a href="#5-分析协议工作原理" class="headerlink" title="5. 分析协议工作原理"></a>5. 分析协议工作原理</h1><p>DHCP协议自动分配IP的报文主要有四种：</p>
+<ol>
+<li><p>DHCP Discover：由客户端发出，用来发现DHCP服务器。</p>
+</li>
+<li><p>DHCP Offer：由DHCP服务器发出，告诉客户端，我可以提供IP地址。</p>
+</li>
+<li><p>DHCP Request：由客户端发出，告诉对应的DHCP服务器，我需要IP地址。</p>
+</li>
+<li><p>DHCP ACK：由DHCP服务器发出，提供客户端响应的IP地址。</p>
+</li>
+</ol>
+<h2 id="5-1-DHCP-Discover"><a href="#5-1-DHCP-Discover" class="headerlink" title="5.1.DHCP  Discover:"></a>5.1.DHCP  Discover:</h2><p>Discover报文:</p>
+<p><img src="/Blog/img/image-20230422001933477.png" alt="image-20230422001933477"></p>
+<p>dhcp discover是新设备需要上网时发送的报文，dhcp是处于应用层,所以dhcp discover 实际上是应用层报文。 发送dhcp discover报文的目的是寻找本地的dhcp服务器。</p>
+<p>从图中可以看出dhcp在传输层使用的是udp协议，而源端口即客户端端口使用的是68端口，目的端口即服务器端口是使用的是67端口. </p>
+<p>网络层里，由于设备刚开始还无法上网,没有IP地址，这里用0.0.0.0表示，而由于也不知道dhcp服务器的ip地址，所以要进行广播，目的ip地址为255.255.255.255，表示在本地进行广播用于发现dhcp服务器.</p>
+<p>接下来的数据链路层最重要的是mac地址，源mac地址就是本机mac地址，目的mac地址由于不知道dhcp服务器，所以和网络层类似填写的是mac广播地址.</p>
+<p>我们还可以看出应用层报文还有 transaction ID，事务ID，这个 ID 值是由客户端提供的随机数。如果有其他设备也在进行 DHCP 交互， 有这个事务ID 就能更好判断是属于这个设备的请求了。另外，因为 DHCP 是基于 boot protocol 发展出来的，因此在报文里会看到 bootp 或者 boot 这样的字样。这里 bootp flags 设置为 Unicus 的意思是服务器可以单播发送给设备，也就是不用广播进行发送。</p>
+<p>从图中的option选项中还有一点值得注意，这里的requested ip address是172.21.7.116,这是我们这台设备上次使用的ip地址，即dhcp discover可能会请求上次使用的ip地址。</p>
+<p>DHCB discover 这一步完成以后，如果此时网络中有 DHCP 服务器存在，就会进行处理，也就是进行 DHCP offer 这一步。</p>
+<h2 id="5-2-DHCP-offer"><a href="#5-2-DHCP-offer" class="headerlink" title="5.2.DHCP offer:"></a>5.2.DHCP offer:</h2><p>Offer报文:</p>
+<p><img src="/Blog/img/image-20230422002223191.png" alt="image-20230422002223191"></p>
+<p> 从图中可以看出，DHCP服务器 会提供上网所需的配置信息,也就是 ip 地址（127.21.7.116）、子网掩码（255.255.0.0）。除此之外在这一步还有ip 地址的租期，当租用过了某段时间就会过期，所以在到期前需要进行续租，还会提供续租的时间。</p>
+<p>在传输层里依旧使用 UDP 协议，只是源端口和目标端口号反了过来，因为这次是服务端发送给客户端。  </p>
+<p>网络层里，dhcp服务器的源ip为172.21.0.1，而目的ip是172.21.7.116为分配的ip地址,这两个我们也可以从数据包里的your ip address和dhcp server identifiter可以看到，还有其他的一些信息，如子网掩码:255.255.0.0</p>
+<p>数据链路层里，源 Mac 地址就是dhcp服务器的mac地址，而目标 Mac 地址就是我们设备的。</p>
+<h2 id="5-3-DHCP-Request"><a href="#5-3-DHCP-Request" class="headerlink" title="5.3.DHCP Request:"></a>5.3.DHCP Request:</h2><p>Request报文:</p>
+<p><img src="/Blog/img/image-20230422002316324.png" alt="image-20230422002316324"></p>
+<p>当我们的设备接收到dhcp服务器的offer报文时，可能不止一个，如果网络里有多个dhcp服务器，则接收第一个offer报文提供的ip地址，并再次以广播的形式正式请求之前的ip,也告知其它dhcp服务器选择了哪一个dhcp服务器提供的ip地址，从图也可以看出，网络层源ip和目的ip和dhcp discover报文一样，传输层和数据链路层也同样.</p>
+<h2 id="5-4-DHCP-ACK"><a href="#5-4-DHCP-ACK" class="headerlink" title="5.4.DHCP ACK:"></a>5.4.DHCP ACK:</h2><p>ACK报文:</p>
+<p><img src="/Blog/img/image-20230422002357409.png" alt="image-20230422002357409"></p>
+<p>在收到dhcp request报文时，服务器向客户端发送DHCP ACK报文,确认客户端可以使用请求的IP地址。从图中也可以看到</p>
+<p>源MAC地址:58 69 6c 5e 0c 2c(服务端Mac地址)</p>
+<p>目的MAC地址:80 fa 5b 9e b4 2d (客户端MAC)</p>
+<p>交易ID:0x2858eb(与Request、Offer报文中的ID对应)</p>
+<p>其他配置与Offer报文中的相同。至此,DHCP分配IP地址流程完成。客户端可以使用该IP地址并更新其配置开始上网了。</p>
+<p>以上就是一个完整的DHCP IP地址分配过程的报文交互和分析。客户端通过Discover寻找服务器,选择一个Offer后,通过Request请求IP,最后服务器ACK确认分配,完成整个DHCP流程。</p>
+<h1 id="6-遇到的问题及解决方法"><a href="#6-遇到的问题及解决方法" class="headerlink" title="6. 遇到的问题及解决方法"></a>6. 遇到的问题及解决方法</h1><ol>
+<li>没有问题</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kerisuchiaki.github.io/2023/05/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AE%9E%E9%AA%8C2/" data-id="clwf9hhrt001n025b20lf0xmu" data-title="计算机网络实验2" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-关于动态规划完全背包问题hdu1028" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/Blog/2023/04/22/%E5%85%B3%E4%BA%8E%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98hdu1028/" class="article-date">
+  <time class="dt-published" datetime="2023-04-22T12:45:25.000Z" itemprop="datePublished">2023-04-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/Blog/2023/04/22/%E5%85%B3%E4%BA%8E%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98hdu1028/">关于动态规划完全背包问题hdu1028</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><p>题目：hdu1028<br>递推与递归做法</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//代码片段</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line">using namespace <span class="built_in">std</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> maxn=<span class="number">1e4</span>;</span><br><span class="line"><span class="type">int</span> dp[maxn][maxn];<span class="comment">//递推表达式dp[n][m]的含义,将n的划分最大数分成不超过m的划分数</span></span><br><span class="line"><span class="comment">/*状态转移方程：</span></span><br><span class="line"><span class="comment">    dp[i][j]=dp[i][j-1]+dp[i-j][j];(i&gt;j)分治思想，将n的划分最大数分成不超过m的划分数有两种情况：</span></span><br><span class="line"><span class="comment">    1，不包含最大数j划分个数为dp[i][j-1],</span></span><br><span class="line"><span class="comment">    2.包含最大数j,划分个数为dp[i-j][j](包含指一定包含，所以i要减去J，转化为求子问题dp[i-j[j])</span></span><br><span class="line"><span class="comment">    dp[i][j]=dp[i][j-1]+1（i==j)是上述情况的特殊情况，此时,dp[i-j][j]为零，则包含最大数j只有一种情况即全部划分为j，且只有一个</span></span><br><span class="line"><span class="comment">    3.dp[i][j]=dp[i][i](i&lt;j),当i&lt;j那么肯定只能划分为dp[i][i]</span></span><br><span class="line"><span class="comment">    4.dp[i][j]=1(i==1||j==1),容易理解，特殊情况</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">part</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;maxn;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;maxn;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i==<span class="number">1</span>||j==<span class="number">1</span>)dp[i][j]=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(i&lt;j)dp[i][j]=dp[i][i];</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(i&gt;j)dp[i][j]=dp[i][j<span class="number">-1</span>]+dp[i-j][j];</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(i==j)dp[i][j]=dp[i][j<span class="number">-1</span>]+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    part();</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;n)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,dp[n][n]);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>还有动态规划：<br>完全背包</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line">using namespace <span class="built_in">std</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> maxn=<span class="number">1e3</span>;</span><br><span class="line"><span class="type">int</span> dp[maxn];<span class="comment">//动态规划完全背包，滚动数组求解</span></span><br><span class="line"><span class="comment">//dp[i]的含义：划分数字i的最多数目</span></span><br><span class="line"><span class="comment">//状态转移方程：dp[i]+=dp[i-j];</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">solve</span><span class="params">()</span>&#123;</span><br><span class="line">    dp[<span class="number">0</span>]=<span class="number">1</span>;<span class="comment">//注意</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;maxn;i++)&#123;<span class="comment">//枚举每种数字</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=i;j&lt;maxn;j++)&#123;<span class="comment">//每种数字的重量与他的价值相等</span></span><br><span class="line">            dp[j]+=dp[j-i];<span class="comment">//由于单位价值都一样，且这题求的是</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    solve();</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;n)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,dp[n]);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/Blog/img/%E5%88%9D%E9%9F%B3.png" alt="一张初音美图"></p>
+<p><img src="/Blog/img/preview_png(12).png" alt="这是另一张美图"></p>
+<p><img src="/Blog/img/8589245933.png" alt="再来一张初音未来"></p>
+<p><img src="/Blog/%E5%85%B3%E4%BA%8E%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98hdu1028/Snipaste_2022-09-02_22-50-40.png"></p>
+<p><img src="/Blog/img/j0vfaiejy4bj0vfaiejy4b.png"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kerisuchiaki.github.io/2023/04/22/%E5%85%B3%E4%BA%8E%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98hdu1028/" data-id="clwf9hhrm0011025b430q8fw9" data-title="关于动态规划完全背包问题hdu1028" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag">数据结构与算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/Blog/2022/12/07/hello-world/" class="article-date">
+  <time class="dt-published" datetime="2022-12-07T15:54:32.000Z" itemprop="datePublished">2022-12-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/Blog/2022/12/07/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy //或hexo d</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kerisuchiaki.github.io/2022/12/07/hello-world/" data-id="clwf9hhrd0009025bhqqp1xph" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/Blog/page/6/">&laquo; zurück</a><a class="page-number" href="/Blog/">1</a><span class="space">&hellip;</span><a class="page-number" href="/Blog/page/5/">5</a><a class="page-number" href="/Blog/page/6/">6</a><span class="page-number current">7</span>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/Blog/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/BUG/" rel="tag">BUG</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/RPC/" rel="tag">RPC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" rel="tag">java后端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/java%E6%BA%90%E7%A0%81/" rel="tag">java源码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/jvm/" rel="tag">jvm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/leetcode/" rel="tag">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/leetcode%E9%A2%98%E8%A7%A3/" rel="tag">leetcode题解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/oracle/" rel="tag">oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/rabbitmq/" rel="tag">rabbitmq</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/redis/" rel="tag">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/shell/" rel="tag">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/spring/" rel="tag">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/springboot/" rel="tag">springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E4%BD%9C%E4%B8%9A/" rel="tag">作业</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E5%AE%9E%E9%AA%8C/" rel="tag">实验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E5%AE%9E%E9%AA%8C3/" rel="tag">实验3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E6%84%9F%E6%83%B3/" rel="tag">感想</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag">数据结构与算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E7%96%91%E9%97%AE/" rel="tag">疑问</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E7%AC%94%E8%AF%95/" rel="tag">笔试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/Blog/tags/BUG/" style="font-size: 10px;">BUG</a> <a href="/Blog/tags/RPC/" style="font-size: 10px;">RPC</a> <a href="/Blog/tags/git/" style="font-size: 10px;">git</a> <a href="/Blog/tags/java/" style="font-size: 17.5px;">java</a> <a href="/Blog/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 10px;">java后端开发</a> <a href="/Blog/tags/java%E6%BA%90%E7%A0%81/" style="font-size: 10px;">java源码</a> <a href="/Blog/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/Blog/tags/leetcode/" style="font-size: 10px;">leetcode</a> <a href="/Blog/tags/leetcode%E9%A2%98%E8%A7%A3/" style="font-size: 12.5px;">leetcode题解</a> <a href="/Blog/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/Blog/tags/rabbitmq/" style="font-size: 10px;">rabbitmq</a> <a href="/Blog/tags/redis/" style="font-size: 10px;">redis</a> <a href="/Blog/tags/shell/" style="font-size: 10px;">shell</a> <a href="/Blog/tags/spring/" style="font-size: 10px;">spring</a> <a href="/Blog/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/Blog/tags/test/" style="font-size: 10px;">test</a> <a href="/Blog/tags/%E4%BD%9C%E4%B8%9A/" style="font-size: 10px;">作业</a> <a href="/Blog/tags/%E5%AE%9E%E9%AA%8C/" style="font-size: 12.5px;">实验</a> <a href="/Blog/tags/%E5%AE%9E%E9%AA%8C3/" style="font-size: 10px;">实验3</a> <a href="/Blog/tags/%E6%84%9F%E6%83%B3/" style="font-size: 10px;">感想</a> <a href="/Blog/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">操作系统</a> <a href="/Blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 10px;">数据结构与算法</a> <a href="/Blog/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a> <a href="/Blog/tags/%E7%96%91%E9%97%AE/" style="font-size: 10px;">疑问</a> <a href="/Blog/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">笔记</a> <a href="/Blog/tags/%E7%AC%94%E8%AF%95/" style="font-size: 10px;">笔试</a> <a href="/Blog/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15px;">算法</a> <a href="/Blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">计算机网络</a> <a href="/Blog/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 12.5px;">设计模式</a> <a href="/Blog/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10px;">问题</a> <a href="/Blog/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 20px;">面试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/12/">December 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2022/12/">December 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/Blog/2025/02/12/%E5%B0%9A%E4%B8%BA%E7%A7%91%E6%8A%80%E9%9D%A2%E8%AF%95/">尚为科技面试</a>
+          </li>
+        
+          <li>
+            <a href="/Blog/2025/02/12/%E8%BF%9C%E6%96%B9%E7%AB%A0%E9%B1%BC%E7%BD%91%E6%B4%9B%E9%9D%A2%E8%AF%95/">远方章鱼网洛面试</a>
+          </li>
+        
+          <li>
+            <a href="/Blog/2025/02/12/%E6%AD%A6%E6%B1%89%E7%99%BE%E5%9D%87%E5%9F%8E%E4%BA%8C%E9%9D%A2/">武汉百均城二面</a>
+          </li>
+        
+          <li>
+            <a href="/Blog/2024/12/19/%E6%B4%9E%E9%9A%90%E7%A7%91%E6%8A%80%E7%BB%88%E9%9D%A2/">洞隐科技终面</a>
+          </li>
+        
+          <li>
+            <a href="/Blog/2024/12/18/%E6%B5%99%E6%B1%9F%E4%B8%80%E6%9C%A8%E9%9D%A2%E8%AF%95/">浙江一木面试</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 myself<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/Blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/Blog/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/Blog/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/Blog/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/Blog/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

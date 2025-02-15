@@ -75,6 +75,132 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-尚为科技面试" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/Blog/2025/02/12/%E5%B0%9A%E4%B8%BA%E7%A7%91%E6%8A%80%E9%9D%A2%E8%AF%95/" class="article-date">
+  <time class="dt-published" datetime="2025-02-12T14:04:05.000Z" itemprop="datePublished">2025-02-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/Blog/2025/02/12/%E5%B0%9A%E4%B8%BA%E7%A7%91%E6%8A%80%E9%9D%A2%E8%AF%95/">尚为科技面试</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="提问"><a href="#提问" class="headerlink" title="提问"></a>提问</h1><h3 id="1-spring框架下文件上传大小限制的原因和方法"><a href="#1-spring框架下文件上传大小限制的原因和方法" class="headerlink" title="1.spring框架下文件上传大小限制的原因和方法"></a>1.spring框架下文件上传大小限制的原因和方法</h3><p>spring会限制上传的文件大小I，这个限制其实限制在spring内嵌的tomcat上，即限制了tomcat的最大吞吐量max-swallow-size,我们可以在spring的配制文件中设置为自己想要的大小spring:servlet:max-file-size,max-request-size,当上传的文件大小超出配置的大小时，spring会抛出MaxUploadSizeExceedException异常。</p>
+<h3 id="2-登录功能的实现原理"><a href="#2-登录功能的实现原理" class="headerlink" title="2.登录功能的实现原理"></a>2.登录功能的实现原理</h3><p>cookie-session,jwt,其中cookie-session可以将数据存放在redis当中，避免分布式多节点造成的数据冗余和同步压力，而jwt不存放后端数据，但是去需要花费cpu时间进行解密，相当于时间换空间</p>
+<h3 id="3-redis的数据结构"><a href="#3-redis的数据结构" class="headerlink" title="3.redis的数据结构"></a>3.redis的数据结构</h3><p>string,hash,set,zset,list,bitmap,geo,hypeloglog,stream</p>
+<h3 id="4-redis怎么设置一个永不过期的键，他的默认过期时间是多少"><a href="#4-redis怎么设置一个永不过期的键，他的默认过期时间是多少" class="headerlink" title="4.redis怎么设置一个永不过期的键，他的默认过期时间是多少"></a>4.redis怎么设置一个永不过期的键，他的默认过期时间是多少</h3><p>傻逼面试官，我说了redis默认就是永不过期的，还跟我扯这么多，查资料发现就是默认永不过期</p>
+<h3 id="5-redis过期键回收策略"><a href="#5-redis过期键回收策略" class="headerlink" title="5.redis过期键回收策略"></a>5.redis过期键回收策略</h3><p>三种，惰性删除，定期删除，内存淘汰机制，惰性删除就是当读到一个过期的键时就会直接删除掉这个键，定期删除就是redis会主动淘汰一批过期的key,内存淘汰机制就是当使用过的内存超出最大可用内存限定时，就会主动清理</p>
+<h3 id="6-redis持久化的方式"><a href="#6-redis持久化的方式" class="headerlink" title="6.redis持久化的方式"></a>6.redis持久化的方式</h3><p>三种方式，RDB（快照），AOF（只追加文件，命令日志），RDB和AOF混合</p>
+        
+          <p class="article-more-link">
+            <a href="/Blog/2025/02/12/%E5%B0%9A%E4%B8%BA%E7%A7%91%E6%8A%80%E9%9D%A2%E8%AF%95/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kerisuchiaki.github.io/2025/02/12/%E5%B0%9A%E4%B8%BA%E7%A7%91%E6%8A%80%E9%9D%A2%E8%AF%95/" data-id="cm76bia7h0000zg5babq3fb8p" data-title="尚为科技面试" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-远方章鱼网洛面试" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/Blog/2025/02/12/%E8%BF%9C%E6%96%B9%E7%AB%A0%E9%B1%BC%E7%BD%91%E6%B4%9B%E9%9D%A2%E8%AF%95/" class="article-date">
+  <time class="dt-published" datetime="2025-02-12T14:02:08.000Z" itemprop="datePublished">2025-02-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/Blog/2025/02/12/%E8%BF%9C%E6%96%B9%E7%AB%A0%E9%B1%BC%E7%BD%91%E6%B4%9B%E9%9D%A2%E8%AF%95/">远方章鱼网洛面试</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <link rel="stylesheet" href="/Blog/css/folder.css" type="text/css"><script src="/Blog/js/folder.js" type="text/javascript" async></script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kerisuchiaki.github.io/2025/02/12/%E8%BF%9C%E6%96%B9%E7%AB%A0%E9%B1%BC%E7%BD%91%E6%B4%9B%E9%9D%A2%E8%AF%95/" data-id="cm76bia7u0003zg5b1pdqchgh" data-title="远方章鱼网洛面试" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-武汉百均城二面" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/Blog/2025/02/12/%E6%AD%A6%E6%B1%89%E7%99%BE%E5%9D%87%E5%9F%8E%E4%BA%8C%E9%9D%A2/" class="article-date">
+  <time class="dt-published" datetime="2025-02-12T14:00:47.000Z" itemprop="datePublished">2025-02-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/Blog/2025/02/12/%E6%AD%A6%E6%B1%89%E7%99%BE%E5%9D%87%E5%9F%8E%E4%BA%8C%E9%9D%A2/">武汉百均城二面</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <link rel="stylesheet" href="/Blog/css/folder.css" type="text/css"><script src="/Blog/js/folder.js" type="text/javascript" async></script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kerisuchiaki.github.io/2025/02/12/%E6%AD%A6%E6%B1%89%E7%99%BE%E5%9D%87%E5%9F%8E%E4%BA%8C%E9%9D%A2/" data-id="cm76bia7p0001zg5bgpfzf94y" data-title="武汉百均城二面" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-洞隐科技终面" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/Blog/2024/12/19/%E6%B4%9E%E9%9A%90%E7%A7%91%E6%8A%80%E7%BB%88%E9%9D%A2/" class="article-date">
@@ -427,136 +553,11 @@
 
 
   
-    <article id="post-ccf-csp第36次认证" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/Blog/2024/12/09/ccf-csp%E7%AC%AC36%E6%AC%A1%E8%AE%A4%E8%AF%81/" class="article-date">
-  <time class="dt-published" datetime="2024-12-08T16:15:11.000Z" itemprop="datePublished">2024-12-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/Blog/2024/12/09/ccf-csp%E7%AC%AC36%E6%AC%A1%E8%AE%A4%E8%AF%81/">ccf-csp第36次认证</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <link rel="stylesheet" href="/Blog/css/folder.css" type="text/css"><script src="/Blog/js/folder.js" type="text/javascript" async></script>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kerisuchiaki.github.io/2024/12/09/ccf-csp%E7%AC%AC36%E6%AC%A1%E8%AE%A4%E8%AF%81/" data-id="cm4llve4k00019k5bc80ef6z0" data-title="ccf-csp第36次认证" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-浙江一木笔试" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/Blog/2024/12/06/%E6%B5%99%E6%B1%9F%E4%B8%80%E6%9C%A8%E7%AC%94%E8%AF%95/" class="article-date">
-  <time class="dt-published" datetime="2024-12-05T18:00:47.000Z" itemprop="datePublished">2024-12-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/Blog/2024/12/06/%E6%B5%99%E6%B1%9F%E4%B8%80%E6%9C%A8%E7%AC%94%E8%AF%95/">浙江一木笔试</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="1-奇数位丢弃"><a href="#1-奇数位丢弃" class="headerlink" title="1.奇数位丢弃"></a>1.奇数位丢弃</h1><p>对于一个由 0..n 的所有数按升序组成的序列，我们要进行一些筛选，每次我们丢弃去当前所有数字中第奇数位个的数。重复这一过程直到最后剩下一个数。请求出最后剩下的数字。 </p>
-<p>  数据范围： 1≤n≤1000 1 \le n \le 1000 \ 1≤n≤1000 ，本题有多组输入</p>
-<h5 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述:"></a><strong>输入描述:</strong></h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">每组数据一行一个数字，为题目中的n(n小于等于1000)。</span><br></pre></td></tr></table></figure>
-
-<h5 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述:"></a><strong>输出描述:</strong></h5>
-        
-          <p class="article-more-link">
-            <a href="/Blog/2024/12/06/%E6%B5%99%E6%B1%9F%E4%B8%80%E6%9C%A8%E7%AC%94%E8%AF%95/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kerisuchiaki.github.io/2024/12/06/%E6%B5%99%E6%B1%9F%E4%B8%80%E6%9C%A8%E7%AC%94%E8%AF%95/" data-id="cm4llve4x00099k5b9oos5gl6" data-title="浙江一木笔试" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/%E7%AC%94%E8%AF%95/" rel="tag">笔试</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-024-年度第五届全国大学生算法设计与编程挑战赛（秋季赛" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/Blog/2024/11/20/024-%E5%B9%B4%E5%BA%A6%E7%AC%AC%E4%BA%94%E5%B1%8A%E5%85%A8%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%BC%96%E7%A8%8B%E6%8C%91%E6%88%98%E8%B5%9B%EF%BC%88%E7%A7%8B%E5%AD%A3%E8%B5%9B/" class="article-date">
-  <time class="dt-published" datetime="2024-11-19T17:47:28.000Z" itemprop="datePublished">2024-11-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/Blog/2024/11/20/024-%E5%B9%B4%E5%BA%A6%E7%AC%AC%E4%BA%94%E5%B1%8A%E5%85%A8%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%BC%96%E7%A8%8B%E6%8C%91%E6%88%98%E8%B5%9B%EF%BC%88%E7%A7%8B%E5%AD%A3%E8%B5%9B/">2024 年度第五届全国大学生算法设计与编程挑战赛（秋季赛</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <link rel="stylesheet" href="/Blog/css/folder.css" type="text/css"><script src="/Blog/js/folder.js" type="text/javascript" async></script>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kerisuchiaki.github.io/2024/11/20/024-%E5%B9%B4%E5%BA%A6%E7%AC%AC%E4%BA%94%E5%B1%8A%E5%85%A8%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%BC%96%E7%A8%8B%E6%8C%91%E6%88%98%E8%B5%9B%EF%BC%88%E7%A7%8B%E5%AD%A3%E8%B5%9B/" data-id="cm4llve4g00009k5b36k5e07t" data-title="2024 年度第五届全国大学生算法设计与编程挑战赛（秋季赛" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/Blog/page/2/">2</a><a class="page-number" href="/Blog/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/Blog/page/6/">6</a><a class="extend next" rel="next" href="/Blog/page/2/">weiter &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/Blog/page/2/">2</a><a class="page-number" href="/Blog/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/Blog/page/7/">7</a><a class="extend next" rel="next" href="/Blog/page/2/">weiter &raquo;</a>
   </nav>
 
 </section>
@@ -596,7 +597,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archiv</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/12/">December 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2022/12/">December 2022</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/12/">December 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2022/12/">December 2022</a></li></ul>
     </div>
   </div>
 
@@ -609,23 +610,23 @@
       <ul>
         
           <li>
+            <a href="/Blog/2025/02/12/%E5%B0%9A%E4%B8%BA%E7%A7%91%E6%8A%80%E9%9D%A2%E8%AF%95/">尚为科技面试</a>
+          </li>
+        
+          <li>
+            <a href="/Blog/2025/02/12/%E8%BF%9C%E6%96%B9%E7%AB%A0%E9%B1%BC%E7%BD%91%E6%B4%9B%E9%9D%A2%E8%AF%95/">远方章鱼网洛面试</a>
+          </li>
+        
+          <li>
+            <a href="/Blog/2025/02/12/%E6%AD%A6%E6%B1%89%E7%99%BE%E5%9D%87%E5%9F%8E%E4%BA%8C%E9%9D%A2/">武汉百均城二面</a>
+          </li>
+        
+          <li>
             <a href="/Blog/2024/12/19/%E6%B4%9E%E9%9A%90%E7%A7%91%E6%8A%80%E7%BB%88%E9%9D%A2/">洞隐科技终面</a>
           </li>
         
           <li>
             <a href="/Blog/2024/12/18/%E6%B5%99%E6%B1%9F%E4%B8%80%E6%9C%A8%E9%9D%A2%E8%AF%95/">浙江一木面试</a>
-          </li>
-        
-          <li>
-            <a href="/Blog/2024/12/17/%E5%AE%87%E4%BF%A1%E7%A7%91%E6%8A%80%E4%BA%8C%E9%9D%A2/">宇信科技二面</a>
-          </li>
-        
-          <li>
-            <a href="/Blog/2024/12/12/%E6%B5%8B%E8%AF%95-%E7%AE%80%E5%8E%86/">测试-简历</a>
-          </li>
-        
-          <li>
-            <a href="/Blog/2024/12/12/%E6%B4%9E%E9%9A%90%E7%A7%91%E6%8A%80%E9%9D%A2%E8%AF%95/">洞隐科技面试</a>
           </li>
         
       </ul>
@@ -641,7 +642,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       
-      &copy; 2024 myself<br>
+      &copy; 2025 myself<br>
       Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

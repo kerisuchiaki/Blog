@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>尚为科技面试 | hatena</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="提问1.spring框架下文件上传大小限制的原因和方法spring会限制上传的文件大小I，这个限制其实限制在spring内嵌的tomcat上，即限制了tomcat的最大吞吐量max-swallow-size,我们可以在spring的配制文件中设置为自己想要的大小spring:servlet:max-file-size,max-request-size,当上传的文件大小超出配置的大小时，spring">
+<meta property="og:type" content="article">
+<meta property="og:title" content="尚为科技面试">
+<meta property="og:url" content="https://kerisuchiaki.github.io/2025/02/12/%E5%B0%9A%E4%B8%BA%E7%A7%91%E6%8A%80%E9%9D%A2%E8%AF%95/index.html">
+<meta property="og:site_name" content="hatena">
+<meta property="og:description" content="提问1.spring框架下文件上传大小限制的原因和方法spring会限制上传的文件大小I，这个限制其实限制在spring内嵌的tomcat上，即限制了tomcat的最大吞吐量max-swallow-size,我们可以在spring的配制文件中设置为自己想要的大小spring:servlet:max-file-size,max-request-size,当上传的文件大小超出配置的大小时，spring">
+<meta property="og:locale" content="zn_CN">
+<meta property="article:published_time" content="2025-02-12T14:04:05.000Z">
+<meta property="article:modified_time" content="2025-02-15T14:52:24.748Z">
+<meta property="article:author" content="myself">
+<meta property="article:tag" content="面试">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/Blog/atom.xml" title="hatena" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/Blog/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/Blog/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/Blog/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/Blog/" id="logo">hatena</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/Blog/">Home</a>
+        
+          <a class="main-nav-link" href="/Blog/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/Blog/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://kerisuchiaki.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-尚为科技面试" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/Blog/2025/02/12/%E5%B0%9A%E4%B8%BA%E7%A7%91%E6%8A%80%E9%9D%A2%E8%AF%95/" class="article-date">
+  <time class="dt-published" datetime="2025-02-12T14:04:05.000Z" itemprop="datePublished">2025-02-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      尚为科技面试
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="提问"><a href="#提问" class="headerlink" title="提问"></a>提问</h1><h3 id="1-spring框架下文件上传大小限制的原因和方法"><a href="#1-spring框架下文件上传大小限制的原因和方法" class="headerlink" title="1.spring框架下文件上传大小限制的原因和方法"></a>1.spring框架下文件上传大小限制的原因和方法</h3><p>spring会限制上传的文件大小I，这个限制其实限制在spring内嵌的tomcat上，即限制了tomcat的最大吞吐量max-swallow-size,我们可以在spring的配制文件中设置为自己想要的大小spring:servlet:max-file-size,max-request-size,当上传的文件大小超出配置的大小时，spring会抛出MaxUploadSizeExceedException异常。</p>
+<h3 id="2-登录功能的实现原理"><a href="#2-登录功能的实现原理" class="headerlink" title="2.登录功能的实现原理"></a>2.登录功能的实现原理</h3><p>cookie-session,jwt,其中cookie-session可以将数据存放在redis当中，避免分布式多节点造成的数据冗余和同步压力，而jwt不存放后端数据，但是去需要花费cpu时间进行解密，相当于时间换空间</p>
+<h3 id="3-redis的数据结构"><a href="#3-redis的数据结构" class="headerlink" title="3.redis的数据结构"></a>3.redis的数据结构</h3><p>string,hash,set,zset,list,bitmap,geo,hypeloglog,stream</p>
+<h3 id="4-redis怎么设置一个永不过期的键，他的默认过期时间是多少"><a href="#4-redis怎么设置一个永不过期的键，他的默认过期时间是多少" class="headerlink" title="4.redis怎么设置一个永不过期的键，他的默认过期时间是多少"></a>4.redis怎么设置一个永不过期的键，他的默认过期时间是多少</h3><p>傻逼面试官，我说了redis默认就是永不过期的，还跟我扯这么多，查资料发现就是默认永不过期</p>
+<h3 id="5-redis过期键回收策略"><a href="#5-redis过期键回收策略" class="headerlink" title="5.redis过期键回收策略"></a>5.redis过期键回收策略</h3><p>三种，惰性删除，定期删除，内存淘汰机制，惰性删除就是当读到一个过期的键时就会直接删除掉这个键，定期删除就是redis会主动淘汰一批过期的key,内存淘汰机制就是当使用过的内存超出最大可用内存限定时，就会主动清理</p>
+<h3 id="6-redis持久化的方式"><a href="#6-redis持久化的方式" class="headerlink" title="6.redis持久化的方式"></a>6.redis持久化的方式</h3><p>三种方式，RDB（快照），AOF（只追加文件，命令日志），RDB和AOF混合</p>
+<span id="more"></span>
+
+<h3 id="7-基础类型和包装类的区别"><a href="#7-基础类型和包装类的区别" class="headerlink" title="7.基础类型和包装类的区别"></a>7.基础类型和包装类的区别</h3><p>存储位置，缓存，默认值，自动装拆箱</p>
+<h3 id="8-重载和重写的区别"><a href="#8-重载和重写的区别" class="headerlink" title="8.重载和重写的区别"></a>8.重载和重写的区别</h3><p>老生常谈了，重载针对的是同一个类的不同方法，而重写针对的是子类对父类方法的改写，其次，重写和重载的写法区别在于，重写不允许改变参数，而重载可以，另外，重载发生在编译期间，而重写发生在运行期间</p>
+<h3 id="9-set和list的区别"><a href="#9-set和list的区别" class="headerlink" title="9.set和list的区别"></a>9.set和list的区别</h3><p>list存有序的数据，set存不重复的数据</p>
+<h3 id="10-rabbitmq的死信队列有了解过吗"><a href="#10-rabbitmq的死信队列有了解过吗" class="headerlink" title="10.rabbitmq的死信队列有了解过吗"></a>10.rabbitmq的死信队列有了解过吗</h3><p>死信队列（Dead Letter Queue，DLQ）是RabbitMQ中的一种特殊队列，用于接收那些无法被正常消费的消息。当消息在普通队列中变成“死信”后，会被重新路由到死信队列中，消息变成死信的原因有：</p>
+<p>1.消息被拒绝，消费者使用<code>basic.reject</code>或<code>basic.nack</code>拒绝消息，并且设置<code>requeue</code>为<code>false</code>。这是消费者主动拒绝</p>
+<p>2.消费者端自动ack失败，这可能是消费者出现了一些意外或异常，导致原本应该被消费但是却没有成功消费并确认，这是一种意外状况</p>
+<p>3.消息在队列中的存活时间超出了TTL</p>
+<p>4.队列达到最大长度，当消息数量达到这个限制时，新进入的消息会导致最开始进入的消息被挤进队列并进入死信队列</p>
+<p>具体配置死信队列的方法</p>
+<h3 id="11-死信队列的最终归宿或者死信队列存放在哪里"><a href="#11-死信队列的最终归宿或者死信队列存放在哪里" class="headerlink" title="11.死信队列的最终归宿或者死信队列存放在哪里"></a>11.死信队列的最终归宿或者死信队列存放在哪里</h3><p>死信队列和普通队列是一样的，不过死信队列是绑定在死信交换机上，而普通队列是绑定在普通交换机上，死信交换机也没什么特殊的，他特殊的地方在于，当业务消息被拒绝或者无法被正确消费时就会自动投入这个死信交换机中进而投入到死信队列中，那么死信消息的最终归宿还是看你的死信队列消费者怎么处理，要么再重新投入业务交换机和队列中，要么通知短信邮件开发人员出现异常，叫开发人员手动处理</p>
+<h3 id="12-消息积压或者消息阻塞怎么处理"><a href="#12-消息积压或者消息阻塞怎么处理" class="headerlink" title="12.消息积压或者消息阻塞怎么处理"></a>12.消息积压或者消息阻塞怎么处理</h3><p>消息积压一般就是生产者生产速度大于消费者速度，有可能是消费者出现了问题，或者就是生产者突然生产大量的消息，这种时候就会出现两个问题需要解决，1.消息积压导致消息阻塞会有可能丢失消息，比如rabbitmq没有配置死信队列使得消息队列的数量超出就会丢失前面的消息，2.消息需要及时的处理，比如一个消息任务处理需要在比较短的时间内返回结果以供用户及时收到处理结果，这两种问题都是消息积压会出现的问题，而我们不能仅仅只是修复消费者节点，或者简单的多部署几个消费者节点，毕竟还是有可能消费不过来导致消息丢失，最稳妥的做法就是多建立几个消息队列，和多建几个消费者节点，一部分消费者把消息转发到新的消息队列，这样可以快速消耗掉积压的消息，因为消费者成功消费处理一个消息并没有直接转发一个消息快，所以拿几个消费者转发消息到新的消息队列可以快速减少消息的数量</p>
+<h3 id="13-怎么扩充一个消息队列的最大数量"><a href="#13-怎么扩充一个消息队列的最大数量" class="headerlink" title="13.怎么扩充一个消息队列的最大数量"></a>13.怎么扩充一个消息队列的最大数量</h3><p>配置消息队列实现动态扩容的关键是根据负载情况调整资源的数量和分配。首先，可以通过监控系统的指标如CPU、内存、磁盘使用率等来确定是否需要扩容或减少资源。其次，可以设置自动伸缩的策略，例如定义负载阈值，当超过一定阈值时自动扩容，当低于一定阈值时自动减少资源。最后，应该考虑消息队列的高可用性，保证扩容或减少资源时不会中断业务的进行。总结，就是根据情况自己多创建几个队列</p>
+<h3 id="14-mybatis怎么动态建表"><a href="#14-mybatis怎么动态建表" class="headerlink" title="14.mybatis怎么动态建表"></a>14.mybatis怎么动态建表</h3><p>主要是要用到mybatis的动态sql语句，mybaits提供提供的一个api后面可以直接跟string的sql语句，这是最通用的，也可以使用动态sql，编写几个create,alter,update的sql在mapper.xml或注解中，只要把对应的关键参数比如新建的表名或者新增的列名传入即可</p>
+<h3 id="15-mybais的-和-有什么去区别"><a href="#15-mybais的-和-有什么去区别" class="headerlink" title="15.mybais的#和$有什么去区别"></a>15.mybais的#和$有什么去区别</h3><p>功能上，#号可以防止sql注入，他们的原理在于#是预编译，运行时会检查，防止sql注入，而$符只是字符串替换</p>
+<h3 id="16-mybatis的缓存"><a href="#16-mybatis的缓存" class="headerlink" title="16.mybatis的缓存"></a>16.mybatis的缓存</h3><p>一级缓存的作用域跟session有关，而二级缓存的作用域跟namespace和mapper有关</p>
+<h3 id="17-mysql的uuid和自增id有什么区别"><a href="#17-mysql的uuid和自增id有什么区别" class="headerlink" title="17.mysql的uuid和自增id有什么区别"></a>17.mysql的uuid和自增id有什么区别</h3><p>uuid适用于分布式数据库，而自增id只适用于单节点，uuid的五个组成部分一共128位，时间戳，时钟序列，节点标识符（48位一般是mac地址或随机字符串），版本号，保留位，uuid从时间和空间上保持了唯一性，所以使用与分布式系统,怎么使用uuid作为主键，实操：</p>
+<p>1.可以使用第三方工具包提供的UUID生成工具类，如hutool工具包</p>
+<p>2.使用mysql8.0的UUID()函数，具体的sql:insert  into student(‘id’,’name’) values(UUID_TO_BIN(UUID(),TRUE),’yuyonghai’);</p>
+<h3 id="18-为什么使用自增id插入数据库会比使用uuid快？"><a href="#18-为什么使用自增id插入数据库会比使用uuid快？" class="headerlink" title="18.为什么使用自增id插入数据库会比使用uuid快？"></a>18.为什么使用自增id插入数据库会比使用uuid快？</h3><p>mysql的存储引擎是innodb,底层使用的是B+树，整个数据页是根据id大小有序排列和插入，自增id有序，插入只需要O(1)时间（链表插入的原理),而uuid不是有序的，插入的时候会造成页分裂，重新调整数据页顺序，时间复杂度是O(n)(数组插入的原理)，所以使用uuid会比较慢</p>
+<h3 id="19-springboot的定时任务有了解过吗"><a href="#19-springboot的定时任务有了解过吗" class="headerlink" title="19.springboot的定时任务有了解过吗"></a>19.springboot的定时任务有了解过吗</h3><p>springboot启动类开启注解@EnableSchedule,然后在某一个bean上的方法上写注解@Schedule(cron&#x3D;”0&#x2F;5 * * * ?”)</p>
+<h3 id="20-java的Synchronoued加锁的原理"><a href="#20-java的Synchronoued加锁的原理" class="headerlink" title="20.java的Synchronoued加锁的原理"></a>20.java的Synchronoued加锁的原理</h3><p>原理简单地说就是锁住的是一个资源，这个资源必须是对象，可以是实例对象，也可以是class对象（锁住静态类），然后在对象头的前几个字节的一个关节字节的几个比特位中包含这个对象是什么状态，被锁住状态还是无锁状态</p>
+<h3 id="21-linux怎么把一个java进程注册成一个服务"><a href="#21-linux怎么把一个java进程注册成一个服务" class="headerlink" title="21.linux怎么把一个java进程注册成一个服务"></a>21.linux怎么把一个java进程注册成一个服务</h3><p>这跟linux的systemctl有关，首先你需要准备一个.service文件，并存储到&#x2F;usr&#x2F;lib&#x2F;systemd&#x2F;system&#x2F;目录下，service文件分为三个主要部分，unit,service,install三个部分</p>
+<h3 id="22-怎么查看java进程"><a href="#22-怎么查看java进程" class="headerlink" title="22.怎么查看java进程"></a>22.怎么查看java进程</h3><p>查看普通进程，使用ps，查看java进程使用jps，jstack等jdk提供的工具</p>
+<h3 id="23-socket有用过吗"><a href="#23-socket有用过吗" class="headerlink" title="23.socket有用过吗"></a>23.socket有用过吗</h3><p>就是网络编程的东西，操作系统底层的api，建立连接，监听连接，发送数据包，接受数据包之类的</p>
+<h3 id="33-进程间通信的方式有几种"><a href="#33-进程间通信的方式有几种" class="headerlink" title="33.进程间通信的方式有几种"></a>33.进程间通信的方式有几种</h3><p>不同的机器上就是通过网络通信socket</p>
+<p>同一个机器上就是管道，直接内存，消息队列，信号量，信号</p>
+<h3 id="34-java进程如何调用其他语言写的服务"><a href="#34-java进程如何调用其他语言写的服务" class="headerlink" title="34.java进程如何调用其他语言写的服务"></a>34.java进程如何调用其他语言写的服务</h3><p>使用JNI调用外部接口</p>
+<h3 id="35-java-sleep和wait的区别"><a href="#35-java-sleep和wait的区别" class="headerlink" title="35.java sleep和wait的区别"></a>35.java sleep和wait的区别</h3><p>sleep是Thread类的静态方法，而wait是object的本地实例方法，从用途来看，wait可以释放锁，主要用于线程间通信，而sleep不能释放锁，他主要是用来让当前线程暂停执行，并且wait调用后不会自动苏醒除非设置超时时间，否则需要调用同一个对象的notify或notifyAll方法唤醒线程</p>
+<h3 id="36-寄存器的寻址方式"><a href="#36-寄存器的寻址方式" class="headerlink" title="36.寄存器的寻址方式"></a>36.寄存器的寻址方式</h3><p>立即数寻址（像赋值不像寻址），寄存器寻址（数据存放于寄存器中），直接寻址（内存地址直接给出在代码中或指令中），寄存器间接寻址（需要使用到特殊的寄存器作为基地址，如端地址寄存器，栈指针寄存器）</p>
+<link rel="stylesheet" href="/Blog/css/folder.css" type="text/css"><script src="/Blog/js/folder.js" type="text/javascript" async></script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kerisuchiaki.github.io/2025/02/12/%E5%B0%9A%E4%B8%BA%E7%A7%91%E6%8A%80%E9%9D%A2%E8%AF%95/" data-id="cm76bia7h0000zg5babq3fb8p" data-title="尚为科技面试" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/Blog/2025/02/12/%E8%BF%9C%E6%96%B9%E7%AB%A0%E9%B1%BC%E7%BD%91%E6%B4%9B%E9%9D%A2%E8%AF%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">远方章鱼网洛面试</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/Blog/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/BUG/" rel="tag">BUG</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/RPC/" rel="tag">RPC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" rel="tag">java后端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/java%E6%BA%90%E7%A0%81/" rel="tag">java源码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/jvm/" rel="tag">jvm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/leetcode/" rel="tag">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/leetcode%E9%A2%98%E8%A7%A3/" rel="tag">leetcode题解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/oracle/" rel="tag">oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/rabbitmq/" rel="tag">rabbitmq</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/redis/" rel="tag">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/shell/" rel="tag">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/spring/" rel="tag">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/springboot/" rel="tag">springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E4%BD%9C%E4%B8%9A/" rel="tag">作业</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E5%AE%9E%E9%AA%8C/" rel="tag">实验</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E5%AE%9E%E9%AA%8C3/" rel="tag">实验3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E6%84%9F%E6%83%B3/" rel="tag">感想</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag">数据结构与算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E7%96%91%E9%97%AE/" rel="tag">疑问</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E7%AC%94%E8%AF%95/" rel="tag">笔试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/Blog/tags/BUG/" style="font-size: 10px;">BUG</a> <a href="/Blog/tags/RPC/" style="font-size: 10px;">RPC</a> <a href="/Blog/tags/git/" style="font-size: 10px;">git</a> <a href="/Blog/tags/java/" style="font-size: 17.5px;">java</a> <a href="/Blog/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 10px;">java后端开发</a> <a href="/Blog/tags/java%E6%BA%90%E7%A0%81/" style="font-size: 10px;">java源码</a> <a href="/Blog/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/Blog/tags/leetcode/" style="font-size: 10px;">leetcode</a> <a href="/Blog/tags/leetcode%E9%A2%98%E8%A7%A3/" style="font-size: 12.5px;">leetcode题解</a> <a href="/Blog/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/Blog/tags/rabbitmq/" style="font-size: 10px;">rabbitmq</a> <a href="/Blog/tags/redis/" style="font-size: 10px;">redis</a> <a href="/Blog/tags/shell/" style="font-size: 10px;">shell</a> <a href="/Blog/tags/spring/" style="font-size: 10px;">spring</a> <a href="/Blog/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/Blog/tags/test/" style="font-size: 10px;">test</a> <a href="/Blog/tags/%E4%BD%9C%E4%B8%9A/" style="font-size: 10px;">作业</a> <a href="/Blog/tags/%E5%AE%9E%E9%AA%8C/" style="font-size: 12.5px;">实验</a> <a href="/Blog/tags/%E5%AE%9E%E9%AA%8C3/" style="font-size: 10px;">实验3</a> <a href="/Blog/tags/%E6%84%9F%E6%83%B3/" style="font-size: 10px;">感想</a> <a href="/Blog/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">操作系统</a> <a href="/Blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 10px;">数据结构与算法</a> <a href="/Blog/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a> <a href="/Blog/tags/%E7%96%91%E9%97%AE/" style="font-size: 10px;">疑问</a> <a href="/Blog/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">笔记</a> <a href="/Blog/tags/%E7%AC%94%E8%AF%95/" style="font-size: 10px;">笔试</a> <a href="/Blog/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15px;">算法</a> <a href="/Blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">计算机网络</a> <a href="/Blog/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 12.5px;">设计模式</a> <a href="/Blog/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10px;">问题</a> <a href="/Blog/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 20px;">面试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/12/">December 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2022/12/">December 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/Blog/2025/02/12/%E5%B0%9A%E4%B8%BA%E7%A7%91%E6%8A%80%E9%9D%A2%E8%AF%95/">尚为科技面试</a>
+          </li>
+        
+          <li>
+            <a href="/Blog/2025/02/12/%E8%BF%9C%E6%96%B9%E7%AB%A0%E9%B1%BC%E7%BD%91%E6%B4%9B%E9%9D%A2%E8%AF%95/">远方章鱼网洛面试</a>
+          </li>
+        
+          <li>
+            <a href="/Blog/2025/02/12/%E6%AD%A6%E6%B1%89%E7%99%BE%E5%9D%87%E5%9F%8E%E4%BA%8C%E9%9D%A2/">武汉百均城二面</a>
+          </li>
+        
+          <li>
+            <a href="/Blog/2024/12/19/%E6%B4%9E%E9%9A%90%E7%A7%91%E6%8A%80%E7%BB%88%E9%9D%A2/">洞隐科技终面</a>
+          </li>
+        
+          <li>
+            <a href="/Blog/2024/12/18/%E6%B5%99%E6%B1%9F%E4%B8%80%E6%9C%A8%E9%9D%A2%E8%AF%95/">浙江一木面试</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 myself<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/Blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/Blog/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/Blog/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/Blog/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/Blog/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

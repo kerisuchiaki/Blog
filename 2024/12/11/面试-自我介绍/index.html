@@ -14,7 +14,7 @@
 <meta property="og:description" content="自我介绍背景集美大学25届毕业生 在校经历课余时间有学习过一些算法，积极参加学校举行的比赛，获得过一些全国性的大赛的奖项 自己也从大二的寒假开始学习企业所需要的一些后端开发所需要的技术栈，spring,springboot,mybatis,redis等 并且也做过几个项目">
 <meta property="og:locale" content="zn_CN">
 <meta property="article:published_time" content="2024-12-11T13:20:59.000Z">
-<meta property="article:modified_time" content="2024-12-26T16:47:03.580Z">
+<meta property="article:modified_time" content="2025-01-23T17:14:39.608Z">
 <meta property="article:author" content="myself">
 <meta property="article:tag" content="面试">
 <meta name="twitter:card" content="summary">
@@ -112,7 +112,10 @@
 <p>负责的前端功能有：</p>
 <p>1.双击单个记录时能够选中</p>
 <p>2.修改数据展示页面为滚动条显示而不是分页</p>
-<h3 id="国际旅行卫生保健中心体检管理系统"><a href="#国际旅行卫生保健中心体检管理系统" class="headerlink" title="国际旅行卫生保健中心体检管理系统"></a>国际旅行卫生保健中心体检管理系统</h3><h2 id="竞赛经历"><a href="#竞赛经历" class="headerlink" title="竞赛经历"></a>竞赛经历</h2><p>这些比赛是什么比赛，</p>
+<h3 id="国际旅行卫生保健中心体检管理系统"><a href="#国际旅行卫生保健中心体检管理系统" class="headerlink" title="国际旅行卫生保健中心体检管理系统"></a>国际旅行卫生保健中心体检管理系统</h3><p>负责的功能：</p>
+<p>1.项目模块和小项模块，像是眼部项目又分为左眼和右眼体检，内脏项目又细分为肝脏，胃之类的</p>
+<p>2.科室模块和常见结果维护模块</p>
+<h2 id="竞赛经历"><a href="#竞赛经历" class="headerlink" title="竞赛经历"></a>竞赛经历</h2><p>这些比赛是什么比赛，</p>
 <p>码体杯-百度设立的比赛</p>
 <p>pat-浙江大学</p>
 <p>全国大学生程序设计挑战赛</p>
@@ -127,7 +130,7 @@
 <p>● 了解Linux平台服务器部署，具备Docker容器化管理经验。</p>
 <p>● 了解前端技术，包括HTML、CSS、JavaScript和Vue等。</p>
 <h1 id="项目经历"><a href="#项目经历" class="headerlink" title="项目经历"></a>项目经历</h1><p>遇到的问题：</p>
-<h2 id="优惠券系统"><a href="#优惠券系统" class="headerlink" title="优惠券系统"></a>优惠券系统</h2><p>一开始设计秒杀抢购业务，一人一单时，对多个相同用户的请求，我想当然的对于用户名的String进行加锁，毕竟防止一人多次下单，但是在代码中，通过ThreadLocal获取到用户信息后，直接toString得到用户名，然后进行加锁，之后进行多次请求时，结果发现加的锁根本没用，还是出现了一人多单的问题，后来我用过打断点的方式，对多个线程都进行调试，发现虽然同一个用户的多次请求获得用户名的值虽然是一样的，但他们的引用地址并不是一样，这是因为synchronized关键字是对对象的实例进行加锁而不是对值，所以通过toString获得string虽然值是一样的，但是他们的引用不一样，导致锁失效，后来我查资料发现，可以在返回的string调用intern()方法这样就柠檬返回同一个引用，不会出现加锁失败的情况，这个bug我想了很久</p>
+<h2 id="优惠券系统"><a href="#优惠券系统" class="headerlink" title="优惠券系统"></a>优惠券系统</h2><p>一开始设计秒杀抢购业务，一人一单时，对多个相同用户的请求，我想当然的对于用户名的唯一id进行加锁，但是每次从新的抢购优惠券请求获得当前用户的id自动装箱生成的对象都是新的对象，即多个同一用户的多次请求获得id对象都不一样，那么加锁就会失效，然后我就想转化为string.intern(),这样每次都对同一id的字符串进行加锁，其实intern()是关键，请求的String进行加锁，毕竟防止一人多次下单，但是在代码中，通过ThreadLocal获取到用户信息后，直接toString得到用户名，然后进行加锁，之后进行多次请求时，结果发现加的锁根本没用，还是出现了一人多单的问题，后来我用过打断点的方式，对多个线程都进行调试，发现虽然同一个用户的多次请求获得用户名的值虽然是一样的，但他们的引用地址并不是一样，这是因为synchronized关键字是对对象的实例进行加锁而不是对值，所以通过toString获得string虽然值是一样的，但是他们的引用不一样，导致锁失效，后来我查资料发现，可以在返回的string调用intern()方法这样就柠檬返回同一个引用，不会出现加锁失败的情况，这个bug我想了很久</p>
 <h2 id="短链"><a href="#短链" class="headerlink" title="短链"></a>短链</h2><p>如何防止高并发下创建短链接或者有人恶意请求创建短链接，由于短链接生成的原理是使用原始链接hash并编码生成，但是如果多个用户创建同一个原始链接，比如在热点链接下，要想使得生成的短链接不重复，可以加上时间戳，但是在高并发下，创建短短链存在的问题就是会有可能在极短时间内的时间戳也是一样的，这时我们采用的是时间戳+UUID生成，进一步降低了重复短连接生成的问题，还有一种做法就是使用全局唯一id生成器拼接生成短链接</p>
 <p>这个项目我之前在开发登录注册模块时，碰到一个问题就是当我们注册一个用户名时，会把用户名存在布隆过滤器中，但是redis宕机时，布隆和过滤器失效，查询用户名失败<br>为了使注册功能正常运行我还是选择继续插入数据库，因为用户名有唯一约束，但是之后还要讲用户名插入到布隆过滤器中，然后再插入分组表，但是布隆过滤器失效抛出异常，使得<br>插入分组表的语句没有执行，但是用户表却已经插入数据了，当用户再次重试点击注册按钮使显示的却是用户有存在，此时点击注册反而成功登录，但是登录的用户却没有分组，<br>使得之后的一些功能比如添加短链接分组无法根据分组进行插入，因为没有分组id<br>这个问题主要在于我没有加上事务，后面加上事务时，就不会出现只插入部份表的情况了</p>
 <h1 id="反问"><a href="#反问" class="headerlink" title="反问"></a>反问</h1><h2 id="如果我能通过面试的话，下学期就要实习嘛"><a href="#如果我能通过面试的话，下学期就要实习嘛" class="headerlink" title="如果我能通过面试的话，下学期就要实习嘛"></a>如果我能通过面试的话，下学期就要实习嘛</h2><h2 id="贵公司的主营业务有哪些"><a href="#贵公司的主营业务有哪些" class="headerlink" title="贵公司的主营业务有哪些"></a>贵公司的主营业务有哪些</h2><h2 id="你认为作为java开发，未来应该还需要提升自己"><a href="#你认为作为java开发，未来应该还需要提升自己" class="headerlink" title="你认为作为java开发，未来应该还需要提升自己"></a>你认为作为java开发，未来应该还需要提升自己</h2><h1 id="可能的提问"><a href="#可能的提问" class="headerlink" title="可能的提问"></a>可能的提问</h1><h2 id="你的优缺点有哪些"><a href="#你的优缺点有哪些" class="headerlink" title="你的优缺点有哪些"></a>你的优缺点有哪些</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>1.做事有条理，喜欢做计划，遇到问题先确定关键环节，再按照紧急性重要性排序后，逐个解决问题，举例todolist</p>
@@ -239,7 +242,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archiv</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/12/">December 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2022/12/">December 2022</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/12/">December 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2022/12/">December 2022</a></li></ul>
     </div>
   </div>
 
@@ -252,23 +255,23 @@
       <ul>
         
           <li>
+            <a href="/Blog/2025/02/12/%E5%B0%9A%E4%B8%BA%E7%A7%91%E6%8A%80%E9%9D%A2%E8%AF%95/">尚为科技面试</a>
+          </li>
+        
+          <li>
+            <a href="/Blog/2025/02/12/%E8%BF%9C%E6%96%B9%E7%AB%A0%E9%B1%BC%E7%BD%91%E6%B4%9B%E9%9D%A2%E8%AF%95/">远方章鱼网洛面试</a>
+          </li>
+        
+          <li>
+            <a href="/Blog/2025/02/12/%E6%AD%A6%E6%B1%89%E7%99%BE%E5%9D%87%E5%9F%8E%E4%BA%8C%E9%9D%A2/">武汉百均城二面</a>
+          </li>
+        
+          <li>
             <a href="/Blog/2024/12/19/%E6%B4%9E%E9%9A%90%E7%A7%91%E6%8A%80%E7%BB%88%E9%9D%A2/">洞隐科技终面</a>
           </li>
         
           <li>
             <a href="/Blog/2024/12/18/%E6%B5%99%E6%B1%9F%E4%B8%80%E6%9C%A8%E9%9D%A2%E8%AF%95/">浙江一木面试</a>
-          </li>
-        
-          <li>
-            <a href="/Blog/2024/12/17/%E5%AE%87%E4%BF%A1%E7%A7%91%E6%8A%80%E4%BA%8C%E9%9D%A2/">宇信科技二面</a>
-          </li>
-        
-          <li>
-            <a href="/Blog/2024/12/12/%E6%B5%8B%E8%AF%95-%E7%AE%80%E5%8E%86/">测试-简历</a>
-          </li>
-        
-          <li>
-            <a href="/Blog/2024/12/12/%E6%B4%9E%E9%9A%90%E7%A7%91%E6%8A%80%E9%9D%A2%E8%AF%95/">洞隐科技面试</a>
           </li>
         
       </ul>
@@ -284,7 +287,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       
-      &copy; 2024 myself<br>
+      &copy; 2025 myself<br>
       Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
