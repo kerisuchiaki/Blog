@@ -75,6 +75,178 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-oracle数据库学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/Blog/2024/07/16/oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time class="dt-published" datetime="2024-07-16T09:02:17.000Z" itemprop="datePublished">2024-07-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/Blog/2024/07/16/oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">oracle数据库学习笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="oracle数据库学习笔记"><a href="#oracle数据库学习笔记" class="headerlink" title="oracle数据库学习笔记"></a>oracle数据库学习笔记</h1><h2 id="相关sql语句"><a href="#相关sql语句" class="headerlink" title="相关sql语句"></a>相关sql语句</h2><ol>
+<li><p><strong>列出所有数据库</strong>: 在Oracle中，通常使用实例来代表一个数据库。要查看连接到的数据库实例的信息，可以使用以下命令：</p>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> INSTANCE_NAME <span class="keyword">FROM</span> V$INSTANCE;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>列出所有表空间</strong>: 表空间是数据库中存储数据的逻辑单元。要列出所有的表空间，可以使用：</p>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> TABLESPACE_NAME <span class="keyword">FROM</span> DBA_TABLESPACES;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>列出特定用户的所有表</strong>: 要列出特定用户（例如用户 <code>ZWXBDN1</code>）的所有表，您可以使用：</p>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> TABLE_NAME <span class="keyword">FROM</span> ALL_TABLES <span class="keyword">WHERE</span> OWNER <span class="operator">=</span> <span class="string">&#x27;ZWXBDN1&#x27;</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>列出所有表的列信息</strong>: 要获取所有表的列信息，可以使用：</p>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> TABLE_NAME, COLUMN_NAME, DATA_TYPE, DATA_LENGTH </span><br><span class="line"><span class="keyword">FROM</span> USER_TAB_COLUMNS;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>查看表的记录</strong>: 要查看某个特定表的记录，您可以使用<code>SELECT *</code>语句，例如：</p>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> ZWXBDN1.your_table_name;</span><br></pre></td></tr></table></figure>
+
+<p> 请将 <code>your_table_name</code> 替换为您想要查看的表名。</p>
+</li>
+<li><p><strong>查看表的前几行记录</strong>: 如果您只想查看表的前几行记录，可以使用<code>ROWNUM</code>限制结果集，例如：</p>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> ZWXBDN1.your_table_name <span class="keyword">WHERE</span> ROWNUM <span class="operator">&lt;=</span> <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>查看数据库的统计信息</strong>: 要查看数据库的统计信息和其他信息，可以使用：</p>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> V$DATABASE;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>查看数据库的版本信息</strong>: 要查看数据库的版本信息，可以使用：</p>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> V$VERSION;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>请注意，您需要具有足够的权限来执行上述查询。如果您没有权限访问<code>DBA_</code>视图，您可能需要使用以您的用户名为前缀的视图，如<code>USER_</code>或<code>ALL_</code>视图。</p>
+        
+          <p class="article-more-link">
+            <a href="/Blog/2024/07/16/oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kerisuchiaki.github.io/2024/07/16/oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="clypcuyt10000dc5bc8pg44r7" data-title="oracle数据库学习笔记" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/oracle/" rel="tag">oracle</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-面试智力题-倒水问题通解" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/Blog/2024/06/17/%E9%9D%A2%E8%AF%95%E6%99%BA%E5%8A%9B%E9%A2%98-%E5%80%92%E6%B0%B4%E9%97%AE%E9%A2%98%E9%80%9A%E8%A7%A3/" class="article-date">
+  <time class="dt-published" datetime="2024-06-17T03:12:37.000Z" itemprop="datePublished">2024-06-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/Blog/2024/06/17/%E9%9D%A2%E8%AF%95%E6%99%BA%E5%8A%9B%E9%A2%98-%E5%80%92%E6%B0%B4%E9%97%AE%E9%A2%98%E9%80%9A%E8%A7%A3/">面试智力题-倒水问题通解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="倒水问题"><a href="#倒水问题" class="headerlink" title="倒水问题"></a>倒水问题</h1><p>面试经常碰到的倒水问题比如，假设你有一个3升的容器和一个5升的容器（以及充足的水源），如何精确地取出4升水来？</p>
+<p>我们不妨把3升的容器和5升的容器分别记做容器A和容器B）。这里提供一种解法：</p>
+<p>将A装满（3升），全部倒入B，<br>再次将A装满（3升），用A中的水将B装满，此时A有1升，B有5升，<br>B中的水全部倒出，将A中的1升水倒入B，此时A没有水，B有一升，<br>再次将A装满（3升），将A中的水全部倒入B，此时B中恰有4升的水</p>
+<p>类似的还有7升的水杯和13升的水杯量出5升的水，再比如能否用9升的水杯和15升的水杯量出10升的水，不胜枚举。三升五升得四升的问题还算直观，稍作思考便可构造解决方案。7升13升得5升，似乎就没那么直观了。</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2>
+        
+          <p class="article-more-link">
+            <a href="/Blog/2024/06/17/%E9%9D%A2%E8%AF%95%E6%99%BA%E5%8A%9B%E9%A2%98-%E5%80%92%E6%B0%B4%E9%97%AE%E9%A2%98%E9%80%9A%E8%A7%A3/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kerisuchiaki.github.io/2024/06/17/%E9%9D%A2%E8%AF%95%E6%99%BA%E5%8A%9B%E9%A2%98-%E5%80%92%E6%B0%B4%E9%97%AE%E9%A2%98%E9%80%9A%E8%A7%A3/" data-id="clypcuyt40001dc5b1tr752k3" data-title="面试智力题-倒水问题通解" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-算法设计与分析实验三-动态规划" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/Blog/2024/05/01/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E5%AE%9E%E9%AA%8C%E4%B8%89-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="article-date">
+  <time class="dt-published" datetime="2024-05-01T06:06:06.000Z" itemprop="datePublished">2024-05-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/Blog/2024/05/01/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E5%AE%9E%E9%AA%8C%E4%B8%89-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">算法设计与分析实验三-动态规划</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="实验项目：分治法的应用"><a href="#实验项目：分治法的应用" class="headerlink" title="实验项目：分治法的应用"></a>实验项目：分治法的应用</h3><h4 id="实验目的"><a href="#实验目的" class="headerlink" title="实验目的"></a>实验目的</h4><p>掌握动态规划算法的应用。</p>
+<h4 id="一、实验内容"><a href="#一、实验内容" class="headerlink" title="一、实验内容"></a>一、实验内容</h4><ol>
+<li><strong>最大子段和问题</strong>：给定由n个整数组成的序列，求其连续子段的最大和。</li>
+<li><strong>矩阵连乘问题</strong>：给定n个矩阵{A1, A2, …, An}，求最佳计算次序以最小化数乘次数。</li>
+<li><strong>双核CPU任务调度问题</strong>：给定n个任务及其处理时长，设计调度方案使CPU处理完所有任务所需时间最短。</li>
+</ol>
+<h4 id="二、问题分析"><a href="#二、问题分析" class="headerlink" title="二、问题分析"></a>二、问题分析</h4>
+        
+          <p class="article-more-link">
+            <a href="/Blog/2024/05/01/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E5%AE%9E%E9%AA%8C%E4%B8%89-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kerisuchiaki.github.io/2024/05/01/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E5%AE%9E%E9%AA%8C%E4%B8%89-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" data-id="clwf9hhrs001l025b128u0x5k" data-title="算法设计与分析实验三-动态规划" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/%E5%AE%9E%E9%AA%8C3/" rel="tag">实验3</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-嵌入式实验3-文件io编程" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/Blog/2024/05/01/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%AE%9E%E9%AA%8C3-%E6%96%87%E4%BB%B6io%E7%BC%96%E7%A8%8B/" class="article-date">
@@ -476,156 +648,6 @@ cat命令查看文件(额外实现)</p>
 
 
   
-    <article id="post-设计模式之适配器模式" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/Blog/2024/03/14/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/" class="article-date">
-  <time class="dt-published" datetime="2024-03-13T16:22:54.000Z" itemprop="datePublished">2024-03-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/Blog/2024/03/14/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/">设计模式之适配器模式</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="什么是适配器模式"><a href="#什么是适配器模式" class="headerlink" title="什么是适配器模式"></a>什么是适配器模式</h2><p>适配器模式的核心思想是将一个类的接口转换成客户希朼的另外一个接口，使得原本由于接口不兼容而不能一起工作的那些类可以一起工作</p>
-<h2 id="适配器模式在Bean销毁中的应用"><a href="#适配器模式在Bean销毁中的应用" class="headerlink" title="适配器模式在Bean销毁中的应用"></a>适配器模式在Bean销毁中的应用</h2><p>在软件开发中，经常会遇到不同接口之间的兼容性问题。适配器模式就是为了解决这类问题而诞生的，它可以将一个类的接口转换成客户希望的另外一个接口，使得原本由于接口不兼容而不能一起工作的那些类可以一起工作。今天我们来看一下适配器模式在Bean销毁中的应用。</p>
-<p>在Spring框架中，Bean的销毁是一个重要的环节，通常需要执行一些特定的操作，比如释放资源、关闭连接等。但是不同的Bean可能有不同的销毁方法，有些是通过实现特定的接口，有些是通过在配置文件中指定销毁方法。为了统一处理这些不同的销毁方式，可以使用适配器模式来简化操作。</p>
-<p>我们先来看一下DisposableBeanAdapter类的代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">javaCopy Code// DisposableBeanAdapter.java</span><br><span class="line"></span><br><span class="line">public class DisposableBeanAdapter implements DisposableBean &#123;</span><br><span class="line"></span><br><span class="line">    private final Object bean;</span><br><span class="line">    private final String beanName;</span><br><span class="line">    private String destroyMethodName;</span><br><span class="line"></span><br><span class="line">    public DisposableBeanAdapter(Object bean, String beanName, BeanDefinition beanDefinition) &#123;</span><br><span class="line">        this.bean = bean;</span><br><span class="line">        this.beanName = beanName;</span><br><span class="line">        this.destroyMethodName = beanDefinition.getDestroyMethodName();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void destroy() throws Exception &#123;</span><br><span class="line">        // 1. 实现接口 DisposableBean</span><br><span class="line">        if (bean instanceof DisposableBean) &#123;</span><br><span class="line">            ((DisposableBean) bean).destroy();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 2. 注解配置 destroy-method &#123;判断是为了避免二次执行销毁&#125;</span><br><span class="line">        if (StrUtil.isNotEmpty(destroyMethodName) &amp;&amp; !(bean instanceof DisposableBean &amp;&amp; &quot;destroy&quot;.equals(this.destroyMethodName))) &#123;</span><br><span class="line">            Method destroyMethod = bean.getClass().getMethod(destroyMethodName);</span><br><span class="line">            if (null == destroyMethod) &#123;</span><br><span class="line">                throw new BeansException(&quot;Couldn&#x27;t find a destroy method named &#x27;&quot; + destroyMethodName + &quot;&#x27; on bean with name &#x27;&quot; + beanName + &quot;&#x27;&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            destroyMethod.invoke(bean);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>DisposableBeanAdapter类实现了DisposableBean接口，同时根据Bean定义信息获取销毁方法的名称，并统一调用销毁方法。这样，无论Bean是通过实现接口还是配置文件中指定销毁方法，都可以通过DisposableBeanAdapter来进行统一的销毁处理。</p>
-<p>适配器模式的优势在于可以灵活处理不同接口的兼容性问题，使得系统更易于扩展和维护。在Bean销毁的场景下，采用适配器模式可以有效地降低代码的耦合度，同时也让销毁逻辑更加清晰和统一。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>总结一下，适配器模式在Bean销毁中的应用，使得不同的销毁方式可以统一处理，提高了系统的灵活性和可维护性，是一种非常有价值的设计模式。希望通过这篇博客的介绍，能够对适配器模式的应用有更深入的理解，也能在实际项目中更好地运用适配器模式来解决类似的接口兼容性问题。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kerisuchiaki.github.io/2024/03/14/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/" data-id="clwf9hhrv001x025b535s0uj4" data-title="设计模式之适配器模式" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-设计模式之模板模式" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/Blog/2024/03/09/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E6%A8%A1%E6%9D%BF%E6%A8%A1%E5%BC%8F/" class="article-date">
-  <time class="dt-published" datetime="2024-03-09T15:41:30.000Z" itemprop="datePublished">2024-03-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/Blog/2024/03/09/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E6%A8%A1%E6%9D%BF%E6%A8%A1%E5%BC%8F/">设计模式之模板模式</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>当涉及到设计模式时，模板模式是一个非常有用且常见的模式。下面是一个关于设计模式中的模板模式的博客主题示例：</p>
-<hr>
-<h2 id="设计模式之模板模式"><a href="#设计模式之模板模式" class="headerlink" title="设计模式之模板模式"></a>设计模式之模板模式</h2><p>在软件开发中，模板模式是一种行为型设计模式，它定义了一个算法的骨架，并允许子类为一个或多个步骤提供实现。这种模式使得子类可以重新定义算法的某些步骤，而不改变算法的结构。</p>
-<h2 id="实现模板模式"><a href="#实现模板模式" class="headerlink" title="实现模板模式"></a>实现模板模式</h2><p>以下是一个简单的示例，演示了如何使用模板模式来准备食物的过程：</p>
-        
-          <p class="article-more-link">
-            <a href="/Blog/2024/03/09/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E6%A8%A1%E6%9D%BF%E6%A8%A1%E5%BC%8F/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kerisuchiaki.github.io/2024/03/09/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E6%A8%A1%E6%9D%BF%E6%A8%A1%E5%BC%8F/" data-id="clwf9hhru001t025b6avyfki4" data-title="设计模式之模板模式" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-lc162寻找山峰" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/Blog/2024/03/09/lc162%E5%AF%BB%E6%89%BE%E5%B1%B1%E5%B3%B0/" class="article-date">
-  <time class="dt-published" datetime="2024-03-09T10:39:36.000Z" itemprop="datePublished">2024-03-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/Blog/2024/03/09/lc162%E5%AF%BB%E6%89%BE%E5%B1%B1%E5%B3%B0/">lc162寻找山峰</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>峰值元素是指其值严格大于左右相邻值的元素。</p>
-<p>给你一个整数数组 <code>nums</code>，找到峰值元素并返回其索引。数组可能包含多个峰值，在这种情况下，返回 <strong>任何一个峰值</strong> 所在位置即可。</p>
-<p>你可以假设 <code>nums[-1] = nums[n] = -∞</code> 。</p>
-<p>你必须实现时间复杂度为 <code>O(log n)</code> 的算法来解决此问题。</p>
-<p><strong>示例 1：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [1,2,3,1]</span><br><span class="line">输出：2</span><br><span class="line">解释：3 是峰值元素，你的函数应该返回其索引 2。</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 2：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [1,2,1,3,5,6,4]</span><br><span class="line">输出：1 或 5 </span><br><span class="line">解释：你的函数可以返回索引 1，其峰值元素为 2；</span><br><span class="line">     或者返回索引 5， 其峰值元素为 6。</span><br></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a href="/Blog/2024/03/09/lc162%E5%AF%BB%E6%89%BE%E5%B1%B1%E5%B3%B0/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://kerisuchiaki.github.io/2024/03/09/lc162%E5%AF%BB%E6%89%BE%E5%B1%B1%E5%B3%B0/" data-id="clwf9hhri000m025b84h5e8js" data-title="lc162寻找山峰" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/leetcode%E9%A2%98%E8%A7%A3/" rel="tag">leetcode题解</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -661,7 +683,7 @@ cat命令查看文件(额外实现)</p>
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/Blog/tags/BUG/" style="font-size: 10px;">BUG</a> <a href="/Blog/tags/RPC/" style="font-size: 10px;">RPC</a> <a href="/Blog/tags/git/" style="font-size: 10px;">git</a> <a href="/Blog/tags/java/" style="font-size: 16.67px;">java</a> <a href="/Blog/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 10px;">java后端开发</a> <a href="/Blog/tags/java%E6%BA%90%E7%A0%81/" style="font-size: 10px;">java源码</a> <a href="/Blog/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/Blog/tags/leetcode/" style="font-size: 10px;">leetcode</a> <a href="/Blog/tags/leetcode%E9%A2%98%E8%A7%A3/" style="font-size: 13.33px;">leetcode题解</a> <a href="/Blog/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/Blog/tags/rabbitmq/" style="font-size: 10px;">rabbitmq</a> <a href="/Blog/tags/redis/" style="font-size: 10px;">redis</a> <a href="/Blog/tags/shell/" style="font-size: 10px;">shell</a> <a href="/Blog/tags/spring/" style="font-size: 10px;">spring</a> <a href="/Blog/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/Blog/tags/test/" style="font-size: 10px;">test</a> <a href="/Blog/tags/%E4%BD%9C%E4%B8%9A/" style="font-size: 10px;">作业</a> <a href="/Blog/tags/%E5%AE%9E%E4%B9%A0/" style="font-size: 10px;">实习</a> <a href="/Blog/tags/%E5%AE%9E%E9%AA%8C/" style="font-size: 13.33px;">实验</a> <a href="/Blog/tags/%E5%AE%9E%E9%AA%8C3/" style="font-size: 10px;">实验3</a> <a href="/Blog/tags/%E6%84%9F%E6%83%B3/" style="font-size: 10px;">感想</a> <a href="/Blog/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">操作系统</a> <a href="/Blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 10px;">数据结构与算法</a> <a href="/Blog/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a> <a href="/Blog/tags/%E7%96%91%E9%97%AE/" style="font-size: 10px;">疑问</a> <a href="/Blog/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">笔记</a> <a href="/Blog/tags/%E7%AC%94%E8%AF%95/" style="font-size: 10px;">笔试</a> <a href="/Blog/tags/%E7%AE%97%E6%B3%95/" style="font-size: 16.67px;">算法</a> <a href="/Blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">计算机网络</a> <a href="/Blog/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 13.33px;">设计模式</a> <a href="/Blog/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10px;">问题</a> <a href="/Blog/tags/%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">问题记录</a> <a href="/Blog/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 20px;">面试</a>
+      <a href="/Blog/tags/BUG/" style="font-size: 10px;">BUG</a> <a href="/Blog/tags/RPC/" style="font-size: 10px;">RPC</a> <a href="/Blog/tags/git/" style="font-size: 10px;">git</a> <a href="/Blog/tags/java/" style="font-size: 15px;">java</a> <a href="/Blog/tags/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 10px;">java后端开发</a> <a href="/Blog/tags/java%E6%BA%90%E7%A0%81/" style="font-size: 10px;">java源码</a> <a href="/Blog/tags/jvm/" style="font-size: 10px;">jvm</a> <a href="/Blog/tags/leetcode/" style="font-size: 10px;">leetcode</a> <a href="/Blog/tags/leetcode%E9%A2%98%E8%A7%A3/" style="font-size: 12.5px;">leetcode题解</a> <a href="/Blog/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/Blog/tags/rabbitmq/" style="font-size: 10px;">rabbitmq</a> <a href="/Blog/tags/redis/" style="font-size: 10px;">redis</a> <a href="/Blog/tags/shell/" style="font-size: 10px;">shell</a> <a href="/Blog/tags/spring/" style="font-size: 10px;">spring</a> <a href="/Blog/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/Blog/tags/test/" style="font-size: 10px;">test</a> <a href="/Blog/tags/%E4%BD%9C%E4%B8%9A/" style="font-size: 10px;">作业</a> <a href="/Blog/tags/%E5%AE%9E%E4%B9%A0/" style="font-size: 10px;">实习</a> <a href="/Blog/tags/%E5%AE%9E%E9%AA%8C/" style="font-size: 12.5px;">实验</a> <a href="/Blog/tags/%E5%AE%9E%E9%AA%8C3/" style="font-size: 10px;">实验3</a> <a href="/Blog/tags/%E6%84%9F%E6%83%B3/" style="font-size: 10px;">感想</a> <a href="/Blog/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">操作系统</a> <a href="/Blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 10px;">数据结构与算法</a> <a href="/Blog/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a> <a href="/Blog/tags/%E7%96%91%E9%97%AE/" style="font-size: 10px;">疑问</a> <a href="/Blog/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">笔记</a> <a href="/Blog/tags/%E7%AC%94%E8%AF%95/" style="font-size: 10px;">笔试</a> <a href="/Blog/tags/%E7%AE%97%E6%B3%95/" style="font-size: 17.5px;">算法</a> <a href="/Blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">计算机网络</a> <a href="/Blog/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 12.5px;">设计模式</a> <a href="/Blog/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10px;">问题</a> <a href="/Blog/tags/%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">问题记录</a> <a href="/Blog/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 20px;">面试</a>
     </div>
   </div>
 
@@ -670,7 +692,7 @@ cat命令查看文件(额外实现)</p>
   <div class="widget-wrap">
     <h3 class="widget-title">Archiv</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2025/03/">March 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/12/">December 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2022/12/">December 2022</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2025/09/">September 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2025/08/">August 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2025/03/">March 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/12/">December 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2022/12/">December 2022</a></li></ul>
     </div>
   </div>
 
@@ -683,23 +705,23 @@ cat命令查看文件(额外实现)</p>
       <ul>
         
           <li>
+            <a href="/Blog/2025/09/02/%E4%BA%91%E6%AD%A5%E7%A7%91%E6%8A%80%E9%9D%A2%E8%AF%95/">云步科技面试</a>
+          </li>
+        
+          <li>
+            <a href="/Blog/2025/08/28/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E6%80%9D%E6%83%B3%E7%9A%84%E5%BA%94%E7%94%A8/">归并排序思想的应用</a>
+          </li>
+        
+          <li>
+            <a href="/Blog/2025/04/12/16%E5%B1%8A%E8%93%9D%E6%A1%A5%E6%9D%AF%E4%B8%AA%E4%BA%BA%E9%A2%98%E8%A7%A3/">16届蓝桥杯个人题解</a>
+          </li>
+        
+          <li>
             <a href="/Blog/2025/03/26/%E4%BA%8C%E5%88%86%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95%E6%84%9F%E6%82%9F/">二分搜索算法感悟</a>
           </li>
         
           <li>
             <a href="/Blog/2025/03/03/%E5%B0%9A%E4%B8%BA%E7%A7%91%E6%8A%80%E5%AE%9E%E4%B9%A0%E6%97%A5%E8%AE%B0/">尚为科技实习日记</a>
-          </li>
-        
-          <li>
-            <a href="/Blog/2025/02/17/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%BA%A4%E6%9B%BF%E6%89%93%E5%8D%B0%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/">多线程交替打印字符串问题记录</a>
-          </li>
-        
-          <li>
-            <a href="/Blog/2025/02/12/%E5%B0%9A%E4%B8%BA%E7%A7%91%E6%8A%80%E9%9D%A2%E8%AF%95/">尚为科技面试</a>
-          </li>
-        
-          <li>
-            <a href="/Blog/2025/02/12/%E8%BF%9C%E6%96%B9%E7%AB%A0%E9%B1%BC%E7%BD%91%E6%B4%9B%E9%9D%A2%E8%AF%95/">远方章鱼网洛面试</a>
           </li>
         
       </ul>
